@@ -1,0 +1,3591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>丰富的图形世界 · 北师大版七年级上册数学（2024秋版）第一章 教学讲义</title>
+<meta name="description" content="北师大版七年级上册数学（2024秋版）第一章《丰富的图形世界》教学讲义：生活中的立体图形、从立体图形到平面图形、回顾与思考、复习题，含知识讲解、例题、练习与参考答案。">
+<style>
+/* ============ 基础变量 ============ */
+:root{
+  --ink:#1f2937;
+  --ink-soft:#3f4b5b;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --line-strong:#cbd5e1;
+  --paper:#ffffff;
+  --bg:#eef2f7;
+  --brand:#1d4ed8;
+  --brand-dark:#1e3a8a;
+  --brand-light:#eff6ff;
+  --accent:#b45309;
+  --accent-light:#fffbeb;
+  --green:#047857;
+  --green-light:#ecfdf5;
+  --orange:#c2410c;
+  --orange-light:#fff7ed;
+  --purple:#6d28d9;
+  --purple-light:#f5f3ff;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.18);
+  --font-sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif;
+  --topbar-h:56px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h) + 18px);-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-serif);
+  font-size:17px;
+  line-height:1.9;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;}
+a{color:var(--brand);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ============ 阅读进度条 ============ */
+.reading-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;
+  background:linear-gradient(90deg,#1d4ed8,#0ea5e9,#f59e0b);
+  z-index:120;transition:width .12s linear;
+}
+
+/* ============ 顶栏 ============ */
+.topbar{
+  position:sticky;top:0;z-index:100;height:var(--topbar-h);
+  display:flex;align-items:center;gap:16px;
+  padding:0 22px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-title{
+  font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--brand-dark);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  min-width:0;flex:1 1 auto;
+}
+.topbar-title span{color:var(--muted);font-weight:400;}
+.topbar-spacer{display:none;}
+.topbar-btn{
+  font-family:var(--font-sans);font-size:13px;line-height:1;
+  padding:8px 13px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line-strong);background:#fff;color:var(--ink-soft);
+  transition:.18s;white-space:nowrap;
+}
+.topbar-btn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light);}
+.topbar-btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;}
+.topbar-btn.primary:hover{background:var(--brand-dark);color:#fff;}
+.menu-btn{display:none;}
+
+/* ============ 布局 ============ */
+.layout{
+  display:grid;
+  grid-template-columns:258px minmax(0,1fr);
+  gap:44px;
+  max-width:1260px;
+  margin:0 auto;
+  padding:0 26px 80px;
+}
+.sidebar{
+  position:sticky;top:var(--topbar-h);
+  align-self:start;
+  height:calc(100vh - var(--topbar-h));
+  overflow-y:auto;
+  padding:26px 6px 40px 0;
+  font-family:var(--font-sans);
+  scrollbar-width:thin;
+}
+.sidebar::-webkit-scrollbar{width:6px;}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+.side-title{
+  font-size:11px;letter-spacing:.18em;color:var(--muted);
+  text-transform:uppercase;margin:0 0 12px 10px;
+}
+.side-nav{list-style:none;margin:0;padding:0;}
+.side-nav li{margin:1px 0;}
+.side-nav a{
+  display:block;padding:6px 10px;border-radius:8px;
+  font-size:13.5px;color:var(--ink-soft);line-height:1.5;
+  border-left:2px solid transparent;transition:.15s;
+}
+.side-nav a:hover{background:#fff;color:var(--brand);text-decoration:none;}
+.side-nav a.active{background:var(--brand-light);color:var(--brand-dark);border-left-color:var(--brand);font-weight:600;}
+.side-nav .lvl1 > a{font-weight:600;color:var(--ink);font-size:14px;margin-top:8px;}
+.side-nav .lvl2 > a{padding-left:22px;font-size:13px;}
+.side-nav .lvl2 > a::before{content:"·";margin-right:6px;color:var(--line-strong);}
+
+/* ============ 内容区 ============ */
+.content{max-width:900px;min-width:0;padding-top:34px;}
+
+/* ============ 封面 ============ */
+.cover{
+  position:relative;overflow:hidden;
+  border-radius:22px;
+  padding:58px 54px 46px;
+  color:#fff;
+  background:
+    radial-gradient(1200px 420px at 88% -10%,rgba(56,189,248,.35),transparent 60%),
+    radial-gradient(700px 380px at 6% 108%,rgba(245,158,11,.28),transparent 60%),
+    linear-gradient(150deg,#0f2557 0%,#1e3a8a 46%,#1d4ed8 100%);
+  box-shadow:0 24px 60px -28px rgba(15,37,87,.65);
+}
+.cover::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(160deg,rgba(0,0,0,.9),transparent 72%);
+  -webkit-mask-image:linear-gradient(160deg,rgba(0,0,0,.9),transparent 72%);
+}
+.cover-badge{
+  position:relative;z-index:1;
+  display:inline-block;font-family:var(--font-sans);font-size:12px;letter-spacing:.22em;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+}
+.cover h1{
+  position:relative;z-index:1;
+  font-family:var(--font-sans);
+  font-size:clamp(34px,5.2vw,52px);
+  line-height:1.16;letter-spacing:.04em;
+  margin:22px 0 10px;font-weight:700;
+  text-shadow:0 6px 30px rgba(0,0,0,.25);
+}
+.cover-sub{
+  position:relative;z-index:1;
+  font-family:var(--font-sans);font-size:16px;color:rgba(255,255,255,.86);
+  margin:0 0 30px;letter-spacing:.06em;
+}
+.cover-meta{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px 26px;
+  border-top:1px solid rgba(255,255,255,.2);padding-top:24px;
+  font-family:var(--font-sans);
+}
+.cover-meta div{display:flex;flex-direction:column;gap:3px;}
+.cover-meta span{font-size:11.5px;letter-spacing:.16em;color:rgba(255,255,255,.6);}
+.cover-meta strong{font-size:14px;font-weight:600;color:#fff;}
+
+/* ============ 目录卡 ============ */
+.toc-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 34px 32px;margin:26px 0 40px;box-shadow:var(--shadow);
+}
+.toc-card h2{
+  font-family:var(--font-sans);font-size:19px;margin:0 0 4px;color:var(--brand-dark);
+  display:flex;align-items:center;gap:10px;
+}
+.toc-card h2::before{content:"";width:5px;height:19px;border-radius:3px;background:var(--brand);}
+.toc-note{font-family:var(--font-sans);font-size:13px;color:var(--muted);margin:0 0 18px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;font-family:var(--font-sans);}
+.toc-grid a{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:7px 10px;border-radius:8px;font-size:14px;color:var(--ink-soft);
+  border-bottom:1px dashed var(--line);
+}
+.toc-grid a:hover{background:var(--brand-light);color:var(--brand);text-decoration:none;}
+.toc-grid a em{font-style:normal;color:var(--muted);font-size:12px;white-space:nowrap;}
+.toc-grid .toc-l1{font-weight:600;color:var(--ink);}
+.toc-grid .toc-l2{padding-left:20px;font-size:13.5px;}
+
+/* ============ 节 ============ */
+.part{scroll-margin-top:calc(var(--topbar-h) + 12px);margin:0 0 10px;}
+.part-head{
+  border-left:6px solid var(--brand);
+  padding:6px 0 6px 24px;
+  margin:52px 0 26px;
+}
+.part-kicker{
+  font-family:var(--font-sans);font-size:12px;letter-spacing:.2em;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.part-title{
+  font-family:var(--font-sans);font-size:clamp(26px,3.4vw,34px);
+  line-height:1.25;margin:0 0 12px;color:var(--brand-dark);letter-spacing:.02em;
+}
+.part-intro{
+  margin:0;color:var(--ink-soft);font-size:16px;line-height:1.95;
+  padding:16px 20px;background:#fff;border:1px solid var(--line);
+  border-left:3px solid var(--line-strong);border-radius:0 10px 10px 0;
+}
+
+/* ============ 学习目标 ============ */
+.goal-box{
+  background:linear-gradient(180deg,#fffdf5,#fffbeb);
+  border:1px solid #fde68a;border-radius:var(--radius);
+  padding:22px 26px 20px;margin:0 0 34px;
+}
+.goal-box h3{
+  font-family:var(--font-sans);font-size:16px;margin:0 0 10px;color:#92400e;
+  display:flex;align-items:center;gap:8px;
+}
+.goal-box h3::before{content:"◎";font-size:15px;}
+.goal-box ul{margin:0;padding-left:22px;}
+.goal-box li{margin:5px 0;color:#78350f;font-size:15.5px;line-height:1.85;}
+
+/* ============ 知识卡 ============ */
+.knowledge-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 38px 38px;margin:0 0 34px;box-shadow:var(--shadow);
+  scroll-margin-top:calc(var(--topbar-h) + 16px);
+}
+.card-title{
+  font-family:var(--font-sans);font-size:22px;line-height:1.35;
+  margin:0 0 22px;padding-bottom:16px;border-bottom:1px solid var(--line);
+  color:var(--brand-dark);display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.card-title .num{
+  display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.1em;
+  padding:5px 12px;border-radius:999px;background:var(--brand);color:#fff;
+  flex:none;
+}
+.subhead{
+  font-family:var(--font-sans);font-size:17.5px;line-height:1.5;
+  margin:32px 0 12px;color:var(--brand-dark);
+  padding-left:12px;border-left:4px solid #93c5fd;
+}
+.knowledge-card > p{margin:12px 0;}
+.knowledge-card ul,.knowledge-card ol{margin:12px 0;padding-left:26px;}
+.knowledge-card li{margin:6px 0;}
+strong{color:#111827;font-weight:700;}
+em{font-style:normal;color:var(--accent);font-weight:600;}
+
+/* ============ 提示块 ============ */
+.keypoint,.tip,.warn,.method,.note{
+  border-radius:12px;padding:16px 20px;margin:20px 0;font-size:15.8px;line-height:1.9;
+}
+.keypoint{background:var(--brand-light);border:1px solid #bfdbfe;border-left:4px solid #3b82f6;}
+.keypoint strong{color:#1e40af;}
+.tip{background:var(--green-light);border:1px solid #a7f3d0;border-left:4px solid #10b981;}
+.tip strong{color:#065f46;}
+.warn{background:var(--orange-light);border:1px solid #fed7aa;border-left:4px solid #f97316;}
+.warn strong{color:#9a3412;}
+.method{background:var(--purple-light);border:1px solid #ddd6fe;border-left:4px solid #8b5cf6;}
+.method strong{color:#5b21b6;}
+.note{background:#f8fafc;border:1px dashed var(--line-strong);border-left:4px solid #94a3b8;}
+.note strong{color:#475569;}
+.keypoint p:first-child,.tip p:first-child,.warn p:first-child,
+.method p:first-child,.note p:first-child{margin-top:0;}
+.keypoint p:last-child,.tip p:last-child,.warn p:last-child,
+.method p:last-child,.note p:last-child{margin-bottom:0;}
+.method ul,.method ol{margin:8px 0 0;padding-left:24px;}
+
+/* ============ 公式 ============ */
+.formula{
+  margin:20px 0;padding:18px 22px;border-radius:12px;
+  background:#f8fafc;border:1px solid var(--line);
+  text-align:center;
+}
+.formula-label{
+  font-family:var(--font-sans);font-size:12.5px;letter-spacing:.12em;
+  color:var(--muted);margin-bottom:8px;
+}
+.formula-body{
+  font-family:"Cambria Math",Cambria,"Times New Roman",var(--font-serif);
+  font-size:20px;color:var(--brand-dark);line-height:1.7;letter-spacing:.02em;
+}
+
+/* ============ 例题 ============ */
+.example{
+  border:1px solid #dbeafe;border-radius:12px;margin:24px 0;
+  overflow:hidden;background:#fff;
+}
+.example-head{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 20px;background:linear-gradient(90deg,#eff6ff,#f8fbff);
+  border-bottom:1px solid #dbeafe;
+}
+.example-no{
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  background:var(--brand);color:#fff;padding:4px 11px;border-radius:999px;
+  letter-spacing:.06em;flex:none;
+}
+.example-title{font-family:var(--font-sans);font-size:15px;color:var(--brand-dark);font-weight:600;}
+.example-body{padding:18px 22px 20px;}
+.example-body > p{margin:8px 0;}
+.solution{
+  margin-top:14px;padding:14px 18px;border-radius:10px;
+  background:#f8fafc;border-left:3px solid var(--brand);
+}
+.solution-label{
+  font-family:var(--font-sans);font-size:12.5px;font-weight:700;color:var(--brand);
+  letter-spacing:.14em;margin-bottom:6px;
+}
+.solution p{margin:6px 0;font-size:15.8px;}
+.variant{
+  margin:16px 0 0;padding:12px 16px;border-radius:10px;
+  background:#fffbeb;border:1px dashed #fcd34d;font-size:15.5px;
+}
+
+/* ============ 练习 ============ */
+.exercise{
+  padding:18px 2px 20px;border-bottom:1px dashed var(--line);
+}
+.exercise:last-of-type{border-bottom:none;}
+.exercise-head{
+  display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:start;
+  font-size:16px;line-height:1.9;
+}
+.exercise-no{
+  grid-column:1;grid-row:1 / span 99;
+  min-width:26px;height:26px;padding:0 9px;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  background:#e0e7ff;color:#3730a3;margin-top:3px;
+}
+.exercise-head > *:not(.exercise-no){grid-column:2;min-width:0;}
+.exercise-head p{margin:6px 0;}
+.exercise-head p:first-child{margin-top:0;}
+.option{display:inline-block;margin-right:18px;white-space:nowrap;}
+
+/* ============ 答案 ============ */
+details.answer{
+  margin:10px 0 0 38px;border-radius:10px;background:#f8fafc;
+  border:1px solid var(--line);overflow:hidden;
+}
+details.answer summary{
+  cursor:pointer;list-style:none;padding:9px 16px;
+  font-family:var(--font-sans);font-size:13.5px;color:var(--brand);
+  user-select:none;display:flex;align-items:center;gap:8px;
+}
+details.answer summary::-webkit-details-marker{display:none;}
+details.answer summary::before{
+  content:"▸";font-size:11px;transition:transform .18s;display:inline-block;color:var(--brand);
+}
+details.answer[open] summary::before{transform:rotate(90deg);}
+details.answer summary:hover{background:var(--brand-light);}
+.answer-body{padding:4px 18px 16px;font-size:15.3px;line-height:1.9;color:var(--ink-soft);}
+.answer-body p{margin:7px 0;}
+.answer-body strong{color:var(--brand-dark);}
+
+/* ============ 图 ============ */
+.figure{
+  margin:26px 0;padding:14px 14px 10px;
+  background:#fbfdff;border:1px solid var(--line);border-radius:12px;
+  text-align:center;
+}
+.fig-svg{display:block;width:100%;height:auto;max-width:100%;}
+figure.figure figcaption{
+  font-family:var(--font-sans);font-size:13px;color:var(--muted);
+  margin-top:8px;line-height:1.6;
+}
+
+/* ============ 多栏 ============ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0;align-items:start;}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;align-items:start;}
+.two-col > div,.three-col > div{min-width:0;}
+.two-col .figure,.three-col .figure{margin:0;}
+
+/* ============ 表格 ============ */
+.data-table{
+  width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;
+  font-family:var(--font-sans);background:#fff;
+  border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+}
+.data-table caption{
+  caption-side:top;text-align:left;font-size:13.5px;color:var(--muted);
+  padding:0 0 8px;font-family:var(--font-sans);
+}
+.data-table th,.data-table td{
+  border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;
+  line-height:1.7;
+}
+.data-table thead th{background:#f1f5f9;color:var(--brand-dark);font-weight:600;white-space:nowrap;}
+.data-table tbody tr:nth-child(even){background:#fafbfd;}
+.data-table td.c,.data-table th.c{text-align:center;}
+
+/* ============ 章末自评 ============ */
+.self-check{margin:22px 0;}
+
+/* ============ 页脚 ============ */
+.footer{
+  margin-top:56px;padding:26px 0 0;border-top:1px solid var(--line);
+  font-family:var(--font-sans);font-size:13px;color:var(--muted);line-height:1.9;
+}
+.footer p{margin:4px 0;}
+
+/* ============ 回到顶部 ============ */
+.to-top{
+  position:fixed;right:26px;bottom:28px;z-index:90;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);
+  background:#fff;color:var(--brand);cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(15,23,42,.3);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:.22s;font-size:18px;
+}
+.to-top.show{opacity:1;visibility:visible;}
+.to-top:hover{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+/* ============ 响应式 ============ */
+@media (max-width:1100px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 18px 60px;}
+  .sidebar{
+    position:fixed;top:var(--topbar-h);left:0;bottom:0;width:280px;height:auto;
+    background:#fff;border-right:1px solid var(--line);z-index:99;
+    padding:20px 14px 40px;transform:translateX(-102%);transition:transform .24s ease;
+    box-shadow:0 10px 40px -20px rgba(15,23,42,.4);
+  }
+  .sidebar.open{transform:none;}
+  .menu-btn{display:inline-block;}
+  .content{padding-top:22px;}
+  .knowledge-card{padding:26px 22px 30px;}
+  .cover{padding:40px 28px 34px;border-radius:16px;}
+  .toc-card{padding:24px 20px 26px;}
+}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.85;}
+  .topbar{padding:0 14px;gap:10px;}
+  .topbar-title{font-size:13px;}
+  .topbar-title span{display:none;}
+  .topbar-btn{padding:7px 10px;font-size:12px;}
+  .layout{padding:0 12px 50px;}
+  .content{padding-top:16px;}
+  .cover{padding:32px 20px 28px;}
+  .cover h1{font-size:30px;}
+  .cover-meta{grid-template-columns:1fr 1fr;gap:12px;}
+  .toc-grid{grid-template-columns:1fr;}
+  .part-head{margin:36px 0 20px;padding-left:16px;border-left-width:4px;}
+  .part-title{font-size:24px;}
+  .part-intro{font-size:15px;padding:14px 16px;}
+  .knowledge-card{padding:22px 16px 26px;border-radius:12px;}
+  .card-title{font-size:19px;}
+  .subhead{font-size:16px;margin-top:26px;}
+  .two-col,.three-col{grid-template-columns:1fr;gap:16px;}
+  details.answer{margin-left:0;}
+  .data-table{font-size:13.5px;}
+  .data-table th,.data-table td{padding:7px 8px;}
+  .to-top{right:14px;bottom:16px;width:38px;height:38px;}
+  .cover-meta{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .cover-meta div{min-width:0;}
+  .cover-meta strong{overflow-wrap:anywhere;}
+  .cover-sub{font-size:14px;letter-spacing:.02em;}
+  .toc-grid a{min-width:0;}
+  .topbar{padding:0 10px;gap:8px;}
+  .topbar-btn{padding:6px 9px;font-size:11.5px;}
+}
+
+/* ============ 打印 ============ */
+@media print{
+  @page{size:A4;margin:16mm 14mm 16mm;}
+  :root{--topbar-h:0px;}
+  html,body{background:#fff !important;}
+  body{font-size:10.8pt;line-height:1.75;color:#000;}
+  .topbar,.sidebar,.reading-progress,.to-top,.menu-btn{display:none !important;}
+  .layout{display:block;max-width:none;margin:0;padding:0;gap:0;}
+  .content{max-width:none;padding:0;}
+  .cover{
+    border-radius:0;box-shadow:none;page-break-after:always;
+    background:#1e3a8a !important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    padding:34mm 18mm;
+  }
+  .cover::after{display:none;}
+  .toc-card{box-shadow:none;page-break-after:always;border:none;padding:0;}
+  .toc-grid{grid-template-columns:1fr 1fr;}
+  .part{page-break-before:always;}
+  .part-head{margin-top:0;}
+  .knowledge-card{
+    box-shadow:none;border:1px solid #d7dee8;border-radius:6px;
+    padding:8mm 7mm;page-break-inside:auto;
+  }
+  .card-title{page-break-after:avoid;}
+  .subhead{page-break-after:avoid;}
+  .example,.exercise,.figure,.formula,.keypoint,.tip,.warn,.method,.note,
+  .two-col,.three-col,.data-table{
+    page-break-inside:avoid;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  details.answer{border:1px solid #d7dee8;background:#fafafa;}
+  details.answer summary{display:none;}
+  details.answer .answer-body{display:block !important;padding-top:10px;}
+  details.answer[open] .answer-body{display:block !important;}
+  a{color:#000;text-decoration:none;}
+  .footer{page-break-before:avoid;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress" id="progress"></div>
+
+<header class="topbar">
+  <button class="topbar-btn menu-btn" id="menuBtn" type="button" aria-label="打开目录">☰ 目录</button>
+  <div class="topbar-title">丰富的图形世界 <span>· 北师大版七年级上册（2024秋版）第一章</span></div>
+  <div class="topbar-spacer"></div>
+  <button class="topbar-btn" id="toggleAnswers" type="button">展开答案</button>
+  <button class="topbar-btn primary" id="printBtn" type="button">打印 / 导出 PDF</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <p class="side-title">本章目录</p>
+    <ul class="side-nav" id="sideNav">
+      <li class="lvl1"><a href="#part1">第 1 节　生活中的立体图形</a></li>
+      <li class="lvl2"><a href="#p1-1">课时 1　认识立体图形</a></li>
+      <li class="lvl2"><a href="#p1-2">课时 2　图形的构成</a></li>
+      <li class="lvl1"><a href="#part2">第 2 节　从立体图形到平面图形</a></li>
+      <li class="lvl2"><a href="#p2-1">课时 1　正方体的展开与折叠</a></li>
+      <li class="lvl2"><a href="#p2-2">课时 2　棱柱、圆柱、圆锥的展开与折叠</a></li>
+      <li class="lvl2"><a href="#p2-3">课时 3　截一个几何体</a></li>
+      <li class="lvl2"><a href="#p2-4">课时 4　从三个方向看物体的形状</a></li>
+      <li class="lvl1"><a href="#review">回顾与思考</a></li>
+      <li class="lvl1"><a href="#rv-exercises">复习题</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <!-- ================= 封面 ================= -->
+    <section class="cover">
+      <div class="cover-badge">北师大版 · 2024 秋 · 七年级上册</div>
+      <h1>丰富的图形世界</h1>
+      <p class="cover-sub">第一章 教学讲义　·　知识讲解 · 例题精析 · 分层练习 · 参考答案</p>
+      <div class="cover-meta">
+        <div><span>教材</span><strong>北京师范大学出版社（2024 年秋版）</strong></div>
+        <div><span>章节</span><strong>第一章　丰富的图形世界</strong></div>
+        <div><span>内容</span><strong>2 节 · 6 课时 · 回顾与思考 · 复习题</strong></div>
+        <div><span>适用</span><strong>七年级上学期 · 同步学习与复习</strong></div>
+      </div>
+    </section>
+
+    <!-- ================= 目录 ================= -->
+    <section class="toc-card">
+      <h2>本章目录</h2>
+      <p class="toc-note">点击标题可直接跳转；电脑端可使用左侧目录随页面滚动定位。</p>
+      <div class="toc-grid">
+        <a class="toc-l1" href="#part1">第一章　丰富的图形世界 <em>章首</em></a>
+        <a class="toc-l1" href="#part1">1　生活中的立体图形 <em>2 课时</em></a>
+        <a class="toc-l2" href="#p1-1">课时 1　认识立体图形</a>
+        <a class="toc-l2" href="#p1-2">课时 2　图形的构成</a>
+        <a class="toc-l1" href="#part2">2　从立体图形到平面图形 <em>4 课时</em></a>
+        <a class="toc-l2" href="#p2-1">课时 1　正方体的展开与折叠</a>
+        <a class="toc-l2" href="#p2-2">课时 2　棱柱、圆柱、圆锥的展开与折叠</a>
+        <a class="toc-l2" href="#p2-3">课时 3　截一个几何体</a>
+        <a class="toc-l2" href="#p2-4">课时 4　从三个方向看物体的形状</a>
+        <a class="toc-l1" href="#review">回顾与思考 <em>1 课时</em></a>
+        <a class="toc-l1" href="#rv-exercises">复习题 <em>1—2 课时</em></a>
+        <a class="toc-l2" href="#rv-exercises">知识技能 · 数学理解 · 问题解决 · 联系拓广</a>
+      </div>
+    </section>
+
+<section class="part" id="part1">
+  <div class="part-head">
+    <div class="part-kicker">第 1 节 · 建议 2 课时</div>
+    <h2 class="part-title">生活中的立体图形</h2>
+    <p class="part-intro">打开书包，文具盒是长方体；抬头看，篮球架上的篮球是球；节日的帐篷、蛋糕盒、漏斗，形状各不相同，却都是立体图形。小学里我们已经见过它们，这一节要把它们分门别类，数清它们的顶点、棱和面，还要弄清楚：这些立体图形究竟是由什么“搭”成的。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>学习目标</h3>
+    <ul>
+      <li>能识别棱柱、圆柱、棱锥、圆锥、球等常见几何体，并能举出生活中的实例。</li>
+      <li>会按“柱体、锥体、球体”给几何体分类，也会按“表面有无曲面”分类。</li>
+      <li>能说出棱柱的底面、侧面、侧棱和顶点，会计算 <i>n</i> 棱柱、<i>n</i> 棱锥的顶点数、棱数和面数。</li>
+      <li>经历观察、动手、想象的过程，理解“体由面围成，面与面相交成线，线与线相交成点”。</li>
+      <li>会用“点动成线、线动成面、面动成体”解释生活现象，知道常见平面图形旋转后得到的立体图形。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="p1-1">
+    <h3 class="card-title"><span class="num">课时 1</span>认识立体图形</h3>
+
+    <h4 class="subhead">一、从身边的物体到几何体</h4>
+    <p>生活里的物体有颜色、有材质、有用途，而数学只关心它们的<strong>形状、大小和位置关系</strong>。把一个物体的颜色、材质、用途都“去掉”，只留下形状，我们就得到了一个几何体。比如把文具盒只看成一个方方正正的盒子，它就是长方体；把易拉罐只看成一个上下一样粗的筒，它就是圆柱。</p>
+    <p>观察图 1，这六个几何体是本节的主角。请你先不急着看名字，自己说一说：它们分别像生活中的什么物体？</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 760 250" role="img" aria-label="常见的立体图形：三棱柱、长方体、圆柱、圆锥、四棱锥和球">
+        <title>常见的立体图形</title>
+        <path d="M40 172 L112 172 L76 88 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M40 172 L64 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M112 172 L136 154" stroke="#334155" stroke-width="1.6"/>
+        <path d="M76 88 L100 70" stroke="#334155" stroke-width="1.6"/>
+        <path d="M136 154 L100 70" stroke="#334155" stroke-width="1.6"/>
+        <path d="M100 70 L64 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M64 154 L136 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M170 100 L250 100 L250 172 L170 172 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M170 100 L194 82 L274 82 L250 100 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M250 100 L274 82 L274 154 L250 172 Z" fill="#dcfce7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M194 82 L194 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M194 154 L274 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M330 100 L330 172 A40 12 0 0 0 410 172 L410 100 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <ellipse cx="370" cy="100" rx="40" ry="12" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <path d="M330 172 A40 12 0 0 1 410 172" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M505 84 L467 172 A38 12 0 0 0 543 172 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M467 172 A38 12 0 0 1 543 172" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M604 84 L566 172 L618 172 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M604 84 L618 172 L642 154 Z" fill="#dcfce7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M604 84 L590 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M590 154 L642 154" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M590 154 L566 172" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <circle cx="700" cy="124" r="42" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <ellipse cx="700" cy="124" rx="42" ry="13" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <text x="80" y="228" font-size="13" text-anchor="middle" fill="#334155">三棱柱</text>
+        <text x="222" y="228" font-size="13" text-anchor="middle" fill="#334155">长方体</text>
+        <text x="370" y="228" font-size="13" text-anchor="middle" fill="#334155">圆柱</text>
+        <text x="505" y="228" font-size="13" text-anchor="middle" fill="#334155">圆锥</text>
+        <text x="604" y="228" font-size="13" text-anchor="middle" fill="#334155">四棱锥</text>
+        <text x="700" y="228" font-size="13" text-anchor="middle" fill="#334155">球</text>
+      </svg>
+      <figcaption>图 1　常见的立体图形（三棱柱、长方体、圆柱、圆锥、四棱锥、球）</figcaption>
+    </figure>
+
+    <p><strong>棱柱</strong>：有两个互相平行、形状大小完全相同的底面，底面是多边形；其余各面（侧面）都是平面。本书研究的棱柱以<strong>直棱柱</strong>为主，直棱柱的侧面都是长方形，相邻两个侧面的公共边叫侧棱。图 1 最左边的是三棱柱，它的底面是三角形。生活中的三棱镜、某些巧克力包装盒、搭成斜坡的积木块，都可以看作棱柱。</p>
+    <p><strong>长方体与正方体</strong>：它们都是四棱柱，只是底面由一般的四边形变成了长方形或正方形。粉笔盒、砖块、书本、魔方，都是我们最熟悉的四棱柱。</p>
+    <p><strong>圆柱</strong>：上下两个底面是完全相同的圆，侧面是一个曲面。水杯、易拉罐、笔筒、大厅里的圆柱子，都是圆柱。</p>
+    <p><strong>棱锥</strong>：底面是多边形，侧面是若干个有一个公共顶点的三角形。金字塔模型、某些塔尖、切开的方锥形蛋糕，都接近棱锥。</p>
+    <p><strong>圆锥</strong>：底面是一个圆，侧面是曲面，有一个顶点。冰淇淋蛋筒、漏斗、圣诞帽、堆起来的沙堆，都是圆锥的形象。</p>
+    <p><strong>球</strong>：整个表面是一个曲面，没有平面，也没有顶点和棱。篮球、乒乓球、地球仪都是球。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>常见几何体有棱柱、圆柱、棱锥、圆锥、球五类。正方体、长方体都是特殊的四棱柱，所以它们也属于棱柱。判断一个几何体属于哪一类，关键是看<strong>底面</strong>和<strong>侧面</strong>的形状。
+    </div>
+
+    <h4 class="subhead">二、给几何体分类</h4>
+    <p>东西一多，就要分类。分类前先要想清楚：<strong>按什么标准分</strong>？标准不同，分出来的结果就不同。下面我们用两种标准给图 1 中的几何体分类。</p>
+    <p><strong>标准一：按“柱、锥、球”分。</strong></p>
+    <ul>
+      <li><strong>柱体</strong>：棱柱、圆柱。它们的共同特点是上下“一样粗”，有两个互相平行且完全相同的底面。</li>
+      <li><strong>锥体</strong>：棱锥、圆锥。它们的共同特点是都有一个顶点，底面只有一个。</li>
+      <li><strong>球体</strong>：球。它的表面处处是曲面，没有底面。</li>
+    </ul>
+    <p><strong>标准二：按“表面有没有曲面”分。</strong></p>
+    <ul>
+      <li><strong>表面全是平面</strong>：棱柱、棱锥（包括正方体、长方体）。</li>
+      <li><strong>表面含有曲面</strong>：圆柱（侧面是曲面）、圆锥（侧面是曲面）、球（整个表面是曲面）。</li>
+    </ul>
+    <p>两种标准一交叉，我们就能把每个几何体说得更准确。例如圆柱：按标准一是柱体，按标准二是含曲面的几何体；正方体：按标准一是柱体（四棱柱），按标准二是表面全是平面的几何体。</p>
+
+    <table class="data-table">
+      <caption>表 1　常见几何体的特征</caption>
+      <thead>
+        <tr><th>名称</th><th>底面形状</th><th>侧面</th><th>顶点数</th><th>表面有无曲面</th><th>是否多面体</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>三棱柱</td><td>三角形</td><td>3 个长方形</td><td>6</td><td>无</td><td>是</td></tr>
+        <tr><td>长方体</td><td>四边形</td><td>4 个长方形</td><td>8</td><td>无</td><td>是</td></tr>
+        <tr><td>圆柱</td><td>圆</td><td>1 个曲面</td><td>0</td><td>有</td><td>否</td></tr>
+        <tr><td>三棱锥</td><td>三角形</td><td>3 个三角形</td><td>4</td><td>无</td><td>是</td></tr>
+        <tr><td>圆锥</td><td>圆</td><td>1 个曲面</td><td>1</td><td>有</td><td>否</td></tr>
+        <tr><td>球</td><td>没有底面</td><td>1 个曲面</td><td>0</td><td>有</td><td>否</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      <strong>提示：</strong>分类不是“贴标签”，而是找共同点。柱体的共同点是“两个全等底面、上下一样粗”；锥体的共同点是“一个顶点、一个底面”。抓住共同点，遇到没见过的几何体也能判断它属于哪一类。
+    </div>
+
+    <div class="warn">
+      <strong>易错：</strong>球没有底面，也没有顶点和棱，不要说成“球有一个圆形的底面”。圆柱、圆锥虽然有圆形的底面，但它们的侧面是曲面，所以<strong>不是</strong>多面体。另外，“圆柱的侧面是平面”也是常见错误，圆柱的侧面是曲面。
+    </div>
+
+    <h4 class="subhead">三、棱柱的顶点、棱和面</h4>
+    <p>棱柱是本节的重点。拿一个六棱柱形状的盒子（或者用纸片粘一个），摸一摸、数一数，你会发现它由一些“面”围成，面与面相交的地方是“棱”，棱与棱相交的地方是“顶点”。</p>
+    <p>棱柱各部分的名称是：两个互相平行且完全相同的多边形面叫<strong>底面</strong>；除底面以外的各个面叫<strong>侧面</strong>；相邻两个侧面的公共边叫<strong>侧棱</strong>；棱与棱的交点叫<strong>顶点</strong>。图 2 是一个五棱柱，请对照图形找一找这些部分。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 460 300" role="img" aria-label="五棱柱的底面、侧面、侧棱和顶点">
+        <title>五棱柱的底面、侧面、侧棱和顶点</title>
+        <path d="M150 108 L209 151 L186 220 L114 220 L91 151 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M150 108 L220 56" stroke="#334155" stroke-width="1.6"/>
+        <path d="M209 151 L279 99" stroke="#334155" stroke-width="1.6"/>
+        <path d="M186 220 L256 168" stroke="#334155" stroke-width="1.6"/>
+        <path d="M91 151 L161 99" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M114 220 L184 168" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M220 56 L279 99" stroke="#334155" stroke-width="1.6"/>
+        <path d="M279 99 L256 168" stroke="#334155" stroke-width="1.6"/>
+        <path d="M161 99 L220 56" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M256 168 L184 168" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M184 168 L161 99" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M84 68 L143 104" stroke="#94a3b8" stroke-width="1.2"/>
+        <path d="M346 70 L285 96" stroke="#94a3b8" stroke-width="1.2"/>
+        <path d="M346 152 L242 158" stroke="#94a3b8" stroke-width="1.2"/>
+        <path d="M150 268 L150 226" stroke="#94a3b8" stroke-width="1.2"/>
+        <text x="50" y="64" font-size="13" text-anchor="middle" fill="#334155">顶点</text>
+        <text x="356" y="66" font-size="13" text-anchor="start" fill="#334155">侧棱</text>
+        <text x="356" y="148" font-size="13" text-anchor="start" fill="#334155">侧面</text>
+        <text x="150" y="284" font-size="13" text-anchor="middle" fill="#334155">底面（五边形）</text>
+      </svg>
+      <figcaption>图 2　五棱柱的底面、侧面、侧棱和顶点</figcaption>
+    </figure>
+
+    <p>数一数图 2 中的五棱柱：它的两个底面都是五边形；侧面有 5 个，都是长方形；侧棱有 5 条；顶点有 10 个（上下两个底面各 5 个）。如果把底面的边数记作 <i>n</i>，我们就得到 <i>n</i> 棱柱的一般结论。</p>
+
+    <div class="formula">
+      <div class="formula-label"><i>n</i> 棱柱的顶点、棱、面</div>
+      <div class="formula-body">顶点数 = 2<i>n</i>　　棱数 = 3<i>n</i>　　面数 = <i>n</i> + 2</div>
+    </div>
+
+    <p>这三个式子不用死记，可以这样想：底面是 <i>n</i> 边形，所以一个底面有 <i>n</i> 个顶点、<i>n</i> 条边。上下两个底面，顶点一共 2<i>n</i> 个；两个底面的边一共 2<i>n</i> 条，再加上连接上下底面的 <i>n</i> 条侧棱，棱一共 3<i>n</i> 条；面由 2 个底面和 <i>n</i> 个侧面组成，一共 <i>n</i> + 2 个。</p>
+
+    <div class="method">
+      <strong>方法归纳：</strong>数棱柱的棱，可以按“底棱 + 侧棱”分类数：<i>n</i> 棱柱有 <i>n</i> 条侧棱和 2<i>n</i> 条底棱，共 3<i>n</i> 条。数顶点只看两个底面，每个底面 <i>n</i> 个，共 2<i>n</i> 个。数完可以用“顶点数 + 面数 − 棱数 = 2”检验：2<i>n</i> + (<i>n</i> + 2) − 3<i>n</i> = 2，结果恒成立。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">六棱柱的顶点、棱、面</span>
+      </div>
+      <div class="example-body">
+        <p>一个六棱柱的底面边长都是 5 cm，侧棱长都是 4 cm。（1）它有多少个顶点、多少条棱、多少个面？（2）它有多少条侧棱？所有棱的长度之和是多少？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）六棱柱的底面是六边形，<i>n</i> = 6。</p>
+          <p>顶点数 = 2<i>n</i> = 2 × 6 = 12（个）；</p>
+          <p>棱数 = 3<i>n</i> = 3 × 6 = 18（条）；</p>
+          <p>面数 = <i>n</i> + 2 = 6 + 2 = 8（个），其中 2 个底面、6 个侧面。</p>
+          <p>（2）侧棱的条数等于底面的边数，所以有 6 条侧棱。</p>
+          <p>侧棱总长：6 × 4 = 24（cm）；</p>
+          <p>底棱共有 2 × 6 = 12 条，每条长 5 cm，底棱总长：12 × 5 = 60（cm）；</p>
+          <p>所有棱长之和：24 + 60 = 84（cm）。</p>
+          <p>答：它有 12 个顶点、18 条棱、8 个面；有 6 条侧棱，所有棱长之和是 84 cm。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">四、棱柱与圆柱的异同</h4>
+    <p>棱柱和圆柱都叫柱体，长得也“像”，但它们有本质区别。相同点是：都有两个互相平行、形状大小完全相同的底面；上下一样粗；都有侧面；都是柱体。</p>
+    <p>不同点在于：棱柱的底面是多边形，侧面是长方形（直棱柱），有侧棱，也有顶点，表面全是平面，是多面体；圆柱的底面是圆，侧面是一个曲面，没有侧棱，也没有顶点，表面含有曲面，不是多面体。此外，圆柱底面的边是曲线（圆），而棱柱底面的边都是线段。</p>
+
+    <table class="data-table">
+      <caption>表 2　棱柱与圆柱的比较</caption>
+      <thead>
+        <tr><th>比较项目</th><th>棱柱</th><th>圆柱</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>底面</td><td>两个完全相同的多边形</td><td>两个完全相同的圆</td></tr>
+        <tr><td>侧面</td><td>若干个长方形（直棱柱）</td><td>一个曲面</td></tr>
+        <tr><td>侧棱</td><td>有，<i>n</i> 棱柱有 <i>n</i> 条</td><td>没有</td></tr>
+        <tr><td>顶点</td><td>有，<i>n</i> 棱柱有 2<i>n</i> 个</td><td>没有</td></tr>
+        <tr><td>是否多面体</td><td>是</td><td>不是</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>拓展：</strong>严格地说，棱柱的侧棱不一定都垂直于底面。侧棱垂直于底面的叫<strong>直棱柱</strong>，它的侧面都是长方形；侧棱不垂直于底面的叫斜棱柱，侧面是平行四边形。本书研究的棱柱都是直棱柱，所以可以放心地说“棱柱的侧面是长方形”。以后学到更多立体图形时，你还会遇到斜棱柱。
+    </div>
+
+    <h4 class="subhead">五、棱锥与圆锥</h4>
+    <p>棱锥和圆锥都是锥体。棱锥的底面是多边形，侧面是若干个三角形，这些三角形有一个公共顶点；圆锥的底面是圆，侧面是一个曲面，也有一个顶点。</p>
+    <p>它们的相同点：都只有一个底面、一个顶点，都是锥体。不同点：棱锥的底面是多边形，侧面是三角形（平面），有棱也有顶点，是多面体；圆锥的底面是圆，侧面是曲面，没有棱，只有底面上的一条圆形边，不是多面体。</p>
+
+    <div class="formula">
+      <div class="formula-label"><i>n</i> 棱锥的顶点、棱、面</div>
+      <div class="formula-body">顶点数 = <i>n</i> + 1　　棱数 = 2<i>n</i>　　面数 = <i>n</i> + 1</div>
+    </div>
+
+    <p>为什么是这三个结果？<i>n</i> 棱锥的底面是 <i>n</i> 边形，有 <i>n</i> 个顶点和 <i>n</i> 条底棱；再加上一个尖顶，顶点共 <i>n</i> + 1 个。侧面是 <i>n</i> 个三角形，每个三角形都以尖顶为一个顶点、以一条底棱为对边，相邻两个三角形共用一条侧棱，所以侧棱有 <i>n</i> 条，棱共 <i>n</i> + <i>n</i> = 2<i>n</i> 条。面由 1 个底面和 <i>n</i> 个侧面组成，共 <i>n</i> + 1 个。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">棱锥的顶点、棱、面</span>
+      </div>
+      <div class="example-body">
+        <p>（1）一个四棱锥有多少个顶点、多少条棱、多少个面？它的侧面是什么形状？</p>
+        <p>（2）一个棱锥有 10 条棱，它是几棱锥？有多少个顶点、多少个面？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）四棱锥的底面是四边形，<i>n</i> = 4。</p>
+          <p>顶点数 = <i>n</i> + 1 = 5（个）；棱数 = 2<i>n</i> = 8（条）；面数 = <i>n</i> + 1 = 5（个）。</p>
+          <p>侧面是 4 个三角形，它们有一个公共顶点。</p>
+          <p>（2）设它是 <i>n</i> 棱锥，则 2<i>n</i> = 10，解得 <i>n</i> = 5，所以它是五棱锥。</p>
+          <p>顶点数 = 5 + 1 = 6（个），面数 = 5 + 1 = 6（个）。</p>
+          <p>答：四棱锥有 5 个顶点、8 条棱、5 个面，侧面是三角形；10 条棱的棱锥是五棱锥，有 6 个顶点、6 个面。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">六、多面体</h4>
+    <p>观察棱柱和棱锥，它们的表面全是由平面图形（多边形）拼成的。像这样，<strong>由若干个平面围成的立体图形叫做多面体</strong>。围成多面体的各个多边形叫做多面体的面，相邻两个面的公共边叫做多面体的棱，棱与棱的交点叫做多面体的顶点。</p>
+    <p>正方体、长方体、三棱柱、五棱柱、四棱锥、三棱锥都是多面体。圆柱、圆锥、球都不是多面体：圆柱和圆锥的侧面是曲面，球的整个表面都是曲面，它们都不是“由若干个平面围成”的。</p>
+    <p>所以判断一个几何体是不是多面体，只要看它的表面是不是<strong>全由平面</strong>组成。注意，圆柱有平面（两个圆形的底面是平面），但它同时有曲面，仍然不是多面体；不能因为“有平面”就判定是多面体。</p>
+
+    <div class="warn">
+      <strong>易错：</strong>“圆柱有平面，所以它是多面体”是错的；“球没有顶点，所以它没有面”也是错的，球有一个曲面。多面体的定义要求“全部由平面围成”，缺一不可。
+    </div>
+
+    <h4 class="subhead">七、平面图形与立体图形</h4>
+    <p>我们学过的图形分两类：各部分都在同一个平面内的图形叫<strong>平面图形</strong>，如三角形、长方形、圆、五边形；各部分不都在同一个平面内的图形叫<strong>立体图形</strong>，如长方体、圆柱、圆锥、球。</p>
+    <p>两者有密切联系：立体图形的表面展开后，得到的是平面图形。例如长方体展开后得到 6 个长方形，圆柱展开后得到 2 个圆和 1 个长方形，圆锥展开后得到 1 个圆和 1 个扇形。反过来，平面图形也可以围成立体图形，这正是下一节“从立体图形到平面图形”要研究的内容。</p>
+    <p>另外，同一个物体从不同角度观察，可能既看到平面图形又看到立体图形。比如看一个圆柱形水杯的正面，看到的是长方形；把它整体拿在手里，它是圆柱。所以“看到长方形”和“物体是圆柱”并不矛盾，关键是看我们研究的是它的表面还是整体。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>立体图形与平面图形的根本区别是“各部分是否都在同一平面内”。立体图形由面围成，它的表面是平面图形；平面图形可以围成立体图形。棱柱、棱锥是多面体，圆柱、圆锥、球不是多面体。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">观察与分类</span>
+      </div>
+      <div class="example-body">
+        <p>观察图 1 中的六个几何体，回答下列问题：</p>
+        <p>（1）哪些是柱体？哪些是锥体？哪个是球体？</p>
+        <p>（2）哪些是多面体？哪些不是多面体？</p>
+        <p>（3）按“表面有无曲面”分类，结果怎样？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）柱体：三棱柱、长方体、圆柱；锥体：圆锥、四棱锥；球体：球。</p>
+          <p>（2）多面体：三棱柱、长方体、四棱锥，它们的表面全由平面围成。不是多面体：圆柱、圆锥、球，它们的表面含有曲面。</p>
+          <p>（3）表面没有曲面（全由平面围成）的：三棱柱、长方体、四棱锥；表面含有曲面的：圆柱（侧面是曲面）、圆锥（侧面是曲面）、球（整个表面是曲面）。</p>
+          <p>说明：同一个几何体按不同标准分类，归属不同。例如圆柱按“柱锥球”分是柱体，按“有无曲面”分是含曲面的几何体，按“是否多面体”分不是多面体。答题时一定要先看清分类标准。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">议一议</h4>
+    <p>下面三个说法对不对？为什么？</p>
+    <p>（1）圆柱和圆锥都有两个底面。</p>
+    <p>（2）棱柱的侧面都是三角形。</p>
+    <p>（3）一个几何体如果有曲面，它一定不是多面体。</p>
+    <p>参考：<strong>（1）错。</strong>圆柱有两个底面，圆锥只有一个底面、一个顶点。<strong>（2）错。</strong>棱柱的侧面都是长方形（本书研究的是直棱柱），棱锥的侧面才是三角形，别把柱和锥弄混。<strong>（3）对。</strong>多面体要求表面全由平面围成，只要有曲面就不是多面体。</p>
+
+    <h4 class="subhead">练习（课时 1）</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】写出下列物体最接近的几何体名称：①魔方；②易拉罐；③冰淇淋蛋筒；④足球；⑤没有削过的六角铅笔；⑥金字塔模型。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>①正方体（特殊的四棱柱）；②圆柱；③圆锥；④球；⑤六棱柱（笔杆的侧面是 6 个长方形，两个端面是正六边形）；⑥四棱锥。</p>
+          <p>判断时先看底面：底面是多边形还是圆；再看侧面：是平面还是曲面。六角铅笔的笔杆有 6 个长方形的侧面和 2 个六边形的端面，符合六棱柱的特征。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】判断下列说法是否正确，并说明理由。</span>
+        <p>（1）圆柱和圆锥都有两个底面。（　　）</p>
+        <p>（2）球不是多面体。（　　）</p>
+        <p>（3）六棱柱有 12 个顶点、18 条棱、8 个面。（　　）</p>
+        <p>（4）棱锥的侧面都是三角形。（　　）</p>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）×。圆柱有两个底面，圆锥只有一个底面、一个顶点。</p>
+          <p>（2）√。球的表面是一个曲面，不是由平面围成的，所以不是多面体。</p>
+          <p>（3）√。六棱柱 <i>n</i> = 6，顶点 2<i>n</i> = 12 个，棱 3<i>n</i> = 18 条，面 <i>n</i> + 2 = 8 个。</p>
+          <p>（4）√。棱锥的侧面是有公共顶点的三角形，共有 <i>n</i> 个。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】一个棱柱共有 20 个顶点。它是几棱柱？有多少条棱、多少个面？有多少条侧棱？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>设它是 <i>n</i> 棱柱，则 2<i>n</i> = 20，解得 <i>n</i> = 10，所以它是十棱柱。</p>
+          <p>棱数 = 3<i>n</i> = 30（条）；面数 = <i>n</i> + 2 = 12（个）；侧棱有 <i>n</i> = 10 条。</p>
+          <p>检验：顶点数 + 面数 − 棱数 = 20 + 12 − 30 = 2，符合棱柱的规律。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】下列几何体中，属于多面体的有哪些？把序号填在横线上：①三棱柱；②圆柱；③四棱锥；④球；⑤圆锥；⑥正方体。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>属于多面体的是：①③⑥。</p>
+          <p>理由：三棱柱、四棱锥、正方体的表面全由平面围成，符合多面体的定义。圆柱、圆锥的侧面是曲面，球的表面是曲面，它们都不是多面体。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】探究规律：分别数出三棱柱、四棱柱、五棱柱、六棱柱的顶点数、棱数和面数，填入表中；再猜想 <i>n</i> 棱柱的顶点数、棱数和面数，并验证“顶点数 + 面数 − 棱数 = 2”是否成立。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>填表：三棱柱 6 个顶点、9 条棱、5 个面；四棱柱 8 个顶点、12 条棱、6 个面；五棱柱 10 个顶点、15 条棱、7 个面；六棱柱 12 个顶点、18 条棱、8 个面。</p>
+          <p>猜想：<i>n</i> 棱柱有 2<i>n</i> 个顶点、3<i>n</i> 条棱、<i>n</i> + 2 个面。</p>
+          <p>验证：2<i>n</i> + (<i>n</i> + 2) − 3<i>n</i> = 2，对任意正整数 <i>n</i> 都成立，所以“顶点数 + 面数 − 棱数 = 2”对棱柱总成立。</p>
+          <p>这个规律对所有多面体都成立，叫做欧拉公式，高中和大学还会继续研究它。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>课时小结：</strong>
+      <ul>
+        <li>常见几何体：棱柱、圆柱、棱锥、圆锥、球；正方体、长方体是特殊的四棱柱。</li>
+        <li>两种分类标准：柱体、锥体、球体；表面有无曲面。标准不同，结果不同。</li>
+        <li><i>n</i> 棱柱：2<i>n</i> 个顶点、3<i>n</i> 条棱、<i>n</i> + 2 个面；<i>n</i> 棱锥：<i>n</i> + 1 个顶点、2<i>n</i> 条棱、<i>n</i> + 1 个面。</li>
+        <li>棱柱与圆柱、棱锥与圆锥：底面一个多边形一个圆，侧面一个平面一个曲面，前者是多面体，后者不是。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="p1-2">
+    <h3 class="card-title"><span class="num">课时 2</span>图形的构成</h3>
+
+    <h4 class="subhead">一、体由面围成</h4>
+    <p>课时 1 我们一直在说“面”“棱”“顶点”，可这些部分到底有什么关系？先来看一个长方体纸盒：它有 6 个面，这 6 个面把它围成了一个封闭的“体”。再看三棱锥：4 个三角形面围成了它。圆柱呢？2 个圆面加上 1 个曲面，一共 3 个面，围成了圆柱。圆锥有 2 个面（1 个圆面和 1 个曲面），球只有 1 个曲面。</p>
+    <p>由此可以概括出一句话：<strong>体由面围成</strong>。一个立体图形，就是由若干个面围成的封闭图形。面是“体”的“外衣”，把面都拆下来摊平，就得到这个立体图形的表面展开图。</p>
+    <p>这里要特别注意：围成体的面可以是平面，也可以是曲面。圆柱、圆锥、球的表面都含有曲面，但它们同样是由面围成的。所以“体由面围成”对所有的立体图形都成立，不只是多面体。</p>
+
+    <h4 class="subhead">二、面与面相交成线，线与线相交成点</h4>
+    <p>再仔细看长方体的一个角：相邻的两个面（比如前面和上面）相交，交出的是一条线段，这条线段就是长方体的一条棱；三条棱在同一个角上相交，交点就是长方体的一个顶点。也就是说：<strong>面与面相交成线，线与线相交成点</strong>。</p>
+    <p>这个结论在圆柱、圆锥上同样成立，只是交出来的线可能不是直线。圆柱的侧面与底面相交，得到一个圆；圆锥的侧面与底面相交，也得到一个圆。圆是曲线，所以“面与面相交成线”中的“线”，既可能是直线，也可能是曲线。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 460 250" role="img" aria-label="长方体中面与面相交成线，线与线相交成点">
+        <title>面与面相交成线，线与线相交成点</title>
+        <path d="M80 120 L220 120 L220 220 L80 220 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M80 120 L140 75 L280 75 L220 120 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M220 120 L280 75 L280 175 L220 220 Z" fill="#dcfce7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M140 75 L140 175" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M140 175 L280 175" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M80 120 L140 75" stroke="#334155" stroke-width="3"/>
+        <circle cx="80" cy="120" r="3.5" fill="#334155"/>
+        <circle cx="220" cy="120" r="3.5" fill="#334155"/>
+        <path d="M180 60 L180 84" stroke="#94a3b8" stroke-width="1.2"/>
+        <path d="M62 66 L84 110" stroke="#94a3b8" stroke-width="1.2"/>
+        <path d="M312 112 L230 118" stroke="#94a3b8" stroke-width="1.2"/>
+        <text x="180" y="52" font-size="13" text-anchor="middle" fill="#334155">面</text>
+        <text x="44" y="60" font-size="13" text-anchor="middle" fill="#334155">线（棱）</text>
+        <text x="322" y="112" font-size="13" text-anchor="start" fill="#334155">点（顶点）</text>
+      </svg>
+      <figcaption>图 3　面与面相交成线，线与线相交成点</figcaption>
+    </figure>
+
+    <div class="keypoint">
+      <strong>要点：</strong>体由面围成，面与面相交成线，线与线相交成点。面有平面和曲面之分，线有直线和曲线之分。点没有大小，只表示位置。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">长方体中的面、棱、顶点</span>
+      </div>
+      <div class="example-body">
+        <p>一个长方体。（1）它有多少个面、多少条棱、多少个顶点？（2）在每个顶点处，有几条棱相交？有几个面相交？（3）一条棱是两个面的公共边，那么 12 条棱一共被数了多少次？这个次数与面数有什么关系？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）长方体有 6 个面（3 组相对的面，每组 2 个）、12 条棱、8 个顶点。</p>
+          <p>（2）在每个顶点处，有 3 条棱相交，有 3 个面相交。因为从任何一个顶点出发，都只能沿着长、宽、高三个方向各走一条棱。</p>
+          <p>（3）每个面是四边形，有 4 条边，6 个面共有 6 × 4 = 24 条边；而每条棱恰好是两个面的公共边，所以 12 条棱被数了 2 遍，24 ÷ 2 = 12，与棱数一致。</p>
+          <p>由此可以检验：多面体中，各个面的边数之和等于棱数的 2 倍。长方体：24 = 2 × 12。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">三、面有平曲，线有直曲</h4>
+    <p>面分为<strong>平面</strong>和<strong>曲面</strong>：课桌面、黑板面、长方体的各个面都是平面；篮球的表面、圆柱的侧面、圆锥的侧面都是曲面。判断一个面是不是平面，可以想象把直尺的边贴上去：能贴紧、不留缝隙的是平面，贴不紧的是曲面。</p>
+    <p>线分为<strong>直线</strong>和<strong>曲线</strong>：长方体的棱都是直线；圆柱、圆锥底面的边都是圆，是曲线；球上没有棱，也没有直线。</p>
+
+    <table class="data-table">
+      <caption>表 3　面与线的分类</caption>
+      <thead>
+        <tr><th>名称</th><th>举例</th><th>特点</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>平面</td><td>长方体的面、课桌面、黑板面</td><td>平，直尺的边能贴紧</td></tr>
+        <tr><td>曲面</td><td>圆柱的侧面、圆锥的侧面、球的表面</td><td>弯曲，直尺的边贴不紧</td></tr>
+        <tr><td>直线</td><td>棱柱、棱锥的棱</td><td>直，可以量出长度</td></tr>
+        <tr><td>曲线</td><td>圆柱、圆锥底面的边（圆）</td><td>弯曲，如圆的周长</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      <strong>提示：</strong>“面有平曲、线有直曲”是观察立体图形的基本功。数一个几何体的面时，先分清哪些是平面、哪些是曲面，再数一数各有几个，就不容易漏数或重复。
+    </div>
+
+    <h4 class="subhead">四、点动成线、线动成面、面动成体</h4>
+    <p>图形还能“动”起来。想一想：钟表的秒针在走，它的针尖划过一个圆；汽车的雨刷在摆，它扫过一片扇形；一摞纸一张一张叠起来，就成了一本有厚度的书。把这些现象抽象出来，就得到三句话：<strong>点动成线、线动成面、面动成体</strong>。</p>
+    <ul>
+      <li><strong>点动成线</strong>：笔尖在纸上移动，画出线；流星划过夜空，留下一条光迹；喷泉的水珠连成水线。</li>
+      <li><strong>线动成面</strong>：汽车雨刷摆动，扫过扇形面；折扇打开，扇骨扫过扇面；一条线段绕它的一端旋转一周，扫出一个圆面。</li>
+      <li><strong>面动成体</strong>：一张长方形纸片绕它的一边旋转一周，扫出一个圆柱；一摞纸叠起来成为长方体；硬币在桌上快速旋转，看起来像一个球。</li>
+    </ul>
+    <p>这三句话和前一节的结论正好相反又互相呼应：从“构成”看，体由面围成，面与面相交成线，线与线相交成点；从“运动”看，点动成线，线动成面，面动成体。一个是由大到小地“拆”，一个是由小到大“长”，两条思路合起来，就完整地描述了点、线、面、体之间的关系。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>点动成线、线动成面、面动成体。点、线、面、体是图形的基本元素：点无大小，线有直曲，面有平曲，体由面围成。
+    </div>
+
+    <h4 class="subhead">五、平面图形旋转成立体图形</h4>
+    <p>“面动成体”最常见的方式，是让一个平面图形绕着一条直线旋转一周。下面四种情况要牢牢记住，并能自己动手转一转、想一想。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 720 270" role="img" aria-label="长方形绕一边旋转成圆柱，直角三角形绕直角边旋转成圆锥">
+        <title>长方形旋转成圆柱，直角三角形旋转成圆锥</title>
+        <path d="M70 72 L70 232" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <rect x="70" y="90" width="80" height="120" fill="#fef3c7" stroke="#334155" stroke-width="1.6"/>
+        <path d="M188 150 L228 150" stroke="#334155" stroke-width="1.6"/>
+        <path d="M228 150 L218 145 L218 155 Z" fill="#334155"/>
+        <path d="M258 96 L258 206 A42 12 0 0 0 342 206 L342 96 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <ellipse cx="300" cy="96" rx="42" ry="12" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <path d="M258 206 A42 12 0 0 1 342 206" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M300 80 L300 220" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <path d="M420 100 L420 230" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M420 206 L500 206 L420 116 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M545 150 L585 150" stroke="#334155" stroke-width="1.6"/>
+        <path d="M585 150 L575 145 L575 155 Z" fill="#334155"/>
+        <path d="M640 116 L600 206 A40 12 0 0 0 680 206 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M600 206 A40 12 0 0 1 680 206" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <text x="110" y="252" font-size="13" text-anchor="middle" fill="#334155">长方形</text>
+        <text x="300" y="252" font-size="13" text-anchor="middle" fill="#334155">圆柱</text>
+        <text x="460" y="252" font-size="13" text-anchor="middle" fill="#334155">直角三角形</text>
+        <text x="640" y="252" font-size="13" text-anchor="middle" fill="#334155">圆锥</text>
+        <text x="208" y="140" font-size="12" text-anchor="middle" fill="#94a3b8">旋转</text>
+        <text x="565" y="140" font-size="12" text-anchor="middle" fill="#94a3b8">旋转</text>
+      </svg>
+      <figcaption>图 4　长方形绕一边旋转成圆柱，直角三角形绕直角边旋转成圆锥</figcaption>
+    </figure>
+
+    <p><strong>长方形绕一边旋转成圆柱。</strong>把长方形 <i>ABCD</i> 绕边 <i>AB</i> 所在直线旋转一周，边 <i>BC</i> 扫出一个圆面，<i>AD</i> 也扫出一个圆面，这两个圆面就是圆柱的上下底面；边 <i>CD</i> 扫出圆柱的侧面。此时旋转轴 <i>AB</i> 的长就是圆柱的<strong>高</strong>，与它垂直的边 <i>BC</i> 的长就是底面<strong>半径</strong>。</p>
+    <p><strong>直角三角形绕直角边旋转成圆锥。</strong>把直角三角形绕一条直角边所在直线旋转一周，另一条直角边扫出底面圆，斜边扫出圆锥的侧面。旋转的这条直角边是圆锥的<strong>高</strong>，另一条直角边是底面<strong>半径</strong>，斜边就是圆锥的<strong>母线</strong>。</p>
+    <p><strong>半圆绕直径旋转成球。</strong>把半圆绕它的直径所在直线旋转一周，半圆的弧扫出整个球面，直径的一半就是球的半径。</p>
+    <p><strong>直角梯形绕直角腰旋转成圆台。</strong>这是拓展内容。直角梯形绕与两底都垂直的那条腰旋转一周，上底扫出较小的圆面，下底扫出较大的圆面，斜腰扫出侧面，得到的是一个“上下不一样粗”的圆台。水桶、灯罩、一次性纸杯、花盆，都接近圆台。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 720 270" role="img" aria-label="半圆绕直径旋转成球，直角梯形绕直角腰旋转成圆台">
+        <title>半圆旋转成球，直角梯形旋转成圆台</title>
+        <path d="M44 206 L176 206" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M50 206 A60 60 0 0 1 170 206 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M190 180 L230 180" stroke="#334155" stroke-width="1.6"/>
+        <path d="M230 180 L220 175 L220 185 Z" fill="#334155"/>
+        <circle cx="290" cy="150" r="56" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <ellipse cx="290" cy="150" rx="56" ry="16" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M420 104 L420 226" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <path d="M420 206 L510 206 L470 120 L420 120 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M545 180 L585 180" stroke="#334155" stroke-width="1.6"/>
+        <path d="M585 180 L575 175 L575 185 Z" fill="#334155"/>
+        <path d="M614 124 L596 206 A44 12 0 0 0 684 206 L666 124 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.6" stroke-linejoin="round"/>
+        <ellipse cx="640" cy="124" rx="26" ry="8" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <path d="M596 206 A44 12 0 0 1 684 206" fill="none" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+        <text x="110" y="252" font-size="13" text-anchor="middle" fill="#334155">半圆</text>
+        <text x="290" y="252" font-size="13" text-anchor="middle" fill="#334155">球</text>
+        <text x="465" y="252" font-size="13" text-anchor="middle" fill="#334155">直角梯形</text>
+        <text x="640" y="252" font-size="13" text-anchor="middle" fill="#334155">圆台</text>
+        <text x="210" y="170" font-size="12" text-anchor="middle" fill="#94a3b8">旋转</text>
+        <text x="565" y="170" font-size="12" text-anchor="middle" fill="#94a3b8">旋转</text>
+      </svg>
+      <figcaption>图 5　半圆绕直径旋转成球，直角梯形绕直角腰旋转成圆台</figcaption>
+    </figure>
+
+    <div class="warn">
+      <strong>易错：</strong>（1）旋转成体时，一定要说清“绕哪条边（或哪条直线）旋转”。同一个长方形绕不同的边旋转，得到的圆柱不同：底面半径和高正好互换。（2）半圆绕它的直径旋转一周得到球；把整个圆绕它的一条直径旋转一周，扫过的仍然是同一个球。（3）直角三角形绕斜边旋转，得到的不是圆锥，而是两个底面重合的圆锥拼成的组合体，不要漏看。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">绕不同的边旋转</span>
+      </div>
+      <div class="example-body">
+        <p>长方形 <i>ABCD</i> 中，<i>AB</i> = 6 cm，<i>BC</i> = 4 cm。（1）把它绕边 <i>AB</i> 所在直线旋转一周，得到什么几何体？它的底面半径和高分别是多少？（2）如果绕边 <i>BC</i> 所在直线旋转一周呢？（3）两次得到的圆柱，哪个“更粗”？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）绕 <i>AB</i> 旋转，边 <i>BC</i> 和 <i>AD</i> 各扫出一个圆面，得到的是圆柱。</p>
+          <p>旋转轴是 <i>AB</i>，所以高 <i>h</i> = <i>AB</i> = 6 cm；底面半径是 <i>BC</i>，<i>r</i> = 4 cm。</p>
+          <p>（2）绕 <i>BC</i> 旋转，旋转轴是 <i>BC</i>，所以高 <i>h</i> = <i>BC</i> = 4 cm；底面半径是 <i>AB</i>，<i>r</i> = 6 cm。</p>
+          <p>（3）“更粗”就是底面半径更大。第二次的底面半径是 6 cm，比第一次的 4 cm 大，所以绕短边 <i>BC</i> 旋转得到的圆柱更粗。</p>
+          <p>答：两次都得到圆柱；绕 <i>AB</i> 旋转时 <i>r</i> = 4 cm、<i>h</i> = 6 cm；绕 <i>BC</i> 旋转时 <i>r</i> = 6 cm、<i>h</i> = 4 cm；绕 <i>BC</i> 旋转得到的圆柱更粗。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">用点、线、面解释生活现象</span>
+      </div>
+      <div class="example-body">
+        <p>（1）用“点动成线、线动成面、面动成体”解释下列现象：①黑夜中快速挥舞荧光棒，看到一片光弧；②汽车雨刷来回摆动；③长方形纸片绕它的一边快速旋转。</p>
+        <p>（2）一个直角三角形绕它的斜边所在直线旋转一周，得到的是什么几何体？请描述它的形状。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）①荧光棒可以看作一条线段，它运动时扫过的轨迹是一个面，所以是“线动成面”；②雨刷也是一条线段，摆动时扫过一片扇形区域，同样是“线动成面”；③长方形是一个平面图形，绕一边旋转时扫过一个立体图形（圆柱），所以是“面动成体”。</p>
+          <p>（2）斜边两侧各有一个直角三角形，绕斜边旋转时，两个直角顶点分别扫出一个圆面，这两个圆面重合在同一个平面上。所以得到的是<strong>两个底面重合的圆锥拼成的组合体</strong>，两个圆锥的尖顶在斜边的两端，公共底面圆的半径等于斜边上的高。</p>
+          <p>提示：第（2）问可以先在纸上画一个直角三角形，把斜边画成竖直的旋转轴，再想象旋转的过程，就很容易看出来了。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">做一做</h4>
+    <p>准备一张长方形纸片、一根细木棒和一块橡皮泥：</p>
+    <p>（1）把纸片绕木棒快速旋转，观察它扫过的形状，说说它和圆柱的哪一部分对应。</p>
+    <p>（2）把一块橡皮泥先搓成球，再压扁成圆片，最后卷成圆柱，说说在这个过程中，“体”和“面”是怎样互相转化的。</p>
+    <p>（3）用纸片剪一个半圆，绕它的直径旋转，看看得到的形状像不像球；再剪一个直角梯形，绕直角腰旋转，看看是不是圆台。</p>
+    <p>做完后想一想：为什么旋转轴的位置一变，得到的立体图形就变了？这说明“面动成体”时，<strong>旋转轴</strong>是决定结果的关键。</p>
+
+    <h4 class="subhead">练习（课时 2）</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】填空：（1）体由　　　围成；（2）面与面相交成　　　；（3）线与线相交成　　　；（4）点动成　　　，线动成　　　，面动成　　　。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）面；（2）线；（3）点；（4）线，面，体。</p>
+          <p>这四句话是本节的核心结论。注意“面与面相交成线”中的线可以是直线，也可以是曲线，例如圆柱的侧面与底面相交得到的是圆。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】填空：（1）长方形绕它的一边所在直线旋转一周，得到的几何体是　　　；（2）直角三角形绕一条直角边所在直线旋转一周，得到的几何体是　　　；（3）半圆绕它的直径所在直线旋转一周，得到的几何体是　　　。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）圆柱；（2）圆锥；（3）球。</p>
+          <p>理由：长方形旋转时，与旋转轴垂直的两条边各扫出一个圆面，成为圆柱的两个底面；直角三角形旋转时，另一条直角边扫出底面圆，斜边扫出侧面，成为圆锥；半圆的弧旋转一周扫出整个球面，成为球。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】一个长方形的长是 4 cm，宽是 3 cm。分别绕它的长边、短边所在直线旋转一周，各得到一个圆柱。求这两个圆柱的底面半径和高，并判断哪个圆柱的体积大。（圆柱体积 <i>V</i> = π<i>r</i><sup>2</sup><i>h</i>）</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>绕长边旋转：旋转轴是长边，所以高 <i>h</i> = 4 cm，底面半径 <i>r</i> = 3 cm。</p>
+          <p>体积 <i>V</i><sub>1</sub> = π × 3<sup>2</sup> × 4 = 36π（cm<sup>3</sup>）。</p>
+          <p>绕短边旋转：旋转轴是短边，所以高 <i>h</i> = 3 cm，底面半径 <i>r</i> = 4 cm。</p>
+          <p>体积 <i>V</i><sub>2</sub> = π × 4<sup>2</sup> × 3 = 48π（cm<sup>3</sup>）。</p>
+          <p>因为 48π 大于 36π，所以绕短边旋转得到的圆柱体积大。</p>
+          <p>结论：同一个长方形绕不同的边旋转，得到的圆柱底面半径和高互换，体积一般不相等，底面半径大的那个体积大。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】把一个直角梯形绕它的直角腰（与两底都垂直的那条腰）所在直线旋转一周。（1）得到的几何体叫什么？（2）它由哪些面围成？一共有几个面？（3）它是多面体吗？为什么？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）得到的是圆台。</p>
+          <p>（2）直角梯形的上底扫出一个较小的圆面，下底扫出一个较大的圆面，斜腰扫出一个曲面（侧面）。所以它由 2 个圆面和 1 个曲面围成，一共 3 个面。</p>
+          <p>（3）不是多面体。因为它的侧面是曲面，不满足“表面全由平面围成”的条件。圆台和圆柱一样，虽然有两个平面（圆面），但含有曲面，所以不是多面体；圆锥只有一个平面，同样因为侧面是曲面而不是多面体。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】一个直角三角形的两条直角边分别是 3 cm 和 4 cm，斜边是 5 cm。把它绕斜边所在直线旋转一周，得到一个组合体。（1）这个组合体由哪两个几何体组成？（2）这两个几何体的底面半径是多少？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）斜边两侧各有一个直角三角形，绕斜边旋转时，两个直角顶点各扫出一个圆面，这两个圆面重合，所以得到的是两个底面重合的圆锥拼成的组合体：一个圆锥的尖顶在斜边的一端，另一个的尖顶在另一端。</p>
+          <p>（2）公共底面圆的半径就是斜边上的高 <i>h</i>。用面积法：直角三角形的面积等于两条直角边乘积的一半，也等于斜边乘斜边上的高的一半，所以</p>
+          <p>3 × 4 ÷ 2 = 5 × <i>h</i> ÷ 2，即 12 = 5<i>h</i>，解得 <i>h</i> = 2.4。</p>
+          <p>答：组合体由两个底面重合的圆锥组成，公共底面的半径是 2.4 cm。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>课时小结：</strong>
+      <ul>
+        <li>构成关系：体由面围成，面与面相交成线，线与线相交成点。</li>
+        <li>分类关系：面有平面、曲面；线有直线、曲线；点没有大小。</li>
+        <li>运动关系：点动成线、线动成面、面动成体。</li>
+        <li>旋转成体：长方形绕一边旋转成圆柱，直角三角形绕直角边旋转成圆锥，半圆绕直径旋转成球，直角梯形绕直角腰旋转成圆台（拓展）。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="method">
+    <strong>本节知识网络：</strong>
+    <ul>
+      <li><strong>常见几何体</strong>：棱柱（含正方体、长方体）、圆柱、棱锥、圆锥、球。</li>
+      <li><strong>分类标准</strong>：按“柱体、锥体、球体”分；按“表面有无曲面”分；按“是否多面体”分。标准不同，结果不同。</li>
+      <li><strong>棱柱</strong>：两个全等多边形底面 + 长方形侧面（直棱柱）；有底面、侧面、侧棱、顶点；<i>n</i> 棱柱有 2<i>n</i> 个顶点、3<i>n</i> 条棱、<i>n</i> + 2 个面。</li>
+      <li><strong>棱锥</strong>：一个多边形底面 + 有公共顶点的三角形侧面；<i>n</i> 棱锥有 <i>n</i> + 1 个顶点、2<i>n</i> 条棱、<i>n</i> + 1 个面。</li>
+      <li><strong>对比</strong>：棱柱与圆柱——底面一个多边形一个圆，侧面一个平面一个曲面；棱锥与圆锥——同样是一个多边形底面、一个圆底面；前者是多面体，后者不是。</li>
+      <li><strong>多面体</strong>：由若干个平面围成的立体图形；棱柱、棱锥是多面体，圆柱、圆锥、球不是。</li>
+      <li><strong>平面图形与立体图形</strong>：看各部分是否都在同一平面内；立体图形的表面是平面图形，平面图形可以围成立体图形。</li>
+      <li><strong>点、线、面、体</strong>：体由面围成，面与面相交成线，线与线相交成点；面有平曲，线有直曲，点无大小。</li>
+      <li><strong>图形运动</strong>：点动成线、线动成面、面动成体；旋转成体由旋转轴决定结果。</li>
+      <li><strong>易错清单</strong>：圆柱侧面是曲面不是平面；球没有底面也没有顶点；圆柱、圆锥不是多面体；棱柱的侧面在斜棱柱中是平行四边形；绕不同的边旋转得到的圆柱不同；直角三角形绕斜边旋转得到两个圆锥的组合体。</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="part" id="part2">
+  <div class="part-head">
+    <div class="part-kicker">第 2 节 · 建议 4 课时</div>
+    <h2 class="part-title">从立体图形到平面图形</h2>
+    <p class="part-intro">把纸箱沿着棱剪开、压平，它会变成一张由六个正方形拼成的纸片；把一张扇形纸片卷起来，又能得到一个尖尖的圆锥。立体图形的表面可以“摊平”成平面图形，平面图形也能“立起来”变成立体图形。本节我们沿着“展开与折叠”“截与看”两条线索，研究立体图形与平面图形之间的相互转化。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>学习目标</h3>
+    <ul>
+      <li>能说出正方体表面展开图的 11 种基本形状，会按“一四一”“二三一”“二二二”“三三”分类，能判断一个由 6 个正方形拼成的图形能否折成正方体。</li>
+      <li>会在正方体的展开图中找出相对的面，掌握“同行（同列）隔一个”“Z 字型两端”两种判定方法，会解决展开图上的图案、数字问题。</li>
+      <li>会画棱柱、圆柱、圆锥的表面展开图，理解圆柱侧面展开图的长等于底面周长、圆锥侧面展开图扇形的半径等于母线，会计算侧面积与全面积。</li>
+      <li>知道用平面截常见几何体所得截面的形状，能说明正方体的截面最多是六边形，会根据截面想象几何体。</li>
+      <li>会画简单几何体（含小立方体搭件）的三视图，理解“长对正、高平齐、宽相等”，能由三视图判断小立方体的个数。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="p2-1">
+    <h3 class="card-title"><span class="num">课时 1</span>正方体的展开与折叠</h3>
+
+    <p>生活中我们天天和纸盒打交道：快递盒、牛奶盒、药盒、粉笔盒……这些盒子大多是长方体或正方体。如果沿着盒子的棱把它剪开，再压平，盒子就“变”成了一张纸片。反过来，把这张纸片沿折痕折回去，又能恢复成原来的盒子。这种“立体图形”与“平面图形”之间的相互转化，就是我们这一课时要研究的内容。</p>
+
+    <h4 class="subhead">做一做：把正方体摊平</h4>
+    <p>找一个正方体纸盒（也可以自己用硬纸板做一个棱长为 5 cm 的正方体），沿着它的棱剪开，把它完全摊平。剪的时候有两点要求：第一，不能把任何一个正方形的面剪破；第二，6 个正方形要连成一整片，不能剪成几块。</p>
+    <p>摊平以后，你会得到一个由 6 个正方形拼成的平面图形。和同伴比一比：你们剪出来的图形一样吗？如果不一样，能不能把其中一个图形旋转或翻过来，变成另一个？</p>
+    <p>你会发现，剪法不同，得到的平面图形往往也不同；但奇怪的是，每一种图形折回去，都能严丝合缝地变回正方体。这说明：<strong>同一个立体图形可以有多种不同的表面展开图，而每一种展开图都能折回原来的立体图形。</strong></p>
+
+    <h4 class="subhead">1. 表面展开图</h4>
+    <p>把一些立体图形的表面适当剪开，摊平以后得到的平面图形，叫做这个立体图形的<strong>表面展开图</strong>。展开图有两个要点：一是“沿棱剪开”，二是“摊平后连成一片”。</p>
+    <p>要注意，展开图展平的是立体图形的<strong>表面</strong>，不是它的“内部”。比如把正方体剪开摊平，得到的是 6 个正方形，而不是一个“实心的方块”摊平后的样子。</p>
+
+    <h4 class="subhead">想一想：要剪开几条棱</h4>
+    <p>正方体有 12 条棱、6 个面。要把它摊平成一整片，需要剪开几条棱呢？</p>
+    <p>摊平以后，两个相邻的正方形之间总有一条公共边，这条公共边就是原来没有剪开的棱。反过来，6 个正方形要连成一整片，并且不能“兜圈子”（一兜圈子就摊不平），恰好需要 5 条公共边把它们连起来。所以，没剪开的棱有 5 条，剪开的棱有 12 − 5 = 7（条）。</p>
+    <p>因此，正方体的每一种表面展开图，都可以看成“剪开 7 条棱、保留 5 条棱”得到的图形。这个结论也告诉我们：展开图中任意两个正方形最多只有一条公共边，绝不会出现 6 个正方形围成一圈的情况。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>正方体的表面展开图由 6 个大小相同的正方形拼成，6 个正方形必须连成一整片；把正方体摊平要剪开 7 条棱。同一个正方体有多种展开图，展开图不同，但折回去得到的正方体是同一个。
+    </div>
+
+    <h4 class="subhead">2. 正方体的 11 种表面展开图</h4>
+    <p>把 6 个正方形拼成能折成正方体的图形，一共有多少种呢？数学家早已研究清楚：不计旋转和翻转后重合的情况，一共只有 <strong>11 种</strong>。为了记住它们，我们按“最长的一行（或一列）有几个正方形”来分类，分成四类：一四一型、二三一型、二二二型、三三型。这 11 种图形的全貌如图 6 所示。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 624 430" role="img" aria-label="正方体的十一种表面展开图" xmlns="http://www.w3.org/2000/svg">
+<title>正方体的十一种表面展开图</title>
+<g aria-label="第1种，一四一型">
+<rect x="39.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="87.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="39.0" y="26" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="111.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="63.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="39.0" y="74" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="39.0" y1="50" x2="63.0" y2="50" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="63.0" y1="50" x2="63.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="39.0" y1="74" x2="63.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="39.0" y1="50" x2="39.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="50" x2="111.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="50" x2="111.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="87.0" y1="74" x2="111.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="50" x2="87.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="39.0" y1="26" x2="63.0" y2="26" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="26" x2="63.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="26" x2="39.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="50" x2="135.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="135.0" y1="50" x2="135.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="74" x2="135.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="50" x2="87.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="74" x2="87.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="74" x2="63.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="98" x2="63.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="74" x2="39.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="87.0" y="118" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">① 一四一</text>
+</g>
+<g aria-label="第2种，一四一型">
+<rect x="189.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="237.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="189.0" y="26" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="261.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="213.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="237.0" y="74" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="189.0" y1="50" x2="213.0" y2="50" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="213.0" y1="50" x2="213.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="189.0" y1="74" x2="213.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="189.0" y1="50" x2="189.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="50" x2="261.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="50" x2="261.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="237.0" y1="74" x2="261.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="237.0" y1="50" x2="237.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="189.0" y1="26" x2="213.0" y2="26" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="26" x2="213.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="189.0" y1="26" x2="189.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="50" x2="285.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="285.0" y1="50" x2="285.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="74" x2="285.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="50" x2="237.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="74" x2="237.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="74" x2="261.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="98" x2="261.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="74" x2="237.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="237.0" y="118" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">② 一四一</text>
+</g>
+<g aria-label="第3种，一四一型">
+<rect x="339.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="387.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="411.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="363.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="411.0" y="26" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="339.0" y="74" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="339.0" y1="50" x2="363.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="50" x2="363.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="339.0" y1="74" x2="363.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="339.0" y1="50" x2="339.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="387.0" y1="50" x2="411.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="50" x2="411.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="387.0" y1="74" x2="411.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="387.0" y1="50" x2="387.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="411.0" y1="50" x2="435.0" y2="50" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="435.0" y1="50" x2="435.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="74" x2="435.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="50" x2="387.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="74" x2="387.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="26" x2="435.0" y2="26" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="435.0" y1="26" x2="435.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="26" x2="411.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="74" x2="363.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="339.0" y1="98" x2="363.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="339.0" y1="74" x2="339.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="387.0" y="118" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">③ 一四一</text>
+</g>
+<g aria-label="第4种，一四一型">
+<rect x="489.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="513.0" y="74" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="537.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="561.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="513.0" y="50" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="513.0" y="26" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="489.0" y1="50" x2="513.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="50" x2="513.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="489.0" y1="74" x2="513.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="489.0" y1="50" x2="489.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="74" x2="537.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="537.0" y1="74" x2="537.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="98" x2="537.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="74" x2="513.0" y2="98" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="537.0" y1="50" x2="561.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="561.0" y1="50" x2="561.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="537.0" y1="74" x2="561.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="537.0" y1="50" x2="537.0" y2="74" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="561.0" y1="50" x2="585.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="585.0" y1="50" x2="585.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="561.0" y1="74" x2="585.0" y2="74" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="50" x2="537.0" y2="50" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="513.0" y1="26" x2="537.0" y2="26" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="537.0" y1="26" x2="537.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="26" x2="513.0" y2="50" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="537.0" y="118" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">④ 一四一</text>
+</g>
+<g aria-label="第5种，一四一型">
+<rect x="39.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="87.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="111.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="63.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="87.0" y="200" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="63.0" y="152" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="39.0" y1="176" x2="63.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="176" x2="63.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="39.0" y1="200" x2="63.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="176" x2="39.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="176" x2="111.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="176" x2="111.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="87.0" y1="200" x2="111.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="87.0" y1="176" x2="87.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="111.0" y1="176" x2="135.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="135.0" y1="176" x2="135.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="200" x2="135.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="176" x2="87.0" y2="176" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="63.0" y1="200" x2="87.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="200" x2="111.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="224" x2="111.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="200" x2="87.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="152" x2="87.0" y2="152" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="152" x2="87.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="152" x2="63.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="87.0" y="244" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑤ 一四一</text>
+</g>
+<g aria-label="第6种，一四一型">
+<rect x="189.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="237.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="261.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="213.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="237.0" y="152" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="261.0" y="200" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="189.0" y1="176" x2="213.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="176" x2="213.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="189.0" y1="200" x2="213.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="189.0" y1="176" x2="189.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="176" x2="261.0" y2="176" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="261.0" y1="176" x2="261.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="237.0" y1="200" x2="261.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="176" x2="237.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="261.0" y1="176" x2="285.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="285.0" y1="176" x2="285.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="200" x2="285.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="213.0" y1="176" x2="237.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="200" x2="237.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="152" x2="261.0" y2="152" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="152" x2="261.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="152" x2="237.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="285.0" y1="200" x2="285.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="224" x2="285.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="200" x2="261.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="237.0" y="244" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑥ 一四一</text>
+</g>
+<g aria-label="第7种，二三一型">
+<rect x="363.0" y="200" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="387.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="339.0" y="152" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="411.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="363.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="363.0" y="152" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="363.0" y1="200" x2="387.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="387.0" y1="200" x2="387.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="224" x2="387.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="200" x2="363.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="387.0" y1="176" x2="411.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="176" x2="411.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="387.0" y1="200" x2="411.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="387.0" y1="176" x2="387.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="339.0" y1="152" x2="363.0" y2="152" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="152" x2="363.0" y2="176" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="339.0" y1="176" x2="363.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="339.0" y1="152" x2="339.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="176" x2="435.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="435.0" y1="176" x2="435.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="411.0" y1="200" x2="435.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="176" x2="387.0" y2="176" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="363.0" y1="176" x2="363.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="363.0" y1="152" x2="387.0" y2="152" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="387.0" y1="152" x2="387.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="387.0" y="244" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑦ 二三一</text>
+</g>
+<g aria-label="第8种，二三一型">
+<rect x="537.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="489.0" y="152" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="561.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="513.0" y="176" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="537.0" y="200" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="513.0" y="152" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="537.0" y1="176" x2="561.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="561.0" y1="176" x2="561.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="537.0" y1="200" x2="561.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="537.0" y1="176" x2="537.0" y2="200" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="489.0" y1="152" x2="513.0" y2="152" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="152" x2="513.0" y2="176" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="489.0" y1="176" x2="513.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="489.0" y1="152" x2="489.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="561.0" y1="176" x2="585.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="585.0" y1="176" x2="585.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="561.0" y1="200" x2="585.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="176" x2="537.0" y2="176" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="513.0" y1="200" x2="537.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="176" x2="513.0" y2="200" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="561.0" y1="200" x2="561.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="537.0" y1="224" x2="561.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="537.0" y1="200" x2="537.0" y2="224" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="513.0" y1="152" x2="537.0" y2="152" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="537.0" y1="152" x2="537.0" y2="176" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="537.0" y="244" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑧ 二三一</text>
+</g>
+<g aria-label="第9种，二三一型">
+<rect x="63.0" y="326" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="87.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="111.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="63.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="111.0" y="278" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="39.0" y="326" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="63.0" y1="326" x2="87.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="87.0" y1="326" x2="87.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="350" x2="87.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="326" x2="63.0" y2="350" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="87.0" y1="302" x2="111.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="302" x2="111.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="87.0" y1="326" x2="111.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="87.0" y1="302" x2="87.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="111.0" y1="302" x2="135.0" y2="302" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="135.0" y1="302" x2="135.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="326" x2="135.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="302" x2="87.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="63.0" y1="302" x2="63.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="278" x2="135.0" y2="278" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="135.0" y1="278" x2="135.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="111.0" y1="278" x2="111.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="326" x2="63.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="350" x2="63.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="39.0" y1="326" x2="39.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="87.0" y="370" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑨ 二三一</text>
+</g>
+<g aria-label="第10种，二二二型">
+<rect x="213.0" y="326" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="237.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="213.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="237.0" y="278" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="261.0" y="278" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="189.0" y="326" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="213.0" y1="326" x2="237.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="237.0" y1="326" x2="237.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="350" x2="237.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="326" x2="213.0" y2="350" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="237.0" y1="302" x2="261.0" y2="302" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="261.0" y1="302" x2="261.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="326" x2="261.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="302" x2="237.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="213.0" y1="302" x2="237.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="213.0" y1="302" x2="213.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="237.0" y1="278" x2="261.0" y2="278" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="278" x2="261.0" y2="302" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="237.0" y1="278" x2="237.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="278" x2="285.0" y2="278" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="285.0" y1="278" x2="285.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="261.0" y1="302" x2="285.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="189.0" y1="326" x2="213.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="189.0" y1="350" x2="213.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="189.0" y1="326" x2="189.0" y2="350" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="237.0" y="370" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑩ 二二二</text>
+</g>
+<g aria-label="第11种，三三型">
+<rect x="375.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="327.0" y="278" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="399.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="375.0" y="278" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="351.0" y="278" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<rect x="423.0" y="302" width="24" height="24" fill="#dbeafe" stroke="none"/>
+<line x1="375.0" y1="302" x2="399.0" y2="302" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="399.0" y1="302" x2="399.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="375.0" y1="326" x2="399.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="375.0" y1="302" x2="375.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="327.0" y1="278" x2="351.0" y2="278" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="351.0" y1="278" x2="351.0" y2="302" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="327.0" y1="302" x2="351.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="327.0" y1="278" x2="327.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="399.0" y1="302" x2="423.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="423.0" y1="302" x2="423.0" y2="326" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="399.0" y1="326" x2="423.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="375.0" y1="278" x2="399.0" y2="278" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="399.0" y1="278" x2="399.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="375.0" y1="278" x2="375.0" y2="302" stroke="#60a5fa" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="351.0" y1="278" x2="375.0" y2="278" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="351.0" y1="302" x2="375.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="423.0" y1="302" x2="447.0" y2="302" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="447.0" y1="302" x2="447.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<line x1="423.0" y1="326" x2="447.0" y2="326" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round"/>
+<text x="387.0" y="346" text-anchor="middle" font-size="13" fill="#334155" font-family="Microsoft YaHei, sans-serif">⑪ 三三</text>
+</g>
+</svg>
+      <figcaption>图 6　正方体的 11 种表面展开图（按“一四一、二三一、二二二、三三”分类）</figcaption>
+    </figure>
+
+    <h4 class="subhead">（1）一四一型：共 6 种</h4>
+    <p>“一四一”的意思是：中间一行有 4 个正方形，这一行的上方有 1 个正方形，下方也有 1 个正方形。中间这一行 4 个正方形折起来正好围成正方体的一圈“腰带”（4 个侧面），上、下两个正方形分别折成上底面和下底面。</p>
+    <p>上、下两个正方形贴在这一行 4 个正方形的位置不同，就得到不同的展开图。让上面的正方形从左往右挪，下面的正方形也逐格变化，把它们一一列举出来，正好是 6 种。观察这 6 种图形可以发现，“腰带”都是同一行 4 个正方形，区别只在于上、下两个正方形的位置。</p>
+
+    <h4 class="subhead">（2）二三一型：共 3 种</h4>
+    <p>“二三一”的意思是：图形有三行，从上到下分别有 2 个、3 个、1 个正方形。上面一行的 2 个正方形“贴”在中间一行左边的两格上，下面单独的那 1 个正方形可以在中间一行 3 个正方形的正下方任意选一格，于是得到 3 种不同的展开图。</p>
+    <p>这一类图形看起来“歪歪扭扭”，但只要中间那一行 3 个正方形保持连续，上、下两部分不出现 2×2 的“田”字块，折起来就没有问题。</p>
+
+    <h4 class="subhead">（3）二二二型：1 种</h4>
+    <p>“二二二”型由三行组成，每行 2 个正方形，像三级台阶一样一级一级错开。这种形状只有 1 种，它的特点是“阶梯状”：每一行都比上一行向右错开一格，整体呈现出斜着上升的样子。</p>
+
+    <h4 class="subhead">（4）三三型：1 种</h4>
+    <p>“三三”型由两行组成，每行 3 个正方形，两行之间错开两格。这种形状也只有 1 种。要注意的是，两行只能错开两格；如果只错开一格，就会出现 2×2 的“田”字块，那就折不成正方体了。</p>
+
+    <p>把四类合起来数一数：一四一型 6 种，二三一型 3 种，二二二型 1 种，三三型 1 种，一共 6 + 3 + 1 + 1 = <strong>11</strong> 种。这就是正方体表面展开图的全部种类，不多也不少。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>正方体的表面展开图共 11 种：一四一型 6 种、二三一型 3 种、二二二型 1 种、三三型 1 种。判断种类时，旋转或翻转后能重合的算同一种，不要重复计数。
+    </div>
+
+    <div class="tip">
+      <strong>提示：</strong>可以用一句顺口溜帮助记忆：“一四一，六种变；二三一，三种连；二二二，阶梯站；三三型，只一款；十一种，记心间。”背口诀的同时，最好能自己动手把 11 种图形画一遍，画过一遍比背十遍更牢。
+    </div>
+    <h4 class="subhead">3. 判断一个图形能否折成正方体</h4>
+    <p>考试中常见的题型是：给出一个由 6 个大小相同的正方形拼成的图形，问它能不能折成正方体。11 种图形要记住，但更快的办法是掌握几条“排除规则”。</p>
+    <p>第一，看有没有 2×2 的“田”字块。如果 4 个正方形围成一个“田”字，这 4 个面共用一个顶点。正方体上同一个顶点处只有 3 个面，第 4 个面折过来一定会和其中一个面重合，所以一定折不成。</p>
+    <p>第二，看最长的一行（或一列）有几个正方形。正方体只有 6 个面，围成“腰带”的一圈最多 4 个面，所以如果一行（或一列）出现 5 个甚至 6 个正方形，就一定折不成。同样的道理，6 个正方形排成 2 行 3 列的大长方形也不行。</p>
+    <p>第三，看“同一侧”贴了几个正方形。把一行 4 个正方形当作“腰带”，贴在它上方（或下方）的正方形，折叠后都会落到同一个底面上。所以“4 个一行 + 同侧 2 个”这种图形，两个面会重叠，而另一侧缺一个底面，也折不成。一四一型之所以成立，正是因为上、下各只有 1 个。</p>
+
+    <div class="method">
+      <strong>方法归纳：</strong>判断一个图形能否折成正方体，可以按“三查一折”进行：一查有没有“田”字块；二查最长一行（列）是否超过 4 个；三查“一行有 4 个”时，这一行的同一侧是否贴了 2 个正方形（注意：一行只有 3 个时，同一侧贴 2 个是允许的，如二三一型）；最后动手折一折（用方格纸剪下来实际折）验证。口诀：有“田”不折，五行不折，四行同侧两个不折。
+    </div>
+
+    <div class="warn">
+      <strong>易错：</strong>“6 个正方形”只是必要条件，不是充分条件。很多图形同样由 6 个正方形组成，却折不成正方体；另外，判断时不能只看“像不像”，有的图形看着歪斜（如二三一型、二二二型），其实完全能折成正方体。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">判断能否折成正方体</span>
+      </div>
+      <div class="example-body">
+        <p>下面四个图形都由 6 个大小相同的正方形组成，哪些能折成正方体？请说明理由。</p>
+        <p>① 中间一行 4 个正方形，上方 1 个贴在这一行第 1 个的正上方，下方 1 个贴在第 4 个的正下方；</p>
+        <p>② 6 个正方形排成 2 行 3 列的大长方形；</p>
+        <p>③ 中间一行 3 个正方形，上方 2 个贴在这一行第 1、2 个的正上方，下方 1 个贴在第 3 个的正下方；</p>
+        <p>④ 5 个正方形排成一行，第 6 个贴在这一行中间那个的正下方。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>① 能。这是“一四一”型：中间 4 个折成腰带，上面 1 个折成上底面，下面 1 个折成下底面，6 个面各就各位，不重不漏。</p>
+          <p>② 不能。2 行 3 列中含有 2×2 的“田”字块，4 个面共用一个顶点，折起来必有两个面重合。</p>
+          <p>③ 能。这是“二三一”型，虽然形状歪斜，但中间 3 个正方形连续，上、下两部分没有“田”字块，折起来正好围成正方体。</p>
+          <p>④ 不能。一行 5 个正方形，折成“腰带”时第 5 个会与第 1 个重叠；而且只剩 1 个面，无法同时充当上、下两个底面。</p>
+          <p>所以能折成正方体的是 ①③，不能的是 ②④。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>把①中下方的正方形从第 4 个的正下方挪到第 2 个的正下方，得到的图形还能折成正方体吗？<br/>答：能。它仍是“一四一”型，只是下底面的位置变了，属于 11 种中的另一种，折成后仍是同一个正方体。</p>
+
+    <h4 class="subhead">4. 在展开图中找相对面</h4>
+    <p>正方体有 6 个面，可以分成 3 组，每组两个面互相平行、永不相交，这样的两个面叫做<strong>相对面</strong>。有公共棱的两个面叫做<strong>相邻面</strong>，相邻面一定不相对。折成正方体后，每个面都与 4 个面相邻，只与 1 个面相对。</p>
+    <p>把正方体展开成平面图形后，相对的两个面在展开图上有很明显的规律。图 7 是一个“一四一”型展开图，我们在 6 个面上分别写了 1—6。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 440 230" role="img" aria-label="一四一展开图中相对面的判定方法">
+        <title>展开图中相对面的判定</title>
+        <g stroke="#334155" stroke-width="1.5">
+          <rect x="60" y="70" width="50" height="50" fill="#dbeafe"/>
+          <rect x="110" y="70" width="50" height="50" fill="#fef3c7"/>
+          <rect x="160" y="70" width="50" height="50" fill="#dbeafe"/>
+          <rect x="210" y="70" width="50" height="50" fill="#fef3c7"/>
+          <rect x="110" y="20" width="50" height="50" fill="#dcfce7"/>
+          <rect x="160" y="120" width="50" height="50" fill="#dcfce7"/>
+        </g>
+        <polyline points="135,45 135,95 185,95 185,145" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <g fill="#334155" font-size="15" text-anchor="middle" stroke="#ffffff" stroke-width="4" paint-order="stroke" stroke-linejoin="round">
+          <text x="85" y="101">1</text>
+          <text x="135" y="101">2</text>
+          <text x="185" y="101">3</text>
+          <text x="235" y="101">4</text>
+          <text x="135" y="51">5</text>
+          <text x="185" y="151">6</text>
+        </g>
+        <g fill="#475569" font-size="12">
+          <text x="52" y="196">同色面相对：1 与 3、2 与 4（同行隔一个）</text>
+          <text x="52" y="216">虚线“Z”字型两端相对：5 与 6</text>
+        </g>
+      </svg>
+      <figcaption>图 7　在“一四一”型展开图中判定相对面</figcaption>
+    </figure>
+
+    <p>观察图 7，可以总结出两种常用的判定方法。</p>
+    <p><strong>方法一：同行或同列隔一个。</strong>在同一行（或同一列）里，中间隔着一个正方形的两个面，折叠后是相对面。图 7 中间一行 4 个正方形依次是 1、2、3、4，1 与 3 隔着 2，所以 1 与 3 相对；2 与 4 隔着 3，所以 2 与 4 相对。同理，如果一列有 4 个正方形，第 1 个与第 3 个相对，第 2 个与第 4 个相对。</p>
+    <p><strong>方法二：“Z”字型两端。</strong>如果两个面既不同行也不同列，可以沿着展开图从其中一个面出发，经过 3 条公共边“拐两个弯”走到另一个面，路线呈“Z”字形，那么这两个面就是相对面。图 7 中，从 5 出发向下到 2，向右到 3，再向下到 6，正好是“Z”字型，所以 5 与 6 相对。</p>
+    <p><strong>方法三：配对排除。</strong>先用前两种方法把能确定的相对面配成对，剩下的两个面自然相对。图 7 中 1—3、2—4 已配对，剩下 5 和 6 只能相对，与方法二的结果一致。这个方法还能用来检查判断有没有出错。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>展开图中找相对面：①同一行（列）中隔一个的两面相对；②“Z”字型路线的两端相对；③配对后剩下的两面相对。有公共边的两个面一定相邻，不可能相对。
+    </div>
+
+    <div class="tip">
+      <strong>提示：</strong>“隔一个”这个规律很好记：想象把一行 4 个正方形依次折成前、右、后、左四个侧面，第 1 个和第 3 个正好一前一后，第 2 个和第 4 个正好一右一左，所以它们两两相对。理解了折叠过程，就不用死记规律。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">由展开图判断相对面</span>
+      </div>
+      <div class="example-body">
+        <p>如图 7，一个正方体的表面展开图上分别标有数字 1—6。</p>
+        <p>（1）与 1 相对的是哪个面？与 2 相对的是哪个面？</p>
+        <p>（2）与 5 相对的是哪个面？请用两种方法说明。</p>
+        <p>（3）若把这个正方体折好，让 1 所在的面朝前，那么 3 所在的面朝哪个方向？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）在中间一行中，1 与 3 中间隔着 2，2 与 4 中间隔着 3，所以 1 与 3 相对，2 与 4 相对。</p>
+          <p>（2）方法一（配对排除）：6 个面要配成 3 对，1—3、2—4 已配对，剩下的 5 和 6 只能相对。方法二（“Z”字型）：从 5 向下到 2，向右到 3，再向下到 6，路线呈“Z”字形，两端 5 与 6 相对。两种方法结论一致。</p>
+          <p>（3）相对的两个面朝向相反。1 与 3 相对，1 朝前，则 3 朝后。所以 3 所在的面朝后。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">5. 展开与折叠的相互转化</h4>
+    <p>展开和折叠是一对互逆的过程：沿着棱剪开、摊平，是<strong>展开</strong>；沿着公共边把平面图形折起来，是<strong>折叠</strong>。折的时候，每一条公共边都折成 90°，相邻两个正方形就变成了正方体上相邻的两个面。</p>
+    <p>由此可以得到两条重要结论：</p>
+    <p>第一，展开图中<strong>有公共边</strong>的两个正方形，折叠后一定是相邻面，它们的公共边就是正方体的一条棱。</p>
+    <p>第二，展开图中<strong>隔一个</strong>或呈“Z”字型两端的两个正方形，折叠后一定是相对面，它们互相平行，没有公共棱。</p>
+    <p>把一个展开图折成正方体，需要一定的空间想象力。初学时可以这样做：先确定“腰带”——通常是 4 个连成一行的正方形，把它们依次当作前、右、后、左四个面；再看剩下的正方形贴在哪一个面上方或下方，就折成上底面或下底面。这样一圈一圈地“围”起来，位置关系就不容易搞错。</p>
+
+    <div class="warn">
+      <strong>易错：</strong>折叠后，相对的两个面上的图案是“背对背”的，从正方体外面看，它们的上下、左右方向往往相反；而展开图上两个相邻面折叠后虽然相邻，但图案会随面一起“转 90°”。判断图案方向时，最好在草稿纸上画出折好的正方体，把图案一个个贴上去，不要凭空想象。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">展开图上的图案与相对面</span>
+      </div>
+      <div class="example-body">
+        <p>一个正方体的六个面上分别画着 ○、△、□、☆、◇、※ 六个图案。把它的表面展开，得到一个“一四一”型展开图：中间一行 4 个面依次是 ○、□、◇、☆，上方 1 个面是 △（贴在 □ 的正上方），下方 1 个面是 ※（贴在 ◇ 的正下方）。</p>
+        <p>（1）这个展开图能折成正方体吗？为什么？</p>
+        <p>（2）折成正方体后，○ 与哪些图案所在的面相邻？</p>
+        <p>（3）若 ○ 在前面、□ 在右面，则 △、☆、◇、※ 分别在哪个方向？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）能。它是“一四一”型：中间 4 个正方形连成一行，上、下各 1 个，没有“田”字块，符合 11 种展开图之一。</p>
+          <p>（2）先找相对面：中间一行中 ○ 与 ◇ 隔一个，所以 ○ 与 ◇ 相对；□ 与 ☆ 隔一个，所以 □ 与 ☆ 相对；剩下 △ 与 ※ 相对。与 ○ 相对的是 ◇，所以 ○ 与其余 4 个面 □、☆、△、※ 都相邻。</p>
+          <p>（3）中间一行 4 个面折成腰带，依次是 ○、□、◇、☆。○ 在前、□ 在右，继续绕下去，◇ 就在后，☆ 在左。△ 贴在 □ 的上方，折成上底面；※ 贴在 ◇ 的下方，折成下底面。所以 △ 在上，※ 在下，◇ 在后，☆ 在左。</p>
+          <p>检验：△ 在上、※ 在下，正好相对；○ 在前、◇ 在后，正好相对；□ 在右、☆ 在左，正好相对。三组相对面全部吻合，说明判断正确。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">练一练</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>下面四个图形都由 6 个大小相同的正方形组成，哪些能折成正方体？</span>
+      </div>
+      <p>① 3 个正方形排成一行，上方贴 2 个（贴在第 1、2 个的正上方），下方贴 1 个（贴在第 3 个的正下方）；</p>
+      <p>② 4 个正方形排成一行，另外 2 个都贴在这一行的下方（分别贴在第 1 个和第 4 个的正下方）；</p>
+      <p>③ 三行，每行 2 个正方形，每一行都比上一行向右错开一格；</p>
+      <p>④ 5 个正方形排成一行，第 6 个贴在这一行第 3 个的正上方。</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>① 能。这是“二三一”型，中间 3 个连续，上、下没有“田”字块，也没有同侧贴 2 个。</p>
+          <p>② 不能。4 个一行当作腰带，贴在它下方的正方形折叠后都落到同一个底面上，两个会重合，而上底面空缺。</p>
+          <p>③ 能。这是“二二二”型，是 11 种中唯一的“阶梯”形。</p>
+          <p>④ 不能。一行 5 个正方形，折成腰带时第 5 个与第 1 个重叠，围不成正方体。</p>
+          <p>所以能折成正方体的是 ①③。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>一个正方体的表面展开图是“一四一”型：中间一行 4 个面依次写着 A、B、C、D，上方 1 个面写着 E（贴在 C 的正上方），下方 1 个面写着 F（贴在 B 的正下方）。请写出三组相对面。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>中间一行中，A 与 C 隔一个，B 与 D 隔一个，所以 A 与 C 相对，B 与 D 相对。</p>
+          <p>剩下 E 与 F：从 E 向下到 C，向左到 B，再向下到 F，路线呈“Z”字形，两端相对；也可以用配对排除得到同样结论。</p>
+          <p>答：A 与 C 相对，B 与 D 相对，E 与 F 相对。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>一个正方体的表面展开图上标着数字 1—6：中间一行 4 个面依次是 1、2、3、4，上方 1 个面是 5（贴在 3 的正上方），下方 1 个面是 6（贴在 1 的正下方）。</span>
+      </div>
+      <p>（1）与 1 相对的是哪个数字？与 5 相对的是哪个数字？</p>
+      <p>（2）若折成正方体后 1 在前面、2 在右面，则 3、4 各在哪个方向？</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）1 与 3 在中间一行隔一个，相对；2 与 4 隔一个，相对；三组相对面配好后，剩下的 5 与 6 自然相对。</p>
+          <p>（2）中间一行 4 个面依次围成腰带：1 在前、2 在右，继续绕下去 3 就在后、4 就在左。</p>
+          <p>答：3 在后面，4 在左面。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>一个正方体的六个面分别涂成红、黄、蓝、绿、白、黑六种颜色。把它展开成“一四一”型：中间一行 4 个面依次是红、黄、蓝、绿，上方 1 个面是白（贴在黄的正上方），下方 1 个面是黑（贴在蓝的正下方）。</span>
+      </div>
+      <p>（1）写出三组相对的面各是什么颜色。</p>
+      <p>（2）若把红面朝上放置，哪个颜色的面朝下？与红面相邻的四个面分别是什么颜色？</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）中间一行中，红与蓝隔一个，黄与绿隔一个，所以红与蓝相对，黄与绿相对；剩下白与黑相对（也可用“Z”字型：白→黄→蓝→黑）。</p>
+          <p>（2）红与蓝相对，红面朝上则蓝面朝下。与红面相邻的 4 个面是除蓝面以外的其余四面，即黄、绿、白、黑。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>一个正方体的六个面上分别标着 1—6 六个数字，并且相对两个面上的数字之和都是 7。它的表面展开图是“一四一”型：中间一行 4 个面依次标着 1、2、<i>x</i>、5，上方 1 个面标着 3（贴在 <i>x</i> 的正上方），下方 1 个面标着 4（贴在 2 的正下方）。求 <i>x</i> 的值，并检验你的答案。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>先判断相对面：中间一行中，1 与 <i>x</i> 隔一个，所以 1 与 <i>x</i> 相对；2 与 5 隔一个，所以 2 与 5 相对；剩下 3 与 4 相对。</p>
+          <p>因为相对两面的数字之和为 7，所以 <i>x</i> = 7 − 1 = 6。</p>
+          <p>检验：2 + 5 = 7，3 + 4 = 7，1 + <i>x</i> = 1 + 6 = 7，三组都符合；而且 1、2、3、4、5、6 六个数字恰好各出现一次，没有重复，说明 <i>x</i> = 6 正确。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本课时方法归纳：</strong>
+      <ul>
+        <li>认展开图：先数“最长一行”有几个正方形，按一四一（6 种）、二三一（3 种）、二二二（1 种）、三三（1 种）归类。</li>
+        <li>判能否折叠：查“田”字块、查最长行是否超过 4 个、查同一侧是否贴了 2 个以上，最后动手折一折。</li>
+        <li>找相对面：同行（列）隔一个；“Z”字型两端；配对排除。</li>
+        <li>画图检验：把展开图折成正方体时，先定“腰带”，再定上、下底面，最后核对三组相对面。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="p2-2">
+    <h3 class="card-title"><span class="num">课时 2</span>棱柱、圆柱、圆锥的展开与折叠</h3>
+
+    <p>上一课时我们把正方体“摊平”了。生活里的立体图形可不止正方体：易拉罐是圆柱，冰淇淋纸筒是圆锥，铅笔盒、帐篷、三棱镜常常做成棱柱。它们的表面能不能也摊平成平面图形？摊平以后又是什么样子？这一课时我们就来解决这个问题，并顺便学会计算它们的侧面积和全面积——这正是“展开图”在生产中最有用的地方：做一个包装盒要用多少纸板，算的就是展开图的面积。</p>
+
+    <h4 class="subhead">1. 棱柱的展开图</h4>
+    <p>先看棱柱。棱柱有两个底面，它们是全等的多边形；还有若干个侧面，都是长方形（直棱柱）。把棱柱沿侧棱剪开，再把上、下底面翻下来，就得到它的表面展开图。</p>
+    <p>以三棱柱为例：它的上、下底面是两个全等的三角形，三个侧面是三个长方形。展开后，三个长方形连成一排，两个三角形分别贴在两端（或贴在某个长方形的上、下方）。所以<strong>三棱柱的表面展开图由 2 个全等三角形和 3 个长方形组成</strong>，一共 5 个面。</p>
+    <p>推而广之，<i>n</i> 棱柱的表面展开图由 2 个全等的 <i>n</i> 边形和 <i>n</i> 个长方形组成，一共 <i>n</i> + 2 个面。比如四棱柱（长方体）的展开图是 2 个全等的四边形和 4 个长方形；如果这个四棱柱恰好是正方体，那么 6 个面都是全等的正方形，就成了上一课时研究的正方体展开图。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>棱柱的表面展开图 = 2 个全等底面（<i>n</i> 边形）+ <i>n</i> 个长方形侧面。展开图中，<i>n</i> 个长方形连成一排，这一排的总长就是底面多边形的周长，长方形的宽就是棱柱的高。
+    </div>
+
+    <h4 class="subhead">2. 圆柱的展开图</h4>
+    <p>圆柱可以看成“底面边数无限多的棱柱”。把圆柱的侧面沿一条母线（也就是与底面垂直的一条直线）剪开，摊平，侧面就变成了一个长方形。</p>
+    <p>这个长方形的<strong>长</strong>等于圆柱底面圆的周长，即 2π<i>r</i>；长方形的<strong>宽</strong>等于圆柱的高 <i>h</i>。再加上上、下两个全等的圆，就得到圆柱的表面展开图：<strong>两个圆 + 一个长方形</strong>，如图 8 所示。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 560 310" role="img" aria-label="圆柱及其表面展开图">
+        <title>圆柱的表面展开图</title>
+        <g stroke="#334155" stroke-width="1.5" fill="none">
+          <ellipse cx="95" cy="70" rx="45" ry="13" fill="#dbeafe"/>
+          <path d="M50 70 L50 195"/>
+          <path d="M140 70 L140 195"/>
+          <path d="M50 195 A45 13 0 0 0 140 195" fill="#dbeafe"/>
+          <path d="M50 195 A45 13 0 0 1 140 195" stroke-dasharray="5 4"/>
+          <path d="M95 70 L140 70" stroke-dasharray="4 3"/>
+          <rect x="215" y="70" width="180" height="125" fill="#fef3c7"/>
+          <circle cx="255" cy="262" r="22" fill="#dcfce7"/>
+          <circle cx="355" cy="262" r="22" fill="#dcfce7"/>
+        </g>
+        <g stroke="#94a3b8" stroke-width="1" fill="none">
+          <path d="M215 205 L215 216 M395 205 L395 216 M215 210 L395 210"/>
+          <path d="M148 70 L158 70 M148 195 L158 195 M153 70 L153 195"/>
+        </g>
+        <g fill="#334155" font-size="12">
+          <text x="112" y="64"><tspan font-style="italic">r</tspan></text>
+          <text x="164" y="138"><tspan font-style="italic">h</tspan></text>
+          <text x="278" y="215">长 = 底面周长 = 2π<tspan font-style="italic">r</tspan></text>
+          <text x="400" y="140">宽 = <tspan font-style="italic">h</tspan></text>
+          <text x="250" y="267"><tspan font-style="italic">r</tspan></text>
+          <text x="350" y="267"><tspan font-style="italic">r</tspan></text>
+          <text x="252" y="300">上、下底面</text>
+        </g>
+      </svg>
+      <figcaption>图 8　圆柱的表面展开图：两个圆 + 一个长方形</figcaption>
+    </figure>
+
+    <div class="warn">
+      <strong>易错：</strong>圆柱侧面展开图的长是<strong>底面周长 2π<i>r</i></strong>，不是底面直径 2<i>r</i>，也不是半径 <i>r</i>。做题时先问自己一句：“这个长方形的长是绕底面一圈的长度吗？”绕一圈的长度才是 2π<i>r</i>。
+    </div>
+
+    <h4 class="subhead">3. 圆锥的展开图</h4>
+    <p>圆锥的侧面不能展开成长方形。沿着圆锥的一条母线把侧面剪开，摊平后得到一个<strong>扇形</strong>。这个扇形的<strong>半径</strong>等于圆锥的母线 <i>l</i>（从圆锥顶点到底面圆周上任意一点的线段），扇形的<strong>弧长</strong>等于底面圆的周长 2π<i>r</i>。再加上一个底面圆，就得到圆锥的表面展开图：<strong>一个圆 + 一个扇形</strong>，如图 9 所示。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 560 300" role="img" aria-label="圆锥及其表面展开图">
+        <title>圆锥的表面展开图</title>
+        <g stroke="#334155" stroke-width="1.5" fill="none">
+          <path d="M110 45 L58 185" />
+          <path d="M110 45 L162 185" />
+          <ellipse cx="110" cy="185" rx="52" ry="15" fill="#dbeafe"/>
+          <path d="M58 185 A52 15 0 0 0 162 185" fill="#dbeafe"/>
+          <path d="M58 185 A52 15 0 0 1 162 185" stroke-dasharray="5 4"/>
+          <path d="M110 45 L110 185" stroke-dasharray="4 3"/>
+          <path d="M110 185 L162 185" stroke-dasharray="4 3"/>
+          <path d="M380 195 L276 157 A110 110 0 0 1 484 157 Z" fill="#fef3c7"/>
+          <circle cx="470" cy="252" r="20" fill="#dcfce7"/>
+        </g>
+        <g fill="#334155" font-size="12">
+          <text x="140" y="112"><tspan font-style="italic">l</tspan>（母线）</text>
+          <text x="98" y="125"><tspan font-style="italic">h</tspan></text>
+          <text x="136" y="205"><tspan font-style="italic">r</tspan></text>
+          <text x="322" y="180"><tspan font-style="italic">l</tspan></text>
+          <text x="352" y="76">弧长 = 2π<tspan font-style="italic">r</tspan></text>
+          <text x="464" y="257"><tspan font-style="italic">r</tspan></text>
+          <text x="452" y="292">底面</text>
+        </g>
+      </svg>
+      <figcaption>图 9　圆锥的表面展开图：一个圆 + 一个扇形</figcaption>
+    </figure>
+
+    <p>圆锥的母线 <i>l</i>、底面半径 <i>r</i>、高 <i>h</i> 构成一个直角三角形：母线是斜边，半径和高是两条直角边。由勾股定理（以后会学）可以知道 <i>l</i><sup>2</sup> = <i>r</i><sup>2</sup> + <i>h</i><sup>2</sup>。现在只要记住：<strong>母线比半径长，母线是斜着的，半径是水平的。</strong></p>
+
+    <div class="warn">
+      <strong>易错：</strong>圆锥侧面展开图（扇形）的半径是<strong>母线 <i>l</i></strong>，不是底面半径 <i>r</i>；扇形的弧长才是底面周长 2π<i>r</i>。把这两个量弄混，是这部分最常见的错误。可以这样记：“扇形是侧面摊开的，侧面从顶点到底面的距离是母线，所以扇形的半径是母线。”
+    </div>
+
+    <h4 class="subhead">4. 侧面积与全面积</h4>
+    <p>有了展开图，面积就好算了：侧面积就是侧面展开图的面积，全面积等于侧面积加上底面积。</p>
+
+    <div class="formula">
+      <div class="formula-label">圆柱的侧面积</div>
+      <div class="formula-body"><i>S</i><sub>圆柱侧</sub> = 2π<i>r</i><i>h</i></div>
+    </div>
+    <p>这个公式就是长方形面积“长 × 宽”：长是 2π<i>r</i>，宽是 <i>h</i>。</p>
+
+    <div class="formula">
+      <div class="formula-label">圆柱的全面积</div>
+      <div class="formula-body"><i>S</i><sub>圆柱全</sub> = 2π<i>r</i><sup>2</sup> + 2π<i>r</i><i>h</i></div>
+    </div>
+    <p>其中 2π<i>r</i><sup>2</sup> 是上、下两个底面圆的面积之和。</p>
+
+    <div class="formula">
+      <div class="formula-label">圆锥的侧面积</div>
+      <div class="formula-body"><i>S</i><sub>圆锥侧</sub> = π<i>r</i><i>l</i></div>
+    </div>
+    <p>可以这样理解：把扇形看成“底是弧长 2π<i>r</i>、高是半径 <i>l</i>”的三角形，面积约为 ½ × 2π<i>r</i> × <i>l</i> = π<i>r</i><i>l</i>。严格推导要到九年级学扇形面积公式，现在先会用即可。</p>
+
+    <div class="formula">
+      <div class="formula-label">圆锥的全面积</div>
+      <div class="formula-body"><i>S</i><sub>圆锥全</sub> = π<i>r</i><sup>2</sup> + π<i>r</i><i>l</i></div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">棱柱的侧面积</div>
+      <div class="formula-body"><i>S</i><sub>棱柱侧</sub> = <i>c</i><i>h</i></div>
+    </div>
+    <p>其中 <i>c</i> 是底面多边形的周长，<i>h</i> 是棱柱的高。因为 <i>n</i> 个侧面长方形连成一排，总长就是底面周长，宽就是高。</p>
+
+    <table class="data-table">
+      <caption>表 4　四种常见几何体的展开图与面积</caption>
+      <thead>
+        <tr><th>几何体</th><th>展开图的组成</th><th>侧面积</th><th>全面积</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>棱柱</td><td>2 个全等 <i>n</i> 边形 + <i>n</i> 个长方形</td><td><i>c</i><i>h</i></td><td>2<i>S</i><sub>底</sub> + <i>c</i><i>h</i></td></tr>
+        <tr><td>圆柱</td><td>2 个圆 + 1 个长方形</td><td>2π<i>r</i><i>h</i></td><td>2π<i>r</i><sup>2</sup> + 2π<i>r</i><i>h</i></td></tr>
+        <tr><td>圆锥</td><td>1 个圆 + 1 个扇形</td><td>π<i>r</i><i>l</i></td><td>π<i>r</i><sup>2</sup> + π<i>r</i><i>l</i></td></tr>
+        <tr><td>正方体</td><td>6 个全等正方形</td><td>4<i>a</i><sup>2</sup></td><td>6<i>a</i><sup>2</sup></td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="subhead">5. 由展开图反推几何体</h4>
+    <p>反过来，给出一个展开图，要能说出它是哪个几何体的展开图。判断的关键是看“面的种类和个数”：</p>
+    <p>两个圆加一个长方形，是<strong>圆柱</strong>；一个圆加一个扇形，是<strong>圆锥</strong>；两个三角形加三个长方形，是<strong>三棱柱</strong>；四个三角形，是<strong>三棱锥</strong>；六个正方形，是<strong>正方体</strong>；两个全等的多边形加若干个长方形，是<strong>棱柱</strong>；一个多边形加若干个三角形，是<strong>棱锥</strong>。</p>
+    <p>还要注意展开图的“尺寸对应”：长方形的长等于底面周长，扇形的弧长等于底面周长，长方形的宽等于高。这些对应关系是计算题的关键。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">圆柱的展开图与面积</span>
+      </div>
+      <div class="example-body">
+        <p>一个圆柱的底面半径 <i>r</i> = 3 cm，高 <i>h</i> = 5 cm。</p>
+        <p>（1）它的侧面展开图是什么图形？这个图形的长和宽各是多少？</p>
+        <p>（2）求它的侧面积和全面积（结果保留 π）。</p>
+        <p>（3）如果要做这样一个圆柱形纸筒（无盖），至少需要多少平方厘米纸板？（π 取 3.14，结果精确到 0.1）</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）侧面展开图是长方形。长等于底面周长 2π<i>r</i> = 2 × π × 3 = 6π（cm）；宽等于高 <i>h</i> = 5 cm。</p>
+          <p>（2）<i>S</i><sub>侧</sub> = 2π<i>r</i><i>h</i> = 2 × π × 3 × 5 = 30π（cm<sup>2</sup>）。</p>
+          <p><i>S</i><sub>全</sub> = 2π<i>r</i><sup>2</sup> + 2π<i>r</i><i>h</i> = 2 × π × 3<sup>2</sup> + 30π = 18π + 30π = 48π（cm<sup>2</sup>）。</p>
+          <p>（3）无盖纸筒只有一个底面，所需纸板面积为 <i>S</i><sub>侧</sub> + π<i>r</i><sup>2</sup> = 30π + 9π = 39π ≈ 39 × 3.14 = 122.46 ≈ 122.5（cm<sup>2</sup>）。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">圆锥的展开图与面积</span>
+      </div>
+      <div class="example-body">
+        <p>一个圆锥的底面半径 <i>r</i> = 3 cm，母线 <i>l</i> = 5 cm。</p>
+        <p>（1）它的侧面展开图是什么图形？扇形的半径和弧长各是多少？</p>
+        <p>（2）求它的侧面积和全面积（结果保留 π）。</p>
+        <p>（3）求这个圆锥的高 <i>h</i>。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）侧面展开图是扇形。扇形的半径等于母线 <i>l</i> = 5 cm；扇形的弧长等于底面周长 2π<i>r</i> = 2 × π × 3 = 6π（cm）。</p>
+          <p>（2）<i>S</i><sub>侧</sub> = π<i>r</i><i>l</i> = π × 3 × 5 = 15π（cm<sup>2</sup>）。</p>
+          <p><i>S</i><sub>全</sub> = π<i>r</i><sup>2</sup> + π<i>r</i><i>l</i> = π × 3<sup>2</sup> + 15π = 9π + 15π = 24π（cm<sup>2</sup>）。</p>
+          <p>（3）母线、半径、高构成直角三角形，由 <i>l</i><sup>2</sup> = <i>r</i><sup>2</sup> + <i>h</i><sup>2</sup> 得 <i>h</i><sup>2</sup> = 5<sup>2</sup> − 3<sup>2</sup> = 25 − 9 = 16，所以 <i>h</i> = 4 cm。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">棱柱的展开图与全面积</span>
+      </div>
+      <div class="example-body">
+        <p>一个直三棱柱的底面是直角三角形，两条直角边长分别为 3 cm 和 4 cm，斜边长为 5 cm，棱柱的高为 6 cm。</p>
+        <p>（1）它的表面展开图由哪些图形组成？各几个？</p>
+        <p>（2）求它的侧面积。</p>
+        <p>（3）求它的全面积。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）三棱柱的表面展开图由 2 个全等的直角三角形和 3 个长方形组成，共 5 个面。</p>
+          <p>（2）3 个长方形连成一排，总长等于底面三角形的周长：3 + 4 + 5 = 12（cm）；宽等于棱柱的高 6 cm。所以 <i>S</i><sub>侧</sub> = 12 × 6 = 72（cm<sup>2</sup>）。</p>
+          <p>（3）一个底面的面积是 ½ × 3 × 4 = 6（cm<sup>2</sup>），两个底面共 12 cm<sup>2</sup>。所以 <i>S</i><sub>全</sub> = 72 + 12 = 84（cm<sup>2</sup>）。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">练一练</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>下面的展开图分别是什么几何体的表面展开图？</span>
+      </div>
+      <p>① 2 个圆和 1 个长方形；② 1 个圆和 1 个扇形；③ 2 个全等三角形和 3 个长方形；④ 4 个三角形；⑤ 6 个全等的正方形。</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>① 圆柱（两个圆是上、下底面，长方形是侧面）；② 圆锥（圆是底面，扇形是侧面）；③ 三棱柱（两个三角形是底面，三个长方形是侧面）；④ 三棱锥（一个三角形是底面，三个三角形是侧面）；⑤ 正方体。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>一个圆柱的底面半径 <i>r</i> = 2 cm，高 <i>h</i> = 6 cm。求它的侧面积、全面积，以及侧面展开图（长方形）的长和宽。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>侧面展开图的长 = 2π<i>r</i> = 2 × π × 2 = 4π（cm），宽 = <i>h</i> = 6 cm。</p>
+          <p><i>S</i><sub>侧</sub> = 2π<i>r</i><i>h</i> = 2 × π × 2 × 6 = 24π（cm<sup>2</sup>）。</p>
+          <p><i>S</i><sub>全</sub> = 2π<i>r</i><sup>2</sup> + 24π = 2 × π × 4 + 24π = 8π + 24π = 32π（cm<sup>2</sup>）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>一个圆锥的底面半径 <i>r</i> = 6 cm，母线 <i>l</i> = 10 cm。求它的侧面积、全面积和高。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>S</i><sub>侧</sub> = π<i>r</i><i>l</i> = π × 6 × 10 = 60π（cm<sup>2</sup>）。</p>
+          <p><i>S</i><sub>全</sub> = π<i>r</i><sup>2</sup> + 60π = 36π + 60π = 96π（cm<sup>2</sup>）。</p>
+          <p>由 <i>l</i><sup>2</sup> = <i>r</i><sup>2</sup> + <i>h</i><sup>2</sup> 得 <i>h</i><sup>2</sup> = 10<sup>2</sup> − 6<sup>2</sup> = 100 − 36 = 64，所以 <i>h</i> = 8 cm。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>把一张长 12.56 cm、宽 8 cm 的长方形纸片卷成一个圆柱（纸片的长正好绕底面一圈，接头处忽略不计）。求这个圆柱的底面半径和侧面积。（π 取 3.14）</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>卷成圆柱后，纸片的长变成底面周长，宽变成圆柱的高。由 2π<i>r</i> = 12.56 得 <i>r</i> = 12.56 ÷ (2 × 3.14) = 12.56 ÷ 6.28 = 2（cm）。</p>
+          <p>侧面积就是这张纸片的面积：12.56 × 8 = 100.48（cm<sup>2</sup>）。</p>
+          <p>也可以这样算：<i>S</i><sub>侧</sub> = 2π<i>r</i><i>h</i> = 2 × 3.14 × 2 × 8 = 100.48（cm<sup>2</sup>），两种算法一致。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>一个圆锥的侧面展开图恰好是一个半圆，且这个半圆的半径为 8 cm。</span>
+      </div>
+      <p>（1）这个圆锥的母线长是多少？底面半径是多少？</p>
+      <p>（2）求它的侧面积和全面积（结果保留 π）。</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）侧面展开图是半圆，所以母线 <i>l</i> 等于这个半圆的半径，即 <i>l</i> = 8 cm。</p>
+          <p>半圆的弧长 = ½ × 2π<i>l</i> = π<i>l</i> = 8π（cm）。这个弧长就是底面圆的周长，由 2π<i>r</i> = 8π 得 <i>r</i> = 4 cm。</p>
+          <p>（2）<i>S</i><sub>侧</sub> = π<i>r</i><i>l</i> = π × 4 × 8 = 32π（cm<sup>2</sup>）。</p>
+          <p><i>S</i><sub>全</sub> = π<i>r</i><sup>2</sup> + 32π = 16π + 32π = 48π（cm<sup>2</sup>）。</p>
+          <p>说明：展开图是半圆时，恒有 <i>l</i> = 2<i>r</i>。因为弧长 π<i>l</i> 等于底面周长 2π<i>r</i>，两边约去 π 就得到 <i>l</i> = 2<i>r</i>。这是一个常用的结论。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本课时方法归纳：</strong>
+      <ul>
+        <li>认展开图：两个圆 + 长方形 → 圆柱；一个圆 + 扇形 → 圆锥；两个全等多边形 + 若干个长方形 → 棱柱。</li>
+        <li>抓对应：长方形的长 = 底面周长 2π<i>r</i>，宽 = 高 <i>h</i>；扇形的弧长 = 2π<i>r</i>，半径 = 母线 <i>l</i>。</li>
+        <li>算面积：先算侧面积，再加底面积；圆柱加两个底面，圆锥加一个底面，无盖容器不加盖。</li>
+        <li>求未知量：由弧长或周长反求 <i>r</i>，由 <i>l</i><sup>2</sup> = <i>r</i><sup>2</sup> + <i>h</i><sup>2</sup> 反求高。</li>
+      </ul>
+    </div>
+  </section>
+  <section class="knowledge-card" id="p2-3">
+    <h3 class="card-title"><span class="num">课时 3</span>截一个几何体</h3>
+
+    <p>切西瓜时，一刀下去，西瓜被切成两半，切出来的那个面是平的、圆圆的；切豆腐时，刀口斜着切，切出来的面是斜的四边形；切火腿肠时，横着切得到圆片，斜着切得到椭圆片。这些“切出来的面”，就是我们要研究的<strong>截面</strong>。这一课时，我们研究用平面去截各种几何体，截面会是什么形状。</p>
+
+    <h4 class="subhead">1. 截面的概念</h4>
+    <p>用一个平面去截一个几何体，截出的面叫做<strong>截面</strong>。这里的“截”可以理解为“切”：平面像一把刀，把几何体切开，刀面与几何体表面相交得到的那个平面图形，就是截面。</p>
+    <p>要注意两点：第一，截面是一个<strong>平面图形</strong>，不是立体图形；第二，截面的形状由截的位置和方向决定——同一个几何体，不同的截法会得到不同的截面。</p>
+    <p>截面是怎么形成的？平面与几何体的每一个面相交，交线就是截面的一条边。所以，<strong>截面有几条边，就说明平面与几何体的几个面相交了</strong>。这句话是解决“截面最多几边形”问题的关键。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>用一个平面去截几何体，截出的面叫截面。截面是平面图形，它的边数等于平面与几何体表面相交的面的个数。截面的形状取决于截的方向和位置。
+    </div>
+
+    <h4 class="subhead">2. 正方体的截面</h4>
+    <p>正方体有 6 个面，都是正方形。用平面去截正方体，截面的形状可能是三角形、四边形、五边形、六边形。下面分别说明。</p>
+    <p><strong>（1）三角形。</strong>把正方体的一个角切掉，让平面与相交于同一个顶点的三个面都相交，截面就是一个三角形。调整切的位置，可以得到不同的三角形：三个顶点到公共顶点的距离相等时，截面是<strong>等边三角形</strong>；两个距离相等时，截面是<strong>等腰三角形</strong>；一般情况是<strong>不等边三角形</strong>。要注意，正方体的截面三角形一定是<strong>锐角三角形</strong>，不可能是直角三角形或钝角三角形。</p>
+    <p><strong>（2）四边形。</strong>如果平面平行于正方体的一个面，截面是与这个面全等的<strong>正方形</strong>；如果平面与两个相对的面都相交，且不平行于其他面，截面可能是<strong>长方形</strong>、<strong>平行四边形</strong>或<strong>梯形</strong>。例如，平面经过一组对棱（两条平行的棱）时，截面是长方形。</p>
+    <p><strong>（3）五边形。</strong>平面与正方体的 5 个面相交时，截面是五边形。这时平面既不平等于任何一面，也不经过任何顶点。</p>
+    <p><strong>（4）六边形。</strong>平面与全部 6 个面都相交时，截面是六边形。取正方体 6 条棱的中点，过这 6 个中点作一个平面，截面正好是一个<strong>正六边形</strong>。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 520 150" role="img" aria-label="用平面截正方体得到的四种截面">
+        <title>正方体的截面</title>
+        <g stroke="#334155" stroke-width="1.5">
+          <g transform="translate(20,5)">
+            <path d="M0 35 H60 V95 H0 Z" fill="#dbeafe"/>
+            <path d="M0 35 L30 5 L90 5 L60 35 Z" fill="#e0e7ff"/>
+            <path d="M60 35 L90 5 L90 65 L60 95 Z" fill="#dbeafe"/>
+            <path d="M0 95 L30 65 M30 65 H90 M30 65 L30 5" fill="none" stroke-dasharray="4 3"/>
+            <path d="M36 35 L60 59 L72 23 Z" fill="#fef3c7"/>
+          </g>
+          <g transform="translate(150,5)">
+            <path d="M0 35 H60 V95 H0 Z" fill="#dbeafe"/>
+            <path d="M0 35 L30 5 L90 5 L60 35 Z" fill="#e0e7ff"/>
+            <path d="M60 35 L90 5 L90 65 L60 95 Z" fill="#dbeafe"/>
+            <path d="M0 95 L30 65 M30 65 H90 M30 65 L30 5" fill="none" stroke-dasharray="4 3"/>
+            <path d="M15 20 H75 V80 H15 Z" fill="#fef3c7"/>
+          </g>
+          <g transform="translate(280,5)">
+            <path d="M0 35 H60 V95 H0 Z" fill="#dbeafe"/>
+            <path d="M0 35 L30 5 L90 5 L60 35 Z" fill="#e0e7ff"/>
+            <path d="M60 35 L90 5 L90 65 L60 95 Z" fill="#dbeafe"/>
+            <path d="M0 95 L30 65 M30 65 H90 M30 65 L30 5" fill="none" stroke-dasharray="4 3"/>
+            <path d="M66 89 L81 14 L54 5 L30 29 L21 74 Z" fill="#fef3c7"/>
+          </g>
+          <g transform="translate(410,5)">
+            <path d="M0 35 H60 V95 H0 Z" fill="#dbeafe"/>
+            <path d="M0 35 L30 5 L90 5 L60 35 Z" fill="#e0e7ff"/>
+            <path d="M60 35 L90 5 L90 65 L60 95 Z" fill="#dbeafe"/>
+            <path d="M0 95 L30 65 M30 65 H90 M30 65 L30 5" fill="none" stroke-dasharray="4 3"/>
+            <path d="M60 65 L30 95 L15 80 L30 35 L60 5 L75 20 Z" fill="#fef3c7"/>
+          </g>
+        </g>
+        <g fill="#334155" font-size="12" text-anchor="middle">
+          <text x="65" y="128">三角形</text>
+          <text x="195" y="128">正方形</text>
+          <text x="325" y="128">五边形</text>
+          <text x="455" y="128">六边形</text>
+        </g>
+      </svg>
+      <figcaption>图 10　用平面截正方体得到的四种截面（阴影部分为截面）</figcaption>
+    </figure>
+
+    <h4 class="subhead">议一议：正方体的截面最多是几边形</h4>
+    <p>前面说过，截面的边数等于平面与几何体表面相交的面的个数。正方体一共只有 6 个面，所以截面最多只有 6 条边，也就是最多是六边形。既然只有 6 个面，那么“七边形”就无从谈起了——平面不可能与 7 个面相交。</p>
+    <p>同样可以说明：正方体的截面<strong>不可能出现圆</strong>，因为圆是曲线围成的，而正方体的表面全是平面，平面与平面相交只能得到线段。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>正方体的截面可能是三角形、四边形、五边形、六边形，<strong>最多是六边形，不可能是七边形</strong>，也不可能是圆。理由：正方体只有 6 个面，截面最多与 6 个面相交，最多 6 条边。其中三角形可以是等边三角形，四边形可以是正方形、长方形、平行四边形、梯形，六边形可以是正六边形。
+    </div>
+
+    <div class="warn">
+      <strong>易错：</strong>“正方体的截面最多是六边形”不能理解成“截面一定是六边形以内”——五边形、六边形的截面确实存在，只要平面与 5 个或 6 个面都相交即可。另外，不要想当然地认为正方体的截面可以是直角三角形，正方体的截面三角形一定是锐角三角形。
+    </div>
+
+    <h4 class="subhead">3. 圆柱、圆锥、球的截面</h4>
+    <p><strong>圆柱的截面。</strong>圆柱有两个平行的圆形底面和一个曲面侧面。如果平面<strong>平行于底面</strong>，截面是<strong>圆</strong>；如果平面<strong>垂直于底面</strong>（与轴平行），截面是<strong>长方形</strong>，过轴时长方形的宽等于底面直径 2<i>r</i>、高等于 <i>h</i>，此时面积最大；如果平面<strong>斜着</strong>截且与两个底面都相交，截面是<strong>椭圆</strong>；如果平面只截到侧面和底面，截面是<strong>弓形</strong>（一段圆弧加一条线段）。</p>
+    <p><strong>圆锥的截面。</strong>如果平面<strong>平行于底面</strong>，截面是<strong>圆</strong>；如果平面<strong>过顶点</strong>，截面是<strong>三角形</strong>（等腰三角形，底边是底面圆的一条弦）；如果平面<strong>斜着</strong>截且不过顶点，截面是<strong>椭圆</strong>；如果平面与底面相交且与侧面相交，截面是类似<strong>抛物线</strong>的一部分的形状。</p>
+    <p><strong>球的截面。</strong>用任何平面去截球，截面<strong>总是圆</strong>。过球心的截面圆最大，叫大圆；不过球心的截面圆较小。所以“截面永远是圆”是球独有的性质。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 540 210" role="img" aria-label="圆柱、圆锥、球的截面">
+        <title>圆柱、圆锥、球的截面</title>
+        <g stroke="#334155" stroke-width="1.5" fill="none">
+          <ellipse cx="80" cy="35" rx="42" ry="12" fill="#dbeafe"/>
+          <path d="M38 35 L38 145"/>
+          <path d="M122 35 L122 145"/>
+          <path d="M38 145 A42 12 0 0 0 122 145" fill="#dbeafe"/>
+          <path d="M38 145 A42 12 0 0 1 122 145" stroke-dasharray="4 3"/>
+          <ellipse cx="80" cy="90" rx="42" ry="12" stroke-dasharray="5 4" fill="#fef3c7"/>
+          <path d="M38 35 L122 35 M38 145 L122 145" stroke-dasharray="5 4"/>
+          <path d="M250 30 L205 150"/>
+          <path d="M250 30 L295 150"/>
+          <ellipse cx="250" cy="150" rx="45" ry="12" fill="#dbeafe"/>
+          <path d="M205 150 A45 12 0 0 0 295 150" fill="#dbeafe"/>
+          <path d="M205 150 A45 12 0 0 1 295 150" stroke-dasharray="4 3"/>
+          <path d="M250 30 L222 147 L278 147 Z" stroke-dasharray="5 4" fill="#fef3c7"/>
+          <circle cx="425" cy="95" r="48" fill="#dbeafe"/>
+          <circle cx="425" cy="95" r="30" stroke-dasharray="5 4" fill="#fef3c7"/>
+          <path d="M377 95 H473" stroke-dasharray="4 3"/>
+        </g>
+        <g fill="#334155" font-size="12" text-anchor="middle">
+          <text x="80" y="185">圆柱：圆、长方形、椭圆</text>
+          <text x="250" y="185">圆锥：圆、三角形、椭圆</text>
+          <text x="425" y="185">球：圆</text>
+          <text x="80" y="203">（虚线为截面）</text>
+          <text x="425" y="203">（过球心的是大圆）</text>
+        </g>
+      </svg>
+      <figcaption>图 11　圆柱、圆锥、球的截面示意</figcaption>
+    </figure>
+
+    <h4 class="subhead">4. 由截面想象几何体</h4>
+    <p>反过来，已知截面，也可以猜一猜被截的是什么几何体。这是培养空间想象力的好办法：</p>
+    <p>如果截面总是圆，被截的可能是球，也可能是圆柱（平行于底面截）或圆锥（平行于底面截）；如果无论从哪个方向截，截面都是圆，那它一定是球。</p>
+    <p>如果截面出现长方形，被截的可能是棱柱（包括正方体、长方体），也可能是圆柱（过轴截）；如果截面出现三角形，可能是棱锥、棱柱（切角），也可能是圆锥（过顶点截）。</p>
+
+    <div class="method">
+      <strong>方法归纳：</strong>判断截面形状的三步：①看几何体有几个面、有没有曲面；②看平面与哪些面相交（有几个交点、交线是直线还是曲线）；③把交线依次连起来，就是截面的形状。有曲面的几何体（圆柱、圆锥、球）才能截出曲线边，全是平面的几何体（棱柱、棱锥）只能截出多边形。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">正方体截面的判断</span>
+      </div>
+      <div class="example-body">
+        <p>用一个平面去截正方体，截面不可能是（　　）。</p>
+        <p><span class="option">A．三角形</span>　<span class="option">B．正方形</span>　<span class="option">C．五边形</span>　<span class="option">D．七边形</span></p>
+        <p>并说明其他三个选项为什么可能。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>选 D。</p>
+          <p>截面的边数等于平面与几何体表面相交的面的个数。正方体只有 6 个面，平面最多与 6 个面相交，所以截面最多是六边形，不可能是七边形。</p>
+          <p>A 可能：切掉正方体的一个角，平面与交于同一顶点的三个面相交，截面是三角形。</p>
+          <p>B 可能：平面平行于正方体的一个面，截面是与该面全等的正方形。</p>
+          <p>C 可能：平面与正方体的 5 个面都相交，截面是五边形。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">怎样截出正六边形</span>
+      </div>
+      <div class="example-body">
+        <p>（1）正方体的截面最多是几边形？为什么？</p>
+        <p>（2）要截出一个正六边形，平面应该怎样放置？请描述截法并说明理由。</p>
+        <p>（3）正方体的截面可能是圆吗？为什么？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）最多是六边形。因为截面的一条边就是平面与正方体一个面的交线，正方体只有 6 个面，所以截面最多有 6 条边。</p>
+          <p>（2）取正方体 6 条棱的中点：从一条棱的中点出发，沿着表面依次找到相邻各面棱的中点，共 6 个点。过这 6 个点作一个平面，这个平面与正方体的 6 个面都相交，截面就是六边形。由于正方体的对称性，这 6 个点到正方体中心的距离都相等，所以截得的是<strong>正六边形</strong>。</p>
+          <p>（3）不可能。圆是由曲线围成的，而正方体的 6 个面都是平面，平面与平面相交只能得到线段（直线的一部分），不可能得到曲线，所以截面不可能是圆。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">圆柱的截面与计算</span>
+      </div>
+      <div class="example-body">
+        <p>一个圆柱的底面半径 <i>r</i> = 3 cm，高 <i>h</i> = 8 cm。</p>
+        <p>（1）用平行于底面的平面去截，得到的截面是什么图形？截面的面积最大是多少？</p>
+        <p>（2）用经过轴的平面去截，得到的截面是什么图形？求这个截面的面积和周长。</p>
+        <p>（3）如果截面的面积是 9π cm<sup>2</sup>，能确定截面是什么图形吗？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）平行于底面截，截面是圆，且与底面全等。面积 <i>S</i> = π<i>r</i><sup>2</sup> = π × 3<sup>2</sup> = 9π（cm<sup>2</sup>）。这就是最大的圆截面。</p>
+          <p>（2）经过轴截，截面是长方形。它的宽等于底面直径 2<i>r</i> = 6 cm，高等于圆柱的高 8 cm。面积 <i>S</i> = 6 × 8 = 48（cm<sup>2</sup>）；周长 <i>C</i> = 2 × (6 + 8) = 28（cm）。</p>
+          <p>（3）不能唯一确定。面积为 9π 的圆截面是可能的（平行于底面截），但斜着截得到的椭圆也可能面积是 9π。所以仅凭面积无法确定截面形状，还要知道截的方向。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">练一练</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>判断下列说法是否正确，正确的画“√”，错误的画“×”，并说明理由。</span>
+      </div>
+      <p>（1）用一个平面截球，截面一定是圆。（　　）</p>
+      <p>（2）正方体的截面可能是七边形。（　　）</p>
+      <p>（3）圆柱的截面可能是三角形。（　　）</p>
+      <p>（4）正方体的截面可能是等边三角形。（　　）</p>
+      <p>（5）圆锥的截面可能是长方形。（　　）</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）√。球面上任意一点到球心的距离都相等，任何平面与球面相交得到的都是圆。</p>
+          <p>（2）×。正方体只有 6 个面，截面最多六边形，不可能有 7 条边。</p>
+          <p>（3）×。圆柱的侧面是曲面，与平面相交得到曲线；上下底面是圆，与平面相交得线段或圆。无论怎么截，都得不到三条线段围成的三角形。</p>
+          <p>（4）√。切掉正方体的一个角，使平面与三条棱的交点到该顶点的距离相等，截面就是等边三角形。</p>
+          <p>（5）×。圆锥过顶点截得三角形，平行底面截得圆，斜截得椭圆或抛物线形，都不可能得到长方形（长方形需要两组平行边，圆锥侧面是曲面，给不出两组平行线段）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>用平面去截下列几何体，截面形状按“圆、三角形、长方形、椭圆”分类，请把几何体与可能截出的形状连起来（用文字对应即可）。</span>
+      </div>
+      <p>① 正方体　② 圆柱　③ 圆锥　④ 球</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>① 正方体：三角形、长方形（还能截出正方形、五边形、六边形，但不能截出圆和椭圆）。</p>
+          <p>② 圆柱：圆（平行底面）、长方形（过轴）、椭圆（斜截）。</p>
+          <p>③ 圆锥：圆（平行底面）、三角形（过顶点）、椭圆（斜截不过顶点）。</p>
+          <p>④ 球：只能是圆。</p>
+          <p>其中“圆”可以由 ②③④ 截出，“三角形”可以由 ①③ 截出，“长方形”可以由 ①② 截出，“椭圆”可以由 ②③ 截出。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>一个正方体的棱长为 6 cm。</span>
+      </div>
+      <p>（1）用平行于一个面的平面去截，截面是什么图形？面积是多少？</p>
+      <p>（2）切掉一个角，使截面是等边三角形，且三角形的三个顶点分别在三条棱的中点上，求这个等边三角形的边长。</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）截面是与底面全等的正方形，边长 6 cm，面积 6 × 6 = 36（cm<sup>2</sup>）。</p>
+          <p>（2）三条棱的中点两两相连，每条连线都是所在正方形面上的一条线段。以棱长 6 为例，取三条棱的中点，则每个顶点到公共顶点的距离都是 3 cm，这三条线段两两垂直、长度都是 3 cm 和 3 cm 构成的直角三角形的斜边，即 √(3<sup>2</sup> + 3<sup>2</sup>) = √18 = 3√2（cm）。所以这个等边三角形的边长是 3√2 cm。</p>
+          <p>说明：√18 = 3√2 是八年级要学的二次根式，这里可以先写成 √18，或用计算器算出约 4.24 cm。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>一个圆柱的底面直径为 6 cm，高为 10 cm。</span>
+      </div>
+      <p>（1）平行于底面截，截面圆的面积是多少？（结果保留 π）</p>
+      <p>（2）过轴截，截面的面积和周长各是多少？</p>
+      <p>（3）比较这两个截面，哪一个面积大？大多少？</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>底面半径 <i>r</i> = 6 ÷ 2 = 3（cm）。</p>
+          <p>（1）截面圆面积 = π<i>r</i><sup>2</sup> = 9π（cm<sup>2</sup>）。</p>
+          <p>（2）过轴截面是长方形，宽 = 2<i>r</i> = 6 cm，高 = 10 cm。面积 = 6 × 10 = 60（cm<sup>2</sup>）；周长 = 2 × (6 + 10) = 32（cm）。</p>
+          <p>（3）60 &gt; 9π ≈ 28.26，长方形截面面积大，大 60 − 9π（cm<sup>2</sup>），约为 31.74 cm<sup>2</sup>。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>小明说：“有一个几何体，用任何方向的平面去截它，截面都是圆。”小华说：“那它一定是球。”小华说得对吗？请说明理由，并举一个反例说明：如果只说“截面可能是圆”，就不能断定是球。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>小华说得对。如果一个几何体从任何方向截得的截面都是圆，那么它在各个方向上的“轮廓”都是圆，这样的几何体只能是球。圆柱只在平行于底面截时得到圆，斜截得到椭圆，过轴截得到长方形；圆锥只在平行于底面截时得到圆，过顶点截得到三角形。所以它们都不满足“任何方向都是圆”。</p>
+          <p>反例：圆柱平行于底面截，截面是圆；圆锥平行于底面截，截面也是圆；球无论怎么截都是圆。所以只说“截面是圆”，被截的几何体可能是圆柱、圆锥，也可能是球，不能唯一确定。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本课时方法归纳：</strong>
+      <ul>
+        <li>记概念：截面是“平面截几何体得到的平面图形”，截面边数 = 平面与几何体相交的面数。</li>
+        <li>记结论：正方体截面最多六边形，不可能是七边形，不可能是圆；三角形必为锐角三角形（可为等边三角形）。</li>
+        <li>分类记：有曲面的几何体才可能截出曲线边（圆、椭圆、抛物线形）；全是平面的几何体只能截出多边形。</li>
+        <li>反向想：由截面形状猜几何体时，先看有没有曲线边，再数边数，最后结合“截的方向”。</li>
+      </ul>
+    </div>
+  </section>
+  <section class="knowledge-card" id="p2-4">
+    <h3 class="card-title"><span class="num">课时 4</span>从三个方向看物体的形状</h3>
+
+    <p>苏轼写过“横看成岭侧成峰，远近高低各不同”。同一座山，从不同方向看，看到的形状不一样。物体也是如此：一个茶杯，从正面看是长方形，从上面看是圆；一个台阶，从正面看是一级一级的折线，从上面看是一条条长方形。工程图纸上的“三视图”，就是用来准确描述物体形状的。这一课时，我们学习怎样从三个方向看物体，并把看到的形状画下来。</p>
+
+    <h4 class="subhead">1. 三个方向与三个视图</h4>
+    <p>观察一个几何体，通常选三个方向：<strong>从正面看</strong>、<strong>从左面看</strong>、<strong>从上面看</strong>。把从正面看到的图形叫<strong>主视图</strong>，从左面看到的图形叫<strong>左视图</strong>，从上面看到的图形叫<strong>俯视图</strong>。这三个图合起来，就叫这个几何体的<strong>三视图</strong>。</p>
+    <p>三个视图各反映什么？</p>
+    <p>主视图是从正面看，看到的是物体的<strong>长</strong>（左右方向的尺寸）和<strong>高</strong>（上下方向的尺寸）；左视图是从左面看，看到的是物体的<strong>宽</strong>（前后方向的尺寸）和<strong>高</strong>；俯视图是从上面看，看到的是物体的<strong>长</strong>和<strong>宽</strong>。</p>
+    <p>看的时候要注意：视线要与观察方向垂直，看到的是物体在该方向上的“轮廓”，被挡住的棱和面看不见，所以画出来的图只有外轮廓和可见的棱。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>主视图——从正面看，反映长和高；左视图——从左面看，反映宽和高；俯视图——从上面看，反映长和宽。三个视图都是平面图形，只画看得见的轮廓线。
+    </div>
+
+    <h4 class="subhead">2. 三视图的位置与画法</h4>
+    <p>三个视图在图纸上有固定的位置：<strong>主视图画在左上角，左视图画在主视图的正右方，俯视图画在主视图的正下方</strong>。这个位置关系不能随意摆放，因为它体现了三个视图之间的尺寸联系。</p>
+    <p>位置摆好以后，还有三条重要的对应关系，通常概括为“<strong>长对正、高平齐、宽相等</strong>”：</p>
+    <p><strong>长对正：</strong>主视图与俯视图都反映物体的长，所以它们的长度相等，并且左右对齐。画图时，主视图的左右两条轮廓线向下延长，正好是俯视图的左右边界。</p>
+    <p><strong>高平齐：</strong>主视图与左视图都反映物体的高，所以它们的高度相等，并且上下对齐。主视图的上下两条轮廓线向右延长，正好是左视图的上下边界。</p>
+    <p><strong>宽相等：</strong>左视图与俯视图都反映物体的宽（前后方向的尺寸）。左视图水平方向的宽度，等于俯视图竖直方向的高度。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 400 270" role="img" aria-label="三视图的位置关系与长对正高平齐宽相等">
+        <title>三视图的位置与三条对应关系</title>
+        <g stroke="#334155" stroke-width="1.5" fill="#dbeafe">
+          <rect x="50" y="40" width="100" height="70"/>
+          <rect x="210" y="40" width="80" height="70"/>
+          <rect x="50" y="160" width="100" height="80"/>
+        </g>
+        <g stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4" fill="none">
+          <path d="M50 110 L50 160 M150 110 L150 160"/>
+          <path d="M150 40 L210 40 M150 110 L210 110"/>
+          <path d="M162 160 L162 240 M210 122 L290 122"/>
+        </g>
+        <g fill="#334155" font-size="13" text-anchor="middle">
+          <text x="100" y="82">主视图</text>
+          <text x="250" y="82">左视图</text>
+          <text x="100" y="206">俯视图</text>
+        </g>
+        <g fill="#475569" font-size="11" text-anchor="middle">
+          <text x="100" y="145">长对正</text>
+          <text x="180" y="30">高平齐</text>
+          <text x="252" y="140">宽相等</text>
+        </g>
+        <g fill="#475569" font-size="11">
+          <text x="168" y="205">宽</text>
+        </g>
+      </svg>
+      <figcaption>图 12　三视图的位置关系与“长对正、高平齐、宽相等”</figcaption>
+    </figure>
+
+    <p>画三视图的一般步骤是：先画主视图；再在主视图的正下方画俯视图，做到“长对正”；然后在主视图的正右方画左视图，做到“高平齐”；最后检查左视图的宽是否等于俯视图的宽，做到“宽相等”。</p>
+
+    <div class="warn">
+      <strong>易错：</strong>三个视图的位置不能乱放：左视图一定在主视图的右边，俯视图一定在主视图的下边。另外，“宽相等”指的是左视图水平方向的宽度与俯视图竖直方向的高度相等，而不是左视图与俯视图“一样大”，这是最容易记错的一条。
+    </div>
+
+    <h4 class="subhead">3. 由小立方体搭成的几何体的三视图</h4>
+    <p>用若干个相同的小立方体搭成一个几何体，画三视图时有很实用的规律：</p>
+    <p><strong>主视图</strong>看“列”：从左到右数一数有几列，每一列画几个小正方形，取决于这一列（前后方向）上最高的那一摞有几层。</p>
+    <p><strong>左视图</strong>看“行”：从前往后数有几行，每一行画几个小正方形，取决于这一行（左右方向）上最高的那一摞有几层。注意，画左视图时，物体的<strong>后面画在左边，前面画在右边</strong>。</p>
+    <p><strong>俯视图</strong>看“底面”：把每一列、每一行交叉的位置上有没有小立方体画出来，有几层就在格子里写几。俯视图反映的是“底盘”，所以格子里的数字就是那一摞的层数。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 520 270" role="img" aria-label="由四个小立方体搭成的几何体及其三视图">
+        <title>小立方体搭件的三视图</title>
+        <g stroke="#334155" stroke-width="1.5">
+          <g fill="#dbeafe">
+            <path d="M110 122 L134 136 L110 150 L86 136 Z"/>
+            <path d="M86 136 L110 150 L110 178 L86 164 Z"/>
+            <path d="M110 150 L134 136 L134 164 L110 178 Z"/>
+          </g>
+          <g fill="#e0e7ff">
+            <path d="M134 136 L158 150 L134 164 L110 150 Z"/>
+            <path d="M110 150 L134 164 L134 192 L110 178 Z"/>
+            <path d="M134 164 L158 150 L158 178 L134 192 Z"/>
+          </g>
+          <g fill="#dbeafe">
+            <path d="M158 150 L182 164 L158 178 L134 164 Z"/>
+            <path d="M134 164 L158 178 L158 206 L134 192 Z"/>
+            <path d="M158 178 L182 164 L182 192 L158 206 Z"/>
+          </g>
+          <g fill="#fef3c7">
+            <path d="M134 108 L158 122 L134 136 L110 122 Z"/>
+            <path d="M110 122 L134 136 L134 164 L110 150 Z"/>
+            <path d="M134 136 L158 122 L158 150 L134 164 Z"/>
+          </g>
+        </g>
+        <g stroke="#334155" stroke-width="1.5" fill="#dbeafe">
+          <rect x="270" y="140" width="30" height="30"/>
+          <rect x="300" y="140" width="30" height="30"/>
+          <rect x="330" y="140" width="30" height="30"/>
+          <rect x="300" y="110" width="30" height="30"/>
+          <rect x="400" y="110" width="30" height="30"/>
+          <rect x="400" y="140" width="30" height="30"/>
+          <rect x="270" y="200" width="30" height="30"/>
+          <rect x="300" y="200" width="30" height="30"/>
+          <rect x="330" y="200" width="30" height="30"/>
+        </g>
+        <g stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4" fill="none">
+          <path d="M270 170 L270 200 M360 170 L360 200"/>
+          <path d="M360 110 L400 110 M360 170 L400 170"/>
+        </g>
+        <g fill="#334155" font-size="11" text-anchor="middle">
+          <text x="315" y="187">主视图</text>
+          <text x="415" y="187">左视图</text>
+          <text x="315" y="250">俯视图</text>
+          <text x="285" y="220">1</text>
+          <text x="315" y="220">2</text>
+          <text x="345" y="220">1</text>
+        </g>
+        <g fill="#475569" font-size="11" text-anchor="middle">
+          <text x="135" y="232">由 4 个小立方体搭成</text>
+        </g>
+      </svg>
+      <figcaption>图 13　小立方体搭成的几何体及其三视图（俯视图中的数字表示该位置小立方体的层数）</figcaption>
+    </figure>
+
+    <p>看图 13：搭件由 4 个小立方体组成——底层 3 个排成一排，中间那个的上面再放 1 个。从正面看，看到 3 列，各列最高分别是 1 层、2 层、1 层，所以主视图是“凹”形；从左面看，只看到前后 1 行，最高 2 层，所以左视图是 2 个正方形叠成一竖列；从上面看，看到 3 个格子，数字依次是 1、2、1，所以俯视图是一行 3 个正方形。</p>
+
+    <div class="tip">
+      <strong>提示：</strong>俯视图是“地基图”，最有用。先在俯视图的每个格子里写上这一摞的层数，主视图就是“每一列取最大值”，左视图就是“每一行取最大值”。有了这张“地基图”，画三视图、数小立方体个数都不会漏。
+    </div>
+
+    <h4 class="subhead">4. 由三视图判断小立方体的个数</h4>
+    <p>已知三视图，问“最多有几个小立方体”“最少有几个”，是这部分的难点。核心思路只有一句话：<strong>俯视图定位置，主视图定列高，左视图定行高。</strong></p>
+    <p>具体做法：</p>
+    <p>第一步，看俯视图，确定哪些位置有小立方体，画出“地基图”。</p>
+    <p>第二步，看主视图，确定每一列（左右方向）最高是几层，这个数就是这一列所有格子的“上限”。</p>
+    <p>第三步，看左视图，确定每一行（前后方向）最高是几层，这个数就是这一行所有格子的“上限”。</p>
+    <p>第四步，每个格子的层数不能超过它所在列的上限，也不能超过它所在行的上限，即“格子层数 ≤ min（列上限，行上限）”。把所有格子都取到这个上限，得到的就是<strong>最多</strong>的个数；在满足“每列至少有一个格子达到列上限、每行至少有一个格子达到行上限”的前提下，让每个格子尽量少（至少 1 个），得到的就是<strong>最少</strong>的个数。</p>
+
+    <div class="method">
+      <strong>方法归纳：</strong>求最多：每个格子取 min（列上限，行上限），再求和。求最少：先把每列、每行的“最大值任务”安排到同一批格子上（能重合就重合），其余格子取 1，再求和。检验的办法是：用你填好的数字重新“看”一遍，看主视图、左视图是否与题目给的一致。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">由搭件画三视图</span>
+      </div>
+      <div class="example-body">
+        <p>用 5 个相同的小立方体搭成一个几何体：底层摆 4 个，排成 2 行 2 列（前排左、前排右、后排左、后排右各 1 个）；上层再放 1 个，放在前排左的位置上。</p>
+        <p>（1）画出这个几何体的三视图。</p>
+        <p>（2）如果把这个几何体放在桌面上，从上面看到的图形中，各位置的层数分别是多少？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）先画俯视图（地基图）：2 行 2 列共 4 个格子都有小立方体，层数分别是：前排左 2 层、前排右 1 层、后排左 1 层、后排右 1 层。</p>
+          <p>主视图看 2 列：左列的最高层数是 max(2, 1) = 2（前排左 2 层、后排左 1 层），右列的最高层数是 max(1, 1) = 1。所以主视图是 2 列，左边一列 2 个正方形，右边一列 1 个正方形，底边对齐。</p>
+          <p>左视图看 2 行：后面一行的最高层数是 max(1, 1) = 1，前面一行的最高层数是 max(2, 1) = 2。画左视图时后面在左、前面在右，所以左视图是 2 列，左边一列 1 个正方形，右边一列 2 个正方形。</p>
+          <p>俯视图是 2 行 2 列的 4 个正方形，格子里依次写 2、1（前排）和 1、1（后排）。</p>
+          <p>（2）从上面看到的图形中，4 个位置的层数就是俯视图中的数字：前排左 2 层，前排右 1 层，后排左 1 层，后排右 1 层，合计 2 + 1 + 1 + 1 = 5（个），与题目给出的 5 个相符。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">由三视图求最多、最少个数</span>
+      </div>
+      <div class="example-body">
+        <p>一个几何体由若干个相同的小立方体搭成。它的俯视图是 2 行 2 列的 4 个正方形（4 个位置都有小立方体）；主视图从左到右两列的高度分别是 3、2；左视图从左到右两列的高度分别是 2、3（左视图的左边对应后排，右边对应前排）。</p>
+        <p>（1）这个几何体最多由多少个小立方体搭成？</p>
+        <p>（2）最少由多少个小立方体搭成？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>设 4 个位置的层数分别为：前排左 <i>a</i>、前排右 <i>b</i>、后排左 <i>c</i>、后排右 <i>d</i>。</p>
+          <p>由主视图得：左列 max(<i>a</i>, <i>c</i>) = 3，右列 max(<i>b</i>, <i>d</i>) = 2。所以 <i>a</i>、<i>c</i> 都不超过 3，<i>b</i>、<i>d</i> 都不超过 2。</p>
+          <p>由左视图得：后排 max(<i>c</i>, <i>d</i>) = 2，前排 max(<i>a</i>, <i>b</i>) = 3。所以后排的格子都不超过 2，前排的格子都不超过 3。</p>
+          <p>（1）每个格子取两个上限中较小的那个：<i>a</i> ≤ min(3, 3) = 3，<i>b</i> ≤ min(2, 3) = 2，<i>c</i> ≤ min(3, 2) = 2，<i>d</i> ≤ min(2, 2) = 2。全部取到上限：<i>a</i> = 3，<i>b</i> = 2，<i>c</i> = 2，<i>d</i> = 2。检验：左列 max(3, 2) = 3 ✓，右列 max(2, 2) = 2 ✓，后排 max(2, 2) = 2 ✓，前排 max(3, 2) = 3 ✓。所以最多 3 + 2 + 2 + 2 = 9（个）。</p>
+          <p>（2）每个格子至少有 1 个。要让总数最少，就把“列最大值”和“行最大值”安排在同一批格子上：令 <i>a</i> = 3，它同时满足“左列最大值 3”和“前排最大值 3”；再令 <i>d</i> = 2，它同时满足“右列最大值 2”和“后排最大值 2”；其余两个格子取 1，即 <i>b</i> = 1，<i>c</i> = 1。检验：左列 max(3, 1) = 3 ✓，右列 max(1, 2) = 2 ✓，后排 max(1, 2) = 2 ✓，前排 max(3, 1) = 3 ✓。所以最少 3 + 1 + 1 + 2 = 7（个）。</p>
+          <p>答：最多 9 个，最少 7 个。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">由三视图还原几何体</span>
+      </div>
+      <div class="example-body">
+        <p>（1）一个几何体的主视图、左视图都是正方形，俯视图是圆，这个几何体是什么？</p>
+        <p>（2）一个几何体的三视图都是圆，这个几何体是什么？</p>
+        <p>（3）一个几何体的主视图、左视图都是长方形，俯视图是圆，这个几何体可能是什么？</p>
+        <p>（4）由三视图能不能唯一确定小立方体的个数？请举例说明。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）俯视图是圆，说明底面是圆，这个几何体是圆柱（或圆锥）。主视图、左视图都是正方形，说明高等于底面直径，所以它是一个“高等于底面直径”的圆柱。</p>
+          <p>（2）三视图都是圆，说明从三个方向看轮廓都是圆，这个几何体是球。</p>
+          <p>（3）俯视图是圆、主视图和左视图是长方形，这个几何体是圆柱（长方形的高是圆柱的高，宽是底面直径）。</p>
+          <p>（4）不能。三视图只能确定“每个位置最多有几层”和“每一列、每一行的最大值”，不能确定每个位置的确切层数。例如例 2 中，三视图完全相同的情况下，小立方体的个数可以是 7 个，也可以是 8 个或 9 个，只要每列、每行的最大值符合要求即可。</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="subhead">练一练</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>填空或判断。</span>
+      </div>
+      <p>（1）主视图与俯视图的________相等，叫做“长对正”；主视图与左视图的________相等，叫做“高平齐”；左视图的________与俯视图的________相等，叫做“宽相等”。</p>
+      <p>（2）三视图中，左视图画在主视图的________方，俯视图画在主视图的________方。（　　）</p>
+      <p>（3）球的三视图都是圆。（　　）</p>
+      <p>（4）一个几何体的主视图是长方形，则它一定是长方体。（　　）</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）长；高；宽（水平方向的宽度）；宽（竖直方向的高度）。</p>
+          <p>（2）右；下。</p>
+          <p>（3）√。球从任何方向看轮廓都是圆，所以三视图都是圆。</p>
+          <p>（4）×。主视图是长方形的几何体可能是长方体，也可能是圆柱（竖直放置时）、三棱柱等。例如圆柱的主视图就是长方形。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>用 5 个相同的小立方体搭成一个几何体：底层 2 行 2 列共 4 个，上层 1 个放在前排左的位置。请画出它的三视图，并在俯视图的格子里写出层数。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>俯视图：2 行 2 列 4 个正方形，前排左写 2，前排右写 1，后排左写 1，后排右写 1。</p>
+          <p>主视图：2 列，左列 2 个正方形，右列 1 个正方形（左列取前排左、后排左中的最大值 2，右列取前排右、后排右中的最大值 1）。</p>
+          <p>左视图：2 列，左边一列 1 个正方形（后排最大值），右边一列 2 个正方形（前排最大值）。画的时候注意“后面在左、前面在右”。</p>
+          <p>检验：三个视图合起来看，长对正、高平齐、宽相等都满足，且层数合计 2 + 1 + 1 + 1 = 5，与题目一致。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>一个几何体由若干个相同的小立方体搭成。俯视图是 2 行 3 列的 6 个正方形（6 个位置都有小立方体）；主视图从左到右三列的高度分别是 2、3、1；左视图从左到右两列的高度分别是 2、3（左边对应后排，右边对应前排）。求这个几何体最多、最少各由多少个小立方体搭成。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>设前排三列为 <i>a</i>、<i>b</i>、<i>c</i>，后排三列为 <i>d</i>、<i>e</i>、<i>f</i>。</p>
+          <p>由主视图：max(<i>a</i>, <i>d</i>) = 2，max(<i>b</i>, <i>e</i>) = 3，max(<i>c</i>, <i>f</i>) = 1，所以 <i>c</i> = <i>f</i> = 1，且 <i>a</i>、<i>d</i> ≤ 2，<i>b</i>、<i>e</i> ≤ 3。</p>
+          <p>由左视图：后排 max(<i>d</i>, <i>e</i>, <i>f</i>) = 2，前排 max(<i>a</i>, <i>b</i>, <i>c</i>) = 3。因为 <i>c</i> = 1，前排的 3 只能由 <i>b</i> 提供，所以 <i>b</i> = 3；又后排最大值是 2，所以 <i>d</i>、<i>e</i> 都不超过 2。</p>
+          <p>最多：各格都取上限，<i>a</i> = 2，<i>b</i> = 3，<i>c</i> = 1，<i>d</i> = 2，<i>e</i> = 2，<i>f</i> = 1，合计 2 + 3 + 1 + 2 + 2 + 1 = 11（个）。检验：三列最大值依次为 2、3、1 ✓；前排最大值 max(2, 3, 1) = 3 ✓；后排最大值 max(2, 2, 1) = 2 ✓。</p>
+          <p>最少：<i>b</i> = 3 必须保留；第 1 列要有最大值 2，只需 <i>a</i>、<i>d</i> 中有一个取 2；后排要有最大值 2，只需 <i>d</i>、<i>e</i> 中有一个取 2。让 <i>d</i> = 2 同时完成这两个任务，其余格子取最小值 1，即 <i>a</i> = 1，<i>b</i> = 3，<i>c</i> = 1，<i>d</i> = 2，<i>e</i> = 1，<i>f</i> = 1，合计 1 + 3 + 1 + 2 + 1 + 1 = 9（个）。检验：三列最大值 max(1,2) = 2 ✓、max(3,1) = 3 ✓、max(1,1) = 1 ✓；前排最大值 max(1, 3, 1) = 3 ✓；后排最大值 max(2, 1, 1) = 2 ✓。</p>
+          <p>答：最多 11 个，最少 9 个。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>根据三视图，说出对应的几何体。</span>
+      </div>
+      <p>（1）主视图、左视图都是正方形，俯视图是正方形；</p>
+      <p>（2）主视图、左视图都是三角形，俯视图是圆；</p>
+      <p>（3）主视图、左视图都是长方形，俯视图是三角形。</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）正方体（三个视图都是全等的正方形，说明长、宽、高相等）。</p>
+          <p>（2）圆锥。俯视图是圆说明底面是圆，主视图、左视图是三角形说明从侧面看是三角形轮廓。</p>
+          <p>（3）三棱柱（竖放）。俯视图是三角形说明底面是三角形，主视图、左视图是长方形说明侧面是长方形、高不变。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>一个几何体由若干个相同的小立方体搭成，它的俯视图是 2 行 2 列的 4 个正方形（4 个位置都有小立方体），主视图从左到右两列的高度分别是 3、2。如果不知道左视图，这个几何体最多、最少各由多少个小立方体搭成？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>由主视图得：左列两格都不超过 3，右列两格都不超过 2；并且左列至少有一格是 3，右列至少有一格是 2。</p>
+          <p>最多：左列两格都取 3，右列两格都取 2，合计 3 + 3 + 2 + 2 = 10（个）。此时左视图会出现高度 3 和 2，但题目没有限制左视图，所以 10 个是可能的。</p>
+          <p>最少：4 个格子都至少放 1 个，共 4 个；左列要有一格是 3，需要额外加 2 个；右列要有一格是 2，需要额外加 1 个。合计 4 + 2 + 1 = 7（个）。例如前排左 3、后排左 1、前排右 2、后排右 1，合计 7 个，左列最大值 3、右列最大值 2，符合要求。</p>
+          <p>答：最多 10 个，最少 7 个。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本课时方法归纳：</strong>
+      <ul>
+        <li>记位置：主视图在左上，左视图在右，俯视图在下。</li>
+        <li>记关系：长对正（主、俯）、高平齐（主、左）、宽相等（左视图的宽 = 俯视图的高）。</li>
+        <li>画搭件三视图：先画俯视图的“地基图”并标层数；主视图每列取最大层数，左视图每行取最大层数（后面在左、前面在右）。</li>
+        <li>数个数：每格 ≤ min（列上限，行上限）；全部取上限得最多；让行、列最大值尽量重合、其余取 1 得最少。</li>
+        <li>常检验：填完数字后重新“看”一遍三个方向，与题目给的视图逐列逐行核对。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="method">
+    <strong>本节知识网络：</strong>
+    <ul>
+      <li><strong>一条主线：</strong>立体图形与平面图形之间的相互转化——展开与折叠（表面摊平、平面立起）、截与看（平面截立体、三方向看立体）。</li>
+      <li><strong>正方体展开图：</strong>11 种，一四一 6 种、二三一 3 种、二二二 1 种、三三 1 种；摊平要剪 7 条棱、留 5 条公共边。</li>
+      <li><strong>判断能否折叠：</strong>有“田”字块不行；最长一行（列）超过 4 个不行；一行有 4 个时同一侧贴 2 个不行（一行只有 3 个时同侧贴 2 个可以，如二三一型）；最后动手折一折。</li>
+      <li><strong>找相对面：</strong>同行（列）隔一个；“Z”字型两端；配对后剩下的两面。有公共边的两面一定相邻。</li>
+      <li><strong>棱柱、圆柱、圆锥展开图：</strong>棱柱 = 2 个全等底面 + <i>n</i> 个长方形；圆柱 = 2 个圆 + 1 个长方形（长 2π<i>r</i>、宽 <i>h</i>）；圆锥 = 1 个圆 + 1 个扇形（弧长 2π<i>r</i>、半径 <i>l</i>）。</li>
+      <li><strong>面积公式：</strong><i>S</i><sub>圆柱侧</sub> = 2π<i>r</i><i>h</i>，<i>S</i><sub>圆柱全</sub> = 2π<i>r</i><sup>2</sup> + 2π<i>r</i><i>h</i>；<i>S</i><sub>圆锥侧</sub> = π<i>r</i><i>l</i>，<i>S</i><sub>圆锥全</sub> = π<i>r</i><sup>2</sup> + π<i>r</i><i>l</i>；<i>S</i><sub>棱柱侧</sub> = <i>c</i><i>h</i>。</li>
+      <li><strong>截面：</strong>截面是平面图形，边数 = 平面与几何体相交的面数；正方体截面最多六边形，不可能是七边形或圆；三角形截面必为锐角三角形，可为等边三角形。</li>
+      <li><strong>常见截面：</strong>圆柱——圆、长方形、椭圆、弓形；圆锥——圆、三角形、椭圆、抛物线形；球——总是圆。</li>
+      <li><strong>三视图：</strong>主视图（长、高）、左视图（宽、高）、俯视图（长、宽）；位置是“主左上、左右、俯下”；关系是“长对正、高平齐、宽相等”。</li>
+      <li><strong>小立方体计数：</strong>俯视图定位置，主视图定列高，左视图定行高；每格 ≤ min（列上限，行上限），全部取上限为最多，行列最大值尽量重合、其余取 1 为最少。</li>
+      <li><strong>三种思想：</strong>转化（立体 ↔ 平面）、分类（11 种展开图、截面按边数分类）、数形结合（画图辅助计数与想象）。</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="part" id="review">
+  <div class="part-head">
+    <div class="part-kicker">章末 · 建议 1 课时</div>
+    <h2 class="part-title">回顾与思考</h2>
+    <p class="part-intro">本章我们从身边常见的物体出发，认识了棱柱、圆柱、棱锥、圆锥、球这些立体图形，又沿着展开与折叠、截面、三视图三条路，把立体图形“摊平”“切开”“投影”成平面图形。学完知识，更重要的是把它们串成一张网，再用它解决新问题。这一节先梳理知识结构、核心概念、思想方法和易错点，再用四个思考题检验自己是不是真的“看”懂了图形。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>学习目标</h3>
+    <ul>
+      <li>能用一张结构图说出本章的两条主线，以及它们之间的联系；</li>
+      <li>能准确描述常见几何体的特征，熟练进行棱柱、棱锥的顶点、棱、面计数；</li>
+      <li>能举例说明展开与折叠、截面、三视图这三种“由立体到平面”的转化方式；</li>
+      <li>能归纳本章用到的分类讨论、数形结合、空间想象、转化等思想方法；</li>
+      <li>能对照易错清单找出自己的薄弱环节，并制定下一步的复习计划。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="rv-think">
+    <h3 class="card-title"><span class="num">回顾</span>本章知识梳理</h3>
+
+    <h4 class="subhead">一、本章知识结构</h4>
+
+    <h5 class="subhead">1. 一个对象，两条主线</h5>
+    <p>本章从头到尾只研究一个对象——我们身边“丰富的图形世界”里的几何体。围绕这个对象，教材展开了两条主线：第一条叫“生活中的立体图形”，回答三个问题——有哪些常见的立体图形？它们由什么构成？平面图形怎样运动成立体图形？第二条叫“从立体图形到平面图形”，回答两个问题——立体图形怎样变成平面图形？反过来，又怎样由平面图形想象出立体图形？</p>
+    <p>这两条主线不是并排摆放的两块知识，而是被“转化”紧紧咬合在一起的。展开与折叠，是沿着棱把表面剪开、再折回去；截面，是用一个平面把几何体切开、看切口的形状；三视图，是从三个方向把几何体投影到平面上、把轮廓画下来。三种做法方向不同，本质相同：都是把三维的“体”降成二维的“形”。反过来，把展开图折起来、把三个视图“长”起来、由截面反推几何体，又是把二维的“形”还原成三维的“体”。本章的知识结构可以用图 14 表示。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 720 420" role="img" aria-label="第一章知识结构图">
+        <title>第一章 丰富的图形世界 知识结构</title>
+        <path d="M360 66 L360 84 L180 84 L180 100" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M360 84 L540 84 L540 100" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <rect x="250" y="20" width="220" height="46" rx="8" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <text x="360" y="49" text-anchor="middle" font-size="15" fill="#334155">第一章　丰富的图形世界</text>
+        <rect x="40" y="100" width="280" height="42" rx="6" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <text x="180" y="126" text-anchor="middle" font-size="15" fill="#334155">生活中的立体图形</text>
+        <rect x="400" y="100" width="280" height="42" rx="6" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <text x="540" y="126" text-anchor="middle" font-size="15" fill="#334155">从立体图形到平面图形</text>
+        <path d="M180 142 L180 152 L24 152 L24 294" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M24 190 L40 190" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M24 242 L40 242" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M24 294 L40 294" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M540 142 L540 152 L696 152 L696 294" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M680 190 L696 190" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M680 242 L696 242" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <path d="M680 294 L696 294" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        <rect x="40" y="170" width="280" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="52" y="194" font-size="11" fill="#334155">常见几何体：棱柱、圆柱、棱锥、圆锥、球</text>
+        <rect x="40" y="222" width="280" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="52" y="246" font-size="11" fill="#334155">点、线、面、体：面面相交成线，线线相交成点</text>
+        <rect x="40" y="274" width="280" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="52" y="298" font-size="12" fill="#334155">面动成体：长方形→圆柱，三角形→圆锥</text>
+        <rect x="400" y="170" width="280" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="412" y="194" font-size="12" fill="#334155">展开与折叠：正方体 11 种展开图</text>
+        <rect x="400" y="222" width="280" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="412" y="246" font-size="12" fill="#334155">截面：正方体截面最多为六边形</text>
+        <rect x="400" y="274" width="280" height="40" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="412" y="298" font-size="12" fill="#334155">三视图：长对正、高平齐、宽相等</text>
+        <path d="M180 314 L180 334 L360 334 L360 350" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+        <path d="M540 314 L540 334 L360 334" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+        <rect x="180" y="350" width="360" height="44" rx="6" fill="#dcfce7" stroke="#334155" stroke-width="2"/>
+        <text x="360" y="378" text-anchor="middle" font-size="14" fill="#334155">立体图形与平面图形的相互转化</text>
+      </svg>
+      <figcaption>图 14　第一章知识结构</figcaption>
+    </figure>
+
+    <h5 class="subhead">2. 两条主线之间靠什么联系</h5>
+    <p>看图 14 的下半部分：两条主线最终都汇到“立体图形与平面图形的相互转化”这个框里。这句话是本章的“总开关”。凡是遇到“这个几何体的表面展开后是什么样子”“用平面切一刀，切口是什么图形”“从上面看是什么形状”这类问题，都是在做“立体到平面”的转化；凡是遇到“这个展开图能折成什么几何体”“根据三视图搭出物体”“这个截面可能来自哪个几何体”，都是在做“平面到立体”的转化。转化的方向不同，用的知识却是同一套。</p>
+    <p>所以复习时不要按“节”孤立地背结论，而要问自己：这个结论属于哪条主线？它和另一条主线上的哪个结论是“一对”？例如“正方体有 11 种展开图”和“由展开图判断能否折成正方体”是一对；“圆柱侧面展开图是长方形”和“长方形卷起来得到圆柱的侧面”是一对；“三视图的画法”和“由三视图想象几何体”是一对。成对地记，比单条地背要牢得多。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>本章的“魂”是空间观念——看到一个物体，能在头脑中把它“拆开、切开、转过来”；看到一组平面图形，能在头脑中把它“折起来、立起来”。做题只是训练手段，能“想”出来才是真正的目标。
+    </div>
+
+    <div class="method">
+      <strong>复习方法：</strong>合上课本，先凭记忆自己画一遍结构图，图 14 只用来对照。哪一条分支画不出来，那里就是你的薄弱点；再打开课本第 23 页，对照“回顾与思考”中的问题逐条口头回答，说不清楚的地方就是要重点补的地方。
+    </div>
+    <h4 class="subhead">二、核心概念对照</h4>
+
+    <h5 class="subhead">1. 常见几何体：从“长相”到“结构”</h5>
+    <p>认识一个几何体，要先看“长相”，再看“结构”。看“长相”，就是看它有几个面、面是平的还是曲的；看“结构”，就是看底面是什么多边形、侧面是什么图形、有没有顶点。把本章出现过的几何体放在一起对照（表 5），异同就清楚了。</p>
+
+    <table class="data-table">
+      <caption>表 5　常见几何体的特征对照</caption>
+      <thead>
+        <tr><th>名称</th><th>底面</th><th>侧面</th><th>顶点数</th><th>棱数</th><th>面数</th><th>生活中的例子</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>三棱柱</td><td>两个全等的三角形</td><td>3 个长方形</td><td>6</td><td>9</td><td>5</td><td>三棱镜、帐篷</td></tr>
+        <tr><td>四棱柱（长方体）</td><td>两个全等的四边形</td><td>4 个长方形</td><td>8</td><td>12</td><td>6</td><td>纸箱、砖块</td></tr>
+        <tr><td>五棱柱</td><td>两个全等的五边形</td><td>5 个长方形</td><td>10</td><td>15</td><td>7</td><td>五棱柱形的笔筒</td></tr>
+        <tr><td>圆柱</td><td>两个全等的圆</td><td>1 个曲面</td><td>—</td><td>—</td><td>3</td><td>易拉罐、水杯</td></tr>
+        <tr><td>三棱锥</td><td>1 个三角形</td><td>3 个三角形</td><td>4</td><td>6</td><td>4</td><td>四面体形的礼盒</td></tr>
+        <tr><td>四棱锥</td><td>1 个四边形</td><td>4 个三角形</td><td>5</td><td>8</td><td>5</td><td>金字塔</td></tr>
+        <tr><td>圆锥</td><td>1 个圆</td><td>1 个曲面</td><td>1</td><td>—</td><td>2</td><td>冰淇淋筒、漏斗</td></tr>
+        <tr><td>球</td><td>无</td><td>1 个曲面</td><td>—</td><td>—</td><td>1</td><td>足球、地球仪</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>拓展：</strong>表中“棱”一栏的“—”表示没有由线段构成的棱。圆柱的底面与侧面相交成的是一个圆，是曲线而不是棱；圆锥的侧面与底面相交成的也是圆。圆柱、圆锥、球的表面含有曲面，它们虽然都是立体图形，但<strong>不是多面体</strong>；棱柱和棱锥的每个面都是平面，它们才是多面体。
+    </div>
+
+    <h5 class="subhead">2. 计数：把 <i>n</i> 棱柱、<i>n</i> 棱锥“数”清楚</h5>
+    <p>数顶点、数棱、数面，千万不要一个一个地数，要抓规律。棱柱有两个全等的底面，每个底面有 <i>n</i> 个顶点、<i>n</i> 条边；两个底面之间还有 <i>n</i> 条侧棱。于是顶点数是 2<i>n</i>，棱数是 <i>n</i> + <i>n</i> + <i>n</i> = 3<i>n</i>，面数是 2 个底面加 <i>n</i> 个侧面，共 <i>n</i> + 2 个。棱锥只有一个底面，另有 1 个不在底面上的顶点，所以顶点数是 <i>n</i> + 1，棱数是 <i>n</i> 条底棱加 <i>n</i> 条侧棱共 2<i>n</i> 条，面数是 1 个底面加 <i>n</i> 个侧面共 <i>n</i> + 1 个。</p>
+
+    <div class="formula">
+      <div class="formula-label"><i>n</i> 棱柱的计数</div>
+      <div class="formula-body">顶点数 = 2<i>n</i>　　棱数 = 3<i>n</i>　　面数 = <i>n</i> + 2</div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label"><i>n</i> 棱锥的计数</div>
+      <div class="formula-body">顶点数 = <i>n</i> + 1　　棱数 = 2<i>n</i>　　面数 = <i>n</i> + 1</div>
+    </div>
+
+    <p>用公式算完，还可以用一句“口诀”检查：棱柱的棱数总是面数的 3 倍少 6，即 3<i>n</i> = 3(<i>n</i> + 2) − 6，这是由公式本身决定的，不必死记。真正要记牢的是“为什么”：2<i>n</i> 来自两个底面，3<i>n</i> 来自“两个底面的边 + 侧棱”，<i>n</i> + 2 来自“两个底面 + <i>n</i> 个侧面”。只要能把“为什么”讲清楚，数字就不会记错。</p>
+
+    <div class="note">
+      <strong>拓展：</strong>对任何一个多面体，顶点数 <i>V</i>、棱数 <i>E</i>、面数 <i>F</i> 都满足 <i>V</i> − <i>E</i> + <i>F</i> = 2，这叫做欧拉公式。用它检验很方便：三棱柱 6 − 9 + 5 = 2，四棱锥 5 − 8 + 5 = 2，正方体 8 − 12 + 6 = 2，全部成立。以后学了更多几何体，这个公式依然好用。
+    </div>
+
+    <h5 class="subhead">3. 展开与折叠：把表面“摊平”</h5>
+    <p>展开，就是沿着棱把几何体的表面剪开、摊平；折叠，就是反过来把展开图围起来。判断一个展开图能不能折成指定的几何体，关键是看“面够不够、形状对不对、位置合不合”。表 6 把常见几何体的展开图放在一起对照。</p>
+
+    <table class="data-table">
+      <caption>表 6　常见几何体的表面展开图</caption>
+      <thead>
+        <tr><th>几何体</th><th>表面展开图的组成</th><th>侧面展开图的形状</th><th>关键数量关系</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>正方体</td><td>6 个全等的正方形</td><td>4 个正方形连成的长方形</td><td>共 11 种展开图；相对面“隔一个”</td></tr>
+        <tr><td><i>n</i> 棱柱</td><td>2 个全等的 <i>n</i> 边形 + <i>n</i> 个长方形</td><td><i>n</i> 个长方形拼成的大长方形</td><td>大长方形的长 = 底面周长，宽 = 侧棱长</td></tr>
+        <tr><td>圆柱</td><td>2 个圆 + 1 个长方形</td><td>长方形</td><td>长 = 2π<i>r</i>，宽 = <i>h</i></td></tr>
+        <tr><td><i>n</i> 棱锥</td><td>1 个 <i>n</i> 边形 + <i>n</i> 个三角形</td><td><i>n</i> 个三角形拼成的图形</td><td>三角形的底 = 底面边长</td></tr>
+        <tr><td>圆锥</td><td>1 个圆 + 1 个扇形</td><td>扇形</td><td>弧长 = 2π<i>r</i>，半径 = 母线 <i>l</i></td></tr>
+        <tr><td>球</td><td>不能展开成平面图形</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <div class="formula">
+      <div class="formula-label">圆柱的侧面积与全面积</div>
+      <div class="formula-body"><i>S</i><sub>侧</sub> = 2π<i>r</i><i>h</i>　　<i>S</i><sub>全</sub> = 2π<i>r</i><i>h</i> + 2π<i>r</i><sup>2</sup></div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">圆锥的侧面积</div>
+      <div class="formula-body"><i>S</i><sub>侧</sub> = π<i>r</i><i>l</i>（<i>l</i> 为母线长）</div>
+    </div>
+
+    <div class="tip">
+      <strong>提示：</strong>圆柱侧面展开图的“长”是底面圆的周长 2π<i>r</i>，不是直径；圆锥侧面展开图的“半径”是母线 <i>l</i>，不是高 <i>h</i>。母线、高、底面半径恰好构成一个直角三角形，母线是斜边，所以母线总比高长。
+    </div>
+
+    <h5 class="subhead">4. 截面：把几何体“切开”看</h5>
+    <p>用一个平面去截一个几何体，平面与几何体表面的交线围成的图形，叫做这个几何体的截面。截面的形状既和几何体有关，也和平面“怎么切”有关：同一个正方体，切法不同，截面可以是三角形、四边形、五边形，也可以是六边形。表 7 归纳了本章研究过的几种情形。</p>
+
+    <table class="data-table">
+      <caption>表 7　常见几何体的截面形状</caption>
+      <thead>
+        <tr><th>几何体</th><th>可能的截面形状</th><th>注意</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>正方体</td><td>三角形、四边形（正方形、长方形、平行四边形、梯形）、五边形、六边形</td><td>最多是六边形，不可能是七边形</td></tr>
+        <tr><td>圆柱</td><td>圆、椭圆、长方形、弓形</td><td>不可能是三角形</td></tr>
+        <tr><td>圆锥</td><td>圆、椭圆、抛物线形、等腰三角形</td><td>三角形只有平面过顶点时才截得出</td></tr>
+        <tr><td>球</td><td>圆</td><td>无论从哪个方向截，截面都是圆</td></tr>
+      </tbody>
+    </table>
+
+    <div class="keypoint">
+      <strong>要点：</strong>正方体的截面最多是六边形。因为截面多边形的每一条边，都落在正方体的某一个面上；正方体只有 6 个面，所以截面最多只有 6 条边。想通这一条，“为什么不能是七边形”就再也不会答错了。
+    </div>
+
+    <h5 class="subhead">5. 三视图：把几何体“投影”到平面</h5>
+    <p>从正面看，得到主视图；从左面看，得到左视图；从上面看，得到俯视图。三个视图的位置是固定的：主视图在左上方，左视图在右上方（与主视图“高平齐”），俯视图在主视图的正下方（与主视图“长对正”）。画三视图时，看得见的轮廓线画实线，被挡住的轮廓线画虚线。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>三视图的三条规律——主视图与俯视图<strong>长对正</strong>，主视图与左视图<strong>高平齐</strong>，左视图与俯视图<strong>宽相等</strong>。这三条既是画图的依据，也是检查图画得对不对的尺子。
+    </div>
+
+    <div class="tip">
+      <strong>提示：</strong>由小立方体搭成的几何体，最稳的做法是“先地基、后楼层”：先画出俯视图，再在俯视图的每一格上写一个数字，表示这一摞有几层。写完之后，主视图每一列的高度就是该列数字的最大值，左视图每一行（深度方向）的高度也是该行数字的最大值。数总数时把数字加起来就行，一个也不会漏。
+    </div>
+    <h4 class="subhead">三、思想方法</h4>
+    <p>学完一章，如果只记住了几个结论，那只是“捡了芝麻”。真正带得走的是方法。本章至少有五种思想方法反复出现，下面逐个说清楚它们“长什么样”、“什么时候用”。</p>
+
+    <h5 class="subhead">1. 分类讨论：先定标准，再分得不重不漏</h5>
+    <p>本章处处在分类。几何体可以按“柱、锥、球”分，也可以按“表面有没有曲面”分，还可以按“是不是多面体”分。同一个几何体，在不同标准下会落到不同的类里，这很正常。分类时有两条硬要求：一是标准要统一，不能一会儿按形状分、一会儿按颜色分；二是分类要不重不漏，每个对象都必须落进某一类，而且只能落进一类。例如把棱柱、圆柱、棱锥、圆锥、球分成两类：若按“表面是否全为平面”，那么棱柱、棱锥是一类（多面体），圆柱、圆锥、球是另一类；若按“柱体、锥体、球体”，圆柱和棱柱又走到了一起。</p>
+    <div class="tip">
+      <strong>提示：</strong>做分类题时，先在草稿上写出分类标准，再往格子里填，最后检查一遍有没有漏掉或重复。答案写成“按……分，一类是……，另一类是……”最清楚。
+    </div>
+
+    <h5 class="subhead">2. 数形结合：让图形“说话”</h5>
+    <p>展开图题、截面题、三视图题，表面上都是“形”的问题，但推理时常常要“数”：数小正方形的个数，数相对面之间隔了几个格，数每一列的最高层数，数截面有几条边。反过来，数量关系也能帮我们画图——知道 <i>n</i> 棱柱有 2<i>n</i> 个顶点、3<i>n</i> 条棱，画图时心里就有数，画完还能回头数一数检查。数与形互相印证，是本章最常用的思维方式。</p>
+
+    <h5 class="subhead">3. 空间想象：在头脑里“动手”</h5>
+    <p>空间想象不是天生的，是可以练出来的。练的办法是“在头脑里动手”：拿到一个展开图，先挑中间那个面当底面，再想象把四周的面一个一个“立”起来，看看会不会撞在一起；拿到三个视图，先想俯视图“摊在地上”的样子，再把主视图的高度“长”上去，最后用左视图核对。实在想不出来，就真的动手剪一个、折一个、搭一个——动手做过一次，胜过盯着图看十遍。</p>
+
+    <h5 class="subhead">4. 转化：立体与平面之间的“桥”</h5>
+    <p>转化是本章最重要的思想。展开与折叠，是“面”的转化；截面，是“切”的转化；三视图，是“看”的转化。三种转化方向相反，目的一致：把不熟悉的立体图形，转化成熟悉的平面图形来研究。凡是遇到“包装盒至少用多少纸”“蚂蚁沿表面爬行的最短路线”“圆柱形罐子上的商标纸有多大”这类问题，第一步都是“展开”——把立体图形上的问题，转化成平面上的问题。</p>
+    <div class="method">
+      <strong>方法归纳：</strong>立体图形表面上的路线问题，解题三步是“展开—连线—还原”：先把相关侧面展开成平面图形，再在展开图上连接起点和终点（两点之间线段最短），最后把线段折回立体图形的表面，就得到最短路线。表面上的距离，展开前后是不变的，这是“展开”能解决问题的根本原因。
+    </div>
+
+    <h5 class="subhead">5. 从特殊到一般：先看正方体，再看长方体</h5>
+    <p>教材的编排本身就藏着方法：先研究正方体的展开图（11 种），再研究一般棱柱、圆柱、圆锥的展开图；先研究特殊位置的截面（如平行于底面、过顶点），再考虑一般位置的截面；先研究由小立方体搭成的几何体的三视图，再过渡到一般几何体。这种“先特殊、后一般”的顺序，能帮我们把复杂问题拆成几个简单情形，先摸清规律，再推广出去。自己做题时也可以这样：正方体的结论不熟，就先画一个正方体；圆柱的展开图想不清，就先想一张长方形纸卷起来的样子。</p>
+    <h4 class="subhead">四、易错清单</h4>
+    <p>下面 10 条，是本章作业和测验中出现频率最高的错误。建议逐条对照自己的错题本，中了的就在旁边打个勾，复习时优先看打勾的。</p>
+
+    <div class="warn">
+      <strong>易错 1：</strong>棱柱的棱数算成“底面边数 × 2”。六棱柱有 3 × 6 = 18 条棱，不是 12 条；其中 12 条是上下底面的边，另外 6 条是侧棱，容易漏掉侧棱。记住“棱数 = 3<i>n</i>”，并想一想它由哪三部分组成。
+    </div>
+    <div class="warn">
+      <strong>易错 2：</strong>把圆柱侧面展开图的长写成直径。长应该是底面圆的周长 2π<i>r</i> = π<i>d</i>，直径只是周长的一半多一点。底面半径 3 cm 的圆柱，侧面展开图的长是 18.84 cm（π 取 3.14），不是 6 cm。
+    </div>
+    <div class="warn">
+      <strong>易错 3：</strong>把圆锥侧面展开图的半径写成高。扇形的半径是母线 <i>l</i>，弧长才是底面周长 2π<i>r</i>。母线比高长，两者不能混用；用错一个，侧面积就会算错。
+    </div>
+    <div class="warn">
+      <strong>易错 4：</strong>在正方体展开图上凭“离得近”找相对面。正确方法是：同一行（或同一列）中<strong>隔一个</strong>的两个面相对；呈“Z”字形的两端相对。展开图上挨得近的两个面，折起来往往是相邻面。
+    </div>
+    <div class="warn">
+      <strong>易错 5：</strong>以为正方体的截面可以是七边形。正方体只有 6 个面，截面的每条边都落在某一个面上，所以截面最多是六边形。同理，正方体的截面也不可能是圆。
+    </div>
+    <div class="warn">
+      <strong>易错 6：</strong>三视图的“宽相等”记混。宽相等指的是<strong>左视图与俯视图</strong>；主视图与俯视图是“长对正”，主视图与左视图是“高平齐”。画图时先摆好三个视图的位置，再逐条对照检查。
+    </div>
+    <div class="warn">
+      <strong>易错 7：</strong>判断能否折成正方体时只看“是不是 6 个正方形”。个数够还不够，形状也要对：含 2 × 2 “田”字形的不能折，凹字形不能折，一行排 5 个的也不能折。能折的只有 11 种。
+    </div>
+    <div class="warn">
+      <strong>易错 8：</strong>旋转成体想当然。长方形绕它的一条边旋转一周得到圆柱，绕对角线旋转得到的却不是圆柱，而是两个同底面的圆锥拼成的几何体。做题时先看清“绕哪条直线转”，再想旋转前后哪些点不动、哪些点转出圆。
+    </div>
+    <div class="warn">
+      <strong>易错 9：</strong>数小立方体时漏掉被挡住的。俯视图上有几格，就至少有几摞；每一摞有几层，要由主视图、左视图共同确定，不能只数“看得见的”。稳妥的办法是在俯视图每格上标数字，再逐列核对最大值。
+    </div>
+    <div class="warn">
+      <strong>易错 10：</strong>把“多面体”和“立体图形”混为一谈。圆柱、圆锥、球都是立体图形，但它们的表面含曲面，不是多面体；棱柱、棱锥的每个面都是平面，才是多面体。判断题里这类偷换概念的说法最常见。
+    </div>
+    <h4 class="subhead">五、回顾与思考问题</h4>
+    <p>下面 4 个问题对应课本第 23 页“回顾与思考”的思路。请先合上书，用自己的话回答，再展开答案对照。能用自己的语言讲清楚，才算真正掌握。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">问题 1</span>
+        <span>本章主要研究了哪些内容？请用两三句话概括，并说出两条主线之间是怎样联系起来的。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>本章研究了两部分内容：一是“生活中的立体图形”，认识棱柱、圆柱、棱锥、圆锥、球，知道点、线、面、体之间的关系，知道面动可以成体；二是“从立体图形到平面图形”，学习展开与折叠、截面、三视图，研究立体图形与平面图形的相互转化。</p>
+          <p>两条主线通过“转化”联系起来：展开与折叠是沿着棱把表面摊平再折回去，截面是用平面切开看切口，三视图是从三个方向投影看轮廓——三者都是把立体图形转化为平面图形；反过来，把展开图折起来、由三视图想象物体、由截面反推几何体，就是把平面图形还原成立体图形。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">问题 2</span>
+        <span>立体图形与平面图形之间有哪些转化方式？请各举一个本章学过的例子。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>主要有三种。第一种是<strong>展开与折叠</strong>：把正方体沿棱剪开，可以得到 11 种展开图中的一种；反过来，把这样的展开图折起来，又能围成正方体。第二种是<strong>截面</strong>：用平面去截正方体，截面可能是三角形、四边形、五边形或六边形。第三种是<strong>三视图</strong>：从正面、左面、上面三个方向观察，把看到的形状画成主视图、左视图、俯视图。</p>
+          <p>此外还有“面动成体”的逆向思考：看到圆柱，能想到它是长方形绕一边旋转一周形成的；看到圆锥，能想到它是直角三角形绕一条直角边旋转一周形成的。这实际上也是平面与立体之间的转化。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">问题 3</span>
+        <span>怎样由三视图想象立体图形？请说说你的步骤，并说明每一步的依据。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>第一步，看俯视图，确定物体“地基”的形状和大小，也就是物体在水平方向上的轮廓；第二步，看主视图，确定每一列的高度；第三步，看左视图，确定每一行在深度方向上的高度；第四步，按“长对正、高平齐、宽相等”检查三个视图是否吻合。</p>
+          <p>如果物体是由小立方体搭成的，可以在俯视图的每一格上标出这一摞的层数：主视图每一列的最大高度，就是该列数字的最大值；左视图每一行的最大高度，就是该行数字的最大值。标完数字，小立方体的个数加起来就是总数，最多、最少的情况也能一眼看出。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">问题 4</span>
+        <span>圆柱和圆锥的侧面展开图，一个得到长方形，一个得到扇形。为什么会不一样？请从“侧面的形状”角度说明。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>关键在于侧面上“母线”的分布不同。圆柱的侧面是“直”的：它的每一条母线都平行且长度相等，沿一条母线把侧面剪开摊平，各条母线仍然互相平行，上下两个底面圆变成两条相等的线段，所以得到长方形，长等于底面周长 2π<i>r</i>，宽等于高 <i>h</i>。</p>
+          <p>圆锥的侧面不是“直”的：它的所有母线都交于同一个点（顶点），沿一条母线把侧面剪开摊平，各条母线从顶点向外散开，得到的图形是以顶点为圆心、母线 <i>l</i> 为半径的扇形，扇形的弧长等于底面圆的周长 2π<i>r</i>。所以圆柱的侧面展开图是长方形，圆锥的侧面展开图是扇形。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本章知识网络：</strong>
+      <ul>
+        <li>立体图形：柱体（棱柱、圆柱）、锥体（棱锥、圆锥）、球体；按表面是否全为平面，又分为多面体与非多面体。</li>
+        <li>图形的构成：体由面围成，面与面相交成线，线与线相交成点；点动成线、线动成面、面动成体。</li>
+        <li>由立体到平面：展开与折叠（正方体 11 种展开图；圆柱、圆锥的侧面展开图）、截面（正方体最多六边形）、三视图（长对正、高平齐、宽相等）。</li>
+        <li>由平面到立体：把展开图折起来、由三视图想象物体、由截面反推几何体。</li>
+        <li>核心方法：分类讨论、数形结合、空间想象、转化、从特殊到一般。</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <div class="part-head">
+    <div class="part-kicker">章末 · 建议 1—2 课时</div>
+    <h2 class="part-title">复习题</h2>
+    <p class="part-intro">复习题按“知识技能—数学理解—问题解决—联系拓广”四组编排，共 21 题，覆盖本章全部内容。建议先独立完成，再对照答案；做错的题在题号旁做上记号，隔一天再做一遍。每题后面的答案都折叠着，先想清楚再展开，效果更好。</p>
+  </div>
+
+  <section class="knowledge-card" id="rv-exercises">
+    <h3 class="card-title"><span class="num">复习</span>全章综合练习</h3>
+
+    <h4 class="subhead">A 组　知识技能（第 1—6 题）</h4>
+    <p>这一组题考查本章的基本概念和基本运算。做的时候不看课本，做完再对照答案，看看是“记不住”还是“算错了”。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>填空：（1）一个 <i>n</i> 棱柱有＿＿＿个顶点、＿＿＿条棱、＿＿＿个面；（2）一个 <i>n</i> 棱锥有＿＿＿个顶点、＿＿＿条棱、＿＿＿个面；（3）当 <i>n</i> = 7 时，七棱柱有＿＿＿个顶点、＿＿＿条棱、＿＿＿个面，七棱锥有＿＿＿个顶点、＿＿＿条棱、＿＿＿个面。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）2<i>n</i>；3<i>n</i>；<i>n</i> + 2。（2）<i>n</i> + 1；2<i>n</i>；<i>n</i> + 1。（3）14；21；9；8；14；8。</p>
+          <p>解析：<i>n</i> 棱柱的两个底面各有 <i>n</i> 个顶点，共 2<i>n</i> 个顶点；上下底面的边共 2<i>n</i> 条，再加上 <i>n</i> 条侧棱，共 3<i>n</i> 条棱；面数是 2 个底面加 <i>n</i> 个侧面，共 <i>n</i> + 2 个。<i>n</i> 棱锥只有 1 个底面，另有 1 个顶点，所以顶点数是 <i>n</i> + 1；棱数是 <i>n</i> 条底棱加 <i>n</i> 条侧棱，共 2<i>n</i> 条；面数是 1 个底面加 <i>n</i> 个侧面，共 <i>n</i> + 1 个。把 <i>n</i> = 7 代入：七棱柱 14 个顶点、21 条棱、9 个面；七棱锥 8 个顶点、14 条棱、8 个面。可用欧拉公式检验：14 − 21 + 9 = 2，8 − 14 + 8 = 2，都成立。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>判断（正确的画“√”，错误的画“×”）：（1）圆柱的侧面展开图是长方形；（　　）（2）棱柱的侧面可能是三角形；（　　）（3）用平面去截正方体，截面最多是六边形；（　　）（4）从正面、左面、上面看一个球，看到的都是圆。（　　）</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）√；（2）×；（3）√；（4）√。</p>
+          <p>理由：（1）把圆柱的侧面沿一条母线剪开摊平，两条底面圆周变成两条相等的线段，各条母线互相平行，得到长方形，长是底面周长，宽是高。（2）棱柱的侧面都是平行四边形（直棱柱的侧面是长方形），三角形是棱锥的侧面，不是棱柱的侧面。（3）截面的每一条边都落在正方体的某一个面上，正方体只有 6 个面，所以截面最多是六边形，不可能是七边形。（4）球从任何方向看，看到的轮廓都是圆。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>一个直五棱柱，底面各条边的长都是 3 cm，侧棱长是 8 cm。（1）它一共有多少条棱？所有棱的长度之和是多少？（2）它的侧面展开图是什么形状？面积是多少？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）五棱柱的棱数是 3 × 5 = 15（条）。其中底面边共 2 × 5 = 10 条，每条长 3 cm，合计 30 cm；侧棱 5 条，每条长 8 cm，合计 40 cm。所以所有棱的长度之和是 30 + 40 = 70（cm）。</p>
+          <p>（2）侧面展开图是长方形（由 5 个完全相同的小长方形拼成）。它的长等于底面周长 5 × 3 = 15（cm），宽等于侧棱长 8 cm，所以面积是 15 × 8 = 120（cm<sup>2</sup>）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>一个圆柱的底面半径是 3 cm，高是 10 cm，π 取 3.14。（1）它的侧面展开图的长和宽各是多少？（2）求它的侧面积和全面积。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）侧面展开图是长方形，长等于底面周长 2π<i>r</i> = 2 × 3.14 × 3 = 18.84（cm），宽等于高，即 10 cm。</p>
+          <p>（2）侧面积 <i>S</i><sub>侧</sub> = 18.84 × 10 = 188.4（cm<sup>2</sup>）。两个底面的面积是 2 × 3.14 × 3<sup>2</sup> = 2 × 28.26 = 56.52（cm<sup>2</sup>）。所以全面积 <i>S</i><sub>全</sub> = 188.4 + 56.52 = 244.92（cm<sup>2</sup>）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>一个圆锥的底面半径是 4 cm，高是 3 cm，母线长是 5 cm，π 取 3.14。（1）它的侧面展开图是扇形，求这个扇形的半径和弧长；（2）求这个圆锥的侧面积。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）扇形的半径等于母线长，是 5 cm；扇形的弧长等于底面圆的周长，是 2 × 3.14 × 4 = 25.12（cm）。</p>
+          <p>（2）侧面积 <i>S</i><sub>侧</sub> = π<i>r</i><i>l</i> = 3.14 × 4 × 5 = 62.8（cm<sup>2</sup>）。也可以用“扇形面积 = 二分之一 × 弧长 × 半径”检验：二分之一 × 25.12 × 5 = 62.8，结果一致。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">6</span>
+        <span>根据下面的三视图，分别说出几何体的名称：（1）主视图、左视图都是长方形，俯视图是圆；（2）主视图、左视图都是三角形，俯视图是圆（圆心处有一个点）；（3）主视图、左视图、俯视图都是圆；（4）主视图、左视图都是长方形，俯视图是正方形。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）圆柱；（2）圆锥；（3）球；（4）底面是正方形的四棱柱（长方体，也可能是正方体）。</p>
+          <p>解析：俯视图是圆，说明物体的“地基”是圆，可能是圆柱、圆锥或球。（1）两个方向看到的都是长方形，说明它是“柱”，底面是圆，所以是圆柱。（2）两个方向看到的都是三角形，说明它是“锥”，底面是圆，所以是圆锥；俯视图圆心处的点就是顶点的投影。（3）三个方向看到的都是圆，只有球满足。（4）俯视图是正方形，主视图、左视图是长方形，说明它是一个“上下一样粗”的柱体，底面是正方形，所以是底面为正方形的四棱柱。</p>
+        </div>
+      </details>
+    </div>
+    <h4 class="subhead">B 组　数学理解（第 7—12 题）</h4>
+    <p>这一组题要求“讲道理”：不仅要得出答案，还要说清楚为什么。回答时尽量用上本章的概念，比如“面动成体”“相对面隔一个”“截面的边落在面上”。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">7</span>
+        <span>下面的现象分别体现了“点动成线”“线动成面”“面动成体”中的哪一个？（1）流星划过夜空，留下一道明亮的轨迹；（2）汽车雨刷在挡风玻璃上扫出一片扇形区域；（3）一枚硬币在桌面上快速旋转，看上去像一个球；（4）把一张长方形纸片绕它的一条边旋转一周，得到一个圆柱。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）点动成线；（2）线动成面；（3）面动成体；（4）面动成体。</p>
+          <p>解析：判断的关键是看“运动前后”的图形。流星是一个点，运动后留下一条线，是点动成线；雨刷是一条线段，扫过的区域是一个面，是线动成面；硬币的正面是一个圆面，旋转后形成一个球，是面动成体；长方形纸片是一个面，绕一边旋转后形成圆柱，也是面动成体。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">8</span>
+        <span>长方形 <i>ABCD</i> 中，<i>AB</i> = 4 cm，<i>BC</i> = 3 cm。分别绕不同的直线旋转一周：（1）绕 <i>AB</i> 所在直线旋转，得到什么几何体？底面半径和高各是多少？侧面积是多少？（结果保留 π）（2）绕 <i>BC</i> 所在直线旋转，得到的几何体的侧面积是多少？（3）绕对角线 <i>AC</i> 所在直线旋转，得到的是什么几何体？请描述它的形状。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）得到圆柱。旋转轴是 <i>AB</i>，所以高是 <i>AB</i> = 4 cm，底面半径是 <i>BC</i> = 3 cm。侧面积 <i>S</i><sub>侧</sub> = 2π × 3 × 4 = 24π（cm<sup>2</sup>）。</p>
+          <p>（2）得到圆柱，此时高是 <i>BC</i> = 3 cm，底面半径是 <i>AB</i> = 4 cm。侧面积 <i>S</i><sub>侧</sub> = 2π × 4 × 3 = 24π（cm<sup>2</sup>）。两个圆柱的侧面积相等，但形状不同。</p>
+          <p>（3）得到的是两个同底面的圆锥拼成的几何体：点 <i>B</i> 和点 <i>D</i> 各绕 <i>AC</i> 旋转出一个圆，这两个圆重合，成为两个圆锥的公共底面；点 <i>A</i>、<i>C</i> 在旋转轴上不动，分别是两个圆锥的顶点。公共底面的半径就是点 <i>B</i> 到 <i>AC</i> 的距离。由三角形面积关系，这个距离是 4 × 3 ÷ 5 = 2.4（cm）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">9</span>
+        <span>图 15 中的四个图形，都是由 6 个大小相同的正方形拼成的。哪些能折成正方体？哪些不能？请说明理由。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）能；（2）不能；（3）能；（4）不能。</p>
+          <p>理由：（1）是“一四一”型，中间一行 4 个正方形围成侧面，上下各 1 个正方形分别折成上、下底面，属于正方体 11 种展开图之一。（2）中含有 2 × 2 的“田”字形，折叠时这 4 个面会围在同一个顶点处，必然有两个面重叠，同时另有一处空缺，所以不能折成正方体。（3）是“二二二”型，三个两连方依次错开一个正方形，折起来正好围成正方体。（4）一行排了 5 个正方形，而正方体绕一周只有 4 个侧面，第 5 个正方形折起来会与第 1 个重合，同时另一处空缺，所以不能折成正方体。</p>
+        </div>
+      </details>
+    </div>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 720 190" role="img" aria-label="四个由六个正方形拼成的图形">
+        <title>四个由六个正方形拼成的图形</title>
+        <rect x="30" y="60" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="30" y="80" width="20" height="20" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+        <rect x="50" y="80" width="20" height="20" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+        <rect x="70" y="80" width="20" height="20" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+        <rect x="90" y="80" width="20" height="20" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+        <rect x="70" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <text x="40" y="75" text-anchor="middle" font-size="12" fill="#334155">1</text>
+        <text x="40" y="95" text-anchor="middle" font-size="12" fill="#334155">2</text>
+        <text x="60" y="95" text-anchor="middle" font-size="12" fill="#334155">3</text>
+        <text x="80" y="95" text-anchor="middle" font-size="12" fill="#334155">4</text>
+        <text x="100" y="95" text-anchor="middle" font-size="12" fill="#334155">5</text>
+        <text x="80" y="115" text-anchor="middle" font-size="12" fill="#334155">6</text>
+        <text x="75" y="150" text-anchor="middle" font-size="13" fill="#334155">（1）</text>
+        <rect x="200" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="220" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="200" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="220" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="240" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="260" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <text x="240" y="150" text-anchor="middle" font-size="13" fill="#334155">（2）</text>
+        <rect x="370" y="60" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="390" y="60" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="390" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="410" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="410" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="430" y="100" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <text x="410" y="150" text-anchor="middle" font-size="13" fill="#334155">（3）</text>
+        <rect x="540" y="60" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="540" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="560" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="580" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="600" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <rect x="620" y="80" width="20" height="20" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+        <text x="590" y="150" text-anchor="middle" font-size="13" fill="#334155">（4）</text>
+      </svg>
+      <figcaption>图 15　由 6 个相同正方形拼成的四个图形</figcaption>
+    </figure>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">10</span>
+        <span>图 15（1）的展开图上已经标出了 1—6 六个数字。请写出三组相对的面，并说明你是怎样判断的。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>1 与 6 相对，2 与 4 相对，3 与 5 相对。</p>
+          <p>解析：中间一行 4 个正方形折起来围成正方体的四个侧面。同一行中“隔一个”的两个面相对，所以 2 与 4 相对，3 与 5 相对。数字 1 折成上面，数字 6 折成下面，上、下两个面相对，所以 1 与 6 相对。检验：每个数字都恰好出现一次，三组相对面两两不重复，共 6 个面，符合正方体的结构。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">11</span>
+        <span>用平面去截下列几何体，截面可能是什么形状？各写出两种以上。（1）正方体；（2）圆柱；（3）圆锥；（4）球。（5）一个几何体的截面可能是三角形吗？可能是圆吗？请各举一个几何体。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）正方体：三角形、四边形（正方形、长方形、平行四边形、梯形）、五边形、六边形，最多是六边形，不可能是七边形。（2）圆柱：圆、椭圆、长方形、弓形，不可能是三角形。（3）圆锥：圆、椭圆、抛物线形、等腰三角形（平面过顶点时）。（4）球：只能是圆，无论从哪个方向截，截面都是圆。</p>
+          <p>（5）截面可能是三角形，例如用平面截正方体的一个角，或者在圆锥上作一个过顶点的截面，都可以得到三角形；截面也可能是圆，例如用平行于底面的平面截圆柱、圆锥，或者截球，都能得到圆。</p>
+        </div>
+      </details>
+    </div>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 360 250" role="img" aria-label="由小立方体搭成的几何体的俯视图">
+        <title>由小立方体搭成的几何体的俯视图</title>
+        <text x="166" y="42" text-anchor="middle" font-size="13" fill="#334155">从上面看</text>
+        <rect x="100" y="60" width="132" height="132" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+        <path d="M144 60 L144 192" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <path d="M188 60 L188 192" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <path d="M100 104 L232 104" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <path d="M100 148 L232 148" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <text x="122" y="88" text-anchor="middle" font-size="14" fill="#334155">1</text>
+        <text x="166" y="88" text-anchor="middle" font-size="14" fill="#334155">2</text>
+        <text x="210" y="88" text-anchor="middle" font-size="14" fill="#334155">1</text>
+        <text x="122" y="132" text-anchor="middle" font-size="14" fill="#334155">2</text>
+        <text x="166" y="132" text-anchor="middle" font-size="14" fill="#334155">3</text>
+        <text x="210" y="132" text-anchor="middle" font-size="14" fill="#334155">1</text>
+        <text x="122" y="176" text-anchor="middle" font-size="14" fill="#334155">1</text>
+        <text x="166" y="176" text-anchor="middle" font-size="14" fill="#334155">1</text>
+        <text x="210" y="176" text-anchor="middle" font-size="14" fill="#334155">2</text>
+        <text x="166" y="218" text-anchor="middle" font-size="13" fill="#334155">前</text>
+      </svg>
+      <figcaption>图 16　俯视图中数字表示该位置小立方体的个数</figcaption>
+    </figure>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">12</span>
+        <span>图 16 是一个由若干相同小立方体搭成的几何体的俯视图，小正方形中的数字表示该位置小立方体的个数。（1）一共用了多少个小立方体？（2）这个几何体的主视图有几列？从左到右每列的高度分别是多少？（3）如果保持俯视图和主视图都不变，最多可以拿掉多少个小立方体？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）1 + 2 + 1 + 2 + 3 + 1 + 1 + 1 + 2 = 14（个）。</p>
+          <p>（2）主视图有 3 列，从左到右每列的高度分别是 2、3、2。因为主视图每一列的高度，等于该列各位置数字中的最大值：左边一列数字为 1、2、1，最大值 2；中间一列数字为 2、3、1，最大值 3；右边一列数字为 1、1、2，最大值 2。</p>
+          <p>（3）最多可以拿掉 1 个。俯视图不变，说明每一格上至少有 1 个小立方体；主视图不变，说明每一列的最大高度不能降低。左边一列原来 4 个，要保留高度 2，最少需要 1 + 1 + 1 + 1 = 4 个（其中一格保留 2 个），一个也不能拿；中间一列原来 6 个，要保留高度 3，最少需要 1 + 1 + 3 = 5 个，可以拿掉 1 个；右边一列原来 4 个，要保留高度 2，最少需要 1 + 1 + 2 = 4 个，一个也不能拿。所以最多拿掉 1 个。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">C 组　问题解决（第 13—17 题）</h4>
+    <p>这一组题都来自生活：茶叶罐、漏斗、纸盒、收纳盒。解题的通用思路是“先想展开图，再算面积或长度”。计算时注意写清每一步用的是哪个量，π 的取值以题目要求为准。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">13</span>
+        <span>一个圆柱形茶叶罐，底面半径是 5 cm，高是 12 cm。要在它的侧面贴满一圈商标纸（接头处忽略不计），π 取 3.14。（1）商标纸展开后是什么形状？长和宽各是多少？（2）至少需要多少平方厘米的商标纸？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）商标纸展开后是长方形。长等于茶叶罐的底面周长，即 2 × 3.14 × 5 = 31.4（cm）；宽等于茶叶罐的高，即 12 cm。</p>
+          <p>（2）商标纸的面积 = 31.4 × 12 = 376.8（cm<sup>2</sup>）。所以至少需要 376.8 cm<sup>2</sup> 的商标纸。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">14</span>
+        <span>用一张扇形纸片做一个圆锥形漏斗（没有底面），圆锥的底面直径是 10 cm，母线长是 13 cm，π 取 3.14。（1）这个圆锥的侧面展开图是扇形，求扇形的半径和弧长；（2）做这个漏斗至少需要多少平方厘米的纸？（接缝处忽略不计）</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）底面半径 <i>r</i> = 10 ÷ 2 = 5（cm）。扇形的半径等于母线长，是 13 cm；扇形的弧长等于底面周长，是 2 × 3.14 × 5 = 31.4（cm）。</p>
+          <p>（2）漏斗没有底面，只需要侧面的扇形纸。由扇形面积 = 二分之一 × 弧长 × 半径，得面积 = 二分之一 × 31.4 × 13 = 204.1（cm<sup>2</sup>）。也可以用 <i>S</i><sub>侧</sub> = π<i>r</i><i>l</i> = 3.14 × 5 × 13 = 204.1（cm<sup>2</sup>）。所以至少需要 204.1 cm<sup>2</sup> 的纸。</p>
+        </div>
+      </details>
+    </div>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 380 240" role="img" aria-label="长方体纸盒的展开图">
+        <title>长方体纸盒的展开图</title>
+        <rect x="88" y="72" width="96" height="48" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+        <text x="136" y="100" text-anchor="middle" font-size="12" fill="#334155">24 × 12</text>
+        <rect x="40" y="120" width="48" height="32" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+        <text x="64" y="140" text-anchor="middle" font-size="12" fill="#334155">12 × 8</text>
+        <rect x="88" y="120" width="96" height="32" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+        <text x="136" y="140" text-anchor="middle" font-size="12" fill="#334155">24 × 8</text>
+        <rect x="184" y="120" width="48" height="32" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+        <text x="208" y="140" text-anchor="middle" font-size="12" fill="#334155">12 × 8</text>
+        <rect x="232" y="120" width="96" height="32" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+        <text x="280" y="140" text-anchor="middle" font-size="12" fill="#334155">24 × 8</text>
+        <rect x="88" y="152" width="96" height="48" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+        <text x="136" y="180" text-anchor="middle" font-size="12" fill="#334155">24 × 12</text>
+        <text x="190" y="228" text-anchor="middle" font-size="12" fill="#334155">单位：cm</text>
+      </svg>
+      <figcaption>图 17　长方体纸盒的展开图（图中数字表示对应面的长和宽）</figcaption>
+    </figure>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">15</span>
+        <span>一个长方体纸盒的展开图如图 17 所示（单位：cm，接缝处忽略不计）。（1）求做这个纸盒至少需要多少平方厘米的纸板；（2）如果沿这个纸盒的所有棱贴一圈胶带，一共需要多长的胶带？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）由展开图可以读出：纸盒的长是 24 cm，宽是 12 cm，高是 8 cm。纸盒的表面积等于 6 个面的面积之和，即 <i>S</i> = 2 × (24 × 12 + 24 × 8 + 12 × 8) = 2 × (288 + 192 + 96) = 2 × 576 = 1152（cm<sup>2</sup>）。所以至少需要 1152 cm<sup>2</sup> 的纸板。</p>
+          <p>（2）长方体有 12 条棱，其中长、宽、高各 4 条。所有棱的长度之和 = 4 × (24 + 12 + 8) = 4 × 44 = 176（cm）。所以一共需要 176 cm 的胶带。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">16</span>
+        <span>用 8 个棱长为 1 cm 的相同小立方体搭成一个大正方体。（1）这个大正方体的棱长是多少？（2）它的表面由多少个小正方形组成？表面积是多少？（3）如果从大正方体的一个角上拿掉一个小立方体，剩下部分的表面积是多少？与原来相比有变化吗？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）因为 2 × 2 × 2 = 8，所以大正方体是两层，每层 2 × 2 个，棱长是 2 cm。</p>
+          <p>（2）大正方体每个面有 2 × 2 = 4 个小正方形，6 个面一共 24 个小正方形，表面积是 24 × 1<sup>2</sup> = 24（cm<sup>2</sup>）。</p>
+          <p>（3）从角上拿掉一个小立方体后，原来露在外面的 3 个小正方形面没有了，但同时又有 3 个新的小正方形面露出来，一减一加正好抵消，所以剩下部分的表面积仍是 24 cm<sup>2</sup>，与原来相比没有变化。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">17</span>
+        <span>一个正六棱柱形的收纳盒，底面各边长都是 4 cm，高是 10 cm。要用花布把它的侧面围起来。（1）不计接缝，需要多少平方厘米花布？（2）实际裁剪时接缝处要多留 1 cm，需要多少平方厘米花布？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）正六棱柱的侧面展开图是长方形，长等于底面周长 6 × 4 = 24（cm），宽等于高 10 cm。所以需要花布 24 × 10 = 240（cm<sup>2</sup>）。</p>
+          <p>（2）接缝处多留 1 cm，长方形的长变成 24 + 1 = 25（cm），宽不变。所以需要花布 25 × 10 = 250（cm<sup>2</sup>）。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">D 组　联系拓广（第 18—21 题）</h4>
+    <p>这一组题要求把本章知识用得更灵活：既要会“数”，也要会“想”，还要能说清理由。答案不要求写得长，但关键步骤和依据不能少。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">18</span>
+        <span>正方体的表面展开图一共有 11 种，其中“一四一”型有 6 种，“二三一”型有 3 种，“二二二”型有 1 种，其余是“三三”型。（1）“三三”型有几种？（2）为什么不可能出现“一行排 5 个正方形”的展开图？（3）请用文字描述一种“二二二”型展开图的形状。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）11 − 6 − 3 − 1 = 1（种）。</p>
+          <p>（2）正方体绕一周只有 4 个侧面，一行中前 4 个正方形正好围成一圈；第 5 个正方形折起来会与第 1 个正方形重合，同时另一处必然出现空缺，围不成封闭的正方体。所以一行最多只能排 4 个正方形。</p>
+          <p>（3）例如：一共三行，每行 2 个正方形，相邻两行错开 1 个正方形，整体像三级台阶（也就是图 15（3）的形状）。把这样的图形折起来，6 个正方形正好两两相对，围成正方体。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">19</span>
+        <span>一个几何体由若干相同的小立方体搭成。它的主视图有 3 列，从左到右每列的高度分别是 2、2、1；它的俯视图由 4 个小正方形组成：下面一行有 3 个，依次是第 1、2、3 列；上面一行有 1 个，位于第 2 列的正上方。（1）搭这个几何体最少需要多少个小立方体？（2）最多需要多少个？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>俯视图有 4 个位置，每个位置至少放 1 个小立方体，这就用去 4 个。但主视图对每一列的高度还有要求：第 1 列只有 1 个位置，主视图高 2，说明这个位置必须放 2 个；第 3 列只有 1 个位置，主视图高 1，放 1 个就够；第 2 列有 2 个位置，主视图高 2，说明这两摞中至少有一摞要放 2 个。</p>
+          <p>（1）最少：2 + (2 + 1) + 1 = 6（个）。（2）最多：2 + (2 + 2) + 1 = 7（个）。</p>
+          <p>解析：第 2 列的两个位置中，只要有一摞达到 2 个，主视图该列的高度就是 2，所以另一摞可以是 1 个（最少），也可以是 2 个（最多）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">20</span>
+        <span>一只蚂蚁要从长方体纸盒下底面的一个顶点 <i>A</i> 出发，沿纸盒表面爬到上底面的一个顶点 <i>B</i>（<i>A</i> 与 <i>B</i> 不在同一条棱上）。怎样爬最近？请说明你的方法，并说明为什么“先沿底面爬一圈再竖直向上爬”不是最近的路线。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>方法：把纸盒需要经过的几个侧面展开成平面图形（必要时连同底面一起展开），在展开图上用线段连接 <i>A</i>、<i>B</i> 两点，这条线段就是最短路线；再把线段折回纸盒表面，就得到蚂蚁的爬行路线。</p>
+          <p>理由：把立体图形的表面展开成平面，表面上的曲线长度在展开前后不变，所以“表面上最短”和“展开图上最短”是同一件事。平面上两点之间线段最短，因此展开图上的线段对应着最短路线。“先沿底面爬一圈再竖直向上爬”在展开图上是一条折线，折线比线段长，所以不是最近的路线。</p>
+          <p>说明：这条最短路线究竟有多长，要用到勾股定理，到八年级学习后就能计算了。现在只要会“展开—连线—还原”这三步即可。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">21</span>
+        <span>把 12 个棱长为 1 的正方体小盒装进一个长方体大盒，正好装满，小盒不切割，大盒的长、宽、高都是整数。（1）大盒有哪几种不同的形状（写成“长 × 宽 × 高”，不计排列顺序）？（2）哪一种形状最省纸？最小表面积是多少？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）因为 12 = 1 × 1 × 12 = 1 × 2 × 6 = 1 × 3 × 4 = 2 × 2 × 3，所以大盒有 4 种形状：1 × 1 × 12、1 × 2 × 6、1 × 3 × 4、2 × 2 × 3。</p>
+          <p>（2）分别计算表面积：1 × 1 × 12 的表面积是 2 × (1 × 1 + 1 × 12 + 1 × 12) = 50；1 × 2 × 6 的表面积是 2 × (1 × 2 + 1 × 6 + 2 × 6) = 40；1 × 3 × 4 的表面积是 2 × (1 × 3 + 1 × 4 + 3 × 4) = 38；2 × 2 × 3 的表面积是 2 × (2 × 2 + 2 × 3 + 2 × 3) = 32。</p>
+          <p>所以 2 × 2 × 3 这种形状最省纸，最小表面积是 32。可以发现：体积相同时，长、宽、高越接近，表面积越小。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">本章学习自评表</h4>
+    <p>做完复习题，请对照表 8 给自己打星：完全做到画三颗星，基本做到画两颗星，还需要练习画一颗星。打星不是目的，找到“还想再练的地方”才是目的。</p>
+
+    <table class="data-table">
+      <caption>表 8　本章学习自评表</caption>
+      <thead>
+        <tr><th>评价内容</th><th>我的自评</th><th>还想再练的地方</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>能识别棱柱、圆柱、棱锥、圆锥、球，并说出它们的主要特征</td><td>☆☆☆</td><td></td></tr>
+        <tr><td>能熟练说出 <i>n</i> 棱柱、<i>n</i> 棱锥的顶点数、棱数、面数，并能说明理由</td><td>☆☆☆</td><td></td></tr>
+        <tr><td>能画出常见几何体的表面展开图，能判断一个图形能否折成正方体，会找相对面</td><td>☆☆☆</td><td></td></tr>
+        <tr><td>能说出常见几何体的截面形状，能画出简单几何体的三视图，并能由三视图想象立体图形</td><td>☆☆☆</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <div class="method">
+      <strong>复习建议：</strong>把本章的错题按“概念不清”“看图想不出”“计算出错”三类分开整理。概念不清的，回到表 5 至表 7 对照；看图想不出的，动手剪一剪、折一折、搭一搭；计算出错的，把公式抄在卡片上，每天默写一遍。三天后再做一遍带记号的题，能全对，本章就过关了。
+    </div>
+  </section>
+</section>
+
+
+    <footer class="footer">
+      <p><strong>编制说明</strong>　本讲义依据北京师范大学出版社《义务教育教科书·数学·七年级上册》（2024 年秋版）第一章编写，供课堂同步教学、课后复习与单元整理使用。</p>
+      <p>例题与练习在教材“做一做”“议一议”“随堂练习”的基础上改编、补充，答案与解析供教师讲评和学生自检使用。图形均为矢量绘制，可无损放大或打印。</p>
+      <p>建议用法：课前用“学习目标”明确方向，课中用“知识讲解 + 例题”推进，课末用“分层练习”检测，章末用“回顾与思考 + 复习题”整体建构。</p>
+    </footer>
+
+  </main>
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  "use strict";
+
+  var topbar = document.querySelector(".topbar");
+  var sidebar = document.getElementById("sidebar");
+  var progress = document.getElementById("progress");
+  var toTop = document.getElementById("toTop");
+  var menuBtn = document.getElementById("menuBtn");
+  var printBtn = document.getElementById("printBtn");
+  var toggleBtn = document.getElementById("toggleAnswers");
+  var answers = Array.prototype.slice.call(document.querySelectorAll("details.answer"));
+
+  /* ---- 阅读进度 + 回到顶部 ---- */
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var y = window.pageYOffset || doc.scrollTop;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+    toTop.classList.toggle("show", y > 600);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---- 移动端目录抽屉 ---- */
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      sidebar.classList.toggle("open");
+    });
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a")) sidebar.classList.remove("open");
+    });
+    document.addEventListener("click", function (e) {
+      if (window.innerWidth > 1100) return;
+      if (!sidebar.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove("open");
+      }
+    });
+  }
+
+  /* ---- 展开 / 收起答案 ---- */
+  var allOpen = false;
+  function setAll(open) {
+    allOpen = open;
+    answers.forEach(function (d) { d.open = open; });
+    if (toggleBtn) toggleBtn.textContent = open ? "收起答案" : "展开答案";
+  }
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () { setAll(!allOpen); });
+  }
+
+  /* ---- 打印：临时展开全部答案，打印后还原 ---- */
+  var saved = null;
+  window.addEventListener("beforeprint", function () {
+    saved = answers.map(function (d) { return d.open; });
+    answers.forEach(function (d) { d.open = true; });
+  });
+  window.addEventListener("afterprint", function () {
+    if (!saved) return;
+    answers.forEach(function (d, i) { d.open = saved[i]; });
+    saved = null;
+  });
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      window.print();
+    });
+  }
+
+  /* ---- 目录高亮（滚动定位） ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".side-nav a"));
+  var targets = links.map(function (a) {
+    return document.getElementById(a.getAttribute("href").slice(1));
+  });
+  function highlight() {
+    var y = (window.pageYOffset || document.documentElement.scrollTop) + 120;
+    var current = 0;
+    targets.forEach(function (el, i) {
+      if (el && el.offsetTop <= y) current = i;
+    });
+    links.forEach(function (a, i) {
+      a.classList.toggle("active", i === current);
+    });
+  }
+  window.addEventListener("scroll", highlight, { passive: true });
+  window.addEventListener("resize", highlight);
+  highlight();
+})();
+</script>
+</body>
+</html>

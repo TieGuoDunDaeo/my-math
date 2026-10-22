@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>制作一个尽可能大的无盖长方体形收纳盒 · 北师大版七年级上册数学（2024秋版）综合与实践</title>
+<meta name="description" content="北师大版七年级上册数学（2024秋版）综合与实践《制作一个尽可能大的无盖长方体形收纳盒》活动讲义：问题转化、列表估算、画图观察、逐步逼近、结论检验、推广与活动评价，含例题、练习与参考答案。">
+<style>
+/* ============ 基础变量 ============ */
+:root{
+  --ink:#1f2937;
+  --ink-soft:#3f4b5b;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --line-strong:#cbd5e1;
+  --paper:#ffffff;
+  --bg:#eef2f7;
+  --brand:#1d4ed8;
+  --brand-dark:#1e3a8a;
+  --brand-light:#eff6ff;
+  --accent:#b45309;
+  --accent-light:#fffbeb;
+  --green:#047857;
+  --green-light:#ecfdf5;
+  --orange:#c2410c;
+  --orange-light:#fff7ed;
+  --purple:#6d28d9;
+  --purple-light:#f5f3ff;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.18);
+  --font-sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif;
+  --topbar-h:56px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h) + 18px);-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-serif);
+  font-size:17px;
+  line-height:1.9;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;}
+a{color:var(--brand);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ============ 阅读进度条 ============ */
+.reading-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;
+  background:linear-gradient(90deg,#1d4ed8,#0ea5e9,#f59e0b);
+  z-index:120;transition:width .12s linear;
+}
+
+/* ============ 顶栏 ============ */
+.topbar{
+  position:sticky;top:0;z-index:100;height:var(--topbar-h);
+  display:flex;align-items:center;gap:16px;
+  padding:0 22px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-title{
+  font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--brand-dark);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  min-width:0;flex:1 1 auto;
+}
+.topbar-title span{color:var(--muted);font-weight:400;}
+.topbar-spacer{display:none;}
+.topbar-btn{
+  font-family:var(--font-sans);font-size:13px;line-height:1;
+  padding:8px 13px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line-strong);background:#fff;color:var(--ink-soft);
+  transition:.18s;white-space:nowrap;
+}
+.topbar-btn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light);}
+.topbar-btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;}
+.topbar-btn.primary:hover{background:var(--brand-dark);color:#fff;}
+.menu-btn{display:none;}
+
+/* ============ 布局 ============ */
+.layout{
+  display:grid;
+  grid-template-columns:258px minmax(0,1fr);
+  gap:44px;
+  max-width:1260px;
+  margin:0 auto;
+  padding:0 26px 80px;
+}
+.sidebar{
+  position:sticky;top:var(--topbar-h);
+  align-self:start;
+  height:calc(100vh - var(--topbar-h));
+  overflow-y:auto;
+  padding:26px 6px 40px 0;
+  font-family:var(--font-sans);
+  scrollbar-width:thin;
+}
+.sidebar::-webkit-scrollbar{width:6px;}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+.side-title{
+  font-size:11px;letter-spacing:.18em;color:var(--muted);
+  text-transform:uppercase;margin:0 0 12px 10px;
+}
+.side-nav{list-style:none;margin:0;padding:0;}
+.side-nav li{margin:1px 0;}
+.side-nav a{
+  display:block;padding:6px 10px;border-radius:8px;
+  font-size:13.5px;color:var(--ink-soft);line-height:1.5;
+  border-left:2px solid transparent;transition:.15s;
+}
+.side-nav a:hover{background:#fff;color:var(--brand);text-decoration:none;}
+.side-nav a.active{background:var(--brand-light);color:var(--brand-dark);border-left-color:var(--brand);font-weight:600;}
+.side-nav .lvl1 > a{font-weight:600;color:var(--ink);font-size:14px;margin-top:8px;}
+.side-nav .lvl2 > a{padding-left:22px;font-size:13px;}
+.side-nav .lvl2 > a::before{content:"·";margin-right:6px;color:var(--line-strong);}
+
+/* ============ 内容区 ============ */
+.content{max-width:900px;min-width:0;padding-top:34px;}
+
+/* ============ 封面 ============ */
+.cover{
+  position:relative;overflow:hidden;
+  border-radius:22px;
+  padding:58px 54px 46px;
+  color:#fff;
+  background:
+    radial-gradient(1200px 420px at 88% -10%,rgba(56,189,248,.35),transparent 60%),
+    radial-gradient(700px 380px at 6% 108%,rgba(245,158,11,.28),transparent 60%),
+    linear-gradient(150deg,#0f2557 0%,#1e3a8a 46%,#1d4ed8 100%);
+  box-shadow:0 24px 60px -28px rgba(15,37,87,.65);
+}
+.cover::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(160deg,rgba(0,0,0,.9),transparent 72%);
+  -webkit-mask-image:linear-gradient(160deg,rgba(0,0,0,.9),transparent 72%);
+}
+.cover-badge{
+  position:relative;z-index:1;
+  display:inline-block;font-family:var(--font-sans);font-size:12px;letter-spacing:.22em;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+}
+.cover h1{
+  position:relative;z-index:1;
+  font-family:var(--font-sans);
+  font-size:clamp(34px,5.2vw,52px);
+  line-height:1.16;letter-spacing:.04em;
+  margin:22px 0 10px;font-weight:700;
+  text-shadow:0 6px 30px rgba(0,0,0,.25);
+}
+.cover-sub{
+  position:relative;z-index:1;
+  font-family:var(--font-sans);font-size:16px;color:rgba(255,255,255,.86);
+  margin:0 0 30px;letter-spacing:.06em;
+}
+.cover-meta{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px 26px;
+  border-top:1px solid rgba(255,255,255,.2);padding-top:24px;
+  font-family:var(--font-sans);
+}
+.cover-meta div{display:flex;flex-direction:column;gap:3px;}
+.cover-meta span{font-size:11.5px;letter-spacing:.16em;color:rgba(255,255,255,.6);}
+.cover-meta strong{font-size:14px;font-weight:600;color:#fff;}
+
+/* ============ 目录卡 ============ */
+.toc-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 34px 32px;margin:26px 0 40px;box-shadow:var(--shadow);
+}
+.toc-card h2{
+  font-family:var(--font-sans);font-size:19px;margin:0 0 4px;color:var(--brand-dark);
+  display:flex;align-items:center;gap:10px;
+}
+.toc-card h2::before{content:"";width:5px;height:19px;border-radius:3px;background:var(--brand);}
+.toc-note{font-family:var(--font-sans);font-size:13px;color:var(--muted);margin:0 0 18px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;font-family:var(--font-sans);}
+.toc-grid a{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:7px 10px;border-radius:8px;font-size:14px;color:var(--ink-soft);
+  border-bottom:1px dashed var(--line);
+}
+.toc-grid a:hover{background:var(--brand-light);color:var(--brand);text-decoration:none;}
+.toc-grid a em{font-style:normal;color:var(--muted);font-size:12px;white-space:nowrap;}
+.toc-grid .toc-l1{font-weight:600;color:var(--ink);}
+.toc-grid .toc-l2{padding-left:20px;font-size:13.5px;}
+
+/* ============ 节 ============ */
+.part{scroll-margin-top:calc(var(--topbar-h) + 12px);margin:0 0 10px;}
+.part-head{
+  border-left:6px solid var(--brand);
+  padding:6px 0 6px 24px;
+  margin:52px 0 26px;
+}
+.part-kicker{
+  font-family:var(--font-sans);font-size:12px;letter-spacing:.2em;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.part-title{
+  font-family:var(--font-sans);font-size:clamp(26px,3.4vw,34px);
+  line-height:1.25;margin:0 0 12px;color:var(--brand-dark);letter-spacing:.02em;
+}
+.part-intro{
+  margin:0;color:var(--ink-soft);font-size:16px;line-height:1.95;
+  padding:16px 20px;background:#fff;border:1px solid var(--line);
+  border-left:3px solid var(--line-strong);border-radius:0 10px 10px 0;
+}
+
+/* ============ 学习目标 ============ */
+.goal-box{
+  background:linear-gradient(180deg,#fffdf5,#fffbeb);
+  border:1px solid #fde68a;border-radius:var(--radius);
+  padding:22px 26px 20px;margin:0 0 34px;
+}
+.goal-box h3{
+  font-family:var(--font-sans);font-size:16px;margin:0 0 10px;color:#92400e;
+  display:flex;align-items:center;gap:8px;
+}
+.goal-box h3::before{content:"◎";font-size:15px;}
+.goal-box ul{margin:0;padding-left:22px;}
+.goal-box li{margin:5px 0;color:#78350f;font-size:15.5px;line-height:1.85;}
+
+/* ============ 知识卡 ============ */
+.knowledge-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 38px 38px;margin:0 0 34px;box-shadow:var(--shadow);
+  scroll-margin-top:calc(var(--topbar-h) + 16px);
+}
+.card-title{
+  font-family:var(--font-sans);font-size:22px;line-height:1.35;
+  margin:0 0 22px;padding-bottom:16px;border-bottom:1px solid var(--line);
+  color:var(--brand-dark);display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.card-title .num{
+  display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.1em;
+  padding:5px 12px;border-radius:999px;background:var(--brand);color:#fff;
+  flex:none;
+}
+.subhead{
+  font-family:var(--font-sans);font-size:17.5px;line-height:1.5;
+  margin:32px 0 12px;color:var(--brand-dark);
+  padding-left:12px;border-left:4px solid #93c5fd;
+}
+.knowledge-card > p{margin:12px 0;}
+.knowledge-card ul,.knowledge-card ol{margin:12px 0;padding-left:26px;}
+.knowledge-card li{margin:6px 0;}
+strong{color:#111827;font-weight:700;}
+em{font-style:normal;color:var(--accent);font-weight:600;}
+
+/* ============ 提示块 ============ */
+.keypoint,.tip,.warn,.method,.note{
+  border-radius:12px;padding:16px 20px;margin:20px 0;font-size:15.8px;line-height:1.9;
+}
+.keypoint{background:var(--brand-light);border:1px solid #bfdbfe;border-left:4px solid #3b82f6;}
+.keypoint strong{color:#1e40af;}
+.tip{background:var(--green-light);border:1px solid #a7f3d0;border-left:4px solid #10b981;}
+.tip strong{color:#065f46;}
+.warn{background:var(--orange-light);border:1px solid #fed7aa;border-left:4px solid #f97316;}
+.warn strong{color:#9a3412;}
+.method{background:var(--purple-light);border:1px solid #ddd6fe;border-left:4px solid #8b5cf6;}
+.method strong{color:#5b21b6;}
+.note{background:#f8fafc;border:1px dashed var(--line-strong);border-left:4px solid #94a3b8;}
+.note strong{color:#475569;}
+.keypoint p:first-child,.tip p:first-child,.warn p:first-child,
+.method p:first-child,.note p:first-child{margin-top:0;}
+.keypoint p:last-child,.tip p:last-child,.warn p:last-child,
+.method p:last-child,.note p:last-child{margin-bottom:0;}
+.method ul,.method ol{margin:8px 0 0;padding-left:24px;}
+
+/* ============ 公式 ============ */
+.formula{
+  margin:20px 0;padding:18px 22px;border-radius:12px;
+  background:#f8fafc;border:1px solid var(--line);
+  text-align:center;
+}
+.formula-label{
+  font-family:var(--font-sans);font-size:12.5px;letter-spacing:.12em;
+  color:var(--muted);margin-bottom:8px;
+}
+.formula-body{
+  font-family:"Cambria Math",Cambria,"Times New Roman",var(--font-serif);
+  font-size:20px;color:var(--brand-dark);line-height:1.7;letter-spacing:.02em;
+}
+
+/* ============ 例题 ============ */
+.example{
+  border:1px solid #dbeafe;border-radius:12px;margin:24px 0;
+  overflow:hidden;background:#fff;
+}
+.example-head{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 20px;background:linear-gradient(90deg,#eff6ff,#f8fbff);
+  border-bottom:1px solid #dbeafe;
+}
+.example-no{
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  background:var(--brand);color:#fff;padding:4px 11px;border-radius:999px;
+  letter-spacing:.06em;flex:none;
+}
+.example-title{font-family:var(--font-sans);font-size:15px;color:var(--brand-dark);font-weight:600;}
+.example-body{padding:18px 22px 20px;}
+.example-body > p{margin:8px 0;}
+.solution{
+  margin-top:14px;padding:14px 18px;border-radius:10px;
+  background:#f8fafc;border-left:3px solid var(--brand);
+}
+.solution-label{
+  font-family:var(--font-sans);font-size:12.5px;font-weight:700;color:var(--brand);
+  letter-spacing:.14em;margin-bottom:6px;
+}
+.solution p{margin:6px 0;font-size:15.8px;}
+.variant{
+  margin:16px 0 0;padding:12px 16px;border-radius:10px;
+  background:#fffbeb;border:1px dashed #fcd34d;font-size:15.5px;
+}
+
+/* ============ 练习 ============ */
+.exercise{
+  padding:18px 2px 20px;border-bottom:1px dashed var(--line);
+}
+.exercise:last-of-type{border-bottom:none;}
+.exercise-head{
+  display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:start;
+  font-size:16px;line-height:1.9;
+}
+.exercise-no{
+  grid-column:1;grid-row:1 / span 99;
+  min-width:26px;height:26px;padding:0 9px;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  background:#e0e7ff;color:#3730a3;margin-top:3px;
+}
+.exercise-head > *:not(.exercise-no){grid-column:2;min-width:0;}
+.exercise-head p{margin:6px 0;}
+.exercise-head p:first-child{margin-top:0;}
+.option{display:inline-block;margin-right:18px;white-space:nowrap;}
+
+/* ============ 答案 ============ */
+details.answer{
+  margin:10px 0 0 38px;border-radius:10px;background:#f8fafc;
+  border:1px solid var(--line);overflow:hidden;
+}
+details.answer summary{
+  cursor:pointer;list-style:none;padding:9px 16px;
+  font-family:var(--font-sans);font-size:13.5px;color:var(--brand);
+  user-select:none;display:flex;align-items:center;gap:8px;
+}
+details.answer summary::-webkit-details-marker{display:none;}
+details.answer summary::before{
+  content:"▸";font-size:11px;transition:transform .18s;display:inline-block;color:var(--brand);
+}
+details.answer[open] summary::before{transform:rotate(90deg);}
+details.answer summary:hover{background:var(--brand-light);}
+.answer-body{padding:4px 18px 16px;font-size:15.3px;line-height:1.9;color:var(--ink-soft);}
+.answer-body p{margin:7px 0;}
+.answer-body strong{color:var(--brand-dark);}
+
+/* ============ 图 ============ */
+.figure{
+  margin:26px 0;padding:14px 14px 10px;
+  background:#fbfdff;border:1px solid var(--line);border-radius:12px;
+  text-align:center;
+}
+.fig-svg{display:block;width:100%;height:auto;max-width:100%;}
+figure.figure figcaption{
+  font-family:var(--font-sans);font-size:13px;color:var(--muted);
+  margin-top:8px;line-height:1.6;
+}
+
+/* ============ 多栏 ============ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0;align-items:start;}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;align-items:start;}
+.two-col > div,.three-col > div{min-width:0;}
+.two-col .figure,.three-col .figure{margin:0;}
+
+/* ============ 表格 ============ */
+.data-table{
+  width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;
+  font-family:var(--font-sans);background:#fff;
+  border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+}
+.data-table caption{
+  caption-side:top;text-align:left;font-size:13.5px;color:var(--muted);
+  padding:0 0 8px;font-family:var(--font-sans);
+}
+.data-table th,.data-table td{
+  border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;
+  line-height:1.7;
+}
+.data-table thead th{background:#f1f5f9;color:var(--brand-dark);font-weight:600;white-space:nowrap;}
+.data-table tbody tr:nth-child(even){background:#fafbfd;}
+.data-table td.c,.data-table th.c{text-align:center;}
+
+/* ============ 章末自评 ============ */
+.self-check{margin:22px 0;}
+
+/* ============ 页脚 ============ */
+.footer{
+  margin-top:56px;padding:26px 0 0;border-top:1px solid var(--line);
+  font-family:var(--font-sans);font-size:13px;color:var(--muted);line-height:1.9;
+}
+.footer p{margin:4px 0;}
+
+/* ============ 回到顶部 ============ */
+.to-top{
+  position:fixed;right:26px;bottom:28px;z-index:90;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);
+  background:#fff;color:var(--brand);cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(15,23,42,.3);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:.22s;font-size:18px;
+}
+.to-top.show{opacity:1;visibility:visible;}
+.to-top:hover{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+/* ============ 响应式 ============ */
+@media (max-width:1100px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 18px 60px;}
+  .sidebar{
+    position:fixed;top:var(--topbar-h);left:0;bottom:0;width:280px;height:auto;
+    background:#fff;border-right:1px solid var(--line);z-index:99;
+    padding:20px 14px 40px;transform:translateX(-102%);transition:transform .24s ease;
+    box-shadow:0 10px 40px -20px rgba(15,23,42,.4);
+  }
+  .sidebar.open{transform:none;}
+  .menu-btn{display:inline-block;}
+  .content{padding-top:22px;}
+  .knowledge-card{padding:26px 22px 30px;}
+  .cover{padding:40px 28px 34px;border-radius:16px;}
+  .toc-card{padding:24px 20px 26px;}
+}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.85;}
+  .topbar{padding:0 14px;gap:10px;}
+  .topbar-title{font-size:13px;}
+  .topbar-title span{display:none;}
+  .topbar-btn{padding:7px 10px;font-size:12px;}
+  .layout{padding:0 12px 50px;}
+  .content{padding-top:16px;}
+  .cover{padding:32px 20px 28px;}
+  .cover h1{font-size:30px;}
+  .cover-meta{grid-template-columns:1fr 1fr;gap:12px;}
+  .toc-grid{grid-template-columns:1fr;}
+  .part-head{margin:36px 0 20px;padding-left:16px;border-left-width:4px;}
+  .part-title{font-size:24px;}
+  .part-intro{font-size:15px;padding:14px 16px;}
+  .knowledge-card{padding:22px 16px 26px;border-radius:12px;}
+  .card-title{font-size:19px;}
+  .subhead{font-size:16px;margin-top:26px;}
+  .two-col,.three-col{grid-template-columns:1fr;gap:16px;}
+  details.answer{margin-left:0;}
+  .data-table{font-size:13.5px;}
+  .data-table th,.data-table td{padding:7px 8px;}
+  .to-top{right:14px;bottom:16px;width:38px;height:38px;}
+  .cover-meta{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .cover-meta div{min-width:0;}
+  .cover-meta strong{overflow-wrap:anywhere;}
+  .cover-sub{font-size:14px;letter-spacing:.02em;}
+  .toc-grid a{min-width:0;}
+  .topbar{padding:0 10px;gap:8px;}
+  .topbar-btn{padding:6px 9px;font-size:11.5px;}
+}
+
+/* ============ 打印 ============ */
+@media print{
+  @page{size:A4;margin:16mm 14mm 16mm;}
+  :root{--topbar-h:0px;}
+  html,body{background:#fff !important;}
+  body{font-size:10.8pt;line-height:1.75;color:#000;}
+  .topbar,.sidebar,.reading-progress,.to-top,.menu-btn{display:none !important;}
+  .layout{display:block;max-width:none;margin:0;padding:0;gap:0;}
+  .content{max-width:none;padding:0;}
+  .cover{
+    border-radius:0;box-shadow:none;page-break-after:always;
+    background:#1e3a8a !important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    padding:34mm 18mm;
+  }
+  .cover::after{display:none;}
+  .toc-card{box-shadow:none;page-break-after:always;border:none;padding:0;}
+  .toc-grid{grid-template-columns:1fr 1fr;}
+  .part{page-break-before:always;}
+  .part-head{margin-top:0;}
+  .knowledge-card{
+    box-shadow:none;border:1px solid #d7dee8;border-radius:6px;
+    padding:8mm 7mm;page-break-inside:auto;
+  }
+  .card-title{page-break-after:avoid;}
+  .subhead{page-break-after:avoid;}
+  .example,.exercise,.figure,.formula,.keypoint,.tip,.warn,.method,.note,
+  .two-col,.three-col,.data-table{
+    page-break-inside:avoid;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  details.answer{border:1px solid #d7dee8;background:#fafafa;}
+  details.answer summary{display:none;}
+  details.answer .answer-body{display:block !important;padding-top:10px;}
+  details.answer[open] .answer-body{display:block !important;}
+  a{color:#000;text-decoration:none;}
+  .footer{page-break-before:avoid;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+}
+
+/* ============ 复习网格 / 思维导图 ============ */
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;}
+.review-grid > div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+.review-grid > div > strong{display:block;margin-bottom:4px;color:var(--brand-dark);}
+.mindmap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0;}
+.mindmap > div{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+.mindmap > div > strong{display:block;margin-bottom:6px;color:var(--brand-dark);}
+@media (max-width:760px){.review-grid,.mindmap{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="reading-progress" id="progress"></div>
+
+<header class="topbar">
+  <button class="topbar-btn menu-btn" id="menuBtn" type="button" aria-label="打开目录">☰ 目录</button>
+  <div class="topbar-title">综合与实践 <span>· 北师大版七年级上册（2024秋版）</span></div>
+  <div class="topbar-spacer"></div>
+  <button class="topbar-btn" id="toggleAnswers" type="button">展开答案</button>
+  <button class="topbar-btn primary" id="printBtn" type="button">打印 / 导出 PDF</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <p class="side-title">活动目录</p>
+    <ul class="side-nav" id="sideNav">
+      <li class="lvl1"><a href="#part1">综合与实践　制作无盖长方体收纳盒</a></li>
+      <li class="lvl2"><a href="#a1-1">环节 1　从一个收纳需求说起</a></li>
+      <li class="lvl2"><a href="#a1-2">环节 2　把问题变成数学式子</a></li>
+      <li class="lvl1"><a href="#part2">探究一　列表估算与画图观察</a></li>
+      <li class="lvl2"><a href="#a2-1">环节 3　列表估算</a></li>
+      <li class="lvl2"><a href="#a2-2">环节 4　画图观察</a></li>
+      <li class="lvl1"><a href="#part3">探究二　逐步逼近与结论检验</a></li>
+      <li class="lvl2"><a href="#a3-1">环节 5　逐步逼近</a></li>
+      <li class="lvl2"><a href="#a3-2">环节 6　结论与检验</a></li>
+      <li class="lvl1"><a href="#part4">拓展与应用　活动评价</a></li>
+      <li class="lvl2"><a href="#a4-1">环节 7　推广与拓展</a></li>
+      <li class="lvl2"><a href="#a4-2">环节 8　活动评价与自测</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <section class="cover">
+      <div class="cover-badge">北师大版 · 2024 秋 · 七年级上册 · 综合与实践</div>
+      <h1>制作一个尽可能大的<br/>无盖长方体形收纳盒</h1>
+      <p class="cover-sub">综合与实践　活动讲义　·　问题转化 · 列表估算 · 逐步逼近 · 拓展评价</p>
+      <div class="cover-meta">
+        <div><span>教材</span><strong>北京师范大学出版社（2024 年秋版）</strong></div>
+        <div><span>板块</span><strong>综合与实践</strong></div>
+        <div><span>内容</span><strong>1 个活动 · 4 个板块 · 5 课时</strong></div>
+        <div><span>适用</span><strong>七年级上学期 · 项目式学习与复习</strong></div>
+      </div>
+    </section>
+
+    <section class="toc-card">
+      <h2>活动目录</h2>
+      <p class="toc-note">点击标题可直接跳转；电脑端可使用左侧目录随页面滚动定位。</p>
+      <div class="toc-grid">
+        <a class="toc-l1" href="#part1">综合与实践　制作无盖长方体收纳盒<em>2 课时</em></a>
+        <a class="toc-l2" href="#a1-1">环节 1　从一个收纳需求说起</a>
+        <a class="toc-l2" href="#a1-2">环节 2　把问题变成数学式子</a>
+        <a class="toc-l1" href="#part2">探究一　列表估算与画图观察<em>1 课时</em></a>
+        <a class="toc-l2" href="#a2-1">环节 3　列表估算</a>
+        <a class="toc-l2" href="#a2-2">环节 4　画图观察</a>
+        <a class="toc-l1" href="#part3">探究二　逐步逼近与结论检验<em>1 课时</em></a>
+        <a class="toc-l2" href="#a3-1">环节 5　逐步逼近</a>
+        <a class="toc-l2" href="#a3-2">环节 6　结论与检验</a>
+        <a class="toc-l1" href="#part4">拓展与应用　活动评价<em>1 课时</em></a>
+        <a class="toc-l2" href="#a4-1">环节 7　推广与拓展</a>
+        <a class="toc-l2" href="#a4-2">环节 8　活动评价与自测</a>
+      </div>
+    </section>
+
+<section class="part" id="part1">
+  <div class="part-head">
+    <div class="part-kicker">综合与实践 · 建议 2 课时</div>
+    <h2 class="part-title">制作一个尽可能大的无盖长方体形收纳盒</h2>
+    <p class="part-intro">这节课不做习题，做一件事：用一张边长 20 cm 的正方形硬纸板，剪一剪、折一折，做一个无盖的长方体形收纳盒，让它装得尽可能多。这其实是初中第一次完整的数学建模：把“装得最多”翻译成“容积最大”，用字母 <i>x</i> 表示剪去的边长，写出容积与 <i>x</i> 的关系式，再把这个式子的值算到最大。两节课后，你手上会有一个真实的盒子，纸上会有数据、表格、结论和一段讲得出口的道理。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>活动目标</h3>
+    <ul>
+      <li>能从一个真实的收纳需求中提炼出“用料一定、容积最大”的数学问题，说清已知什么、要求什么、可以怎样假设。</li>
+      <li>会用一个字母表示剪去的小正方形边长，根据展开图写出底边长、盒高与容积之间的关系式，并说明取值范围的由来。</li>
+      <li>经历“提出问题 → 数学化 → 估算 → 逼近 → 检验 → 推广 → 评价”的完整过程，体会变量、关系式、取值范围在解决实际问题中的作用。</li>
+      <li>能动手把纸板做成盒子，用直尺测量、用计算器核算，并对自己的结论作出解释与反思。</li>
+      <li>在小组合作中学会分工、记录与表达，养成“先想清楚再动手、算完要检验”的习惯。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a1-1">
+    <h3 class="card-title"><span class="num">环节 1</span>从一个收纳需求说起</h3>
+
+    <h4 class="subhead">1. 抽屉里的麻烦</h4>
+    <p>先看一个几乎每个人都遇到过的场景。课桌的抽屉不大，可要放的东西不少：两块橡皮、一盒回形针、一支荧光笔、一根充电线、几颗纽扣电池，还有随手塞进去的便利贴。刚整理好的时候还算整齐，上完两节课再拉开抽屉，橡皮滚到了最里面，回形针散了一整层，充电线的插头缠在笔袋的拉链上。想找一样东西，得先把半个抽屉的东西拨到一边。</p>
+    <p>有人会说：买一个收纳盒不就行了。可如果手边正好有一张硬纸板，剪刀、直尺、胶带也都有，为什么不做一个小盒子呢？它不必漂亮，但要能把这堆小东西圈在一处；它不必很大，但要能塞进抽屉的一个角落；它最好是长方体形状，因为长方体的边贴着抽屉的边，不浪费空间，摆起来也稳。</p>
+    <p>于是问题来了：一张硬纸板，怎么做才能做出一个“够用”的盒子？更进一层：同样一张纸板，做法不同，做出来的盒子大小差得很远，那么有没有一种做法，能让盒子装得最多？这就不是一个手工问题了，而是一个数学问题。</p>
+
+    <h4 class="subhead">2. 把要求一条一条说清楚</h4>
+    <p>要动手之前，先要把“我要做什么”说清楚。这一步看起来啰嗦，其实是整个活动中最关键的一步。我们手头的材料是一张边长为 20 cm 的正方形硬纸板，面积是 20 × 20 = 400 cm<sup>2</sup>。做法是：在四个角各剪去一个同样大小的小正方形，再把剩下的四个“边”折起来，用胶带粘住相邻的边，就得到一个没有盖子的长方体形盒子。这个做法有一个好处——四个角剪掉之后，四条折起来的边正好围成一圈，接缝只有四条竖直的棱，用胶带一粘就成，不需要另加底面。</p>
+    <p>接下来要明确三件事。第一，什么是“装得最多”？盒子装东西，装的是它内部的空间，这个空间的大小叫容积。所以“装得最多”就是“容积最大”。第二，容积由什么决定？盒子的形状由剪去的小正方形的大小决定：剪得少，盒子浅而宽；剪得多，盒子深而窄。也就是说，剪法一变，盒子就变。第三，我们要交出的成果是什么？不是一句“大概剪 3 cm”，而是一份说得清楚的方案：剪去多大的正方形、盒子的长宽高各是多少、容积是多少、为什么这样剪最好、实际做的时候要注意什么。</p>
+    <div class="keypoint"><strong>要点：</strong>“装得最多”是一个生活化的说法，翻译成数学语言就是“容积最大”；而容积的大小，取决于剪去的小正方形的边长。把“怎么做”变成一个“随什么变、怎么变、什么时候最大”的问题，这一步叫<strong>数学化</strong>，是本活动的主线。</div>
+    <p>还要提醒一句：这里的“最大”是在一定条件下说的。纸板只有一张，面积固定为 400 cm<sup>2</sup>，不能拼接、不能加料，也不能把剪下来的四个小正方形再粘回去。条件固定了，“最大”才有意义；条件一变，答案就会跟着变。这也是数学建模的一条基本规矩：先把假设写清楚，再谈结论。</p>
+
+    <h4 class="subhead">3. 整个活动分几步走</h4>
+    <p>一个完整的数学建模活动，不能凭感觉一路做下去，得有路线图。本活动一共分八个环节，前两个环节在第一节完成，后面几个环节依次推进。先用一张表把“每一步要解决什么问题、要交出什么东西”列清楚，见下表。</p>
+    <table class="data-table">
+      <caption>表 1　活动任务分解表</caption>
+      <thead>
+        <tr><th>环节</th><th>要解决的问题</th><th>产出</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>环节 1</td><td>要做一个什么样的盒子？“装得最多”到底指什么？</td><td>任务清单、制作要求与评价标准</td></tr>
+        <tr><td>环节 2</td><td>剪去的边长与盒子的长、宽、高、容积之间有什么关系？</td><td>容积关系式 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> 及取值范围</td></tr>
+        <tr><td>环节 3</td><td>取哪些值来试算？容积随边长怎样变化？</td><td>整数取值表（表 2）与初步结论</td></tr>
+        <tr><td>环节 4</td><td>容积随边长变化的整体趋势是什么？</td><td>折线图与“先增大后减小”的判断</td></tr>
+        <tr><td>环节 5</td><td>最优点落在 3 和 4 之间的哪个位置？</td><td>加密取值表（表 3、表 4）与逼近区间</td></tr>
+        <tr><td>环节 6</td><td>结论可靠吗？单位对不对？实际能不能做出来？</td><td>结论、检验清单与误差说明</td></tr>
+        <tr><td>环节 7</td><td>换一张纸板还成立吗？长方形纸板怎么办？</td><td>一般公式与推广表（表 5）</td></tr>
+        <tr><td>环节 8</td><td>我们做得怎么样？还能改进什么？</td><td>自评表（表 6）与活动小结</td></tr>
+      </tbody>
+    </table>
+    <p>表 1 不只是给老师看的清单，它还是你们小组的分工依据。四个人一组时，可以一个人负责剪折与测量，一个人负责列表计算，一个人负责画图与记录，一个人负责最后的汇报与质疑。但有一件事谁都不能省：每个人都得亲手算一遍 <i>x</i> = 3 时的容积，因为后面所有的讨论都建立在这个数上。</p>
+
+    <h4 class="subhead">4. 七步流程：从一句抱怨到一条结论</h4>
+    <p>把表 1 的八个环节再压缩一下，整个活动的思路可以概括成七步。这七步不只是这个活动的流程，也是以后遇到“怎样最省、怎样最大、怎样最快”这类问题时通用的思路。</p>
+    <p><strong>第一步，提出问题。</strong>从“抽屉太乱”这样一句抱怨出发，问出真正要回答的问题：用一张边长 20 cm 的正方形纸板，怎样剪、怎样折，做出的无盖长方体盒子容积最大？问题要问得具体，具体到别人听了就知道该拿什么材料、做什么动作。</p>
+    <p><strong>第二步，数学化。</strong>把“剪去多大”换成一个字母 <i>x</i>，把“装得最多”换成“容积 <i>V</i> 最大”，再找出 <i>V</i> 与 <i>x</i> 的关系式，并说清 <i>x</i> 能取哪些值。这一步做完，实际问题就变成了一个数学问题，后面就可以用数学的办法处理了。</p>
+    <p><strong>第三步，估算。</strong>关系式写出来了，但七年级还不会用配方或求导去找最大值，怎么办？先“笨”一点：把 <i>x</i> 取成 1、2、3、…、9，一个一个算，看容积怎么变。算完会发现，容积先变大后变小，中间有一个明显的“高峰”。</p>
+    <p><strong>第四步，逼近。</strong>整数太粗，高峰到底在 3 还是 4？把 3 和 4 之间再切细，取 3.1、3.2、…、3.9 继续算；还不够细，就再切到 0.01。每算一轮，包含最高点的范围就缩小一圈，结论就准一分。</p>
+    <p><strong>第五步，检验。</strong>算出来的结论要经得起问：单位对吗？<i>x</i> ≈ 3.3 时底边长 20 − 2 × 3.3 = 13.4，比 20 小，盒子做得出来吗？和整数解 588 相比提高了多少？如果剪口偏了 0.1 cm，容积会掉很多吗？这些问题都要有答案。</p>
+    <p><strong>第六步，推广。</strong>20 cm 的纸板是这样，那 12 cm、30 cm 的纸板呢？长方形纸板呢？把具体的数换成字母 <i>a</i>，看看能不能得到一条更一般的规律。推广之后，这条结论才真正“属于你”。</p>
+    <p><strong>第七步，评价。</strong>最后回头看看：问题转化得好不好？数据算得准不准？结论说得清不清楚？把做得好的和做得不够的地方都写下来，下一次遇到类似问题就有经验了。</p>
+    <div class="method"><strong>方法归纳：</strong>面对“怎样最省/最大”的实际问题，可以按“提问题 → 设字母 → 写关系式 → 定范围 → 试算 → 逼近 → 检验 → 推广”的顺序推进。其中“设字母、写关系式、定范围”三步合起来叫数学化，是把生活问题变成数学问题的关键一跳。</div>
+
+    <h4 class="subhead">5. 动手之前：材料清单与安全提醒</h4>
+    <p>这个活动有一半的乐趣在手上。建议每个小组准备一个“材料袋”，把东西一次备齐，免得做到一半到处借。</p>
+    <div class="two-col">
+      <div>
+        <p><strong>材料与工具</strong></p>
+        <p>① 边长 20 cm 的正方形硬纸板若干张（卡纸、包装箱纸、旧挂历背面都可以，厚度以能立住为准）；<br/>② 直尺一把，长度不小于 20 cm，最好带毫米刻度；<br/>③ 铅笔、橡皮，用来在纸板上画线；<br/>④ 剪刀一把，或用美工刀（由老师操作）；<br/>⑤ 胶带或胶水，用来粘接四条竖棱；<br/>⑥ 计算器一个，用于多位小数的乘法；<br/>⑦ 记录表一张，用来抄写数据、写结论。</p>
+      </div>
+      <div>
+        <p><strong>安全与规范</strong></p>
+        <p>① 剪刀不用时把尖头朝下放，递给别人时递刀柄；<br/>② 美工刀只许老师使用，同学不要自己拿去划纸板；<br/>③ 硬纸板切口边缘较硬，折边时用手指压，不要用力去蹭；<br/>④ 剪下的四个小正方形不要随手丢在地上，收进袋子里，最后一起处理；<br/>⑤ 胶带粘贴时先把盒子摆正再粘，粘歪了撕下来会撕破纸板；<br/>⑥ 计算器只用来算乘法，式子要自己先写出来。</p>
+      </div>
+    </div>
+    <div class="tip"><strong>提示：</strong>纸板最好多备几张。第一次剪往往剪歪，或者折痕压得不齐，盒子立不起来。允许失败一次，把失败的那张留着，正好用来对比“剪得不齐”对容积的影响。</div>
+    <p>材料备齐之后，先别急着剪。请每人在记录表上写下三句话：我要做的盒子是什么形状；我打算剪去边长多少厘米的小正方形；我为什么这样打算。第三句最难写，但写出来之后，你就知道自己是在“猜”还是在“算”了。</p>
+
+    <h4 class="subhead">6. 先估一估：盒子越大就一定装得越多吗</h4>
+    <p>在正式计算之前，先做一次“直觉体检”。很多人第一反应是“剪得越多，盒子越深，装得就越多”，也有人认为“底面越大装得越多”。这两种说法听上去都有道理，但都不可能全对——因为底面和高度是互相牵制的：剪得多，高度变大，底面却变小；剪得少，底面变大，高度却变小。到底哪个更划算，只能算过才知道。</p>
+    <p>先看一个具体的对比。下面的例 1 拿两个都能用边长 20 cm 纸板做出来的盒子作比较，一个扁而宽，一个深而窄。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">扁而宽与深而窄，谁装得多</span>
+      </div>
+      <div class="example-body">
+        <p>用边长 20 cm 的正方形硬纸板做两个无盖长方体形盒子：甲盒在四角各剪去边长 2 cm 的小正方形，乙盒在四角各剪去边长 4 cm 的小正方形。分别求两个盒子的容积，以及做盒子实际用掉的纸板面积，并比较。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>甲盒：四角各剪去边长 2 cm 的小正方形，折起后盒高为 2 cm，底面边长为 20 − 2 × 2 = 16（cm）。</p>
+          <p>底面积 = 16 × 16 = 256（cm<sup>2</sup>），容积 = 256 × 2 = 512（cm<sup>3</sup>）。</p>
+          <p>用纸面积 = 400 − 4 × 2<sup>2</sup> = 400 − 16 = 384（cm<sup>2</sup>）。</p>
+          <p>乙盒：剪去边长 4 cm 的小正方形，盒高为 4 cm，底面边长为 20 − 2 × 4 = 12（cm）。</p>
+          <p>底面积 = 12 × 12 = 144（cm<sup>2</sup>），容积 = 144 × 4 = 576（cm<sup>3</sup>）。</p>
+          <p>用纸面积 = 400 − 4 × 4<sup>2</sup> = 400 − 64 = 336（cm<sup>2</sup>）。</p>
+          <p>比较：576 &gt; 512，乙盒的容积比甲盒大 64 cm<sup>3</sup>；而乙盒用掉的纸板反而比甲盒少 384 − 336 = 48（cm<sup>2</sup>）。</p>
+          <p>答：乙盒装得更多，且更省纸。可见“底面大”并不等于“装得多”，盒子深一些未必吃亏。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果四角各剪去边长 5 cm 的小正方形，盒子的底面边长和容积各是多少？与例 1 中的乙盒相比，容积是变大还是变小？</p>
+    <p>算一算就知道：底面边长为 20 − 2 × 5 = 10（cm），容积为 10 × 10 × 5 = 500（cm<sup>3</sup>），比乙盒的 576 cm<sup>3</sup> 反而小了。也就是说，从 4 cm 再往深里剪，容积开始往下掉。这个“掉头”的位置，正是整个活动要寻找的目标。</p>
+    <div class="warn"><strong>易错：</strong>比较盒子大小时，不要只看某一个尺寸。有的同学看到乙盒底面 12 cm 比甲盒的 16 cm 小，就断定乙盒装得少，这是把“底面大小”当成了“容积大小”。容积要由底面积和高共同决定，缺一不可。</div>
+
+    <h4 class="subhead">7. 练一练</h4>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】本活动中“做一个尽可能大的收纳盒”，这里的“大”指的是（　　）<br/>A．盒子的表面积最大　B．盒子的容积最大　C．盒子的高最大　D．盒子的底面周长最大</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>选 B。收纳盒是用来装东西的，装得多不多看的是盒子内部空间的大小，即容积。表面积是“用掉多少纸”，本活动中纸板面积固定为 400 cm<sup>2</sup>，表面积不可能再变大；高最大也不等于装得最多，例 1 中高为 4 cm 的乙盒（576 cm<sup>3</sup>）就比高为 5 cm 的盒子（500 cm<sup>3</sup>）容积还大。</p>
+        </div>
+      </details>
+    </div>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【提升】用边长 20 cm 的正方形硬纸板做一个无盖盒子，四角各剪去边长 3 cm 的小正方形。求这个盒子的容积；若把剪去的边长改成 4 cm，容积减少多少？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>剪去 3 cm 时：盒高 3 cm，底面边长 20 − 2 × 3 = 14（cm），底面积 14 × 14 = 196（cm<sup>2</sup>），容积 196 × 3 = 588（cm<sup>3</sup>）。</p>
+          <p>剪去 4 cm 时：盒高 4 cm，底面边长 20 − 2 × 4 = 12（cm），底面积 144 cm<sup>2</sup>，容积 144 × 4 = 576（cm<sup>3</sup>）。</p>
+          <p>588 − 576 = 12（cm<sup>3</sup>），容积减少 12 cm<sup>3</sup>。这说明剪口从 3 cm 加到 4 cm 时，高虽然增加了 1 cm，但底面积从 196 cm<sup>2</sup> 掉到 144 cm<sup>2</sup>，减小得更多，得不偿失。</p>
+        </div>
+      </details>
+    </div>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【拓展】同样用一张面积 400 cm<sup>2</sup> 的正方形纸板，甲盒底面是边长 18 cm 的正方形、高 1 cm；乙盒底面是边长 10 cm 的正方形、高 5 cm。分别求容积，并说明“用纸一样多”是否意味着“容积一样大”。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>甲盒：底面边长 18 cm，高 1 cm，容积 = 18 × 18 × 1 = 324（cm<sup>3</sup>）。</p>
+          <p>乙盒：底面边长 10 cm，高 5 cm，容积 = 10 × 10 × 5 = 500（cm<sup>3</sup>）。</p>
+          <p>两盒都是从同一张边长 20 cm 的纸板上剪出来的，纸板面积都是 400 cm<sup>2</sup>，但剪去的四个角大小不同：甲盒剪掉的面积共 4 × 1<sup>2</sup> = 4（cm<sup>2</sup>），乙盒共 4 × 5<sup>2</sup> = 100（cm<sup>2</sup>）。所以两盒实际用掉的纸分别是 396 cm<sup>2</sup> 和 300 cm<sup>2</sup>，并不相同；容积则一个是 324 cm<sup>3</sup>，一个是 500 cm<sup>3</sup>，相差 176 cm<sup>3</sup>。</p>
+          <p>结论：拿同一张纸板做盒子，用料看似一样，实际用掉的纸和做出来的容积都可以差得很远，决定因素是盒子的形状。既然同样的纸能做出容积相差这么大的盒子，就一定有某种剪法使容积最大，找它才有意义。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本环节要点：</strong>
+      <ul>
+        <li>实际问题的第一步是“说清楚”：材料是什么、允许怎样操作、成果要交什么。</li>
+        <li>“装得最多”翻译成数学语言就是“容积最大”，容积由盒子的底面积和高共同决定。</li>
+        <li>剪去的四个小正方形大小相同，所以剪法只由一个量决定，这个量就是后面要设的字母。</li>
+        <li>做盒子之前先估一估、算一算，能让动手更有目的；做完之后要用数据检验自己的直觉。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="a1-2">
+    <h3 class="card-title"><span class="num">环节 2</span>把问题变成数学式子</h3>
+
+    <h4 class="subhead">1. 关键一步：把“剪多大”换成一个字母</h4>
+    <p>环节 1 结束时，我们手里只有一个模糊的问题：“剪去多大的小正方形，盒子装得最多？”这句话里没有一个数可以拿来算。要让数学接手，必须先做一件事：把“剪去多大”这件事用一个字母表示出来。</p>
+    <p>设剪去的小正方形边长为 <i>x</i> cm。为什么选它，而不选盒子的底面边长或盒高？理由有三条。第一，它是我们动手时第一个要定的量：拿起尺子在纸板角上量出的那个长度，就是 <i>x</i>。第二，它一旦定了，盒子的一切就都定了：盒高恰好等于 <i>x</i>，底面边长可以由 20 和 <i>x</i> 算出来，容积也就跟着定了。第三，它的变化范围很自然：剪得太少盒子立不起来，剪得太多纸板就没了，所以 <i>x</i> 只能在一个不大的范围里取值，这个范围待会儿要算清楚。</p>
+    <p>反过来，如果设底面边长为 <i>y</i> cm，盒高就得写成 (20 − <i>y</i>) ÷ 2，式子会更绕；如果设盒高为 <i>h</i> cm，那和设 <i>x</i> 其实是一回事。所以选“剪去的小正方形边长”作变量，是最省力的一种设法。这个选择本身就是一种数学能力：<strong>选一个能牵动全局的量作变量</strong>。</p>
+    <div class="keypoint"><strong>要点：</strong>设剪去的小正方形边长为 <i>x</i> cm，则盒高为 <i>x</i> cm，底面是正方形，边长为 (20 − 2<i>x</i>) cm。四个角剪得一样大，是“用一个字母表示全部变化”的前提；如果四个角剪得不一样，就得设四个字母，问题会复杂得多。</div>
+
+    <h4 class="subhead">2. 看清展开图：底面边长为什么是 20 − 2<i>x</i></h4>
+    <p>把纸板摊平，画上要剪的线，就得到如图 1 所示的展开图。整张纸板是边长 20 cm 的正方形，四个角上各有一个边长为 <i>x</i> cm 的小正方形被剪掉（图中阴影部分），剩下的是一个“十字形”：中间一块正方形做盒底，上下左右四块长方形折起来做盒壁。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 600 420" role="img" aria-label="边长 20 厘米的正方形纸板展开图，四角各剪去一个边长为 x 厘米的小正方形，中间底面边长为 20 减 2x 厘米">
+        <title>正方形纸板的展开图：四角剪去边长为 x 的小正方形</title>
+        <rect x="150" y="70" width="300" height="300" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <rect x="200" y="120" width="200" height="200" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <rect x="150" y="70" width="50" height="50" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <rect x="400" y="70" width="50" height="50" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <rect x="150" y="320" width="50" height="50" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <rect x="400" y="320" width="50" height="50" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <line x1="200" y1="120" x2="400" y2="120" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="200" y1="320" x2="400" y2="320" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="200" y1="120" x2="200" y2="320" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="400" y1="120" x2="400" y2="320" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="150" y1="48" x2="450" y2="48" stroke="#334155" stroke-width="1.2"/>
+        <line x1="150" y1="42" x2="150" y2="54" stroke="#334155" stroke-width="1.2"/>
+        <line x1="450" y1="42" x2="450" y2="54" stroke="#334155" stroke-width="1.2"/>
+        <text x="300" y="38" font-size="15" fill="#334155" text-anchor="middle">20 cm</text>
+        <line x1="120" y1="70" x2="120" y2="370" stroke="#334155" stroke-width="1.2"/>
+        <line x1="114" y1="70" x2="126" y2="70" stroke="#334155" stroke-width="1.2"/>
+        <line x1="114" y1="370" x2="126" y2="370" stroke="#334155" stroke-width="1.2"/>
+        <text x="106" y="220" font-size="15" fill="#334155" text-anchor="middle" transform="rotate(-90 106 220)">20 cm</text>
+        <line x1="200" y1="392" x2="400" y2="392" stroke="#1d4ed8" stroke-width="1.2"/>
+        <line x1="200" y1="386" x2="200" y2="398" stroke="#1d4ed8" stroke-width="1.2"/>
+        <line x1="400" y1="386" x2="400" y2="398" stroke="#1d4ed8" stroke-width="1.2"/>
+        <text x="300" y="412" font-size="15" fill="#1d4ed8" text-anchor="middle">20 − 2<tspan font-style="italic">x</tspan></text>
+        <text x="175" y="100" font-size="15" fill="#334155" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="425" y="100" font-size="15" fill="#334155" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="175" y="350" font-size="15" fill="#334155" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="425" y="350" font-size="15" fill="#334155" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="300" y="225" font-size="14" fill="#334155" text-anchor="middle">底面</text>
+      </svg>
+      <figcaption>图 1　正方形纸板的展开图：四角各剪去边长为 <i>x</i> 的小正方形（示意图，未按比例）</figcaption>
+    </figure>
+
+    <p>底面边长为什么是 20 − 2<i>x</i>？沿着上边从左往右看：左边先剪掉 <i>x</i>，右边再剪掉 <i>x</i>，中间剩下的那一段就是底面的边长，所以要把两个 <i>x</i> 都减掉，得到 20 − 2<i>x</i>。竖直方向也一样：上边剪掉 <i>x</i>，下边剪掉 <i>x</i>，中间剩下 20 − 2<i>x</i>。因为原纸板是正方形，四个角剪掉的是同样大的小正方形，所以底面仍然是正方形，边长就是 20 − 2<i>x</i> cm。</p>
+    <p>最容易出错的地方就在这个“2”上。有的同学只剪了一次，把底面边长写成 20 减去一个 <i>x</i>，那就等于说纸板只在一侧缺了一个角，画出来的展开图根本不是十字形。判断的办法很简单：把 <i>x</i> = 5 代进去看看。如果底边是 20 − 2 × 5 = 10，盒子底面 10 cm × 10 cm、高 5 cm，四个侧面加起来正好把纸板用满；如果按错的式子算成 20 − 5 = 15，那么 15 + 5 + 5 = 25，比纸板的 20 cm 还长，显然不可能。</p>
+
+    <h4 class="subhead">3. 从平面到立体：剪、折、粘三步</h4>
+    <p>展开图是平的，盒子是立体的，中间隔着三步动作。如图 2 所示，第一步“剪”，把四个角上的小正方形剪掉，纸板变成十字形；第二步“折”，沿着中间那块正方形的四条边，把四块长方形向上折起，折痕就是底面正方形的四条边；第三步“粘”，把相邻两块长方形重叠的那条竖棱用胶带粘住，盒子就立住了。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 600 320" role="img" aria-label="从剪去四角、折起四边到粘合成盒的三步示意图，并标注盒子的长、宽、高">
+        <title>剪、折、粘三步与盒子的长、宽、高</title>
+        <rect x="30" y="60" width="120" height="120" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <rect x="30" y="60" width="22" height="22" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <rect x="128" y="60" width="22" height="22" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <rect x="30" y="158" width="22" height="22" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <rect x="128" y="158" width="22" height="22" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+        <line x1="52" y1="82" x2="52" y2="158" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="128" y1="82" x2="128" y2="158" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="52" y1="82" x2="128" y2="82" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="52" y1="158" x2="128" y2="158" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="41" y="77" font-size="13" fill="#334155" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="90" y="215" font-size="15" fill="#334155" text-anchor="middle">① 剪去四角</text>
+        <polygon points="252,82 328,82 312,52 268,52" fill="#fef3c7" stroke="#334155" stroke-width="1.8"/>
+        <polygon points="252,158 328,158 312,188 268,188" fill="#fef3c7" stroke="#334155" stroke-width="1.8"/>
+        <polygon points="252,82 252,158 222,144 222,96" fill="#fef3c7" stroke="#334155" stroke-width="1.8"/>
+        <polygon points="328,82 328,158 358,144 358,96" fill="#fef3c7" stroke="#334155" stroke-width="1.8"/>
+        <rect x="252" y="82" width="76" height="76" fill="#dbeafe" stroke="#334155" stroke-width="1.8"/>
+        <text x="290" y="215" font-size="15" fill="#334155" text-anchor="middle">② 折起四边</text>
+        <polygon points="410,150 455,112 565,112 520,150" fill="#fef3c7" stroke="#334155" stroke-width="1.8"/>
+        <polygon points="520,150 565,112 565,197 520,235" fill="#e0e7ff" stroke="#334155" stroke-width="1.8"/>
+        <rect x="410" y="150" width="110" height="85" fill="#dbeafe" stroke="#334155" stroke-width="1.8"/>
+        <text x="465" y="262" font-size="14" fill="#1d4ed8" text-anchor="middle">长 20 − 2<tspan font-style="italic">x</tspan></text>
+        <text x="512" y="102" font-size="14" fill="#1d4ed8" text-anchor="middle">宽 20 − 2<tspan font-style="italic">x</tspan></text>
+        <text x="400" y="196" font-size="14" fill="#1d4ed8" text-anchor="middle" transform="rotate(-90 400 196)">高 <tspan font-style="italic">x</tspan></text>
+        <text x="487" y="296" font-size="15" fill="#334155" text-anchor="middle">③ 粘合成盒</text>
+      </svg>
+      <figcaption>图 2　剪、折、粘三步，以及盒子的长、宽、高（示意图，未按比例）</figcaption>
+    </figure>
+
+    <p>折起来之后，盒子的三个尺寸就都清楚了：长是 20 − 2<i>x</i> cm，宽也是 20 − 2<i>x</i> cm，高是 <i>x</i> cm。为什么长和宽相等？因为原来的纸板是正方形，四个角剪掉的小正方形又一样大，四个方向“让出”的长度都是 <i>x</i>，剩下的自然还是正方形。为什么高恰好是 <i>x</i>？因为折起来的那块长方形的宽，正是被剪掉的那个小正方形的边长。</p>
+    <p>四个侧面的形状也值得看一眼：每一块都是长 (20 − 2<i>x</i>) cm、宽 <i>x</i> cm 的长方形，面积是 <i>x</i>(20 − 2<i>x</i>) cm<sup>2</sup>。四块加起来是 4<i>x</i>(20 − 2<i>x</i>) cm<sup>2</sup>，再加上底面的 (20 − 2<i>x</i>)<sup>2</sup> cm<sup>2</sup>，就是做这个盒子用掉的纸板面积。这个式子后面会用到，但它算的是“用纸多少”，不是“装多少”，两者不能混。</p>
+
+    <h4 class="subhead">4. 写出容积公式</h4>
+    <p>长方体的容积等于底面积乘高。盒底是正方形，边长 20 − 2<i>x</i>，所以底面积是 (20 − 2<i>x</i>)<sup>2</sup> cm<sup>2</sup>；盒高是 <i>x</i> cm。两者相乘，就得到容积。</p>
+    <div class="formula">
+      <div class="formula-label">容积公式</div>
+      <div class="formula-body"><i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> = 4<i>x</i>(10 − <i>x</i>)<sup>2</sup>（0 &lt; <i>x</i> &lt; 10）</div>
+    </div>
+    <p>第二个等号是怎么来的？因为 20 − 2<i>x</i> = 2(10 − <i>x</i>)，两边平方得 (20 − 2<i>x</i>)<sup>2</sup> = 4(10 − <i>x</i>)<sup>2</sup>，再乘上前面的 <i>x</i>，就是 4<i>x</i>(10 − <i>x</i>)<sup>2</sup>。两种写法算出来的结果完全一样，用途略有不同：算具体数值时用 <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> 更顺手，因为底面边长可以直接读出来；观察规律时用 4<i>x</i>(10 − <i>x</i>)<sup>2</sup> 更清楚，因为 <i>x</i> 和 10 − <i>x</i> 一增一减的关系一目了然。</p>
+    <p>举个例子验证一下：<i>x</i> = 2 时，<i>V</i> = 2 × (20 − 4)<sup>2</sup> = 2 × 16<sup>2</sup> = 2 × 256 = 512（cm<sup>3</sup>）；用另一种写法算，4 × 2 × (10 − 2)<sup>2</sup> = 8 × 64 = 512（cm<sup>3</sup>），结果一致。</p>
+    <div class="tip"><strong>提示：</strong>公式里的 <i>V</i> 表示容积，单位是 cm<sup>3</sup>；<i>x</i> 表示长度，单位是 cm。写答案时单位要跟着数字走，不要把 <i>V</i> 写成 512 cm，也不要把 <i>x</i> 写成 2 cm<sup>3</sup>。量纲（单位）对不上，往往说明公式用错了。</div>
+
+    <h4 class="subhead">5. 取值范围：<i>x</i> 只能取 0 到 10 之间的数</h4>
+    <p>公式写出来了，是不是 <i>x</i> 想取多少就取多少？不是。<i>x</i> 是一个真实长度，必须让盒子真的能做成。</p>
+    <p>一方面，盒高是 <i>x</i>，盒子要有高度，所以 <i>x</i> &gt; 0。如果 <i>x</i> = 0，四个角一点没剪，纸板还是一整张平的，折起来没有高度，不成盒子。另一方面，底面边长是 20 − 2<i>x</i>，底面要有大小，所以 20 − 2<i>x</i> &gt; 0，解得 <i>x</i> &lt; 10。如果 <i>x</i> = 10，四个角剪掉的正方形边长都是 10 cm，整张纸板被剪得一点不剩，连底都没有了。两个条件合起来，就是 0 &lt; <i>x</i> &lt; 10。</p>
+    <div class="keypoint"><strong>要点：</strong>取值范围不是“附加条件”，而是问题本身的一部分。写关系式时不写取值范围，等于交了一份没有边界的答案；而边界往往正是最容易出错、也最能说明问题的地方。</div>
+    <p>实际制作时还要把这个范围再收紧一点。因为要用胶带把相邻的侧面粘起来，接缝处总得留一点重叠，所以 <i>x</i> 不能太接近 10；又因为纸板有厚度，折痕压不出一道绝对的直角，<i>x</i> 太小（比如 0.5 cm）时盒子矮得立不住。粗略地说，实际能做的范围大约在 1 cm 到 9 cm 之间，而真正的最优值落在这个范围的中间偏左，后面几个环节会把它找出来。</p>
+
+    <h4 class="subhead">6. 例题：把盒子“翻译”成式子</h4>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">写容积表达式，再算两个具体的容积</span>
+      </div>
+      <div class="example-body">
+        <p>用一张边长 20 cm 的正方形硬纸板做一个无盖长方体形收纳盒，在四个角各剪去一个边长为 <i>x</i> cm 的小正方形，再把四边折起粘好。</p>
+        <p>（1）用含 <i>x</i> 的式子表示盒子的底面边长、盒高和容积 <i>V</i>，并写出 <i>x</i> 的取值范围。</p>
+        <p>（2）分别求 <i>x</i> = 2 和 <i>x</i> = 3 时盒子的容积，并说明计算时“先算底面积再乘高”的道理。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）剪去的小正方形边长为 <i>x</i> cm，折起后盒高就是 <i>x</i> cm。</p>
+          <p>底面是正方形，左右两边各被剪去 <i>x</i>，两个 <i>x</i> 都要减掉，所以底面边长为 20 − 2<i>x</i>（cm）。</p>
+          <p>底面积为 (20 − 2<i>x</i>)<sup>2</sup> cm<sup>2</sup>，容积为底面积乘高，即</p>
+          <p><i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>（cm<sup>3</sup>）。</p>
+          <p>取值范围：盒高要大于 0，所以 <i>x</i> &gt; 0；底面边长要大于 0，所以 20 − 2<i>x</i> &gt; 0，即 <i>x</i> &lt; 10。合起来是 0 &lt; <i>x</i> &lt; 10。</p>
+          <p>（2）当 <i>x</i> = 2 时，底面边长 = 20 − 2 × 2 = 16（cm），底面积 = 16<sup>2</sup> = 256（cm<sup>2</sup>），容积 = 256 × 2 = 512（cm<sup>3</sup>）。</p>
+          <p>当 <i>x</i> = 3 时，底面边长 = 20 − 2 × 3 = 14（cm），底面积 = 14<sup>2</sup> = 196（cm<sup>2</sup>），容积 = 196 × 3 = 588（cm<sup>3</sup>）。</p>
+          <p>为什么“先算底面积再乘高”？因为盒子是长方体，从下往上一层一层都是同样大小的底面，高是几厘米就有几层这样的底面，所以总容量等于“一层的面积”乘“层数”。先算底面积还有一个好处：256、196 这些数在纸板上能量得出来，一旦算错，用直尺一量就能发现，比直接报一个容积数字更容易自查。</p>
+          <p>比较：588 &gt; 512，说明剪口从 2 cm 加到 3 cm 时，容积还在变大。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式一：</strong>求 <i>x</i> = 4 和 <i>x</i> = 5 时盒子的容积。<br/><strong>变式二：</strong>不计算，判断 <i>x</i> = 6 时的容积比 <i>x</i> = 5 时大还是小，再用计算验证。</p>
+    <p>变式一：<i>x</i> = 4 时底面边长 12 cm，容积 = 12<sup>2</sup> × 4 = 144 × 4 = 576（cm<sup>3</sup>）；<i>x</i> = 5 时底面边长 10 cm，容积 = 10<sup>2</sup> × 5 = 100 × 5 = 500（cm<sup>3</sup>）。变式二：从 4 cm 到 5 cm，容积已经从 576 掉到 500，说明高峰已经过去，再往深里剪只会更小；验证一下，<i>x</i> = 6 时底面边长 8 cm，容积 = 8<sup>2</sup> × 6 = 64 × 6 = 384（cm<sup>3</sup>），确实比 500 小。</p>
+
+    <h4 class="subhead">7. 四个最容易踩的坑</h4>
+    <div class="warn"><strong>易错一：底面边长少减了一次。</strong>写成 20 减去一个 <i>x</i>，等于只剪了纸板的一侧。记住“两边各剪一次”，底面边长是 20 − 2<i>x</i>。检验办法：<i>x</i> = 5 时底面边长应为 10，若算出 15，四个侧面就没地方放了。</div>
+    <div class="warn"><strong>易错二：取值范围只看到一半。</strong>有的同学只想到“<i>x</i> 要比 20 小”，把范围写成小于 20，这是漏掉了“底面边长 20 − 2<i>x</i> 也要大于 0”这一半。正确的做法是让两个条件同时成立：<i>x</i> &gt; 0 且 20 − 2<i>x</i> &gt; 0，解得 0 &lt; <i>x</i> &lt; 10。</div>
+    <div class="warn"><strong>易错三：把容积与表面积混为一谈。</strong>容积算的是“盒子里能装多少”，单位 cm<sup>3</sup>；表面积算的是“做盒子用掉多少纸”，单位 cm<sup>2</sup>。本活动中纸板面积固定为 400 cm<sup>2</sup>，表面积再怎么变也超不过它；而容积却从接近 0 一直变到 592 cm<sup>3</sup> 左右。两者一个管“装”，一个管“料”。</div>
+    <div class="warn"><strong>易错四：单位漏写或写错。</strong>算出 588 就交卷，是不完整的。<i>V</i> = 588 必须写成 588 cm<sup>3</sup>；<i>x</i> = 3 要写成 3 cm。把容积写成 588 cm，等于说“这个盒子能装 588 厘米”，读起来就不通。</div>
+    <div class="note"><strong>拓展：</strong>如果把“无盖”改成“有盖”，做法就完全不同了：有盖的盒子需要两倍于底面的纸，剪法不再是剪四个角，而要另想办法。可见“盒子有没有盖”这样的条件，会直接改变模型。写关系式之前，把条件一条条列出来，是个好习惯。</div>
+
+    <h4 class="subhead">8. 练一练</h4>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】用边长 20 cm 的正方形硬纸板做无盖盒子，四角各剪去边长为 <i>x</i> cm 的小正方形。用含 <i>x</i> 的式子表示盒子的底面边长和盒高；当 <i>x</i> = 3 时，底面边长是多少厘米？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>底面边长为 (20 − 2<i>x</i>) cm，盒高为 <i>x</i> cm。因为纸板的左右两边各被剪去 <i>x</i>，中间剩下的一段才是底面的边，所以是 20 − 2<i>x</i>，不能只减一个 <i>x</i>。</p>
+          <p>当 <i>x</i> = 3 时，底面边长 = 20 − 2 × 3 = 14（cm），盒高 3 cm，此时底面是 14 cm × 14 cm 的正方形。</p>
+        </div>
+      </details>
+    </div>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【提升】设剪去的小正方形边长为 <i>x</i> cm，写出容积 <i>V</i>（单位：cm<sup>3</sup>）与 <i>x</i> 的关系式，并求 <i>x</i> = 2.5 时的容积。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，其中 0 &lt; <i>x</i> &lt; 10。</p>
+          <p>当 <i>x</i> = 2.5 时，底面边长 = 20 − 2 × 2.5 = 15（cm），底面积 = 15<sup>2</sup> = 225（cm<sup>2</sup>），容积 = 225 × 2.5 = 562.5（cm<sup>3</sup>）。</p>
+          <p>562.5 介于 <i>x</i> = 2 时的 512 与 <i>x</i> = 3 时的 588 之间，与“容积随 <i>x</i> 增大而先增后减”的判断一致。</p>
+        </div>
+      </details>
+    </div>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【拓展】有同学说：“剪得越多，盒子越深，装的东西就一定越多。”请用 <i>x</i> = 5、<i>x</i> = 8、<i>x</i> = 9 三个数据判断这句话是否正确，并说明理由。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>这句话不正确。分别计算：</p>
+          <p><i>x</i> = 5 时，底面边长 10 cm，容积 = 10<sup>2</sup> × 5 = 500（cm<sup>3</sup>）；</p>
+          <p><i>x</i> = 8 时，底面边长 20 − 16 = 4（cm），容积 = 4<sup>2</sup> × 8 = 128（cm<sup>3</sup>）；</p>
+          <p><i>x</i> = 9 时，底面边长 20 − 18 = 2（cm），容积 = 2<sup>2</sup> × 9 = 36（cm<sup>3</sup>）。</p>
+          <p>盒子的高从 5 cm 增到 8 cm、9 cm，容积却从 500 cm<sup>3</sup> 一路降到 128 cm<sup>3</sup>、36 cm<sup>3</sup>。原因是高度增加时，底面边长以两倍的速度减少，底面积减得更快，两者相乘反而变小。所以“越深越大”只在盒子还比较浅的时候成立，不能当成普遍规律。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本环节要点：</strong>
+      <ul>
+        <li>设剪去的小正方形边长为 <i>x</i> cm，就把盒子的所有尺寸都交给了这一个字母。</li>
+        <li>底面边长是 20 − 2<i>x</i>（两边各剪一次），盒高是 <i>x</i>，底面积是 (20 − 2<i>x</i>)<sup>2</sup>。</li>
+        <li>容积公式 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> = 4<i>x</i>(10 − <i>x</i>)<sup>2</sup>，单位 cm<sup>3</sup>。</li>
+        <li>取值范围由“高 &gt; 0、底边 &gt; 0”两个条件共同决定，结果是 0 &lt; <i>x</i> &lt; 10。</li>
+        <li>容积与表面积是两件事：一个管“装多少”，一个管“用多少纸”。</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+
+<section class="part" id="part2">
+  <div class="part-head">
+    <div class="part-kicker">探究一 · 建议 1 课时</div>
+    <h2 class="part-title">列表估算与画图观察</h2>
+    <p class="part-intro">上一节我们把“做一个尽可能大的无盖收纳盒”变成了一个式子：剪去的小正方形边长为 <i>x</i> cm 时，容积 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，其中 0 &lt; <i>x</i> &lt; 10。式子不会自己说出答案。这一节我们用两种最朴素也最可靠的办法去找：先把 <i>x</i> 取成一个个整数，列表算容积，看数据怎么变；再把表格“翻译”成折线图，用眼睛看整体形状。列表给数据，画图给直观，两者配合，才既算得准、又看得清。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>活动目标</h3>
+    <ul>
+      <li>能把 <i>x</i> 取整数逐个代入 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，正确算出容积并填入表格。</li>
+      <li>会观察表格中数据的变化趋势，说出“容积先增大后减小”，并指出整数取值下最大值出现在哪里。</li>
+      <li>会根据表 2、表 3 的数据在坐标系中描点、连线，画出折线图，并从图上读出最高点的位置。</li>
+      <li>能说明“为什么 <i>x</i> 不能取 0、也不能取 10”，理解取值范围的现实含义。</li>
+      <li>经历“算数据—看趋势—画图形—读结论”的过程，体会列表与画图在解决问题中的作用与局限。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a2-1">
+    <h3 class="card-title"><span class="num">环节 3</span>列表估算：把 <i>x</i> 一个一个代进去</h3>
+
+    <h4 class="subhead">1. 式子有了，先“笨”一点也无妨</h4>
+    <p>面对 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> 这样一个式子，很多同学的第一反应是：能不能把它化简成一个更好看的形状？可以化简，但化简之后它仍然是一个含有 <i>x</i> 的三次式，七年级的工具箱里还没有直接求它最大值的办法。这时候，与其急着找一个“高级”的方法，不如先用最笨的办法：既然 <i>x</i> 只能取 0 到 10 之间的数，那我就一个一个地试。</p>
+    <p>这种“一个一个试”的办法，数学上叫作枚举，也叫列表估算。它的好处非常明显：每一步都只是代公式、算平方、算乘法，全是已经学过的运算；每一步的结果都能验算，算错了立刻能发现；算出来的数据摆在表格里，变化的趋势一目了然。它的代价也很明显：<i>x</i> 在 0 到 10 之间有无数个取值，我们不可能全部试完。所以第一步只能先“粗筛”——只取整数。整数只有 1，2，3，…，9 这九个，工作量可以接受；如果连整数里最好的那一个都找不到，后面更精细的工作就无从谈起。</p>
+    <p>还要提醒一句：枚举不是“瞎试”。试哪些值、按什么顺序试、试完怎么看，都是有讲究的。我们按从小到大的顺序取 <i>x</i>，是为了让表格本身呈现出变化的顺序；我们把底面边长和容积放在同一张表里，是为了随时检查“底面边长 + 2<i>x</i> 是不是等于 20”这个隐藏的约束。表格不只是记录结果的地方，它也是检查自己的地方。</p>
+    <p>在动手之前，先把要反复使用的两个量写清楚：盒子的高就是剪去的小正方形边长 <i>x</i>，盒子的底面是一个正方形，边长是 20 − 2<i>x</i>。于是每一次计算都是同一个套路：先算底面积 (20 − 2<i>x</i>)<sup>2</sup>，再乘高 <i>x</i>。把这句话记牢，后面九个格子就不会算乱。</p>
+    <h4 class="subhead">2. 表 2：九个整数，九次计算</h4>
+    <p>把 <i>x</i> = 1，2，3，…，9 依次代入公式，得到表 2。填表时建议养成一个习惯：先写底面边长，再写底面积，最后写容积。比如 <i>x</i> = 3 这一列，先算 20 − 2 × 3 = 14，再算 14<sup>2</sup> = 196，最后算 3 × 196 = 588。三步分开写，哪一步错了都能立刻回头查。</p>
+
+    <table class="data-table">
+      <caption>表 2　整数取值时剪去边长与容积的对应关系</caption>
+      <thead>
+        <tr>
+          <th><i>x</i>/cm</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+          <th>7</th>
+          <th>8</th>
+          <th>9</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>底面边长/cm</th>
+          <td>18</td>
+          <td>16</td>
+          <td>14</td>
+          <td>12</td>
+          <td>10</td>
+          <td>8</td>
+          <td>6</td>
+          <td>4</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <th><i>V</i>/cm³</th>
+          <td>324</td>
+          <td>512</td>
+          <td>588</td>
+          <td>576</td>
+          <td>500</td>
+          <td>384</td>
+          <td>252</td>
+          <td>128</td>
+          <td>36</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>这九个数不是凭空写下来的，每一个都能还原成算式。把九个算式并排写出来，表格背后的运算过程就完全透明了：</p>
+    <div class="formula">
+      <div class="formula-label">表 2 的算式还原</div>
+      <div class="formula-body">
+        <i>V</i>(1) = 1 × 18<sup>2</sup> = 1 × 324 = 324<br/>
+        <i>V</i>(2) = 2 × 16<sup>2</sup> = 2 × 256 = 512<br/>
+        <i>V</i>(3) = 3 × 14<sup>2</sup> = 3 × 196 = 588<br/>
+        <i>V</i>(4) = 4 × 12<sup>2</sup> = 4 × 144 = 576<br/>
+        <i>V</i>(5) = 5 × 10<sup>2</sup> = 5 × 100 = 500<br/>
+        <i>V</i>(6) = 6 × 8<sup>2</sup> = 6 × 64 = 384<br/>
+        <i>V</i>(7) = 7 × 6<sup>2</sup> = 7 × 36 = 252<br/>
+        <i>V</i>(8) = 8 × 4<sup>2</sup> = 8 × 16 = 128<br/>
+        <i>V</i>(9) = 9 × 2<sup>2</sup> = 9 × 4 = 36
+      </div>
+    </div>
+    <p>还可以用另一个等价写法核对：因为 (20 − 2<i>x</i>)<sup>2</sup> = 4(10 − <i>x</i>)<sup>2</sup>，所以 <i>V</i> = 4<i>x</i>(10 − <i>x</i>)<sup>2</sup>。用它算 <i>x</i> = 3：<i>V</i> = 4 × 3 × 7<sup>2</sup> = 12 × 49 = 588，与表 2 一致；算 <i>x</i> = 7：<i>V</i> = 4 × 7 × 3<sup>2</sup> = 28 × 9 = 252，也与表 2 一致。两种写法算出来一样，说明我们的表没有算错。这种“换个式子再算一遍”的核对方法，比从头再算一遍更容易发现错误，因为两条路径出错的地方通常不一样。</p>
+
+    <h4 class="subhead">3. 观察：数据自己会“说话”</h4>
+    <p>表格填完，先不要急着下结论，把 <i>V</i> 那一行从左到右读一遍：324，512，588，576，500，384，252，128，36。读的时候注意两件事：数是在变大还是在变小？变化的速度是均匀的吗？</p>
+    <p>先看增减。从 <i>x</i> = 1 到 <i>x</i> = 3，容积一路增大：324 → 512 → 588。从 <i>x</i> = 3 开始，容积掉头向下：588 → 576 → 500 → 384 → 252 → 128 → 36，一路减小。也就是说，<b>容积先增大后减小</b>，在 <i>x</i> = 3 和 <i>x</i> = 4 之间“拐了个弯”。这个“先增后减”的形状，是整节课最重要的发现，后面所有的精细工作都是围绕它展开的。</p>
+    <p>再看变化的快慢。上升阶段：324 到 512 增加了 188，512 到 588 只增加了 76，增加得越来越慢，像是爬坡爬到顶前速度降了下来。下降阶段：588 到 576 只减少 12，576 到 500 减少 76，500 到 384 减少 116，384 到 252 减少 132，252 到 128 减少 124，128 到 36 减少 92，减少得先慢后快，又慢慢收住。顶部附近变化很小（12、76），远离顶部变化很大（188、132），这提示我们：最大值附近的数据“挤”在一起，光靠整数分不清谁高谁低，必须把步子迈小一点。</p>
+    <p>最后看两个特殊位置。整张表里最大的数是 588，出现在 <i>x</i> = 3；最小的数是 36，出现在 <i>x</i> = 9。但要注意，“表里最大”和“实际最大”不是一回事：表里只有九个整数，而 <i>x</i> 可以是 3.1、3.2、3.25 这样的数，真正的最大值完全可能藏在两个整数之间。这一点正是下一小节要处理的问题。</p>
+
+    <div class="keypoint"><strong>要点：</strong>表 2 告诉我们三件事——容积随 <i>x</i> 增大<b>先增后减</b>；整数取值下 <i>x</i> = 3 时容积最大，为 588 cm³；<i>x</i> = 4 时容积 576 cm³，比 588 小。但这只是“九个整数里的最大”，还不是“所有取值里的最大”。</div>
+    <h4 class="subhead">4. 为什么 <i>x</i> 不能取 0，也不能取 10</h4>
+    <p>表 2 从 1 取到 9，两端各空出一格。有同学会问：为什么不把 0 和 10 也算进去？它们不也是“数”吗？这两个数确实能代进式子，但代进去之后，盒子就不存在了。</p>
+    <p>先看 <i>x</i> = 0。剪去的小正方形边长为 0，意思是一个角也不剪，整张纸板完完整整。这时四边没有可以立起来的部分，折不出盒壁，盒子的高是 0。代进公式：<i>V</i> = 0 × 20<sup>2</sup> = 0。容积为 0，等于什么也装不了。所以 <i>x</i> = 0 虽然让算式“能算”，却让盒子“没了”。</p>
+    <p>再看 <i>x</i> = 10。这时四个角各剪去一个边长 10 cm 的正方形，而纸板本身边长只有 20 cm，20 − 2 × 10 = 0，底面边长变成 0，底面缩成一个点，盒子没有底。代进公式：<i>V</i> = 10 × 0<sup>2</sup> = 0。而且从图上看，四个角的小正方形已经把整张纸板“吃”光了，剩下的只有四条宽为 0 的边，同样做不成盒子。</p>
+    <p>所以 <i>x</i> 必须同时满足两个条件：高要大于 0，即 <i>x</i> &gt; 0；底面边长要大于 0，即 20 − 2<i>x</i> &gt; 0，也就是 <i>x</i> &lt; 10。合起来就是 0 &lt; <i>x</i> &lt; 10。表 2 里的 1 到 9 正好都落在这个范围里，而 0 和 10 是两条“边界线”，只能无限接近，不能真正取到。</p>
+    <p>理解这一点很有用：它告诉我们最大值不会出现在两端。因为两端的容积都趋近于 0，而中间的容积是几百，所以最高点一定“躲”在区间内部。这也解释了表 2 的形状为什么是“两头低、中间高”——这不是巧合，而是由盒子的几何结构决定的：<i>x</i> 太小，盒子太扁，装不了多少；<i>x</i> 太大，底面太小，同样装不了多少。</p>
+
+    <div class="warn"><strong>易错：</strong>把 0 和 10 也写进表格，并算出 0，然后说“最小容积是 0，对应 <i>x</i> = 0 或 10”。这两个值不在取值范围内，盒子在这两种情形下根本不存在；讨论容积的前提是盒子能做成。</div>
+
+    <h4 class="subhead">5. 例题：把表格用起来</h4>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">补全表格并找出整数取值下的最优解</span>
+      </div>
+      <div class="example-body">
+        <p>小杰列了一张与表 2 同样的表，但不小心把 <i>x</i> = 4 和 <i>x</i> = 6 两列的容积弄脏了。已知这两列对应的底面边长分别是 12 cm 和 8 cm，请补全这两个容积，并回答：<i>x</i> 取整数时，<i>x</i> 是多少才能使容积最大？最大容积是多少？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>先补 <i>x</i> = 4 这一列。底面边长 20 − 2 × 4 = 12（cm），底面积 12<sup>2</sup> = 144（cm<sup>2</sup>），容积 <i>V</i> = 4 × 144 = 576（cm³）。</p>
+          <p>再补 <i>x</i> = 6 这一列。底面边长 20 − 2 × 6 = 8（cm），底面积 8<sup>2</sup> = 64（cm<sup>2</sup>），容积 <i>V</i> = 6 × 64 = 384（cm³）。</p>
+          <p>把九个容积排成一列比较：324，512，588，576，500，384，252，128，36。其中最大的是 588，对应 <i>x</i> = 3。</p>
+          <p>所以，<i>x</i> 取整数时，当 <i>x</i> = 3 cm 时容积最大，最大容积为 588 cm³。此时底面边长 14 cm，盒子尺寸为 14 cm × 14 cm × 3 cm。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果规定 <i>x</i> 只能取偶数（2，4，6，8），容积最大是多少？答：四个容积依次为 512，576，384，128，最大是 576，对应 <i>x</i> = 4。可见“限制取值”会改变答案，这也说明：结论一定要说清楚“在什么范围内取得”。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">比较 <i>x</i> = 2 与 <i>x</i> = 3 的两个盒子</span>
+      </div>
+      <div class="example-body">
+        <p>分别求出 <i>x</i> = 2 和 <i>x</i> = 3 时盒子的容积，算出两者相差多少，并解释为什么 <i>x</i> 变大以后容积反而更大。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>当 <i>x</i> = 2 时，底面边长 20 − 2 × 2 = 16（cm），底面积 16<sup>2</sup> = 256（cm<sup>2</sup>），容积 <i>V</i> = 2 × 256 = 512（cm³）。</p>
+          <p>当 <i>x</i> = 3 时，底面边长 20 − 2 × 3 = 14（cm），底面积 14<sup>2</sup> = 196（cm<sup>2</sup>），容积 <i>V</i> = 3 × 196 = 588（cm³）。</p>
+          <p>两者相差 588 − 512 = 76（cm³），即 <i>x</i> = 3 的盒子比 <i>x</i> = 2 的盒子多装 76 cm³，相对提高约 76 ÷ 512 ≈ 14.8%。</p>
+          <p>为什么高变大了，容积反而更大？因为从 <i>x</i> = 2 到 <i>x</i> = 3，盒子的高增加了 1 cm（从 2 cm 增到 3 cm，增加了 50%），而底面积从 256 cm<sup>2</sup> 减到 196 cm<sup>2</sup>，减少了 60 cm<sup>2</sup>（约减少 23.4%）。高的增长幅度大于底面积的减小幅度，两者相乘的结果是变大而不是变小。用算式看更清楚：<i>V</i>(3) − <i>V</i>(2) = 3 × 196 − 2 × 256 = 588 − 512 = 76。</p>
+          <p>还可以这样理解：把 <i>x</i> = 3 的盒子看成“在 <i>x</i> = 2 的盒子上加高 1 cm”。加高的那一层，底面是 14 cm × 14 cm，能装 196 cm³；但为了加高，底面从 16 cm × 16 cm 缩到了 14 cm × 14 cm，损失了 60 cm<sup>2</sup> 的底面积，按原来的高 2 cm 计算，损失 60 × 2 = 120 cm³。196 − 120 = 76，正好就是两者的差。</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="subhead">6. 把步子迈小：从整数到 0.1</h4>
+    <p>表 2 给出的“冠军”是 <i>x</i> = 3，容积 588。但这个冠军的含金量有限：它只是在 1，2，3，…，9 这九个人里跑得最快，而 3 和 4 之间还站着无数个选手——3.1、3.2、3.3、3.5……它们一个都没上场。更要紧的是，<i>x</i> = 3 与 <i>x</i> = 4 的容积只差 588 − 576 = 12，差距这么小，说明最高点很可能就藏在它们中间，而不是正好落在 <i>x</i> = 3 上。</p>
+    <p>先随手试一个 <i>x</i> = 3.5：底面边长 20 − 2 × 3.5 = 13（cm），底面积 13<sup>2</sup> = 169（cm<sup>2</sup>），容积 <i>V</i> = 3.5 × 169 = 591.5（cm³）。591.5 比 588 大了 3.5，这一下就证明了：588 不是最大值，整数里的冠军在“全体选手”中排不到第一。仅仅多试一个数，结论就被推翻了，这正是列表估算有意思的地方——它随时准备被更好的数据修正。</p>
+    <p>既然 3.5 比 3 好，那就把 3 到 4 这一段按 0.1 的步长切开，逐个算过去。为了看清楚“顶部到底有多平”，我们把 <i>x</i> = 3.0 到 3.6 这七个值列成表 3，并且把每一个容积的算式也写出来，方便核对。</p>
+
+    <table class="data-table">
+      <caption>表 3　加密取值（步长 0.1）时剪去边长与容积的对应关系</caption>
+      <thead>
+        <tr>
+          <th><i>x</i>/cm</th>
+          <th>3.0</th>
+          <th>3.1</th>
+          <th>3.2</th>
+          <th>3.3</th>
+          <th>3.4</th>
+          <th>3.5</th>
+          <th>3.6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><i>V</i>/cm³</th>
+          <td>588</td>
+          <td>590.364</td>
+          <td>591.872</td>
+          <td>592.548</td>
+          <td>592.416</td>
+          <td>591.5</td>
+          <td>589.824</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="formula">
+      <div class="formula-label">表 3 的算式还原</div>
+      <div class="formula-body">
+        <i>V</i>(3.0) = 3.0 × 14.0<sup>2</sup> = 3.0 × 196 = 588<br/>
+        <i>V</i>(3.1) = 3.1 × 13.8<sup>2</sup> = 3.1 × 190.44 = 590.364<br/>
+        <i>V</i>(3.2) = 3.2 × 13.6<sup>2</sup> = 3.2 × 184.96 = 591.872<br/>
+        <i>V</i>(3.3) = 3.3 × 13.4<sup>2</sup> = 3.3 × 179.56 = 592.548<br/>
+        <i>V</i>(3.4) = 3.4 × 13.2<sup>2</sup> = 3.4 × 174.24 = 592.416<br/>
+        <i>V</i>(3.5) = 3.5 × 13.0<sup>2</sup> = 3.5 × 169 = 591.5<br/>
+        <i>V</i>(3.6) = 3.6 × 12.8<sup>2</sup> = 3.6 × 163.84 = 589.824
+      </div>
+    </div>
+
+    <p>读表 3，先看容积这一行：588，590.364，591.872，592.548，592.416，591.5，589.824。它先升后降，最高点出现在 <i>x</i> = 3.3，容积 592.548 cm³。再算相邻两格的差，看变化的节奏：</p>
+    <div class="two-col">
+      <div>
+        <p>3.0 → 3.1：增加 2.364</p>
+        <p>3.1 → 3.2：增加 1.508</p>
+        <p>3.2 → 3.3：增加 0.676</p>
+      </div>
+      <div>
+        <p>3.3 → 3.4：减少 0.132</p>
+        <p>3.4 → 3.5：减少 0.916</p>
+        <p>3.5 → 3.6：减少 1.676</p>
+      </div>
+    </div>
+    <p>这组差值很能说明问题。上升时，每次增加的量越来越小（2.364 → 1.508 → 0.676），像爬坡快到顶时脚步越来越沉；翻过顶点后，每次减少的量越来越大（0.132 → 0.916 → 1.676），像下坡越走越陡。顶点正好卡在“增加 0.676”和“减少 0.132”之间，也就是 3.3 附近。而且顶点两侧的差非常小——3.2 与 3.3 相差 0.676，3.3 与 3.4 只相差 0.132，这说明顶部是一段很“平”的区域，<i>x</i> 在这个小范围里挪动，容积几乎不变。</p>
+    <p>由此得到本环节的初步结论：当 <i>x</i> ≈ 3.3 cm 时，容积最大，约为 592.5 cm³（准确说是 592.548 cm³，保留一位小数约 592.5，保留整数约 593）。此时底面边长 20 − 2 × 3.3 = 13.4（cm），盒子大约是 13.4 cm × 13.4 cm × 3.3 cm。与整数解 588 相比，多了 4.548 cm³，提高约 0.8%——提升不大，但方向是对的：最优点不在整数上。</p>
+    <p>还要留一个心眼：表 3 的步长是 0.1，最高点也只是“在这七个值里”最高。592.548 与 592.416 只差 0.132，这么小的差距说明真正的顶点可能落在 3.3 与 3.4 之间，比如 3.33 或 3.34。要把答案钉得更准，就得把步长再缩小，这正是下一节课“逐步逼近”要做的事。列表估算从来不是一锤定音，它是一轮一轮往前挪的过程。</p>
+
+    <div class="keypoint"><strong>要点：</strong>整数太粗，0.1 才把“山顶”找出来：<i>x</i> = 3.3 时 <i>V</i> = 592.548 cm³，比 <i>x</i> = 3 时的 588 大。加密取值不是为了多算几个数，而是为了看清“最大值到底在哪一小段里”。</div>
+
+    <div class="warn"><strong>易错：</strong>①只算了整数就下结论“最大容积是 588 cm³”，忽略了 3 与 4 之间的数（3.5 就有 591.5，已经比 588 大）。②表格算错：把 13.4<sup>2</sup> 算成 179.56 之外的值，或把 3.3 × 179.56 算成 592.548 以外的数；底面积要算平方，不能只算 13.4 × 2。③把 <i>x</i> 与底面边长混为一谈：<i>x</i> 是剪去的小正方形边长，也是盒子的高；底面边长是 20 − 2<i>x</i>。表 3 里 <i>x</i> = 3.3 对应的底面边长是 13.4，两个数不能对调。</div>
+
+    <div class="method"><strong>方法归纳：列表估算的一般步骤</strong>
+      <ul>
+        <li>第一步，明确变量与范围：设 <i>x</i> 为剪去的小正方形边长，写出 0 &lt; <i>x</i> &lt; 10。</li>
+        <li>第二步，写出关系式：<i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，并想清楚每一步先算什么。</li>
+        <li>第三步，选定步长：先取整数粗筛，找到“变向”的位置，再在附近取更小的步长。</li>
+        <li>第四步，逐个代入、列表记录，算完用另一种写法（如 <i>V</i> = 4<i>x</i>(10 − <i>x</i>)<sup>2</sup>）抽查一两格。</li>
+        <li>第五步，比较大小、观察趋势，写出结论，并说明结论是在“什么范围内、什么步长下”得到的。</li>
+      </ul>
+    </div>
+    <h4 class="subhead">7. 练习（环节 3）</h4>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】用 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> 计算 <i>x</i> = 1、<i>x</i> = 2、<i>x</i> = 3 时的容积，写出每一步算式，并指出这三个值中哪个最大。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>x</i> = 1：底面边长 20 − 2 = 18（cm），底面积 18<sup>2</sup> = 324（cm<sup>2</sup>），<i>V</i> = 1 × 324 = 324（cm³）。</p>
+          <p><i>x</i> = 2：底面边长 20 − 4 = 16（cm），底面积 16<sup>2</sup> = 256（cm<sup>2</sup>），<i>V</i> = 2 × 256 = 512（cm³）。</p>
+          <p><i>x</i> = 3：底面边长 20 − 6 = 14（cm），底面积 14<sup>2</sup> = 196（cm<sup>2</sup>），<i>V</i> = 3 × 196 = 588（cm³）。</p>
+          <p>三个容积中 588 最大，所以 <i>x</i> = 3 时最大，最大容积 588 cm³。注意这只是在这三个值中比较，不能推广成“所有取值中最大”。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】观察表 2，<i>x</i> 从 5 增加到 9 的过程中，容积是怎样变化的？从 <i>x</i> = 5 到 <i>x</i> = 9，容积一共减少了多少？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>依次读出 <i>V</i>(5) = 500，<i>V</i>(6) = 384，<i>V</i>(7) = 252，<i>V</i>(8) = 128，<i>V</i>(9) = 36。</p>
+          <p>这一串数一个比一个小，说明在这一段里容积随 <i>x</i> 的增大而<b>持续减小</b>，没有回升。</p>
+          <p>总减少量为 500 − 36 = 464（cm³）。也可以逐段相加核对：(500 − 384) + (384 − 252) + (252 − 128) + (128 − 36) = 116 + 132 + 124 + 92 = 464（cm³），两种算法一致。</p>
+          <p>还能看出减少的速度并不均匀：四段分别减少 116、132、124、92，先由 116 升到 132，再回落到 124、92，说明下落是“由缓变陡、末端又慢慢收住”的。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】分别求 <i>x</i> = 4 与 <i>x</i> = 5 时盒子的容积，比较大小并求差；再解释为什么 <i>x</i> 从 3 增到 4 时，容积反而从 588 降到 576。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>x</i> = 4：底面边长 20 − 8 = 12（cm），底面积 144 cm<sup>2</sup>，<i>V</i> = 4 × 144 = 576（cm³）。</p>
+          <p><i>x</i> = 5：底面边长 20 − 10 = 10（cm），底面积 100 cm<sup>2</sup>，<i>V</i> = 5 × 100 = 500（cm³）。</p>
+          <p>所以 <i>x</i> = 4 时容积较大，大 576 − 500 = 76（cm³）。</p>
+          <p>再看 3 到 4：高从 3 cm 增到 4 cm，增加 1 cm，相对增加约 33.3%；底面积从 196 cm<sup>2</sup> 减到 144 cm<sup>2</sup>，减少 52 cm<sup>2</sup>，相对减少约 26.5%。这一步高的增幅已经小于底面积的减幅，两者相乘的结果是变小：4 × 144 = 576 &lt; 3 × 196 = 588，减少了 12 cm³。也就是说，从 <i>x</i> = 3 往后，“底面缩小”开始压过“高变大”，容积由增转减。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【拓展】把纸板换成边长 12 cm 的正方形，用列表估算找出整数取值下使容积最大的 <i>x</i>，并求出最大容积。想一想：这个结果与 20 cm 纸板的 3 cm 有什么关系？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>此时 0 &lt; <i>x</i> &lt; 6，整数只能取 1，2，3，4，5。容积 <i>V</i> = <i>x</i>(12 − 2<i>x</i>)<sup>2</sup>。</p>
+          <p><i>x</i> = 1：1 × 10<sup>2</sup> = 100；<i>x</i> = 2：2 × 8<sup>2</sup> = 128；<i>x</i> = 3：3 × 6<sup>2</sup> = 108；<i>x</i> = 4：4 × 4<sup>2</sup> = 64；<i>x</i> = 5：5 × 2<sup>2</sup> = 20。</p>
+          <p>容积依次为 100，128，108，64，20，先增后减，最大是 128，对应 <i>x</i> = 2 cm。此时底面边长 8 cm，盒子尺寸 8 cm × 8 cm × 2 cm。</p>
+          <p>关系：纸板边长 20 cm 时最优整数 <i>x</i> = 3，12 cm 时是 2，恰好都等于边长的 1/6（20 ÷ 6 ≈ 3.3，取整数为 3；12 ÷ 6 = 2）。这提示我们：最优剪口与纸板边长成正比，纸板越大，剪口也应按比例放大。这个规律在后面的“推广”中还会正式验证。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="a2-2">
+    <h3 class="card-title"><span class="num">环节 4</span>画图观察：把表格变成折线图</h3>
+
+    <h4 class="subhead">1. 表格很好，但眼睛更擅长看图</h4>
+    <p>表 2 给了我们九个数据，表 3 又加了七个。数据是可靠的，可读起来并不轻松：要判断“哪里最大”，得把九个数来回比较；要感受“变化快慢”，得在心里做减法。人的眼睛对“高低”“陡缓”特别敏感，对一长串数字却不那么敏感。于是数学家发明了另一种表示方法——把每一对数据看成一个点，画在坐标系里，再用线连起来。这样，趋势就从“数字里”跑到了“图形上”。</p>
+    <p>把表格翻译成图形，要注意三件事。第一，横轴、纵轴分别代表什么，单位是什么，必须标清楚，否则图就成了“没有说明书的机器”。第二，刻度必须均匀：横轴上 1 cm 的间隔要一样长，纵轴上 100 cm³ 的间隔也要一样长，不能这一段挤、那一段松，否则图形会“说谎”。第三，每个点都要按数值“对号入座”，不能凭印象随手点。做到了这三条，图才是可信的。</p>
+
+    <h4 class="subhead">2. 建立坐标系，描出九个点</h4>
+    <p>横轴表示剪去的小正方形边长 <i>x</i>（单位 cm），范围从 0 到 10；纵轴表示容积 <i>V</i>（单位 cm³），范围从 0 到 600。为什么纵轴要从 0 开始？因为容积为 0 表示“装不了东西”，这是一个有实际意义的起点；从 0 画起，图形的“高”才与容积的真实大小成比例，看起来才不会失真。</p>
+    <p>描点时，以 <i>x</i> = 3 为例：先在横轴上找到 3，再向上找到纵轴上 588 的位置，两线相交处就是点 (3, 588)。同样地，(1, 324)、(2, 512)、(4, 576)、(5, 500)、(6, 384)、(7, 252)、(8, 128)、(9, 36) 依次落位，最后用线段把相邻的点依次连起来，就得到如图 3 所示的折线图。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 400" role="img" aria-label="折线图：横轴为剪去的小正方形边长，纵轴为容积，九个整数数据点先升后降，最高点在横坐标 3 处">
+        <title>整数取值时容积随剪去边长变化的折线图</title>
+        <line x1="70" y1="340" x2="596" y2="340" stroke="#334155" stroke-width="2"/>
+        <line x1="70" y1="340" x2="70" y2="36" stroke="#334155" stroke-width="2"/>
+        <line x1="70" y1="290" x2="590" y2="290" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="70" y1="240" x2="590" y2="240" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="70" y1="190" x2="590" y2="190" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="70" y1="140" x2="590" y2="140" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="70" y1="90" x2="590" y2="90" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="70" y1="40" x2="590" y2="40" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="122" y1="340" x2="122" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="174" y1="340" x2="174" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="226" y1="340" x2="226" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="278" y1="340" x2="278" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="330" y1="340" x2="330" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="382" y1="340" x2="382" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="434" y1="340" x2="434" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="486" y1="340" x2="486" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="538" y1="340" x2="538" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="590" y1="340" x2="590" y2="345" stroke="#334155" stroke-width="1"/>
+        <line x1="65" y1="290" x2="70" y2="290" stroke="#334155" stroke-width="1"/>
+        <line x1="65" y1="240" x2="70" y2="240" stroke="#334155" stroke-width="1"/>
+        <line x1="65" y1="190" x2="70" y2="190" stroke="#334155" stroke-width="1"/>
+        <line x1="65" y1="140" x2="70" y2="140" stroke="#334155" stroke-width="1"/>
+        <line x1="65" y1="90" x2="70" y2="90" stroke="#334155" stroke-width="1"/>
+        <line x1="65" y1="40" x2="70" y2="40" stroke="#334155" stroke-width="1"/>
+        <line x1="226" y1="46" x2="226" y2="340" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <polyline points="122,178 174,84 226,46 278,52 330,90 382,148 434,214 486,276 538,322" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <circle cx="122" cy="178" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="174" cy="84" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="226" cy="46" r="5" fill="#1d4ed8" stroke="#1d4ed8" stroke-width="2"/>
+        <circle cx="278" cy="52" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="330" cy="90" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="382" cy="148" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="434" cy="214" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="486" cy="276" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="538" cy="322" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <text x="122" y="168" font-size="12" fill="#334155" text-anchor="middle">324</text>
+        <text x="174" y="74" font-size="12" fill="#334155" text-anchor="middle">512</text>
+        <text x="226" y="34" font-size="12" fill="#1d4ed8" text-anchor="middle">588</text>
+        <text x="278" y="42" font-size="12" fill="#334155" text-anchor="middle">576</text>
+        <text x="330" y="80" font-size="12" fill="#334155" text-anchor="middle">500</text>
+        <text x="382" y="138" font-size="12" fill="#334155" text-anchor="middle">384</text>
+        <text x="434" y="204" font-size="12" fill="#334155" text-anchor="middle">252</text>
+        <text x="486" y="266" font-size="12" fill="#334155" text-anchor="middle">128</text>
+        <text x="538" y="312" font-size="12" fill="#334155" text-anchor="middle">36</text>
+        <text x="70" y="358" font-size="12" fill="#334155" text-anchor="middle">0</text>
+        <text x="122" y="358" font-size="12" fill="#334155" text-anchor="middle">1</text>
+        <text x="174" y="358" font-size="12" fill="#334155" text-anchor="middle">2</text>
+        <text x="226" y="358" font-size="12" fill="#334155" text-anchor="middle">3</text>
+        <text x="278" y="358" font-size="12" fill="#334155" text-anchor="middle">4</text>
+        <text x="330" y="358" font-size="12" fill="#334155" text-anchor="middle">5</text>
+        <text x="382" y="358" font-size="12" fill="#334155" text-anchor="middle">6</text>
+        <text x="434" y="358" font-size="12" fill="#334155" text-anchor="middle">7</text>
+        <text x="486" y="358" font-size="12" fill="#334155" text-anchor="middle">8</text>
+        <text x="538" y="358" font-size="12" fill="#334155" text-anchor="middle">9</text>
+        <text x="590" y="358" font-size="12" fill="#334155" text-anchor="middle">10</text>
+        <text x="62" y="344" font-size="12" fill="#334155" text-anchor="end">0</text>
+        <text x="62" y="294" font-size="12" fill="#334155" text-anchor="end">100</text>
+        <text x="62" y="244" font-size="12" fill="#334155" text-anchor="end">200</text>
+        <text x="62" y="194" font-size="12" fill="#334155" text-anchor="end">300</text>
+        <text x="62" y="144" font-size="12" fill="#334155" text-anchor="end">400</text>
+        <text x="62" y="94" font-size="12" fill="#334155" text-anchor="end">500</text>
+        <text x="62" y="44" font-size="12" fill="#334155" text-anchor="end">600</text>
+        <text x="333" y="384" font-size="14" fill="#334155" text-anchor="middle">剪去的小正方形边长 <tspan font-style="italic">x</tspan>/cm</text>
+        <text x="24" y="190" font-size="14" fill="#334155" text-anchor="middle" transform="rotate(-90 24 190)">容积 <tspan font-style="italic">V</tspan>/cm³</text>
+      </svg>
+      <figcaption>图 3　整数取值下容积随剪去边长变化的折线图（数据来自表 2）</figcaption>
+    </figure>
+
+    <h4 class="subhead">3. 读图：形状比数字更直白</h4>
+    <p>看图 3，第一眼看到的就是形状：折线从左边升上来，在 <i>x</i> = 3 附近到达最高处，然后一路往下走，形成一个“山包”。这与表 2 的结论完全一致，但图形把“先增后减”表现得更强烈——数字要比较九次，图形只要看一眼。</p>
+    <p>第二眼，找最高点。最高点落在 <i>x</i> = 3 对应的位置，纵坐标是 588。可是再仔细看，从 3 到 4 的那一段，折线几乎是平的：588 到 576 只降了一点点。这意味着顶点很可能不在 3 上，而在 3 与 4 之间——图形在这里“提示”了一个整数表格给不出的信息。</p>
+    <p>第三眼，看两边的坡度。左边从 1 到 3，只用了 2 个单位的横坐标，就把容积从 324 抬到了 588，平均每增加 1 cm 的 <i>x</i>，容积增加约 132 cm³；右边从 3 到 9，用了 6 个单位的横坐标，把容积从 588 降到 36，平均每增加 1 cm 的 <i>x</i>，容积只减少约 92 cm³。所以左支更陡，右支更长更缓，图形左右并不对称。这不是画错了，而是数据本身的特征：<i>x</i> 越大，底面缩得越厉害，容积掉得也越“持久”。</p>
+    <p>第四眼，看细部的节奏。左边上升时，先快后慢：1 到 2 增加 188，2 到 3 只增加 76。右边下降时，先慢后快、末端又稍缓：3 到 4 只减少 12，4 到 5 减少 76，5 到 6 减少 116，6 到 7 减少 132，7 到 8 减少 124，8 到 9 减少 92。把这些变化和图上的“陡缓”对照，会发现完全吻合：折线陡的地方，正是相邻两格差得多的那一段。读图不是“看个大概”，而是把图形和数字互相印证。</p>
+
+    <div class="keypoint"><strong>要点：</strong>图 3 的三条读图结论——① 容积先增后减，形状像“山包”；② 最高点在 <i>x</i> = 3 与 <i>x</i> = 4 之间，而不是正好在某个整数上；③ 左右不对称：左支陡而短，右支缓而长，因为 <i>x</i> 越大底面积缩得越快。</div>
+    <h4 class="subhead">4. 局部放大：给山顶拍一张“特写”</h4>
+    <p>图 3 有个遗憾：横轴从 0 拉到 10，整整 10 个单位，而 3 到 4 之间只占其中的十分之一，那一段折线被挤得很短，山顶到底在 3.2 还是 3.3，图上根本分不清。就像站在远处看一座山，只能看出“中间高”，看不出山顶究竟偏向哪一边。要看清，就得走近一点——把 3.0 到 3.6 这一段单独画出来，这就是局部放大。</p>
+    <p>做法是：横轴只保留 3.0 到 3.6 这七个数，纵轴只保留 588 到 593 这五个单位。这样一来，表 3 里的七个点就“摊开”了，每 0.1 的横坐标占一大格，每 1 cm³ 的纵坐标也占一大格，山顶的形状就露出来了，如图 4 所示。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 400" role="img" aria-label="局部放大折线图：横轴为 3.0 到 3.6，纵轴从 588 开始，最高点出现在 3.3 处，容积约 592.548">
+        <title>3.0 到 3.6 的局部放大折线图（纵轴从 588 开始）</title>
+        <line x1="80" y1="330" x2="576" y2="330" stroke="#334155" stroke-width="2"/>
+        <line x1="80" y1="330" x2="80" y2="62" stroke="#334155" stroke-width="2"/>
+        <line x1="80" y1="278" x2="560" y2="278" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="80" y1="226" x2="560" y2="226" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="80" y1="174" x2="560" y2="174" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="80" y1="122" x2="560" y2="122" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="80" y1="70" x2="560" y2="70" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="160" y1="330" x2="160" y2="335" stroke="#334155" stroke-width="1"/>
+        <line x1="240" y1="330" x2="240" y2="335" stroke="#334155" stroke-width="1"/>
+        <line x1="320" y1="330" x2="320" y2="335" stroke="#334155" stroke-width="1"/>
+        <line x1="400" y1="330" x2="400" y2="335" stroke="#334155" stroke-width="1"/>
+        <line x1="480" y1="330" x2="480" y2="335" stroke="#334155" stroke-width="1"/>
+        <line x1="560" y1="330" x2="560" y2="335" stroke="#334155" stroke-width="1"/>
+        <line x1="75" y1="278" x2="80" y2="278" stroke="#334155" stroke-width="1"/>
+        <line x1="75" y1="226" x2="80" y2="226" stroke="#334155" stroke-width="1"/>
+        <line x1="75" y1="174" x2="80" y2="174" stroke="#334155" stroke-width="1"/>
+        <line x1="75" y1="122" x2="80" y2="122" stroke="#334155" stroke-width="1"/>
+        <line x1="75" y1="70" x2="80" y2="70" stroke="#334155" stroke-width="1"/>
+        <polyline points="80,330 160,207 240,129 320,94 400,100 480,148 560,235" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <circle cx="80" cy="330" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="160" cy="207" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="240" cy="129" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="320" cy="94" r="5" fill="#1d4ed8" stroke="#1d4ed8" stroke-width="2"/>
+        <circle cx="400" cy="100" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="480" cy="148" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <circle cx="560" cy="235" r="4" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <text x="80" y="312" font-size="12" fill="#334155" text-anchor="middle">588</text>
+        <text x="160" y="189" font-size="12" fill="#334155" text-anchor="middle">590.364</text>
+        <text x="240" y="111" font-size="12" fill="#334155" text-anchor="middle">591.872</text>
+        <text x="320" y="74" font-size="12" fill="#1d4ed8" text-anchor="middle">592.548</text>
+        <text x="400" y="80" font-size="12" fill="#334155" text-anchor="middle">592.416</text>
+        <text x="480" y="130" font-size="12" fill="#334155" text-anchor="middle">591.5</text>
+        <text x="560" y="217" font-size="12" fill="#334155" text-anchor="middle">589.824</text>
+        <text x="80" y="348" font-size="12" fill="#334155" text-anchor="middle">3.0</text>
+        <text x="160" y="348" font-size="12" fill="#334155" text-anchor="middle">3.1</text>
+        <text x="240" y="348" font-size="12" fill="#334155" text-anchor="middle">3.2</text>
+        <text x="320" y="348" font-size="12" fill="#334155" text-anchor="middle">3.3</text>
+        <text x="400" y="348" font-size="12" fill="#334155" text-anchor="middle">3.4</text>
+        <text x="480" y="348" font-size="12" fill="#334155" text-anchor="middle">3.5</text>
+        <text x="560" y="348" font-size="12" fill="#334155" text-anchor="middle">3.6</text>
+        <text x="72" y="334" font-size="12" fill="#334155" text-anchor="end">588</text>
+        <text x="72" y="282" font-size="12" fill="#334155" text-anchor="end">589</text>
+        <text x="72" y="230" font-size="12" fill="#334155" text-anchor="end">590</text>
+        <text x="72" y="178" font-size="12" fill="#334155" text-anchor="end">591</text>
+        <text x="72" y="126" font-size="12" fill="#334155" text-anchor="end">592</text>
+        <text x="72" y="74" font-size="12" fill="#334155" text-anchor="end">593</text>
+        <text x="320" y="372" font-size="12" fill="#1d4ed8" text-anchor="middle">注意：纵轴从 588 开始，不是从 0 开始</text>
+        <text x="328" y="392" font-size="14" fill="#334155" text-anchor="middle">剪去边长 <tspan font-style="italic">x</tspan>/cm</text>
+        <text x="30" y="200" font-size="14" fill="#334155" text-anchor="middle" transform="rotate(-90 30 200)">容积 <tspan font-style="italic">V</tspan>/cm³</text>
+      </svg>
+      <figcaption>图 4　3.0 到 3.6 的局部放大折线图（纵轴从 588 开始）</figcaption>
+    </figure>
+
+    <p>看图 4，山顶非常清楚：最高点落在 3.3 的位置，对应 592.548；它右边的 3.4 低一点点（592.416），左边的 3.2 也低一点点（591.872）。曲线在 3.3 附近形成一个很平缓的圆弧，左右基本对称，但仔细看仍有区别：3.2 到 3.3 上升了 0.676，3.3 到 3.4 只下降了 0.132，说明顶点其实略微偏向 3.4 那一侧，3.3 只是我们按 0.1 的步长能取到的最好值。</p>
+    <p>这张图还藏着一个陷阱，必须点破。看图 4，从 588 到 592.548，折线几乎爬满了整个画面，视觉上像是“翻了一倍”，可实际只差 4.548 cm³，相对差距不到 0.8%。为什么看起来这么夸张？因为纵轴被截断了——它从 588 开始，而不是从 0 开始，本来 600 cm³ 的高度被压缩成 5 个单位来画，于是 4.548 的差距就占满了画面。这就是“截取纵轴会放大差异”：图本身没有画错，但它把很小的差别放大了，容易让人误以为 3.3 比 3.0 好很多。所以看任何统计图、折线图，第一件事永远是看纵轴的起点在哪里。</p>
+    <p>局部放大解决了“看清山顶”的问题，但没有解决“精确定位”的问题。图 4 上，我们只能读出最高点在 3.3 附近，读不出 3.32 还是 3.35——因为横轴上 0.1 的距离虽然被拉开了，但再细的分辨仍然超出了肉眼的能力。要更准，只有继续算，这又是下一节课的内容了。</p>
+
+    <h4 class="subhead">5. 形状对比：三种盒子，三种“性格”</h4>
+    <p>数据之外，还可以回到盒子本身看一看。同样一张 20 cm 的正方形纸板，剪口不同，做出来的盒子形状差别很大，如图 5 所示。剪口很小（<i>x</i> = 1）时，盒子扁而宽，底面 18 cm × 18 cm，高只有 1 cm，像一个浅浅的托盘；剪口适中（<i>x</i> ≈ 3.3）时，底面约 13.4 cm × 13.4 cm，高约 3.3 cm，看起来比较“方正”，像一个规整的小方盒；剪口很大（<i>x</i> = 5）时，底面缩到 10 cm × 10 cm，高却有 5 cm，像一个又深又窄的笔筒。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 280" role="img" aria-label="三种剪口下收纳盒形状对比示意图：扁而宽、较方正、深而窄">
+        <title>三种剪口下收纳盒形状对比示意图</title>
+        <polygon points="40,170 210,170 240,140 70,140" fill="#e0e7ff" stroke="#334155" stroke-width="2"/>
+        <rect x="40" y="170" width="170" height="32" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <polygon points="265,110 395,110 420,85 290,85" fill="#dcfce7" stroke="#334155" stroke-width="2"/>
+        <rect x="265" y="110" width="130" height="92" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <polygon points="505,60 577,60 597,35 525,35" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <rect x="505" y="60" width="72" height="142" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <text x="125" y="228" font-size="14" fill="#334155" text-anchor="middle">x = 1：扁而宽</text>
+        <text x="125" y="248" font-size="12" fill="#334155" text-anchor="middle">底面 18 × 18，高 1</text>
+        <text x="330" y="228" font-size="14" fill="#334155" text-anchor="middle">x ≈ 3.3：较方正</text>
+        <text x="330" y="248" font-size="12" fill="#334155" text-anchor="middle">底面 13.4 × 13.4，高 3.3</text>
+        <text x="541" y="228" font-size="14" fill="#334155" text-anchor="middle">x = 5：深而窄</text>
+        <text x="541" y="248" font-size="12" fill="#334155" text-anchor="middle">底面 10 × 10，高 5</text>
+        <text x="320" y="24" font-size="12" fill="#1d4ed8" text-anchor="middle">三种形状只表示“扁—方正—深”的趋势，尺寸未按比例</text>
+      </svg>
+      <figcaption>图 5　三种剪口下收纳盒的形状对比（示意图，未按比例）</figcaption>
+    </figure>
+
+    <p>把形状和容积放在一起看，会发现一个有意思的对应：扁而宽的盒子，底面很大但高度太小，装不了多少；深而窄的盒子，高度够但底面太小，也装不了多少；只有介于两者之间的形状，底面和高度“势均力敌”，容积才最大。这就是“先增后减”的几何解释——容积是底面积与高的乘积，两者此消彼长，乘积在某个中间位置达到最大。</p>
+    <p>不过要提醒一句：图 5 是示意图，为了看清楚形状，故意没有按真实比例画。真实的盒子里，13.4 cm 的底面是 3.3 cm 高的四倍多，画出来会显得更“扁”一些。示意图的作用是帮助理解“趋势”，不能用来量尺寸、比大小。真正判断谁大谁小，还是要回到表 2、表 3 的数据和图 3、图 4 的坐标。</p>
+    <h4 class="subhead">6. 例题：图能告诉我们什么，不能告诉我们什么</h4>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">折线图能读出精确的最大值吗</span>
+      </div>
+      <div class="example-body">
+        <p>小丽说：“看图 3，最高点在 3 和 4 之间，所以最大容积是五百多，具体多少从图上读不出来。”小刚说：“看图 4 就行了，最高点正好在 3.3，最大容积就是 592.548。”请判断两人的说法是否合理，并说明折线图能不能读出精确的最大值。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>小丽的说法基本合理。图 3 的横轴每大格代表 1 cm，纵轴每大格代表 100 cm³，在这样的刻度下，最高点只能读出一个大概位置：在 3 与 4 之间，容积在 588 附近。她说“五百多、具体读不出来”，是符合图形精度的。</p>
+          <p>小刚的说法有问题。图 4 上最高点确实在 3.3 附近，但“正好在 3.3”这个结论来自表 3 的数据，不是从图上“看”出来的；592.548 这个精确到小数点后三位的数，更是计算的结果。图 4 的纵轴每大格是 1 cm³，横轴每大格是 0.1 cm，图上任意一点的读数误差至少有半格，也就是约 0.05 cm 和 0.5 cm³，根本读不出 592.548 这样的精度。</p>
+          <p>更关键的是，真正的顶点大约在 3.33 附近（这一点要靠继续加密计算才能确定），而 3.3 与 3.33 在图 4 上只差不到三分之一个大格，肉眼无法区分。所以图 4 只能说明“最高点在 3.3 附近”，不能说明“最高点就是 3.3”。</p>
+          <p>结论：折线图擅长表示<b>趋势</b>（先增后减）、<b>范围</b>（最高点在 3 与 4 之间）和<b>疑点</b>（3 到 4 之间那段几乎水平，值得再算），但不擅长给出<b>精确值</b>。要精确，必须回到公式去算；图的作用是“指路”，不是“定案”。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果把图 3 的纵轴改成从 500 开始画，最高点还会在 3 附近吗？答：位置不变，仍在 3 与 4 之间，但视觉上 588 与 576 的差距会被拉得很开，容易让人误以为 3 比 4 好很多。这再次说明：读图先看纵轴起点。</p>
+
+    <div class="warn"><strong>易错：</strong>①纵轴不从 0 开始画，导致差异被夸大。本活动的图 3 从 0 开始，588 与 576 的差距看起来很小；而图 4 为了看清山顶，故意从 588 开始，差距被放大——两张图各有用途，但不能拿图 4 的“陡”去说明“3.3 比 3.0 好很多”，实际只差 4.548 cm³。②把折线的“折”当成真实变化。折线只是把相邻两个数据点用线段连起来，两个点之间的真实值并不在线段上：图 3 中 3 与 4 之间的线段在 <i>x</i> = 3.5 处给出 582，而真实容积是 591.5，差了 9.5 cm³。线段是“近似”，不是“事实”。③把横轴上的读数当成精确值，随手写出 592.548 这样的数，却说不清它是算出来的还是看出来的。</div>
+
+    <div class="method"><strong>方法归纳：怎样读一张折线图</strong>
+      <ul>
+        <li>先看两轴：横轴、纵轴各表示什么量，单位是什么，起点是不是 0。</li>
+        <li>再看整体：曲线是上升、下降，还是先升后降；最高点、最低点大概在哪里。</li>
+        <li>三看陡缓：哪一段陡、哪一段平，陡说明变化快，平说明变化慢。</li>
+        <li>四看精度：刻度一大格代表多少，读数最多准到半格，不要凭空多写几位。</li>
+        <li>最后回到数据：图上的每个点都要能在表里找到对应的一对数，图与表互相印证。</li>
+      </ul>
+    </div>
+    <h4 class="subhead">7. 练习（环节 4）</h4>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】观察图 3 回答：（1）哪个 <i>x</i> 的值使容积最大？最大容积是多少？（2）<i>x</i> 从 1 增加到 5 的过程中，容积是怎样变化的？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）图 3 中位置最高的点是横坐标为 3 的那个点，纵坐标 588，所以 <i>x</i> = 3 时容积最大，最大容积 588 cm³。要注意这是“整数取值范围内”的最大值。</p>
+          <p>（2）容积先从 324（<i>x</i> = 1）升到 512（<i>x</i> = 2），再升到 588（<i>x</i> = 3），到顶后转为下降：576（<i>x</i> = 4）、500（<i>x</i> = 5）。所以这一段是<b>先增大后减小</b>，转折点在 <i>x</i> = 3 附近，图上表现为一个“山包”。</p>
+          <p>补充：从 3 到 4 只下降了 12，从 4 到 5 下降了 76，说明刚过山顶时下降很慢，越往后越快。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】图 3 中横坐标为 6 的点，纵坐标是多少？它表示什么实际意义？这个数与表 2 是否一致？若另有一个点 (7, 252)，它表示什么？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>横坐标为 6 的点，纵坐标是 384，表示剪去边长 6 cm 时，盒子的容积为 384 cm³，此时底面边长 20 − 12 = 8（cm），盒子尺寸 8 cm × 8 cm × 6 cm。</p>
+          <p>表 2 中 <i>x</i> = 6 对应的容积正是 384，两者一致，说明这个点是按数据“对号入座”描出来的，没有画偏。</p>
+          <p>点 (7, 252) 表示 <i>x</i> = 7 cm 时容积为 252 cm³，即底面边长 6 cm、高 7 cm 的盒子。它在图上比 (6, 384) 更低，符合“过了山顶后容积持续减小”的趋势。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】图 4 的纵轴是从 588 开始画的，而不是从 0 开始。（1）这样画有什么好处？（2）可能造成什么误判？（3）如果把纵轴改成从 0 开始，图 4 会变成什么样子？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）好处：3.0 到 3.6 这七个容积都在 588 到 592.548 之间，跨度只有 4.548 cm³。如果纵轴从 0 画到 600，这七个点会挤成几乎一条水平线，山顶完全看不出来。截取纵轴相当于“放大镜”，把微小的差别展开，便于观察山顶的位置。</p>
+          <p>（2）误判：截取纵轴会把差异放大。图 4 上从 588 到 592.548 几乎爬满整个画面，看起来像是“涨了很多”，实际只差 4.548 cm³，相对差距不到 0.8%。如果不看纵轴起点，就可能误以为 3.3 比 3.0 好一大截，甚至误以为换个剪口就能多装很多。</p>
+          <p>（3）若纵轴从 0 开始，图 4 会变成一条几乎水平的、略微上凸的短线：七个点的高度差不到总高度的 1%，山顶几乎看不出来，最高点也就无法定位。所以两种画法各有用途：从 0 开始看“真实比例”，截取纵轴看“局部细节”，但都必须标注清楚起点。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【拓展】有同学说：“看图 4 就知道 <i>x</i> = 3.25 时容积是多少了。”这种说法对吗？请说明理由，并实际算出 <i>x</i> = 3.25 时的容积，与 <i>x</i> = 3.2、<i>x</i> = 3.3 比较。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>不对。图 4 的横轴每大格是 0.1，3.25 落在 3.2 与 3.3 的正中间，图上既没有这个点，也没有更细的刻度；纵轴每大格是 1 cm³，读数最多准到半格（约 0.5 cm³）。所以图 4 只能估计出“3.25 处的容积比 591.872 大、比 592.548 小”，给不出具体数值。</p>
+          <p>要得到数值，只能代公式计算。此时底面边长 20 − 2 × 3.25 = 13.5（cm），底面积 13.5<sup>2</sup> = 182.25（cm<sup>2</sup>），容积 <i>V</i> = 3.25 × 182.25 = 592.3125（cm³）。</p>
+          <p>比较：<i>V</i>(3.2) = 591.872，<i>V</i>(3.25) = 592.3125，<i>V</i>(3.3) = 592.548。可见 3.25 处的容积确实介于两者之间，且更靠近 3.3，说明山顶偏向 3.3 一侧。这个结果图上“看”不出来，是算出来的——这正是“图指路、算定案”的含义。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>本环节要点：</strong>
+      <ul>
+        <li>列表估算的思路是“先粗后细”：先取整数找到容积变向的位置，再在附近缩小步长。表 2 的结论是 <i>x</i> = 3 时 588 最大，表 3 把答案修正为 <i>x</i> = 3.3 时 592.548。</li>
+        <li>容积随 <i>x</i> 增大<b>先增后减</b>：<i>x</i> 太小盒子太扁，<i>x</i> 太大底面太小，两者此消彼长，乘积在中间某处最大。</li>
+        <li>画图的三条纪律：两轴标明名称与单位、刻度均匀、每个点按数值定位。图 3 从 0 起画看整体趋势，图 4 截取纵轴看局部细节，用图 4 时必须注明起点。</li>
+        <li>读图能读出趋势、范围和疑点，读不出精确值。图 3 只能看出最高点在 3 与 4 之间；精确到 0.1 靠表 3，精确到 0.01 还要继续加密。</li>
+        <li>折线只是把相邻数据点连起来的“近似”，两个数据点之间的真实值并不在线段上。3 与 4 之间的线段给出 582，真实值却是 591.5，差距提醒我们：图要看，算也要算。</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+
+<section class="part" id="part3">
+  <div class="part-head">
+    <div class="part-kicker">探究二 · 建议 1 课时</div>
+    <h2 class="part-title">逐步逼近与结论检验</h2>
+    <p class="part-intro">上一环节我们用整数表和步长 0.1 的加密表，把最优的剪口边长锁定在 3.3 cm 附近。可是 3.3 只是“看起来最好”的一个数：表 3 中 3.3 处的容积是 592.548 cm³，3.4 处是 592.416 cm³，两者只差 0.132 cm³，比一枚回形针还小。这么小的差距，靠“再多看一位小数”已经很难说服人。本环节要解决两个问题：怎样用更聪明的办法把最优点找得更准？找到以后，又怎样检验这个结论确实靠得住？</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>活动目标</h3>
+    <ul>
+      <li>能说出“整数太粗、步长 0.1 也太粗”的理由，体会继续加密的必要性。</li>
+      <li>会用“步长 0.01 继续加密”和“二分法缩小区间”两种办法逼近最优点，并能说清每一步的判断依据。</li>
+      <li>能读懂区间收缩示意图，理解“区间越短、结论越准”的道理。</li>
+      <li>会从量纲、合理性、与旧结论比较、边界情形、实际制作五个方面检验结论。</li>
+      <li>经历“估算—逼近—检验”的完整过程，养成“给出结论还要说明理由”的习惯。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a3-1">
+    <h3 class="card-title"><span class="num">环节 5</span>逐步逼近：把最优点找得更准</h3>
+
+    <h4 class="subhead">1. 新的困难：0.1 也不够细了</h4>
+    <p>先把上一环节的结果摆到桌面上。步长取 0.1 时，<i>x</i> = 3.2 处容积为 591.872 cm³，<i>x</i> = 3.3 处为 592.548 cm³，<i>x</i> = 3.4 处为 592.416 cm³。容积在 3.3 处达到这一行数据中的最大值，随后立刻回落。3.3 与 3.4 的容积只差 592.548 − 592.416 = 0.132（cm³），这个差距确实很小：棱长 0.5 cm 的小正方体，体积也不过 0.125 cm³。按相对误差算，0.132 ÷ 592.5 约等于 0.02%，连千分之一都不到。</p>
+    <p>可是“差得小”并不等于“可以不管”。第一，我们回答的问题是“剪去多大的小正方形”，答案要落到一个具体的数上；如果只说“3.3 左右”，实际剪裁时究竟剪 3.3 还是 3.35，仍然没有交代。第二，更要紧的是，我们并不知道 3.3 是不是真正的最好：表 3 只看了 3.0 到 3.6 这七个数，万一 3.25 处的容积比 592.548 还大呢？万一 3.35 处更大呢？步长 0.1 的表格根本没有取到这些点，它没有资格替我们下结论。</p>
+    <p>于是问题悄悄换了样子。原来问的是“<i>x</i> 取哪些值、哪个容积最大”，现在问的是“最高点究竟藏在哪个小范围里，能不能把这个范围一直缩小下去”。前一种问法靠“多算几个数”，后一种问法靠“把区间一段段掐短”。这一换，就从“列表估算”走进了“逐步逼近”。</p>
+    <div class="keypoint"><strong>要点：</strong>表 3 给出的不是“精确答案”，而是“答案所在的范围”。步长越小，范围越窄，答案越准。逐步逼近要做的，就是把这个范围一次次缩小，直到窄到我们需要的精度为止。</div>
+    <h4 class="subhead">2. 方法一：把步长再缩小十倍</h4>
+    <p>最直接的想法是“照老办法再来一遍”：既然步长 0.1 太粗，那就把步长改成 0.01，在 3.3 附近每隔 0.01 算一个容积。区间不用铺得太宽，只取 3.31、3.32、3.33、3.34、3.35 这五个数就够了，因为表 3 已经告诉我们，比 3.3 小得多或大得多的位置容积都在下降。</p>
+    <p>先看一个完整的算法。<i>x</i> = 3.33 时，底面边长是 20 − 2 × 3.33 = 20 − 6.66 = 13.34（cm），底面积是 13.34<sup>2</sup> = 177.9556（cm<sup>2</sup>），容积是 177.9556 × 3.33 = 592.592（cm³）。其余四个数照同样的顺序算：先算底边 20 − 2<i>x</i>，再平方得底面积，最后乘高 <i>x</i>。算得的结果依次是：</p>
+    <p><i>x</i> = 3.31 时，<i>V</i> = 3.31 × 13.38<sup>2</sup> = 3.31 × 179.0244 ≈ 592.571；<br/><i>x</i> = 3.32 时，<i>V</i> = 3.32 × 13.36<sup>2</sup> = 3.32 × 178.4896 ≈ 592.585；<br/><i>x</i> = 3.33 时，<i>V</i> ≈ 592.592；<br/><i>x</i> = 3.34 时，<i>V</i> = 3.34 × 13.32<sup>2</sup> = 3.34 × 177.4224 ≈ 592.591；<br/><i>x</i> = 3.35 时，<i>V</i> = 3.35 × 13.30<sup>2</sup> = 3.35 × 176.8900 ≈ 592.582。</p>
+    <p>把这五个数排成一排看：592.571、592.585、592.592、592.591、592.582。从左往右先升后降，最高点落在 3.33 处。于是可以写出比上一环节更精确的一句话：当 <i>x</i> ≈ 3.33 cm 时，容积最大，最大容积约 592.592 cm³，也就是 592.6 cm³。这个结论比“3.3 左右”进了一步，底面边长 20 − 2 × 3.33 = 13.34 cm，盒子的三个尺寸是 13.34 cm × 13.34 cm × 3.33 cm。</p>
+    <p>但仔细看这五个数，会发现一个值得警惕的细节：3.33 处的 592.592 与 3.34 处的 592.591 只差 0.001 cm³。0.001 cm³ 是什么概念？是一立方毫米，差不多是一粒小米的十几分之一。这么小的差距说明什么？说明最高点几乎就卡在 3.33 与 3.34 之间，而且离 3.33 更近一些——它很可能在 3.333 附近。步长缩到 0.01，我们得到的仍然只是“最高点在 3.33 与 3.34 之间”这样一个范围，并没有真正把那个点“抓”出来。</p>
+    <div class="tip"><strong>提示：</strong>继续加密当然还能更准，比如步长取 0.001，在 3.330 到 3.340 之间再算十个值。可是每次把步长缩小十倍，要算的数就多十倍，而结论只多一位小数。这样“硬算”下去，人会被计算拖垮，精度却提高得很慢。我们需要一种“算得少、缩得快”的办法。</div>
+    <div class="warn"><strong>易错：</strong>有的同学把 3.33 处的 592.592 当成“精确的最大值”，理由是“小数点后三位都一样了”。其实 592.592 只是一个近似值：底面积 177.9556 已经做过四舍五入，乘出来的结果自然也带着误差。把近似值说成精确值，是逼近过程中最常见的毛病。</div>
+    <h4 class="subhead">3. 方法二：二分法——每次砍掉一半</h4>
+    <p>先做一个与数学无关的游戏。我心里想好 1 到 100 之间的一个整数，你来猜，我每次只回答“大了”或“小了”。你会怎么猜？聪明的猜法是每次猜正中间：先猜 50，如果“大了”，答案就在 1 到 49 里；再猜 25，如果“小了”，答案就在 26 到 49 里。每问一次，可能的范围就砍掉一半。1 到 100 一共 100 个数，问 7 次就能锁定答案，因为 100 → 50 → 25 → 13 → 7 → 4 → 2 → 1，七次之后只剩一个数。这个“每次取中点、砍掉一半”的办法，就是二分法。</p>
+    <p>把二分法搬到容积问题上来，思路完全一样：不去一个一个地算容积，而是守住一个“一定藏着最高点”的区间，每次取中点，把区间砍掉一半。区间从 1 缩到 0.5、0.25、0.125……缩得飞快，算的次数却很少。</p>
+    <p>可是这里有个关键问题必须先解决：凭什么判断最高点在左半边还是右半边？猜数游戏里靠“大了、小了”回答，容积问题里没有这样的回答，只能靠自己算、自己比。判断的依据藏在曲线的形状里：<i>V</i> 随 <i>x</i> 变化的曲线是“先升后降”的，只有一个最高点，左边一路上坡，右边一路下坡。在区间 (3, 4) 里取中点 3.5，分别算出中点与两个端点的容积，然后按下面这条规则走：</p>
+    <div class="method"><strong>二分法规则：</strong>设区间为 (<i>a</i>, <i>b</i>)，中点为 <i>m</i>。先算 <i>V</i>(<i>m</i>)，再算 <i>V</i>(<i>a</i>) 与 <i>V</i>(<i>b</i>)。若 <i>V</i>(<i>m</i>) 比两端都大，说明最高点在区间内部，此时比较两端的容积：哪一端的容积大，最高点就离哪一端近，于是把中点与“容积较大的那一端”连成新区间，长度正好减半。若 <i>V</i>(<i>m</i>) 不比某一端大，说明最高点在那一段上升或下降的区间里，同样保留“中点与较大端”之间的半段。</div>
+    <p>说得再直白一点：中点是“探路”的，两端是“指方向”的。中点比两端都高，说明路还没走到顶；两端谁高，就说明顶点偏向谁，把另一半砍掉即可。下面按这条规则走两步，看它灵不灵。</p>
+    <p><strong>第一次。</strong>区间 (3, 4)，长度 1。中点 <i>m</i> = 3.5，<i>V</i>(3.5) = 3.5 × (20 − 7)<sup>2</sup> = 3.5 × 13<sup>2</sup> = 3.5 × 169 = 591.5（cm³）。两端：<i>V</i>(3) = 3 × 14<sup>2</sup> = 588，<i>V</i>(4) = 4 × 12<sup>2</sup> = 576。中点 591.5 比 588 和 576 都大，最高点确实在区间内部；两端中左端 588 较大，说明最高点偏左，保留 (3, 3.5)，长度变成 0.5。</p>
+    <p><strong>第二次。</strong>区间 (3, 3.5)，长度 0.5。中点 <i>m</i> = 3.25，<i>V</i>(3.25) = 3.25 × (20 − 6.5)<sup>2</sup> = 3.25 × 13.5<sup>2</sup> = 3.25 × 182.25 = 592.3125（cm³）。两端：<i>V</i>(3) = 588，<i>V</i>(3.5) = 591.5。中点 592.3125 比两端都大；两端中右端 591.5 较大，说明最高点偏右，保留 (3.25, 3.5)，长度变成 0.25。</p>
+    <p>只算了两个新数，区间就从长度 1 缩到了 0.25，最高点被关进了一个只有原来四分之一的“笼子”里。而且这个结果与前面加密法的结论对得上：3.33 正好落在 (3.25, 3.5) 之中。两条路走到了一起，说明方法本身是可靠的。</p>
+    <p><strong>第三次。</strong>区间 (3.25, 3.5)，长度 0.25。中点 <i>m</i> = 3.375，<i>V</i>(3.375) = 3.375 × (20 − 6.75)<sup>2</sup> = 3.375 × 13.25<sup>2</sup> = 3.375 × 175.5625 ≈ 592.523（cm³）。两端：<i>V</i>(3.25) = 592.3125，<i>V</i>(3.5) = 591.5。中点 592.523 比两端都大；两端中左端 592.3125 较大，最高点偏左，保留 (3.25, 3.375)，长度变成 0.125。</p>
+    <p><strong>第四次。</strong>区间 (3.25, 3.375)，长度 0.125。中点 <i>m</i> = 3.3125，<i>V</i>(3.3125) = 3.3125 × (20 − 6.625)<sup>2</sup> = 3.3125 × 13.375<sup>2</sup> ≈ 3.3125 × 178.8906 ≈ 592.575（cm³）。两端：<i>V</i>(3.25) = 592.3125，<i>V</i>(3.375) ≈ 592.523。中点 592.575 比两端都大；两端中右端 592.523 较大，最高点偏右，保留 (3.3125, 3.375)，长度变成 0.0625。</p>
+    <p><strong>第五次。</strong>区间 (3.3125, 3.375)，长度 0.0625。中点 <i>m</i> = 3.34375，<i>V</i>(3.34375) = 3.34375 × (20 − 6.6875)<sup>2</sup> = 3.34375 × 13.3125<sup>2</sup> ≈ 3.34375 × 177.2227 ≈ 592.588（cm³）。两端：<i>V</i>(3.3125) ≈ 592.575，<i>V</i>(3.375) ≈ 592.523。中点 592.588 比两端都大；两端中左端 592.575 较大，最高点偏左，保留 (3.3125, 3.34375)，长度变成 0.03125。</p>
+    <p>五步走完，包含最高点的区间从长度 1 缩到了长度 0.03125，也就是 0.3125 毫米宽的一条窄缝。全程只算了五个新容积：591.5、592.3125、592.523、592.575、592.588。如果改用步长 0.001 的加密法，要算上百个数才能得到差不多的精度。两种办法的差别，就体现在这里。</p>
+    <p>把这五次的结果记成一张表，逼近的路线就一目了然了，如表 4。</p>
+    <table class="data-table">
+      <caption>表 4　用二分法逼近最优剪口的记录表（容积单位：cm³）</caption>
+      <thead>
+        <tr><th>第几次</th><th>区间</th><th>中点</th><th>中点容积</th><th>与两端比较</th><th>保留区间</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>(3, 4)</td><td>3.5</td><td>591.5</td><td>大于 588 与 576</td><td>(3, 3.5)</td></tr>
+        <tr><td>2</td><td>(3, 3.5)</td><td>3.25</td><td>592.3125</td><td>大于 588 与 591.5</td><td>(3.25, 3.5)</td></tr>
+        <tr><td>3</td><td>(3.25, 3.5)</td><td>3.375</td><td>≈ 592.523</td><td>大于 592.3125 与 591.5</td><td>(3.25, 3.375)</td></tr>
+        <tr><td>4</td><td>(3.25, 3.375)</td><td>3.3125</td><td>≈ 592.575</td><td>大于 592.3125 与 592.523</td><td>(3.3125, 3.375)</td></tr>
+        <tr><td>5</td><td>(3.3125, 3.375)</td><td>3.34375</td><td>≈ 592.588</td><td>大于 592.575 与 592.523</td><td>(3.3125, 3.34375)</td></tr>
+      </tbody>
+    </table>
+    <p>读这张表要注意两点。第一，每一次的“区间”都是上一次的“保留区间”，一环扣一环，不能跳步。第二，最后三行的中点容积都只写到三位小数，因为再往下写，那点差别已经小到没有实际意义了；表格里写“≈”，正是在提醒读者这是近似值。表 4 只记到第五次，如果继续做下去，区间还会变成 0.015625、0.0078125……越来越短，逼近那个真正的最高点。</p>
+    <h4 class="subhead">4. 看图：区间是怎样一步步变短的</h4>
+    <p>把表 4 的五次记录画到数轴上，逼近的过程就变成了“看得见的缩短”，如图 6。上半部分在 0 到 10 的整条数轴上画出初始区间和第一次保留下来的区间，下半部分把 3.2 到 3.5 这一段放大，画出第二到第五次保留下来的区间。</p>
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 400" role="img" aria-label="二分法区间收缩示意图：上半部分在 0 到 10 的数轴上标出初始区间和第一次保留的区间，下半部分放大 3.2 到 3.5，标出第二到第五次保留的区间，区间长度依次减半">
+        <title>二分法的区间收缩示意</title>
+        <text x="60" y="40" font-size="14" font-weight="bold" fill="#334155">（一）在 0—10 的数轴上：初始区间与第 1 次</text>
+        <line x1="60" y1="150" x2="578" y2="150" stroke="#334155" stroke-width="1.5"/>
+        <path d="M580 150 l-9 -4 v8 z" fill="#334155"/>
+        <text x="588" y="146" font-size="13" fill="#334155">x/cm</text>
+        <line x1="60" y1="150" x2="60" y2="156" stroke="#334155"/>
+        <text x="56" y="174" font-size="13" fill="#334155">0</text>
+        <line x1="112" y1="150" x2="112" y2="156" stroke="#334155"/>
+        <text x="108" y="174" font-size="13" fill="#334155">1</text>
+        <line x1="164" y1="150" x2="164" y2="156" stroke="#334155"/>
+        <text x="160" y="174" font-size="13" fill="#334155">2</text>
+        <line x1="216" y1="150" x2="216" y2="156" stroke="#334155"/>
+        <text x="212" y="174" font-size="13" fill="#334155">3</text>
+        <line x1="268" y1="150" x2="268" y2="156" stroke="#334155"/>
+        <text x="264" y="174" font-size="13" fill="#334155">4</text>
+        <line x1="320" y1="150" x2="320" y2="156" stroke="#334155"/>
+        <text x="316" y="174" font-size="13" fill="#334155">5</text>
+        <line x1="372" y1="150" x2="372" y2="156" stroke="#334155"/>
+        <text x="368" y="174" font-size="13" fill="#334155">6</text>
+        <line x1="424" y1="150" x2="424" y2="156" stroke="#334155"/>
+        <text x="420" y="174" font-size="13" fill="#334155">7</text>
+        <line x1="476" y1="150" x2="476" y2="156" stroke="#334155"/>
+        <text x="472" y="174" font-size="13" fill="#334155">8</text>
+        <line x1="528" y1="150" x2="528" y2="156" stroke="#334155"/>
+        <text x="524" y="174" font-size="13" fill="#334155">9</text>
+        <line x1="580" y1="150" x2="580" y2="156" stroke="#334155"/>
+        <text x="576" y="174" font-size="13" fill="#334155">10</text>
+        <rect x="216" y="88" width="52" height="16" fill="#fef3c7" stroke="#334155"/>
+        <text x="278" y="101" font-size="13" fill="#334155">初始区间 (3, 4)，长 1</text>
+        <rect x="216" y="114" width="26" height="16" fill="#dbeafe" stroke="#334155"/>
+        <text x="250" y="127" font-size="13" fill="#334155">第 1 次 (3, 3.5)，长 0.5</text>
+        <text x="40" y="218" font-size="14" font-weight="bold" fill="#334155">（二）把 3.2—3.5 放大来看</text>
+        <line x1="100" y1="350" x2="558" y2="350" stroke="#334155" stroke-width="1.5"/>
+        <path d="M560 350 l-9 -4 v8 z" fill="#334155"/>
+        <line x1="100" y1="350" x2="100" y2="356" stroke="#334155"/>
+        <text x="86" y="372" font-size="13" fill="#334155">3.2</text>
+        <line x1="176.7" y1="350" x2="176.7" y2="356" stroke="#334155"/>
+        <text x="158" y="372" font-size="13" fill="#334155">3.25</text>
+        <line x1="253.3" y1="350" x2="253.3" y2="356" stroke="#334155"/>
+        <text x="239" y="372" font-size="13" fill="#334155">3.3</text>
+        <line x1="330" y1="350" x2="330" y2="356" stroke="#334155"/>
+        <text x="316" y="372" font-size="13" fill="#334155">3.35</text>
+        <line x1="406.7" y1="350" x2="406.7" y2="356" stroke="#334155"/>
+        <text x="392" y="372" font-size="13" fill="#334155">3.4</text>
+        <line x1="483.3" y1="350" x2="483.3" y2="356" stroke="#334155"/>
+        <text x="469" y="372" font-size="13" fill="#334155">3.45</text>
+        <line x1="560" y1="350" x2="560" y2="356" stroke="#334155"/>
+        <text x="546" y="372" font-size="13" fill="#334155">3.5</text>
+        <rect x="176.7" y="240" width="383.3" height="14" fill="#dbeafe" stroke="#334155"/>
+        <text x="30" y="251" font-size="12" fill="#334155">第 2 次 长 0.25</text>
+        <rect x="176.7" y="264" width="191.6" height="14" fill="#dbeafe" stroke="#334155"/>
+        <text x="30" y="275" font-size="12" fill="#334155">第 3 次 长 0.125</text>
+        <rect x="272.5" y="288" width="95.8" height="14" fill="#dbeafe" stroke="#334155"/>
+        <text x="30" y="299" font-size="12" fill="#334155">第 4 次 长 0.0625</text>
+        <rect x="272.5" y="312" width="47.9" height="14" fill="#dbeafe" stroke="#334155"/>
+        <text x="30" y="323" font-size="12" fill="#334155">第 5 次 长 0.03125</text>
+        <line x1="304.4" y1="232" x2="304.4" y2="350" stroke="#94a3b8" stroke-dasharray="5 4"/>
+        <text x="310" y="232" font-size="12" fill="#1d4ed8">最高点约在 3.33</text>
+      </svg>
+      <figcaption>图 6　二分法的区间收缩示意（示意图，未按比例）</figcaption>
+    </figure>
+    <p>看图时请注意两件事。第一，每一根横条都比它上面那一根短一半，这正对应“每次取中点、砍掉一半”。长度依次是 1、0.5、0.25、0.125、0.0625、0.03125，第五次只剩下一根细线似的短条。第二，所有横条的右端或左端都在往中间那条虚线靠，虚线标出的位置就是最高点所在。区间越短，虚线的位置就越“没处躲”，我们对最高点的判断也就越准。</p>
+    <h4 class="subhead">5. 两条路走到同一个答案</h4>
+    <p>加密法给出：<i>x</i> = 3.33 时容积 592.592 最大。二分法给出：最高点在 (3.3125, 3.34375) 之内，而 3.33 正好落在这个窄缝里。两种完全不同的做法，指到了同一个位置，这本身就是一种检验——如果两条路给出互相矛盾的答案，那才需要担心。</p>
+    <p>还能再往前走一步。观察二分法缩出来的窄缝 3.3125 到 3.34375，它的“中心”大约在 3.328 附近；加密法说 3.33 比 3.34 好；把这些线索合起来，最优点几乎就贴在 3.33 上。数学上可以算出这个位置精确等于 10/3：取 <i>x</i> = 10/3 时，底面边长是 20 − 20/3 = 40/3（cm），容积是 (10/3) × (40/3)<sup>2</sup> = (10/3) × (1600/9) = 16000/27 ≈ 592.5926（cm³）。10/3 写成小数是 3.3333…，与我们逼近出来的 3.33 只差 0.003 左右。七年级还不需要证明“为什么恰好是 10/3”，但知道有这么个精确值，心里会更踏实：我们逼近的方向没有错。</p>
+    <p>于是本环节的核心结论可以这样表述：当剪去的小正方形边长 <i>x</i> ≈ 3.3 cm（更精确地说 3.33 cm）时，收纳盒的容积最大，最大容积约 592.6 cm³。此时底面边长约 20 − 2 × 3.3 = 13.4 cm，盒子的尺寸约为 13.4 cm × 13.4 cm × 3.3 cm。把这个关系写成式子，就是本活动一直在用的容积公式：</p>
+    <div class="formula">
+      <div class="formula-label">容积公式</div>
+      <div class="formula-body"><i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup> = 4<i>x</i>(10 − <i>x</i>)<sup>2</sup>（0 &lt; <i>x</i> &lt; 10）</div>
+    </div>
+    <div class="keypoint"><strong>要点：</strong>逼近不是“瞎试”，而是“带着判断地缩小范围”。判断靠两件事：一是曲线先升后降这个形状，二是每一步算出的容积大小。范围缩得越小，结论越准；但无论缩到多小，写出来的都还是近似值，所以结论里要用“约”字，并且说明精确到哪一位。</div>
+    <p>把两种办法放在一起比一比，各自的优缺点就清楚了，如下面两组文字。</p>
+    <div class="two-col">
+      <div>
+        <p><strong>加密法（步长 0.1 → 0.01）</strong></p>
+        <p>优点：想法简单，只要会算容积就能做；每一步的结果都能直接填进表格，看得见、说得清。</p>
+        <p>缺点：每缩小十倍步长，计算量就增大十倍；算完之后仍然只知道“在哪个小区间里”，说不清最高点究竟在哪；而且结论的精度被步长“锁死”，步长多粗，答案就多粗。</p>
+      </div>
+      <div>
+        <p><strong>二分法（每次取中点）</strong></p>
+        <p>优点：每算一个新数，区间就缩短一半；算五次就把长度 1 缩到 0.03，效率高得多；每一步都有明确的判断依据，过程可以复查。</p>
+        <p>缺点：必须先确认曲线“只有一个最高点、先升后降”，否则“保留一半”的理由就不成立；每次都要同时算中点和两端，比较时容易看错。</p>
+      </div>
+    </div>
+    <p>两种办法并不冲突，实际做事时常常配合使用：先用加密法把大概位置摸清楚，再用二分法把范围压窄。这也正是数学家处理“找最优”问题的常规套路——先粗后细，先看全局再抠细节。</p>
+    <h4 class="subhead">6. 例题精讲</h4>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">用二分法走出前两步</span>
+      </div>
+      <div class="example-body">
+        <p>在区间 (3, 4) 内用二分法寻找使收纳盒容积最大的剪口边长 <i>x</i>。请完成前两步：写出每一步的中点、中点处的容积、中点与两端容积的比较，以及保留下来的区间，并说明每一步判断的依据（容积精确到 0.001 cm³）。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p><strong>第一步。</strong>区间 (3, 4)，取中点 <i>m</i> = 3.5。</p>
+          <p>中点容积：<i>V</i>(3.5) = 3.5 × (20 − 7)<sup>2</sup> = 3.5 × 13<sup>2</sup> = 3.5 × 169 = 591.5（cm³）。</p>
+          <p>两端容积：<i>V</i>(3) = 3 × 14<sup>2</sup> = 3 × 196 = 588（cm³）；<i>V</i>(4) = 4 × 12<sup>2</sup> = 4 × 144 = 576（cm³）。</p>
+          <p>比较：591.5 &gt; 588 &gt; 576。中点容积比两端都大，说明最高点没有被跨过去，仍在区间内部；两端之中左端的 588 较大，说明最高点偏向左边。所以保留左半段 (3, 3.5)，区间长度由 1 变成 0.5。</p>
+          <p><strong>第二步。</strong>区间 (3, 3.5)，取中点 <i>m</i> = 3.25。</p>
+          <p>中点容积：<i>V</i>(3.25) = 3.25 × (20 − 6.5)<sup>2</sup> = 3.25 × 13.5<sup>2</sup> = 3.25 × 182.25 = 592.3125 ≈ 592.313（cm³）。</p>
+          <p>两端容积：<i>V</i>(3) = 588（cm³）；<i>V</i>(3.5) = 591.5（cm³）。</p>
+          <p>比较：592.313 &gt; 591.5 &gt; 588。中点容积仍比两端都大；两端之中右端的 591.5 较大，说明最高点偏向右半边。所以保留右半段 (3.25, 3.5)，区间长度由 0.5 变成 0.25。</p>
+          <p><strong>答：</strong>两步之后，最高点被关在区间 (3.25, 3.5) 之内，长度为 0.25。这个结果与表 4 的前两行完全一致，也与加密法得到的 3.33 相吻合——3.33 确实落在 (3.25, 3.5) 中间偏左的位置。</p>
+          <p><strong>判断依据小结：</strong>①曲线先升后降，只有一个最高点（表 2、表 3 的数据已经显示这一点）；②中点容积比两端都大，说明“山顶”还在区间里，没有被中点跨过；③两端容积谁大，山顶就偏向谁，把另一侧砍掉不会伤到山顶。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果第一步比较两端时看走了眼，误以为 <i>V</i>(4) = 576 比 <i>V</i>(3) = 588 大，于是保留 (3.5, 4)，会发生什么？请说明后果。答：这个区间里容积的最大值只有 591.5（在 3.5 处），真正的最大值 592.6 在 3.33 处，被一刀砍掉了；此后无论再怎么二分，都只会在 3.5 到 4 之间打转，永远找不回正确答案。可见二分法最怕的不是算得慢，而是“方向判错”——一旦把藏着最高点的一半丢掉，后面的努力全部作废。</p>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">为什么区间越小结论越准</span>
+      </div>
+      <div class="example-body">
+        <p>小明说：“二分法算到最后，也没算出 <i>x</i> 到底等于几，只给了一个区间，这算什么答案？”请你结合表 4 的数据回答：为什么区间越缩越小，结论就越来越准？并估算第五次之后 <i>x</i> 的误差最大是多少。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>第一，我们要求的是“使容积最大的那个 <i>x</i>”，而这个 <i>x</i> 是一个确定但未知的数。既然不知道它，就退一步：先确定它“在哪儿”。区间 (3.3125, 3.34375) 的意思是“最高点一定在这两个数之间”，这句话虽然没说出具体数值，却已经把范围限死了。</p>
+          <p>第二，范围越小，“最坏情况”就越接近真实值。若最高点在区间正中间，那么用区间中点当答案，误差是区间长度的一半；若最高点贴着某一端，误差正好等于区间长度。所以区间长度为 0.03125 时，无论最高点躲在里面哪个位置，用中点 3.328 当答案，误差都不会超过 0.03125 cm，通常不超过它的一半 0.015625 cm。也就是说，<i>x</i> ≈ 3.33 这个结论，第三位小数是可靠的。</p>
+          <p>第三，容积的误差比 <i>x</i> 的误差还要小。用两端的数据看：<i>V</i>(3.3125) ≈ 592.575，<i>V</i>(3.34375) ≈ 592.588，两者只差 0.013 cm³，而真正的最大值约 592.593 cm³。所以哪怕 <i>x</i> 取在区间端点，容积与最大值也只差百分之几立方厘米。原因是最优点附近曲线很“平”：<i>x</i> 动一点点，<i>V</i> 几乎不动。</p>
+          <p>第四，区间缩小的速度很快。每做一次二分，长度就乘 1/2：1、0.5、0.25、0.125、0.0625、0.03125……做 10 次，长度变成 1/1024，不到 0.001；做 20 次，长度不到百万分之一。正因为缩得快，二分法才算得少、收获得多。</p>
+          <p><strong>答：</strong>区间越缩越小，等于把“最高点可能待的地方”越圈越窄，所以结论越来越准。第五次之后区间长为 0.03125 cm，<i>x</i> 的误差不超过 0.03125 cm，取中点作答案时误差不超过 0.015625 cm，因此写成 3.33 cm 是合理的。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果希望 <i>x</i> 精确到 0.01 cm（即区间长度不超过 0.01），从长度为 1 的区间出发，至少要二分几次？答：长度依次为 1、0.5、0.25、0.125、0.0625、0.03125、0.015625、0.0078125，第七次之后才小于 0.01，所以至少要 7 次。可见“精度”和“次数”是可以事先算出来的，不必盲目地一直算下去。</p>
+    <div class="warn"><strong>易错：</strong>三种常见毛病要提防。一是把区间中点当成“最优值”，写成“<i>x</i> = 3.328 时容积最大”——中点只是我们挑出来作代表的一个数，并不是最高点本身；二是二分时把端点的容积算错，比如把 <i>V</i>(3.5) 算成 591.5 以外的数，一步错、步步错；三是忘记每一步都要比较两端，只盯着中点，结果区间越缩越偏，把最高点丢在了外面。</div>
+    <h4 class="subhead">7. 练习</h4>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】用二分法在区间 (3, 4) 内寻找使容积最大的 <i>x</i>，第一次应当取哪个数作中点？</span>
+      </div>
+      <p class="option">A．3.1　B．3.3　C．3.5　D．3.9</p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>选 C。二分法的第一步是取区间的正中间：(3 + 4) ÷ 2 = 3.5，所以中点是 3.5。</p>
+          <p>选项 A、B 是加密法里取过的数，不是中点；选项 D 太靠近右端，取它等于放弃了“砍掉一半”的好处。判断中点只有一个标准：两个端点相加再除以 2。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】分别计算 <i>x</i> = 3.2、3.25、3.4 时的容积（精确到 0.001 cm³），按从大到小排列，并判断这三个数中哪个最接近最优点。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>x</i> = 3.2：底面边长 20 − 6.4 = 13.6，<i>V</i> = 3.2 × 13.6<sup>2</sup> = 3.2 × 184.96 = 591.872（cm³）。</p>
+          <p><i>x</i> = 3.25：底面边长 20 − 6.5 = 13.5，<i>V</i> = 3.25 × 13.5<sup>2</sup> = 3.25 × 182.25 = 592.3125 ≈ 592.313（cm³）。</p>
+          <p><i>x</i> = 3.4：底面边长 20 − 6.8 = 13.2，<i>V</i> = 3.4 × 13.2<sup>2</sup> = 3.4 × 174.24 = 592.416（cm³）。</p>
+          <p>从大到小排列：592.416 &gt; 592.313 &gt; 591.872，即 <i>x</i> = 3.4 的容积最大。三个数中 3.4 最接近最优点（约 3.33），3.2 离得最远。</p>
+          <p>注意：<i>x</i> = 3.25 是二分法第二步的中点，它只是“区间中点”，并不自动等于“最优点”；这一步的容积虽然已经很大，仍比 3.4 处略小一点。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】若要求收纳盒的容积不低于 592 cm³，剪口边长 <i>x</i> 应在什么范围内？请用表 3 的数据和下面的补充数据作出判断：<i>V</i>(3.21) ≈ 592.027，<i>V</i>(3.45) ≈ 592.055，<i>V</i>(3.46) ≈ 591.959。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>先看 592 这条“及格线”两侧的数据。表 3 中：<i>V</i>(3.2) = 591.872 &lt; 592，<i>V</i>(3.3) = 592.548 &gt; 592，<i>V</i>(3.4) = 592.416 &gt; 592，<i>V</i>(3.5) = 591.5 &lt; 592。可见满足条件的 <i>x</i> 夹在 3.2 与 3.3 之间，以及 3.4 与 3.5 之间。</p>
+          <p>再用补充数据把两头掐准：<i>V</i>(3.21) ≈ 592.027 &gt; 592，而 <i>V</i>(3.2) = 591.872 &lt; 592，所以左边界在 3.2 与 3.21 之间，取约 3.21；<i>V</i>(3.45) ≈ 592.055 &gt; 592，而 <i>V</i>(3.46) ≈ 591.959 &lt; 592，所以右边界在 3.45 与 3.46 之间，取约 3.45。</p>
+          <p>答：<i>x</i> 的范围约为 3.2 &lt; <i>x</i> &lt; 3.45，说得更准是 3.21 ≤ <i>x</i> ≤ 3.45。</p>
+          <p>这个结果说明一个重要的道理：最优点附近曲线很平，容积只要“不低于 592”，剪口边长就有 0.24 cm 左右的活动余地。实际制作时不必把 3.33 抠得死死的，这为手工剪裁留出了容错空间。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【拓展】要把长度为 1 的区间缩小到长度 0.01，用“步长 0.01 加密”大约要算多少次容积？用二分法要算几次？由此说说两种办法的差别。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>加密法：区间长 1，步长 0.01，需要分成 1 ÷ 0.01 = 100 个小区间，也就是要取约 100 个分点、算约 100 次容积（两端点已知，实际略少几个）。</p>
+          <p>二分法：长度依次为 1、0.5、0.25、0.125、0.0625、0.03125、0.015625、0.0078125，第七次之后小于 0.01，所以只要算 7 次。</p>
+          <p>差别在于“缩小的方式”：加密法靠“多取点”，计算量随精度成倍增长；二分法靠“砍一半”，计算量随精度按对数增长。同样达到 0.01 的精度，两者相差十几倍。当然，加密法的好处是每一步的数据都能排成表、画成图，直观易懂；二分法更快，但要求先确认曲线只有一个最高点。</p>
+        </div>
+      </details>
+    </div>
+    <div class="method">
+      <strong>本环节要点：</strong>
+      <ul>
+        <li>整数太粗，步长 0.1 也太粗：3.3 与 3.4 的容积只差 0.132 cm³，必须继续逼近。</li>
+        <li>方法一“继续加密”：步长取 0.01，算得 3.31 → 592.571、3.32 → 592.585、3.33 → 592.592、3.34 → 592.591、3.35 → 592.582，3.33 处最大。</li>
+        <li>方法二“二分法”：每次取中点，比较中点与两端的容积，保留“中点 + 容积较大的一端”围成的半段，区间长度每次减半。</li>
+        <li>五步之后区间缩到 (3.3125, 3.34375)，长度 0.03125，结论锁定 <i>x</i> ≈ 3.3 cm（更精确 3.33 cm，理论上 10/3 cm）。</li>
+        <li>逼近的精度由区间长度决定，写成结论时要用“约”字，并说明精确到哪一位。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="a3-2">
+    <h3 class="card-title"><span class="num">环节 6</span>结论与检验：这个答案靠得住吗</h3>
+
+    <h4 class="subhead">1. 把结论写成“能照着做”的样子</h4>
+    <p>经过列表、画图、加密、二分，我们手里已经有了一个数：3.3。可是“<i>x</i> ≈ 3.3 cm”这句话还不能直接拿去剪——它没说清底面多大、盒子多高、容积多少，也没说这个结论可靠到什么程度。一个完整的结论，应当让人看完就能动手，并且知道哪些地方可以松、哪些地方必须严。</p>
+    <p>于是把结论整理成三句话：第一，剪去的小正方形边长取 3.3 cm（更精确是 3.33 cm，理论上恰好是 10/3 cm）；第二，此时收纳盒的容积最大，约 592.6 cm³；第三，盒子的底面是边长约 13.4 cm 的正方形，高约 3.3 cm，整体尺寸约 13.4 cm × 13.4 cm × 3.3 cm。这三句话对应的就是一张“施工图”，如图 7。</p>
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 540" role="img" aria-label="最优方案的展开图：边长 20 厘米的正方形纸板，四个角各剪去边长 3.3 厘米的小正方形，中间留下边长 13.4 厘米的正方形作盒底，四边折起后盒高 3.3 厘米">
+        <title>最优方案的展开图与尺寸</title>
+        <rect x="110" y="60" width="400" height="400" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <rect x="176" y="126" width="268" height="268" fill="#dbeafe" stroke="#94a3b8" stroke-dasharray="5 4"/>
+        <rect x="110" y="60" width="66" height="66" fill="#fde2e2" stroke="#334155"/>
+        <rect x="444" y="60" width="66" height="66" fill="#fde2e2" stroke="#334155"/>
+        <rect x="110" y="394" width="66" height="66" fill="#fde2e2" stroke="#334155"/>
+        <rect x="444" y="394" width="66" height="66" fill="#fde2e2" stroke="#334155"/>
+        <text x="130" y="88" font-size="13" fill="#334155">3.3</text>
+        <text x="130" y="108" font-size="12" fill="#334155">剪去</text>
+        <text x="464" y="88" font-size="13" fill="#334155">3.3</text>
+        <text x="130" y="422" font-size="13" fill="#334155">3.3</text>
+        <text x="464" y="422" font-size="13" fill="#334155">3.3</text>
+        <text x="255" y="256" font-size="14" fill="#1d4ed8">底面 13.4 × 13.4</text>
+        <text x="282" y="278" font-size="13" fill="#334155">高 3.3</text>
+        <line x1="110" y1="40" x2="510" y2="40" stroke="#334155" stroke-width="1"/>
+        <line x1="110" y1="34" x2="110" y2="46" stroke="#334155"/>
+        <line x1="510" y1="34" x2="510" y2="46" stroke="#334155"/>
+        <text x="300" y="32" font-size="13" fill="#334155">20</text>
+        <line x1="88" y1="60" x2="88" y2="460" stroke="#334155" stroke-width="1"/>
+        <line x1="82" y1="60" x2="94" y2="60" stroke="#334155"/>
+        <line x1="82" y1="460" x2="94" y2="460" stroke="#334155"/>
+        <text x="76" y="264" font-size="13" fill="#334155" transform="rotate(-90 76 264)">20</text>
+        <line x1="176" y1="484" x2="444" y2="484" stroke="#334155" stroke-width="1"/>
+        <line x1="176" y1="478" x2="176" y2="490" stroke="#334155"/>
+        <line x1="444" y1="478" x2="444" y2="490" stroke="#334155"/>
+        <text x="286" y="502" font-size="13" fill="#334155">13.4</text>
+        <line x1="528" y1="126" x2="528" y2="394" stroke="#94a3b8" stroke-dasharray="5 4"/>
+        <text x="536" y="262" font-size="13" fill="#334155">折起后</text>
+        <text x="536" y="282" font-size="13" fill="#334155">高 3.3</text>
+      </svg>
+      <figcaption>图 7　最优方案的展开图与尺寸（单位：cm；图形按比例绘制）</figcaption>
+    </figure>
+    <p>读这张图要抓住三条线。第一条是外框 20 × 20，代表整张纸板；第二条是四个角上 3.3 × 3.3 的粉色方块，那是要剪掉的部分，四个角必须一样大，否则折起来底面就不是正方形；第三条是中间浅蓝色的 13.4 × 13.4 方块，它是盒底，边长正好是 20 − 2 × 3.3 = 13.4（cm）。虚线是折痕，沿着四条折痕把四边立起来，纸板的四个“翅膀”就成了盒壁，翅膀的宽度 3.3 cm 就是盒子的高。</p>
+    <h4 class="subhead">2. 检验一、二：单位对不对，数值合不合理</h4>
+    <p>算出答案只是第一步，会检验才算真会。第一项检验是量纲，也就是单位。容积的算法是“底面积 × 高”：底面积 13.4 × 13.4 = 179.56，单位是 cm<sup>2</sup>；再乘高 3.3 cm，单位是 cm<sup>2</sup> × cm = cm<sup>3</sup>。cm × cm × cm 得 cm<sup>3</sup>，与“容积”这个量的单位一致，量纲过关。如果算出来写的是 cm<sup>2</sup> 或 cm，那一定是中间某一步把“面积”和“体积”搞混了，数值再漂亮也不能用。</p>
+    <p>第二项检验是合理性，也就是看数值“像不像”。三条都要过：①底面边长 13.4 cm 必须小于纸板的边长 20 cm，否则盒子比纸板还大，不可能；②高 3.3 cm 必须小于 10 cm，因为 20 − 2<i>x</i> 要大于 0，<i>x</i> 就只能小于 10；③底边加两条剪口正好用满纸板：13.4 + 2 × 3.3 = 13.4 + 6.6 = 20（cm），一条不剩、一条不欠。三条全部满足，说明这组尺寸自洽。</p>
+    <p>还可以再做一次“面积对账”。整张纸板面积是 20 × 20 = 400（cm<sup>2</sup>），四个角剪掉四个 3.3 × 3.3 的小正方形，共用去 4 × 3.3<sup>2</sup> = 4 × 10.89 = 43.56（cm<sup>2</sup>），剩下 400 − 43.56 = 356.44（cm<sup>2</sup>）。另一方面，盒子（无盖）的表面积是底面积加四个侧面：179.56 + 4 × 13.4 × 3.3 = 179.56 + 176.88 = 356.44（cm<sup>2</sup>）。两个 356.44 分毫不差，说明尺寸之间没有矛盾，也说明我们确实是把整块纸板“折”成了盒子，没有凭空多出或少了材料。</p>
+    <div class="tip"><strong>提示：</strong>有的同学会问：纸板面积才 400 cm<sup>2</sup>，容积却有 592.6 cm<sup>3</sup>，是不是算错了？没有错。面积和体积是两种不同的量，不能直接比大小。400 cm<sup>2</sup> 是“用了多少纸”，592.6 cm<sup>3</sup> 是“能装多少东西”，就像一张 400 cm<sup>2</sup> 的纸可以围出很大的空间一样。</div>
+
+    <h4 class="subhead">3. 检验三：和整数解比，进步在哪里</h4>
+    <p>第三项检验是“和旧结论比”。上一环节只取整数时，最好的方案是 <i>x</i> = 3，容积 588 cm<sup>3</sup>。现在精确到 3.3，容积 592.548 cm<sup>3</sup>，提高了 592.548 − 588 = 4.548 ≈ 4.6（cm<sup>3</sup>）。按相对量算，4.548 ÷ 588 ≈ 0.0077，也就是约 0.8%。</p>
+    <p>0.8% 听起来微不足道，但这个比较有三层意义。第一，它告诉我们“整数解已经相当好了”：随手取 3，就能拿到最大容积的 99.2%，这说明估算阶段的工作没有白做。第二，它也告诉我们“整数解确实不是最好的”：只要把剪口从 3 cm 挪到 3.3 cm，就能多装约 4.6 cm<sup>3</sup>，相当于多装小半盒回形针。第三，它给了一个判断标准：如果某个“改进方案”连 0.8% 都提高不了，那它大概不值得为它增加制作难度。检验不是走过场，它能帮我们判断“值不值得”。这个比较的写法也有讲究：要先写清新旧两个数，再写差，再写百分比，最后说清百分比是相对于谁算的——相对于旧值 588，而不是相对于新值 592.6。</p>
+    <div class="keypoint"><strong>要点：</strong>检验要“五查”：查单位（量纲对不对）、查合理（数值像不像）、查对比（比旧结论好在哪）、查边界（极端情形对不对）、查实际（真做出来差多少）。五查都过，结论才敢写进报告。</div>
+    <h4 class="subhead">4. 检验四：两头的情形对不对</h4>
+    <p>第四项检验看边界，也就是把 <i>x</i> 推到两个极端，看结论还站不站得住。当 <i>x</i> 很小时，比如 <i>x</i> = 0.1，底面边长 20 − 0.2 = 19.8，容积是 0.1 × 19.8<sup>2</sup> = 0.1 × 392.04 = 39.204（cm<sup>3</sup>），小得可怜——盒子又扁又大，像个盘子。当 <i>x</i> 很大时，比如 <i>x</i> = 9.9，底面边长只剩 0.2，容积是 9.9 × 0.2<sup>2</sup> = 9.9 × 0.04 = 0.396（cm<sup>3</sup>），几乎为零——盒子成了又高又细的筒。</p>
+    <p>再往两头推：<i>x</i> 越接近 0，高越接近 0，容积就趋近 0；<i>x</i> 越接近 10，底面越接近 0，容积也趋近 0。这与表 2 的数据完全对得上：<i>x</i> = 1 时 324，<i>x</i> = 2 时 512，一路升到 <i>x</i> = 3 的 588，再一路降到 <i>x</i> = 9 的 36。两头都趋近 0、中间隆起，说明最大值一定藏在区间内部，不可能在端点取到。这也顺便解释了为什么 <i>x</i> 不能取 0 或 10：取 0 时盒子“没有高”，取 10 时盒子“没有底”，两种情况都不成其为盒子，只能作为趋势的极限来理解。</p>
+
+    <h4 class="subhead">5. 检验五：真动手做，会差多少</h4>
+    <p>第五项检验最实在：理论算得再准，手工做出来总有出入。至少有三处会影响结果。第一处是纸板厚度。硬纸板一般 1—2 mm 厚，折起后内腔会比图纸上的尺寸小一圈，容积自然略小。第二处是粘贴边。如果用胶带在盒内壁贴一圈，搭接 0.3 cm，有效底面边长就变成 13.4 − 2 × 0.3 = 12.8（cm），容积变成 12.8<sup>2</sup> × 3.3 ≈ 163.84 × 3.3 ≈ 541（cm<sup>3</sup>），比理论值少了将近一成。所以更聪明的做法是把胶带贴在外侧，或者用订书钉在折角处固定，别让粘贴材料占用盒内的空间。</p>
+    <p>第三处是剪裁误差。手工剪裁的偏差通常有 1 mm 左右，也就是 <i>x</i> 可能是 3.2 或 3.4。查表 3：3.2 处容积 591.872，3.4 处 592.416，与最大值 592.6 相比只差不到 0.2 cm<sup>3</sup>，几乎察觉不到。这是好消息——最优点附近曲线很平，手抖一点不要紧。真正要小心的是“剪得不对称”：四个角剪得不一样大，折起来底面就不是正方形，盒子会歪，容积和外观都会受影响。</p>
+    <p>综合这五点，可以给结论加一句限定：理论上最大容积约 592.6 cm<sup>3</sup>，实际做出来通常在 580—590 cm<sup>3</sup> 之间；这个差距主要来自纸板厚度和粘贴方式，不是算错了。</p>
+
+    <h4 class="subhead">6. 反思：为什么最优点不在正中间</h4>
+    <p>很多同学第一反应是“剪一半最深，肯定装得最多”，也就是取 <i>x</i> = 5。算一下就知道不对：底面边长 20 − 10 = 10，容积是 5 × 10<sup>2</sup> = 500（cm<sup>3</sup>），比 592.6 少了 92.6 cm<sup>3</sup>，少了约 15.6%。最深不等于最大，原因在于容积是“底面积 × 高”，这两个量在互相拆台：<i>x</i> 变大，高变大，底面积却变小，而且底面积是“边长平方”，缩起来更快。</p>
+    <p>用百分比看更清楚。从 <i>x</i> = 3.3 走到 <i>x</i> = 5，高从 3.3 增到 5，增加了 1.7 ÷ 3.3 ≈ 51.5%；底面积从 179.56 降到 100，减少了 79.56 ÷ 179.56 ≈ 44.3%。一个涨五成，一个跌四成多，乘起来是 1.515 × 0.557 ≈ 0.844，容积只剩下原来的 84.4%，正好是 592.6 × 0.844 ≈ 500。可见“高”涨得没有“底面积”跌得狠，越往深处走越吃亏。</p>
+    <div class="note"><strong>拓展：</strong>为什么最优点恰好是 10/3？可以用“百分比平衡”来说理。在 <i>x</i> = 10/3 处，底边是 40/3 ≈ 13.33。让 <i>x</i> 增加 1%，底边就要减少 2 × 0.0333 ≈ 0.067（cm），相对减少约 0.5%；底面积是边长的平方，边长少 0.5%，面积就少约 1%。一边是高增加 1%，一边是底面积减少 1%，两者正好抵消，容积不变——这正是“最高点”的特征。如果 <i>x</i> 比 10/3 小，高增加的百分比大于底面积减少的百分比，容积还会变大；比 10/3 大则相反。所以最优点就卡在 10/3 这个“平衡点”上。</div>
+    <div class="warn"><strong>易错：</strong>三个坑要绕开。一是把“最深”当“最大”，看到 <i>x</i> = 5 时盒子最高就下结论；二是只写结论不做检验，报告里只有“3.3 cm、592.6 cm³”两个数，说不清为什么可信；三是单位写错，把容积写成“592.6 cm”或“592.6 cm<sup>2</sup>”——容积是三维的量，必须写 cm<sup>3</sup>。</div>
+    <h4 class="subhead">7. 例题精讲</h4>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">给实际制作提一条有依据的建议</span>
+      </div>
+      <div class="example-body">
+        <p>班级要按最优方案制作 40 个收纳盒，材料是 20 cm × 20 cm 的硬纸板，工具只有直尺、剪刀和胶带。有同学提议“每个盒子都按 3.33 cm 精确剪”。请你给出自己的建议，并用数据说明理由。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p><strong>建议：</strong>不要逐个去量 3.33 cm，而是统一按 3.3 cm 剪，并且先做一张 3.3 cm × 3.3 cm 的硬纸“样卡”，用样卡在四个角上划线，再沿线剪。</p>
+          <p><strong>理由一（精度够用）：</strong>3.3 与 3.33 的容积分别是 592.548 cm<sup>3</sup> 和 592.592 cm<sup>3</sup>，相差 592.592 − 592.548 = 0.044（cm<sup>3</sup>），相对差距 0.044 ÷ 592.6 ≈ 0.007%。这点差别连一毫升都不到，装东西时根本感觉不出来，为了它去抠 0.03 cm 不值得。</p>
+          <p><strong>理由二（手工误差更大）：</strong>直尺最小刻度是 1 mm，手工量 3.33 cm 时，实际剪出来可能是 3.2 到 3.5 之间的任何值，误差 0.1 cm 以上，是“3.3 与 3.33 的差别”（0.03 cm）的三倍多。既然量不准，不如选一个好量、好记的数。</p>
+          <p><strong>理由三（一致性）：</strong>40 个盒子如果各剪各的，大小会参差不齐；用同一张样卡划线，四个角一样大，折起来底面才是正方形，盒子才方正、才好看。对称比“多 0.04 cm³”重要得多。</p>
+          <p><strong>答：</strong>建议统一按 3.3 cm 剪，并用样卡保证四个角大小一致。理由是：3.3 与 3.33 的容积只差 0.044 cm<sup>3</sup>（约 0.007%），完全可以忽略；而手工测量 3.33 cm 的误差远大于这个差别；样卡还能保证 40 个盒子规格统一、四角对称。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果把剪口统一改成 3.5 cm，容积会损失多少？还值得做吗？答：<i>V</i>(3.5) = 3.5 × 13<sup>2</sup> = 3.5 × 169 = 591.5（cm<sup>3</sup>），与 592.6 相差 1.1 cm<sup>3</sup>，约 0.19%。这个损失仍然很小，盒子照样能用；但如果继续偏到 3.8 cm，<i>V</i> = 3.8 × 12.4<sup>2</sup> ≈ 584.3（cm<sup>3</sup>），就少了 8 cm<sup>3</sup> 以上，开始“感觉得到”了。可见最优点附近很宽容，越往外走越吃亏。</p>
+    <h4 class="subhead">8. 练习</h4>
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】有同学说：“<i>x</i> = 5 时盒子最深，所以容积最大。”这句话对吗？请用数据说明。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>不对。“最深”说的是高度，容积看的是“底面积 × 高”，两者不能混为一谈。</p>
+          <p><i>x</i> = 5 时，底面边长 20 − 10 = 10（cm），容积 <i>V</i> = 5 × 10<sup>2</sup> = 500（cm<sup>3</sup>）。而 <i>x</i> ≈ 3.3 时容积约 592.6 cm<sup>3</sup>，比 500 多 92.6 cm<sup>3</sup>，多了约 18.5%。</p>
+          <p>原因：从 3.3 增到 5，高增加约 51.5%，底面积却从 179.56 降到 100，减少约 44.3%，底面积缩得比高长得更快，容积反而变小。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】把活动结论补充完整：剪去的小正方形边长取______cm，盒底是边长约______cm 的正方形，盒高约______cm，最大容积约______cm<sup>3</sup>；并说明容积单位为什么是 cm<sup>3</sup>。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>依次填：3.3（更精确 3.33）；13.4；3.3；592.6。</p>
+          <p>底面边长 20 − 2 × 3.3 = 13.4（cm），高就是剪口边长 3.3 cm，容积 13.4 × 13.4 × 3.3 = 179.56 × 3.3 ≈ 592.548 ≈ 592.6（cm<sup>3</sup>）。</p>
+          <p>单位说明：容积是“底面积 × 高”，底面积单位是 cm<sup>2</sup>，再乘高 cm，得 cm<sup>3</sup>。三个长度相乘，结果一定是“立方”的量，写成 cm 或 cm<sup>2</sup> 都是错的。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】小丽做的盒子底面是 13.0 cm × 13.0 cm，高 3.5 cm。她剪去的小正方形边长是多少？容积是多少？与最优方案相比差多少？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>底面边长 13.0 cm，说明两边各剪去了 (20 − 13.0) ÷ 2 = 3.5（cm），所以剪口边长是 3.5 cm，与盒高 3.5 cm 一致（这可以作为一次自检）。</p>
+          <p>容积 <i>V</i> = 3.5 × 13.0<sup>2</sup> = 3.5 × 169 = 591.5（cm<sup>3</sup>）。</p>
+          <p>与最优值 592.6 cm<sup>3</sup> 相比，少 592.6 − 591.5 = 1.1（cm<sup>3</sup>），相对差距 1.1 ÷ 592.6 ≈ 0.19%。</p>
+          <p>结论：小丽的盒子只比最优方案少装约 1 毫升，完全合格。这也说明最优点附近很“宽容”，手工制作不必过分紧张。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【拓展】下面是一份活动报告里的结论段，请指出至少三处问题并改正：“剪去 5 cm 时盒子最大，容积是 500 cm，因为这样盒子最深。”</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>问题一：结论本身错了。最优剪口不是 5 cm，而是约 3.3 cm，最大容积约 592.6 cm<sup>3</sup>；5 cm 时只有 500 cm<sup>3</sup>，少了约 92.6 cm<sup>3</sup>。</p>
+          <p>问题二：单位错了。“容积是 500 cm”应为“500 cm<sup>3</sup>”，容积是三维的量。</p>
+          <p>问题三：理由错了。“最深”不是“最大”的理由，容积由底面积和高共同决定；<i>x</i> = 5 时底面积只剩 100 cm<sup>2</sup>，缩得太多。</p>
+          <p>问题四：没有检验。一份合格的结论应当交代取值范围（0 &lt; <i>x</i> &lt; 10）、与整数解的比较（588 → 592.6，提高约 0.8%）、以及实际制作时的误差影响。</p>
+          <p>改正后的说法：当剪去的小正方形边长 <i>x</i> ≈ 3.3 cm 时容积最大，最大容积约 592.6 cm<sup>3</sup>；此时底面约 13.4 cm × 13.4 cm、高约 3.3 cm。该结论经过量纲、合理性、对比、边界和实际制作五项检验。</p>
+        </div>
+      </details>
+    </div>
+    <p>到这里，探究二的两件事都做完了：先用加密和二分把最优点逼到 3.3 cm 附近，再从五个角度把这个结论检验了一遍。回看整个过程，真正起作用的不是计算器，而是三样东西——一个清楚的式子 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，一种“带着判断缩小范围”的方法，一套“算完还要问一句凭什么”的习惯。下一环节，我们把这张 20 cm 的正方形纸板换成长方形，看看这套办法还能不能用在更复杂的情形上。</p>
+    <div class="method">
+      <strong>本环节要点：</strong>
+      <ul>
+        <li>完整结论要说三句话：剪口约 3.3 cm（更精确 3.33 cm，理论上 10/3 cm）；最大容积约 592.6 cm<sup>3</sup>；盒子尺寸约 13.4 cm × 13.4 cm × 3.3 cm。</li>
+        <li>五项检验：量纲（cm × cm × cm = cm<sup>3</sup>）、合理性（13.4 &lt; 20，3.3 &lt; 10，13.4 + 2 × 3.3 = 20）、对比（588 → 592.6，提高约 4.6 cm<sup>3</sup>，约 0.8%）、边界（<i>x</i> 趋近 0 或 10 时容积趋近 0）、实际（纸板厚度、粘贴边、剪裁误差）。</li>
+        <li>“最深”不等于“最大”：<i>x</i> = 5 时容积只有 500 cm<sup>3</sup>，因为底面积缩得比高长得快。</li>
+        <li>最优点附近曲线平坦：3.2 到 3.4 之间容积只差不到 1 cm<sup>3</sup>，实际制作有容错空间，但四角必须对称。</li>
+        <li>写报告的次序：先给结论，再摆数据，然后逐项检验，最后说明适用范围和误差。</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+
+<section class="part" id="part4">
+  <div class="part-head">
+    <div class="part-kicker">拓展与应用 · 建议 1 课时</div>
+    <h2 class="part-title">拓展与应用</h2>
+    <p class="part-intro">前面几节课，我们把一张边长 20 cm 的正方形硬纸板翻来覆去地算了一遍：设剪去的边长为 <i>x</i> cm，写出 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，用表格和折线图看出容积先增后减，再用加密取值与二分法把最优点逼到 <i>x</i> ≈ 3.3，最大容积约 592.6 cm<sup>3</sup>。这节课做两件事：一是把结论“推”出去，换一张纸板、换一种形状，看看答案会怎样变；二是回过头来给整个活动打一次分，看看自己哪一步最扎实、哪一步还欠火候。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>活动目标</h3>
+    <ul>
+      <li>能把“边长 20 cm 的正方形纸板”的结论推广到边长为 <i>a</i> cm 的一般情形，写出最优剪口 <i>x</i> = <i>a</i>/6 与最大容积 <i>V</i> = 2<i>a</i><sup>3</sup>/27，并用具体数据逐组验证。</li>
+      <li>会处理长方形纸板的情形：重新设变量、重新写关系式、重新定取值范围，用列表估算找出最优点，不盲目照搬正方形的结论。</li>
+      <li>能用自己的话解释“最优点附近容积变化很小”这一现象，并据此对实际制作中的剪裁误差作出合理判断。</li>
+      <li>经历“结论 → 推广 → 验证 → 反思”的过程，体会特殊与一般的关系，进一步积累数学建模的活动经验。</li>
+      <li>能对照自评表如实评价自己在问题转化、列表估算、画图读图、逼近方法、结论检验、表达交流等方面的表现，并提出具体的改进办法。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a4-1">
+    <h3 class="card-title"><span class="num">环节 7</span>推广与拓展</h3>
+
+    <h4 class="subhead">1. 从一个盒子到一类盒子</h4>
+    <p>先把已经得到的东西摆出来。对于边长 20 cm 的正方形纸板，设四个角各剪去一个边长为 <i>x</i> cm 的小正方形，盒子底面是边长 (20 − 2<i>x</i>) cm 的正方形，高是 <i>x</i> cm，于是容积 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，其中 0 &lt; <i>x</i> &lt; 10。用整数表看出 <i>x</i> = 3 时 588 最大；加密到 0.1 看出 <i>x</i> = 3.3 时 592.548 最大；再加密到 0.01 看出 <i>x</i> = 3.33 时 592.592 最大；用二分法把“藏着最大值”的区间一段段压短，最后停在 3.3 附近。结论是：<i>x</i> ≈ 3.3 cm 时容积最大，最大容积约 592.6 cm<sup>3</sup>，此时盒子尺寸约为 13.4 cm × 13.4 cm × 3.3 cm。精确地说，这个最优点落在 <i>x</i> = 10/3 cm 处，最大容积为 16000/27 cm<sup>3</sup>，约 592.59 cm<sup>3</sup>。</p>
+    <p>现在换一个问题：如果手边的纸板不是 20 cm，而是 30 cm、12 cm、6 cm 呢？如果它不是正方形，而是一张 40 cm × 20 cm 的长方形纸板呢？是不是每换一张纸板，都要把列表、画图、逼近这一整套重做一遍？如果真是这样，那我们前面花的两节课就只解决了一个“20”的问题，换个数就束手无策，这样的结论价值有限。数学之所以好用，正是因为它能从一个具体的例子跳到一整类问题：把“20”换成一个字母 <i>a</i>，让 <i>a</i> 代表任意一个边长，结论就从一个盒子变成了一类盒子。</p>
+    <p>不过，“推广”不是把数字换成字母就完事。推广之前要先问三句话：原来的前提还在不在？新情形下哪些量变了、哪些关系没变？旧结论能不能直接搬过来用？比如正方形纸板的四条边一样长，剪去四个角之后底面仍然是正方形；长方形纸板的两条边不一样长，底面就成了长方形，盒子的长和宽不再相等，“底面是正方形”这个前提已经不成立，那么“最优剪口是边长的六分之一”这句话就未必还成立。把这三句话问清楚，推广才不会变成乱套公式。</p>
+    <h4 class="subhead">2. 推广一：边长为 <i>a</i> 的正方形纸板</h4>
+    <p>把 20 换成字母 <i>a</i>。一张边长为 <i>a</i> cm 的正方形硬纸板，四个角各剪去一个边长为 <i>x</i> cm 的小正方形，折起来以后，底面是边长 (<i>a</i> − 2<i>x</i>) cm 的正方形，高是 <i>x</i> cm。于是容积</p>
+    <div class="formula">
+      <div class="formula-label">一般情形的容积</div>
+      <div class="formula-body"><i>V</i> = <i>x</i>(<i>a</i> − 2<i>x</i>)<sup>2</sup>（0 &lt; <i>x</i> &lt; <i>a</i>/2）</div>
+    </div>
+    <p>取值范围的道理和 20 cm 时完全一样：高 <i>x</i> 要大于 0，底边 <i>a</i> − 2<i>x</i> 也要大于 0，所以 <i>x</i> &lt; <i>a</i>/2。20 cm 时这个上限是 10，现在换成了 <i>a</i>/2，形式没变，只是数字变成了字母。</p>
+    <p>接下来的问题是：最优的剪口在哪里？我们手里唯一的线索是 <i>a</i> = 20 时的答案。<i>a</i> = 20 时，最优点是 <i>x</i> = 10/3，而 10/3 恰好等于 20 ÷ 6，也就是 <i>a</i>/6。这不是巧合吗？如果最优剪口总是边长的六分之一，那么 <i>x</i> = <i>a</i>/6 时底面边长就是 <i>a</i> − 2 × <i>a</i>/6 = <i>a</i> − <i>a</i>/3 = 2<i>a</i>/3。把这两个式子代进容积公式算一算：</p>
+    <p><i>V</i> = (<i>a</i>/6) × (2<i>a</i>/3)<sup>2</sup> = (<i>a</i>/6) × (4<i>a</i><sup>2</sup>/9) = 4<i>a</i><sup>3</sup>/54 = 2<i>a</i><sup>3</sup>/27。</p>
+    <p>结果非常干净：最大容积是 2<i>a</i><sup>3</sup>/27。用 <i>a</i> = 20 复核一下，2 × 20<sup>3</sup>/27 = 2 × 8000/27 = 16000/27 ≈ 592.59，与我们用逼近法得到的 592.6 完全吻合。一个用两节课、一张表、一幅折线图辛辛苦苦找出来的数，居然可以用一个这么短的式子直接算出来，这就是推广的好处。</p>
+
+    <p>当然，光靠一个特例“猜”出公式还不够，得用更多数据去验证。如图 8，把一般情形的展开图画出来，四个角各剪去边长为 <i>a</i>/6 的小正方形，中间底面是边长为 2<i>a</i>/3 的正方形，四边折起的高度就是 <i>a</i>/6。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="80 15 440 365" role="img" aria-label="边长为 a 的正方形纸板展开图，四角剪去边长为 a/6 的小正方形，中间底面边长为 a 减 2x">
+        <title>边长为 a 的正方形纸板的一般展开图</title>
+        <rect x="140" y="50" width="260" height="260" fill="none" stroke="#334155" stroke-width="2"/>
+        <rect x="140" y="50" width="43" height="43" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="357" y="50" width="43" height="43" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="140" y="267" width="43" height="43" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="357" y="267" width="43" height="43" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="183" y="93" width="174" height="174" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <rect x="183" y="50" width="174" height="43" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <rect x="183" y="267" width="174" height="43" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <rect x="140" y="93" width="43" height="174" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <rect x="357" y="93" width="43" height="174" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <text x="270" y="38" font-size="15" fill="#334155" text-anchor="middle">边长 <tspan font-style="italic">a</tspan></text>
+        <text x="161" y="77" font-size="12" fill="#1d4ed8" text-anchor="middle"><tspan font-style="italic">a</tspan>/6</text>
+        <text x="378" y="77" font-size="12" fill="#1d4ed8" text-anchor="middle"><tspan font-style="italic">a</tspan>/6</text>
+        <text x="270" y="183" font-size="14" fill="#334155" text-anchor="middle"><tspan font-style="italic">a</tspan> − 2<tspan font-style="italic">x</tspan></text>
+        <text x="270" y="205" font-size="12" fill="#334155" text-anchor="middle">底面</text>
+        <text x="161" y="183" font-size="13" fill="#1d4ed8" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="378" y="183" font-size="13" fill="#1d4ed8" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="270" y="345" font-size="13" fill="#334155" text-anchor="middle">四角剪去边长为 <tspan font-style="italic">a</tspan>/6 的小正方形，四边折起作侧面</text>
+        <text x="270" y="368" font-size="12" fill="#334155" text-anchor="middle">示意图，未按比例</text>
+      </svg>
+      <figcaption>图 8　边长为 <i>a</i> 的正方形纸板的一般展开图（示意图，未按比例）</figcaption>
+    </figure>
+
+    <p>下面用四组数据把公式验一遍，如表 5。每组都按“先算底面边长，再平方，再乘高”的顺序算，算完与 2<i>a</i><sup>3</sup>/27 对照。</p>
+
+    <table class="data-table">
+      <caption>表 5　正方形纸板的一般结论验证</caption>
+      <thead>
+        <tr><th>纸板边长 <i>a</i>/cm</th><th>最优剪口 <i>x</i>/cm</th><th>底面边长/cm</th><th>最大容积 <i>V</i>/cm<sup>3</sup></th><th>验证算式</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>6</td><td>1</td><td>4</td><td>16</td><td>1 × 4<sup>2</sup> = 16</td></tr>
+        <tr><td>12</td><td>2</td><td>8</td><td>128</td><td>2 × 8<sup>2</sup> = 128</td></tr>
+        <tr><td>20</td><td>3.33</td><td>13.33</td><td>592.6</td><td>3.33 × 13.34<sup>2</sup> ≈ 592.6</td></tr>
+        <tr><td>30</td><td>5</td><td>20</td><td>2000</td><td>5 × 20<sup>2</sup> = 2000</td></tr>
+      </tbody>
+    </table>
+
+    <p>逐行核对。<i>a</i> = 6 时 <i>x</i> = 6/6 = 1，底面边长 6 − 2 = 4，容积 1 × 4<sup>2</sup> = 16；用公式算 2 × 6<sup>3</sup>/27 = 432/27 = 16，两种算法一致。<i>a</i> = 12 时 <i>x</i> = 2，底面边长 12 − 4 = 8，容积 2 × 8<sup>2</sup> = 2 × 64 = 128；用公式算 2 × 1728/27 = 3456/27 = 128，也一致。<i>a</i> = 20 时 <i>x</i> = 20/6 = 3.33，底面边长 20 − 6.67 = 13.33，容积 3.33 × 13.34<sup>2</sup> ≈ 3.33 × 177.96 ≈ 592.6；用公式算得 16000/27 ≈ 592.59，一致。<i>a</i> = 30 时 <i>x</i> = 5，底面边长 30 − 10 = 20，容积 5 × 20<sup>2</sup> = 5 × 400 = 2000；用公式算 2 × 27000/27 = 54000/27 = 2000，同样一致。四组数据、两种算法，结果全部对得上，说明这个公式不是碰巧凑出来的。</p>
+
+    <div class="keypoint"><strong>要点：</strong>边长为 <i>a</i> cm 的正方形纸板，最优剪口是 <i>x</i> = <i>a</i>/6 cm，此时底面边长 2<i>a</i>/3 cm、高 <i>a</i>/6 cm，最大容积 <i>V</i> = 2<i>a</i><sup>3</sup>/27 cm<sup>3</sup>。记住这个式子以后，随便给一个边长就能立刻算出答案，不必重新列表。</div>
+
+    <p>从公式还能看出一条规律：<i>V</i> = 2<i>a</i><sup>3</sup>/27 中，容积与边长的三次方成正比。也就是说，纸板边长变成原来的 2 倍，最大容积就变成原来的 2<sup>3</sup> = 8 倍。<i>a</i> = 6 时是 16，<i>a</i> = 12 时是 16 × 8 = 128；<i>a</i> = 20 时是 592.6，若边长加倍到 40，最大容积约为 592.6 × 8 ≈ 4740.7，用公式算 2 × 64000/27 = 128000/27 ≈ 4740.7，正好相符。这条“立方倍”的关系，用列表是看不出来的，只有写成公式才一目了然。</p>
+
+    <div class="tip"><strong>提示：</strong>公式 <i>V</i> = 2<i>a</i><sup>3</sup>/27 是在“四个角剪去同样大小的正方形、做成无盖盒子、不计纸板厚度与粘贴边”这三条前提下得到的。前提一变，公式就要重新检查。比如做盒子时为了粘接要留出 0.5 cm 的粘贴边，实际底面就会比理论值略小，容积也会略小——这类“理论值与实际值的差别”，在后面的检验与反思里还要专门讨论。</div>
+    <h4 class="subhead">3. 推广二：长方形纸板</h4>
+    <p>正方形的情形解决了，再看一种更常见的情况。假设手边的纸板是一张 40 cm × 20 cm 的长方形硬纸板——比如从包装箱上裁下来的一块。做法不变：四个角各剪去一个边长为 <i>x</i> cm 的小正方形，四边折起，做成一个长条形的无盖收纳盒，正好可以放尺子、笔和餐具。这时底面不再是正方形，而是一个长方形：长是 (40 − 2<i>x</i>) cm，宽是 (20 − 2<i>x</i>) cm，高仍然是 <i>x</i> cm。容积</p>
+    <div class="formula">
+      <div class="formula-label">长方形纸板的容积</div>
+      <div class="formula-body"><i>V</i> = <i>x</i>(40 − 2<i>x</i>)(20 − 2<i>x</i>)（0 &lt; <i>x</i> &lt; 10）</div>
+    </div>
+    <p>取值范围为什么是 0 &lt; <i>x</i> &lt; 10，而不是 0 &lt; <i>x</i> &lt; 20？因为要同时保证两条底边都大于 0：40 − 2<i>x</i> &gt; 0 给出 <i>x</i> &lt; 20，20 − 2<i>x</i> &gt; 0 给出 <i>x</i> &lt; 10。两个条件要同时满足，取更严的那一个，所以上限由短边决定，是 10。这一点很容易被忽略：如果只盯着长边，把范围写成 0 &lt; <i>x</i> &lt; 20，那么当 <i>x</i> = 15 时宽已经成了 20 − 30 = −10，盒子根本不存在。</p>
+    <p>接下来最容易犯的错，是直接把正方形情形的结论搬过来用：正方形时最优剪口是边长的六分之一，那长方形是不是也剪“短边的六分之一”，也就是 20/6 ≈ 3.33 cm？算一下就知道不对。<i>x</i> = 3.33 时，<i>V</i> = 3.33 × (40 − 6.66) × (20 − 6.66) = 3.33 × 33.34 × 13.34 ≈ 1481 cm<sup>3</sup>；而我们稍后会算出，真正的最优点在 4.2 附近，容积约 1539.6 cm<sup>3</sup>，两者相差将近 59 cm<sup>3</sup>，约 4%。差得不算惊天动地，但足以说明“照搬”是错的：长方形两条边不一样长，盒子不再是“正方底”，最优点也就不会再落在短边的六分之一处，必须重新找。</p>
+    <p>那么正确的位置在哪里？只能重新列表。如图 9，长方形纸板的展开图与正方形类似，只是中间底面是个长方形，四角剪去的小正方形边长仍是 <i>x</i>。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="30 30 540 310" role="img" aria-label="40 厘米乘 20 厘米长方形纸板展开图，四角剪去边长 x 的小正方形，底面长 40 减 2x、宽 20 减 2x">
+        <title>40 cm × 20 cm 长方形纸板的展开图</title>
+        <line x1="90" y1="58" x2="510" y2="58" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="90" y1="52" x2="90" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="510" y1="52" x2="510" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="300" y="48" font-size="13" fill="#334155" text-anchor="middle">40 cm</text>
+        <line x1="72" y1="70" x2="72" y2="270" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <line x1="66" y1="70" x2="78" y2="70" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="66" y1="270" x2="78" y2="270" stroke="#94a3b8" stroke-width="1.5"/>
+        <text x="56" y="170" font-size="13" fill="#334155" text-anchor="middle" transform="rotate(-90 56 170)">20 cm</text>
+        <rect x="90" y="70" width="420" height="200" fill="none" stroke="#334155" stroke-width="2"/>
+        <rect x="90" y="70" width="42" height="42" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="468" y="70" width="42" height="42" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="90" y="228" width="42" height="42" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="468" y="228" width="42" height="42" fill="#fef3c7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="132" y="112" width="336" height="116" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <rect x="132" y="70" width="336" height="42" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <rect x="132" y="228" width="336" height="42" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <rect x="90" y="112" width="42" height="116" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <rect x="468" y="112" width="42" height="116" fill="#dcfce7" stroke="#334155" stroke-width="1.5"/>
+        <text x="111" y="96" font-size="12" fill="#1d4ed8" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="489" y="96" font-size="12" fill="#1d4ed8" text-anchor="middle"><tspan font-style="italic">x</tspan></text>
+        <text x="300" y="166" font-size="14" fill="#334155" text-anchor="middle">40 − 2<tspan font-style="italic">x</tspan></text>
+        <text x="300" y="188" font-size="14" fill="#334155" text-anchor="middle">20 − 2<tspan font-style="italic">x</tspan></text>
+        <text x="300" y="302" font-size="12" fill="#334155" text-anchor="middle">中间为底面，四边折起作侧面，高为 <tspan font-style="italic">x</tspan></text>
+        <text x="300" y="324" font-size="12" fill="#334155" text-anchor="middle">示意图，未按比例</text>
+      </svg>
+      <figcaption>图 9　40 cm × 20 cm 长方形纸板的展开图（示意图，未按比例）</figcaption>
+    </figure>
+
+    <p>列表时还是老办法：先粗后细。先取整数，<i>x</i> = 2 时 2 × 36 × 16 = 1152；<i>x</i> = 3 时 3 × 34 × 14 = 1428；<i>x</i> = 4 时 4 × 32 × 12 = 1536；<i>x</i> = 5 时 5 × 30 × 10 = 1500；<i>x</i> = 6 时 6 × 28 × 8 = 1344。可以看出容积在 4 附近最大：从 3 到 4 上升了 108，从 4 到 5 只下降了 36，上升多、下降少，说明最优点就在 4 的右侧不远。于是把区间 [4, 5] 加密：<i>x</i> = 4.2 时 4.2 × 31.6 × 11.6 = 1539.6；<i>x</i> = 4.3 时 4.3 × 31.4 × 11.4 = 1539.2；<i>x</i> = 5.0 时 5 × 30 × 10 = 1500。4.2 与 4.3 处的容积只差 0.4，4.1 时算得 4.1 × 31.8 × 11.8 = 1538.5，比 1539.6 略小。综合起来，<i>x</i> ≈ 4.2 时容积最大，约 1539.6 cm<sup>3</sup>，也就是约 1.54 L。这里只要求估算到 0.1，不必去追更细的数。</p>
+
+    <div class="method"><strong>方法归纳：</strong>推广到新形状时，按四步走。第一步，重新设变量、重新画展开图，看清底面的长和宽分别是多少；第二步，重新写关系式、重新定取值范围，取所有限制条件中最严的那一个；第三步，先取整数粗算，看最大值落在哪一段，再把这一段加密；第四步，把结论与“如果照搬旧结论”的结果比一比，用差距说明为什么必须重算。这四步走完，才算真正“推广”了一次，而不是换了个数字重抄一遍。</div>
+
+    <div class="warn"><strong>易错：</strong>把正方形的最优剪口 <i>a</i>/6 直接套到长方形纸板上，是推广时最常见的错误。40 cm × 20 cm 的纸板若照搬 20/6 ≈ 3.33，只能得到约 1481 cm<sup>3</sup>，比真正的最大值少约 59 cm<sup>3</sup>。另外，只算整数就宣布“<i>x</i> = 4 时最大，容积 1536”，也会漏掉 4.2 处更好的 1539.6。</div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">长方形纸板的估算</span>
+      </div>
+      <div class="example-body">
+        <p>一张 40 cm × 20 cm 的长方形硬纸板，四个角各剪去一个边长为 <i>x</i> cm 的小正方形，把四边折起，做成一个无盖长方体形收纳盒。请写出容积 <i>V</i> 与 <i>x</i> 的关系式及 <i>x</i> 的取值范围，并用列表估算：<i>x</i> 取多少时容积最大（精确到 0.1）？最大容积约是多少？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）写关系式。盒底是长方形，长 (40 − 2<i>x</i>) cm，宽 (20 − 2<i>x</i>) cm，高 <i>x</i> cm，所以 <i>V</i> = <i>x</i>(40 − 2<i>x</i>)(20 − 2<i>x</i>)。</p>
+          <p>（2）定取值范围。由 <i>x</i> &gt; 0、40 − 2<i>x</i> &gt; 0、20 − 2<i>x</i> &gt; 0，得 0 &lt; <i>x</i> &lt; 10。上限取短边的一半，因为宽先变成 0。</p>
+          <p>（3）整数粗算。<i>x</i> = 2：2 × 36 × 16 = 1152；<i>x</i> = 3：3 × 34 × 14 = 1428；<i>x</i> = 4：4 × 32 × 12 = 1536；<i>x</i> = 5：5 × 30 × 10 = 1500；<i>x</i> = 6：6 × 28 × 8 = 1344。最大值出现在 <i>x</i> = 4 附近。</p>
+          <p>（4）在 4 附近加密。<i>x</i> = 4.0：4 × 32 × 12 = 1536；<i>x</i> = 4.2：4.2 × 31.6 × 11.6 = 1539.6；<i>x</i> = 4.3：4.3 × 31.4 × 11.4 = 1539.2；<i>x</i> = 5.0：5 × 30 × 10 = 1500。4.2 处最大，4.3 处已开始下降。</p>
+          <p>（5）结论：当 <i>x</i> ≈ 4.2 cm 时容积最大，最大容积约 1539.6 cm<sup>3</sup>，约为 1540 cm<sup>3</sup>。此时底面约 31.6 cm × 11.6 cm，高约 4.2 cm，盒子细长，适合放尺子、笔一类的东西。</p>
+          <p>（6）说明：这个结果与正方形情形的“边长六分之一”（20/6 ≈ 3.33）不同，说明形状一变，最优剪口就要重新找。从数据看，4.0 到 4.3 之间容积只差 3.6 cm<sup>3</sup>，所以实际剪 4.2 cm 左右都很好，不必精确到 0.01。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果把纸板换成 40 cm × 30 cm，关系式变成 <i>V</i> = <i>x</i>(40 − 2<i>x</i>)(30 − 2<i>x</i>)，取值范围是 0 &lt; <i>x</i> &lt; 15。粗算 <i>x</i> = 5：5 × 30 × 20 = 3000；<i>x</i> = 6：6 × 28 × 18 = 3024；加密 <i>x</i> = 5.7：5.7 × 28.6 × 18.6 ≈ 3032；<i>x</i> = 5.5：5.5 × 29 × 19 = 3030.5。可见最优剪口约 5.7 cm，最大容积约 3032 cm<sup>3</sup>。与 40 cm × 20 cm 的 4.2 cm 相比，短边从 20 增到 30，最优剪口也跟着变大，但依然不是“短边的六分之一”（30/6 = 5）。</p>
+    <h4 class="subhead">4. 推广三：误差与容错</h4>
+    <p>推广还有一个不太起眼、却非常实用的方向：把“最优点”研究透，看看它周围的情况。回到 20 cm 的纸板。最大值是 592.593（即 16000/27），出现在 <i>x</i> = 10/3 ≈ 3.33 处。如果剪的时候手一抖，剪成了 3.2 或 3.4，会损失多少？表 3 已经给过答案：<i>x</i> = 3.2 时容积 591.872，<i>x</i> = 3.4 时容积 592.416。</p>
+    <p>算一算差多少：592.593 − 591.872 = 0.721，不到 1 cm<sup>3</sup>；592.593 − 592.416 = 0.177，更小。换算成相对误差，0.721 ÷ 592.593 ≈ 0.12%，0.177 ÷ 592.593 ≈ 0.03%，都不到 0.15%。也就是说，剪口偏了 0.1 cm，容积只少了一千分之一上下，用手根本感觉不出来。这个现象叫“最优点附近曲线平坦”，也就是我们常说的“容错性好”。</p>
+    <p>为什么最优点附近这么“平”？可以这样体会：容积是“高 × 底面积”，<i>x</i> 变大时高变大、底面积变小，两者一增一减，在顶点附近恰好互相抵消得最彻底，所以合起来几乎不变。离开顶点越远，这种抵消就越不彻底，容积的变化也就越明显。拿数据对比一下：同样让 <i>x</i> 增加 0.1，从 3.3 增到 3.4，容积只从 592.593 降到 592.416，差 0.177；而从 2.0 增到 2.1，容积从 512 变成 2.1 × 15.8<sup>2</sup> = 2.1 × 249.64 ≈ 524.2，差 12.2，是前者的近 70 倍。同样是 0.1 cm 的偏差，在远离顶点的地方损失就大得多。</p>
+    <p>还有一个细节值得注意：两个方向的损失并不对称。往小剪（3.2）损失 0.721，往大剪（3.4）只损失 0.177，前者约为后者的 4 倍。原因是这个“山峰”左右并不对称——<i>x</i> 从 3.3 减小时底面积增大得快，容积掉得也快；<i>x</i> 从 3.3 增大时，虽然底面积缩小，但高度增加还能补回一部分。所以实际剪裁时，如果实在拿不准，宁可让剪口略微偏大一点点，也不要偏小太多。当然，这个“宁可”只在最优点附近成立，偏到 0.5 cm 以上就不适用了：<i>x</i> = 2.8 时容积约 580.6，<i>x</i> = 3.8 时约 584.3，都比最大值少 8 以上，损失约 1% 到 2%。</p>
+
+    <div class="keypoint"><strong>要点：</strong>最大值附近的“平坦”不是巧合，而是这类“一增一减”问题的共同特征。它带来两个好处：一是估算时不必把最优点算得极准，精确到 0.1 就足够实用；二是实际制作时允许一定误差，剪口稍有偏差，容积几乎不受影响。但“容错”不等于“随便”，偏差超过 0.5 cm，损失就开始明显了。</div>
+
+    <div class="tip"><strong>提示：</strong>如果要把这个结论用到实际制作上，可以这样定标准：先按 <i>x</i> ≈ 3.3 cm 画线，剪的时候允许 ±0.2 cm 的误差；粘接时留出的粘贴边要另外算，不能从底面尺寸里“借”。这样得到的盒子，容积与理论值 592.6 cm<sup>3</sup> 的差距主要来自粘贴边和纸板厚度，而不是剪口的位置。</div>
+
+    <p>推广的三个方向到这里就齐了：换边长，得到 <i>x</i> = <i>a</i>/6、<i>V</i> = 2<i>a</i><sup>3</sup>/27；换形状，得到 40 cm × 20 cm 纸板上 <i>x</i> ≈ 4.2、<i>V</i> ≈ 1539.6；看误差，得到“顶点附近平坦、容错性好”的判断。这三个方向其实对应三种不同的提问方式：把数字换成字母、把条件换成另一种、把结论放到现实里检验。会这样提问，才算真正掌握了一个结论。</p>
+
+    <h4 class="subhead">5. 用评价的眼光回看整个活动</h4>
+    <p>做完推广，再回头看这一路走过的流程。如图 10，整个活动可以概括成四个维度：问题转化、数据估算、结论检验、表达交流。它们不是四个孤立的步骤，而是一个互相支撑的循环：问题转化得清楚，估算才有方向；估算做得扎实，结论才站得住；结论检验过，表达才有底气；而把过程讲给别人听，又常常会发现新的问题，让转化更进一层。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 600 300" role="img" aria-label="活动评价的四个维度示意图：问题转化、数据估算、结论检验、表达交流，四者循环相扣">
+        <title>活动评价的四个维度</title>
+        <rect x="70" y="40" width="170" height="64" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <text x="155" y="68" font-size="15" fill="#334155" text-anchor="middle">问题转化</text>
+        <text x="155" y="90" font-size="12" fill="#334155" text-anchor="middle">设变量、写关系式</text>
+        <rect x="360" y="40" width="170" height="64" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <text x="445" y="68" font-size="15" fill="#334155" text-anchor="middle">数据估算</text>
+        <text x="445" y="90" font-size="12" fill="#334155" text-anchor="middle">列表、画图、逼近</text>
+        <rect x="360" y="190" width="170" height="64" fill="#dcfce7" stroke="#334155" stroke-width="2"/>
+        <text x="445" y="218" font-size="15" fill="#334155" text-anchor="middle">结论检验</text>
+        <text x="445" y="240" font-size="12" fill="#334155" text-anchor="middle">量纲、合理性、误差</text>
+        <rect x="70" y="190" width="170" height="64" fill="#e0e7ff" stroke="#334155" stroke-width="2"/>
+        <text x="155" y="218" font-size="15" fill="#334155" text-anchor="middle">表达交流</text>
+        <text x="155" y="240" font-size="12" fill="#334155" text-anchor="middle">说清过程与理由</text>
+        <line x1="244" y1="72" x2="352" y2="72" stroke="#1d4ed8" stroke-width="2"/>
+        <polyline points="344,65 354,72 344,79" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <line x1="445" y1="108" x2="445" y2="182" stroke="#1d4ed8" stroke-width="2"/>
+        <polyline points="438,174 445,184 452,174" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <line x1="356" y1="222" x2="248" y2="222" stroke="#1d4ed8" stroke-width="2"/>
+        <polyline points="256,215 246,222 256,229" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <line x1="155" y1="186" x2="155" y2="112" stroke="#1d4ed8" stroke-width="2"/>
+        <polyline points="148,120 155,110 162,120" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <text x="300" y="148" font-size="12" fill="#334155" text-anchor="middle">四个维度循环相扣</text>
+        <text x="300" y="170" font-size="12" fill="#334155" text-anchor="middle">每一步都要留下记录</text>
+      </svg>
+      <figcaption>图 10　活动评价的四个维度（示意图，未按比例）</figcaption>
+    </figure>
+
+    <p>拿这四个维度对照自己的活动记录，很容易看出薄弱环节在哪里。有的同学表格算得又快又准，可是问他“为什么底面边长是 20 − 2<i>x</i>”就说不清，问题转化这一环就欠了火候；有的同学折线图画得漂亮，却只会说“看起来 3.3 最大”，不会用数据说明“为什么不是 3.4”，结论检验就缺了依据；还有的同学心里明白，写出来的过程却跳步、缺单位、少结论，表达交流就成了短板。下一环节的自评表，就是把这四个维度拆成更细的条目，一条一条对照。</p>
+
+    <div class="warn"><strong>易错：</strong>推广与估算时有三处高频错误。一是把最优剪口记成边长的三分之一，于是 <i>a</i> = 20 时算成 <i>x</i> = 6.67，容积只有 6.67 × 6.66<sup>2</sup> ≈ 296，连最大值的一半都不到；正确是 <i>a</i>/6。二是把正方形结论直接套到长方形纸板上，40 cm × 20 cm 照搬 3.33 只能得到约 1481 cm<sup>3</sup>。三是估算时只取整数就下结论，40 cm × 20 cm 会停在 1536，漏掉 4.2 处的 1539.6。</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】一张边长为 18 cm 的正方形硬纸板，四角各剪去边长为 <i>x</i> cm 的小正方形，做成无盖盒子。求最优剪口与最大容积，并写出此时盒子的长、宽、高。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>由推广公式，最优剪口 <i>x</i> = <i>a</i>/6 = 18/6 = 3，即剪去边长为 3 cm 的小正方形。</p>
+          <p>此时底面边长 18 − 2 × 3 = 12，高 3，容积 <i>V</i> = 3 × 12<sup>2</sup> = 3 × 144 = 432 cm<sup>3</sup>。</p>
+          <p>用公式复核：2 × 18<sup>3</sup>/27 = 2 × 5832/27 = 11664/27 = 432，一致。盒子尺寸为 12 cm × 12 cm × 3 cm。</p>
+          <p>取值范围是 0 &lt; <i>x</i> &lt; 9，3 在范围之内，结论合理。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】判断下列说法是否正确，错的请改正：(1) 正方形纸板的最优剪口是纸板边长的三分之一；(2) 40 cm × 20 cm 的长方形纸板，最优剪口是 20/6 ≈ 3.33 cm；(3) 剪去的正方形越大，盒子的容积就越大。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>(1) 错。应为边长的六分之一，即 <i>x</i> = <i>a</i>/6。若取 <i>a</i>/3，<i>a</i> = 20 时 <i>x</i> ≈ 6.67，容积约 296 cm<sup>3</sup>，远小于最大值 592.6。</p>
+          <p>(2) 错。长方形纸板两条边不一样长，最优点不在短边的六分之一处。列表估算得 <i>x</i> ≈ 4.2 cm，最大容积约 1539.6 cm<sup>3</sup>；照搬 3.33 只有约 1481 cm<sup>3</sup>。</p>
+          <p>(3) 错。容积先随剪口增大而增大，越过最优点后反而减小。20 cm 纸板上 <i>x</i> 从 3.3 增到 5，容积从 592.593 降到 500；<i>x</i> 接近 10 时底面几乎没有，容积趋近 0。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】在 40 cm × 20 cm 的长方形纸板上，分别取 <i>x</i> = 3 与 <i>x</i> = 4，计算两种盒子的底面积与容积，比较大小，并说明为什么 <i>x</i> = 3 不是最优点。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>x</i> = 3 时，底面 34 cm × 14 cm，底面积 476 cm<sup>2</sup>，容积 3 × 476 = 1428 cm<sup>3</sup>。</p>
+          <p><i>x</i> = 4 时，底面 32 cm × 12 cm，底面积 384 cm<sup>2</sup>，容积 4 × 384 = 1536 cm<sup>3</sup>。</p>
+          <p>1536 &gt; 1428，相差 108 cm<sup>3</sup>。原因是：<i>x</i> 从 3 增到 4，高增加 1 cm，底面积减少 476 − 384 = 92 cm<sup>2</sup>。高的增加带来的“增益”是 1 × 384 = 384 cm<sup>3</sup>，底面积减少带来的“损失”是 92 × 3 = 276 cm<sup>3</sup>，增益大于损失，所以容积变大。可见“高增加”与“底面积减少”在同时起作用，最优点就在两者正好抵消的地方。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】用表 5 中 <i>a</i> = 30 的数据验证公式 <i>V</i> = 2<i>a</i><sup>3</sup>/27，并求边长为 60 cm 的正方形纸板的最大容积。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><i>a</i> = 30 时，最优 <i>x</i> = 30/6 = 5，底面边长 30 − 10 = 20，容积 5 × 20<sup>2</sup> = 5 × 400 = 2000 cm<sup>3</sup>。</p>
+          <p>用公式算：2 × 30<sup>3</sup>/27 = 2 × 27000/27 = 54000/27 = 2000，与直接计算一致。</p>
+          <p><i>a</i> = 60 时，最优 <i>x</i> = 10，底面边长 60 − 20 = 40，容积 10 × 40<sup>2</sup> = 10 × 1600 = 16000 cm<sup>3</sup>；用公式算 2 × 216000/27 = 432000/27 = 16000，一致。</p>
+          <p>也可以直接用“立方倍”关系：边长从 30 变成 60，是原来的 2 倍，容积应为 2000 × 8 = 16000 cm<sup>3</sup>，结果相同。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】某同学在 20 cm 正方形纸板上把剪口剪成了 3.4 cm，另一位同学剪成了 3.2 cm。分别计算两人的容积损失，比较大小，并给出一条实际剪裁建议。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>最大值约 592.593 cm<sup>3</sup>。<i>x</i> = 3.4 时容积 3.4 × 13.2<sup>2</sup> = 3.4 × 174.24 = 592.416 cm<sup>3</sup>，损失 592.593 − 592.416 = 0.177 cm<sup>3</sup>，相对误差约 0.03%。</p>
+          <p><i>x</i> = 3.2 时容积 3.2 × 13.6<sup>2</sup> = 3.2 × 184.96 = 591.872 cm<sup>3</sup>，损失 592.593 − 591.872 = 0.721 cm<sup>3</sup>，相对误差约 0.12%。</p>
+          <p>两者都不到 1 cm<sup>3</sup>，说明最优点附近曲线平坦，容错性好；但往小剪的损失约为往大剪的 4 倍，两个方向不对称。</p>
+          <p>建议：先按 3.3 cm 精确画线，若量取时只能取到 0.1 cm 的精度，宁可取 3.4 cm 而不要取 3.2 cm；同时把粘贴边另外留出，不要从底面尺寸里挤占。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="a4-2">
+    <h3 class="card-title"><span class="num">环节 8</span>活动评价与自测</h3>
+
+    <h4 class="subhead">1. 给自己打一次分</h4>
+    <p>活动做到这里，盒子做出来了，数据算出来了，结论也推广出去了。最后一步是评价。评价不是给别人看的分数，而是让自己知道“哪一步真的会了、哪一步只是跟着别人做了一遍”。表 6 把整个活动拆成九个条目，每个条目都写了“做到什么程度算好”，后面留了三档：优、良、待改进。对照自己的活动记录，一项一项圈，圈完再往下看反思问题。</p>
+
+    <table class="data-table">
+      <caption>表 6　活动自评表</caption>
+      <thead>
+        <tr><th>评价项目</th><th>具体表现（做到这些就算达标）</th><th>自评三档</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>问题转化</td><td>能说清“装得最多”就是“容积最大”；能设出变量 <i>x</i>，写出 <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>；能说明 0 &lt; <i>x</i> &lt; 10 的由来</td><td>优　良　待改进</td></tr>
+        <tr><td>列表估算</td><td>取值合理、计算准确；能按“先粗后细”加密；能从表中读出“先增后减”并指出最大值所在区间</td><td>优　良　待改进</td></tr>
+        <tr><td>画图读图</td><td>能按数据描点连线，坐标轴有名称和单位；能从图上读出最高点的大致位置，并说清图为什么读不出精确值</td><td>优　良　待改进</td></tr>
+        <tr><td>逼近方法</td><td>会用“加密取值”和“二分缩小区间”两种办法；每一步都记下区间、中点与中点容积，判断有依据</td><td>优　良　待改进</td></tr>
+        <tr><td>结论检验</td><td>能从量纲、合理性、边界情形、与整数解比较等方面检验；能说清理论值与实际制作值的差别</td><td>优　良　待改进</td></tr>
+        <tr><td>推广反思</td><td>能写出 <i>x</i> = <i>a</i>/6 与 <i>V</i> = 2<i>a</i><sup>3</sup>/27 并验证；能对长方形纸板重新列表；能说清为什么不能照搬结论</td><td>优　良　待改进</td></tr>
+        <tr><td>合作交流</td><td>分工明确，记录完整；能倾听、质疑、补充；能把“为什么这样剪”讲给同学听</td><td>优　良　待改进</td></tr>
+        <tr><td>书写表达</td><td>过程完整、步骤清楚、单位齐全、结论明确；表格与图形规范，别人能照着复现</td><td>优　良　待改进</td></tr>
+        <tr><td>动手制作</td><td>能安全使用剪刀与直尺；按尺寸画线剪裁、粘贴牢固；测量实际尺寸并与理论值比较</td><td>优　良　待改进</td></tr>
+      </tbody>
+    </table>
+
+    <p>三档的标准可以这样理解。“优”是不仅做到了，还能说清理由，别人问“为什么”你能答上来；“良”是按步骤做到了，但有些地方是照着别人的样子做的，独立再做一遍可能卡住；“待改进”是这一步还没过关，需要回头补。比如“逼近方法”这一项，如果你只会照着老师给的表格往下算，自己换一张纸板就不知道从哪个区间开始，那就该圈“良”甚至“待改进”，而不是因为最后答案对了就圈“优”。</p>
+
+    <h4 class="subhead">2. 活动小结：这个活动用到了哪些数学</h4>
+    <p>整个活动看似在做手工，其实把七年级学过的不少东西都用上了，而且是用在“解决一个真问题”上。把这些数学梳理一遍，比多做十道计算题更有价值。</p>
+    <div class="method"><strong>本活动用到的数学：</strong>
+      <ul>
+        <li><b>变量</b>：用一个字母 <i>x</i> 表示剪去的小正方形边长，把“剪法”这件说不清的事变成一个可以计算的数。</li>
+        <li><b>关系式</b>：<i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，把“高 × 底面积”翻译成字母式子，从此每个 <i>x</i> 都对应唯一一个 <i>V</i>。</li>
+        <li><b>取值范围</b>：0 &lt; <i>x</i> &lt; 10，由“高要大于 0、底边也要大于 0”定出，它决定了我们只需在 0 到 10 之间找答案。</li>
+        <li><b>估算</b>：用表格取一批值、算出对应的容积，从数据里看出“先增后减”的趋势。</li>
+        <li><b>逼近</b>：加密取值、二分缩小区间，用有限的几次计算把最优点找得越来越准。</li>
+        <li><b>检验</b>：查量纲、查合理性、查边界、与整数解比较，确认结论靠得住。</li>
+        <li><b>推广</b>：把 20 换成 <i>a</i>，把正方形换成长方形，从“一个盒子的答案”走到“一类盒子的公式”。</li>
+      </ul>
+    </div>
+    <p>再往上看一层，这七样东西串起来就是一条完整的建模链条：现实问题 → 数学问题 → 数学结果 → 回到现实检验 → 推广到更多情形。这条链条不只属于收纳盒。以后遇到“怎样排队等候时间最短”“怎样买票最省钱”“怎样安排路线最省时”，走的都是同一条路：先设变量、写关系、定范围，再估算、逼近、检验、推广。活动课的价值，正在于让你亲手走过一遍这条路。</p>
+
+    <h4 class="subhead">3. 四个反思问题</h4>
+    <p>下面的问题没有标准答案，但每个问题下面给了一段参考思路，供你对照自己的想法。建议先自己写两三句，再看参考思路，看看差在哪里。</p>
+    <p><strong>问题 1：</strong>如果没有计算器，你会怎样减少计算量？</p>
+    <p>参考思路：一是“先粗后细”，先用整数算，只在最大值附近加密，不必把 0 到 10 之间每隔 0.01 都算一遍；二是利用平方数凑整，比如 <i>x</i> = 3 时 14<sup>2</sup> = 196，3 × 196 = 588 心算就能得出；三是先算底面积再乘高，减少一次乘法；四是推广以后直接用公式 <i>V</i> = 2<i>a</i><sup>3</sup>/27，只需算一次；五是几个人分工，各算一段，再合起来比较。核心是“把计算花在最有希望的地方”。</p>
+    <p><strong>问题 2：</strong>为什么最优点附近容积变化很小？</p>
+    <p>参考思路：容积是“高 × 底面积”。<i>x</i> 变大时，高变大而底面积变小，两者一增一减；在顶点附近，这两股力量恰好抵消得最彻底，所以合起来几乎不变。数据也能说明：<i>x</i> 从 3.3 变到 3.4，容积只从 592.593 降到 592.416，差 0.177；而 <i>x</i> 从 2.0 变到 2.1，容积就从 512 升到约 524.2，差 12.2。同样是 0.1 的偏差，在顶点附近影响小得多。这也解释了为什么估算精确到 0.1 就够用。</p>
+    <p><strong>问题 3：</strong>生活中还有哪些“用料一定、容积最大”的问题？</p>
+    <p>参考思路：饮料罐、易拉罐的设计（用多少铝皮装最多的饮料）；快递纸箱的尺寸搭配；冰箱、储物箱的内部空间设计；米桶、水杯、饭盒的形状；甚至书包、帐篷的容积与用料之比。这些问题有的比我们的收纳盒复杂得多（比如罐子还要考虑接口、标签、堆叠），但思路是一样的：先定“用料一定”这个条件，再问“怎样装得最多”。可以选一个自己感兴趣的，查一查它是怎样设计的。</p>
+    <p><strong>问题 4：</strong>如果纸板是 40 cm × 20 cm，但要求盒底必须是正方形，你会怎样处理？</p>
+    <p>参考思路：盒底要正方形，就得让 40 − 2<i>x</i> = 20 − 2<i>x</i>，也就是 40 = 20，不可能。原因很清楚：四角剪去的是同样大小的正方形，折起后四条棱一样高，底面的长与宽就只能相差 40 − 20 = 20 cm，永远不可能相等。可行的改法有两种。一是先把纸板裁成 20 cm × 20 cm 的正方形，再按 <i>x</i> ≈ 3.3 做，最大容积约 592.6 cm<sup>3</sup>，代价是白白浪费了 400 cm<sup>2</sup> 的纸。二是接受长方形底面，按 <i>x</i> ≈ 4.2 做，容积约 1539.6 cm<sup>3</sup>，反而比裁成正方形大得多。这说明“前提”与“结论”是绑在一起的：想要正方底，就得改材料；不想改材料，就得改要求，不能两头都要。</p>
+
+    <h4 class="subhead">4. 练习：把整个活动再过一遍</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】填空：(1) 本活动经历的环节依次是：提出问题 → ______ → 估算 → ______ → 检验 → ______ → 评价；(2) 20 cm 正方形纸板的容积关系式是 ______，取值范围是 ______；(3) 最优剪口约 ______ cm，最大容积约 ______ cm<sup>3</sup>。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>(1) 提出问题 → 数学化（把问题变成式子）→ 估算 → 逼近 → 检验 → 推广 → 评价。</p>
+          <p>(2) <i>V</i> = <i>x</i>(20 − 2<i>x</i>)<sup>2</sup>，其中 0 &lt; <i>x</i> &lt; 10。</p>
+          <p>(3) 最优剪口约 3.3 cm（更精确 3.33，理论上 10/3），最大容积约 592.6 cm<sup>3</sup>。</p>
+          <p>说明：第 (3) 问中 592.6 是 16000/27 的近似值，写成“约”字不能省；单位是 cm<sup>3</sup>，不是 cm。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】判断并说明理由：(1) 容积的最大值一定在 <i>x</i> 取整数时取得；(2) 3.33 就是最优点 10/3 的精确值；(3) 既然最优点附近容错性好，剪口随便剪多少都行。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>(1) 错。整数中 <i>x</i> = 3 时 588 最大，但 <i>x</i> = 3.3 时已达 592.548，3.33 时 592.592，都比 588 大。最大值不在整数处取得。</p>
+          <p>(2) 错。10/3 = 3.333…，是无限循环小数，3.33 只是它的近似值（保留两位小数），与精确值还差约 0.0033。</p>
+          <p>(3) 错。容错性好只说明在最优点附近小偏差影响小，偏差到 0.5 cm 以上损失就明显了：<i>x</i> = 2.8 时约 580.6，<i>x</i> = 3.8 时约 584.3，都比 592.593 少 8 以上。剪口仍要按 3.3 cm 左右认真画线。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】一张边长为 16 cm 的正方形硬纸板，用推广公式求最优剪口与最大容积（容积保留一位小数），并说明这个结果能不能用“整数列表”直接得到。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>最优剪口 <i>x</i> = 16/6 = 8/3 ≈ 2.67 cm，底面边长 16 − 2 × 8/3 = 32/3 ≈ 10.67 cm。</p>
+          <p>容积 <i>V</i> = (8/3) × (32/3)<sup>2</sup> = (8/3) × (1024/9) = 8192/27 ≈ 303.4 cm<sup>3</sup>。</p>
+          <p>用公式复核：2 × 16<sup>3</sup>/27 = 2 × 4096/27 = 8192/27 ≈ 303.4，一致。</p>
+          <p>若只取整数：<i>x</i> = 2 时 2 × 12<sup>2</sup> = 288；<i>x</i> = 3 时 3 × 10<sup>2</sup> = 300。整数中最大是 300，比 303.4 少 3.4 cm<sup>3</sup>。所以整数列表只能给出“大概在 2 和 3 之间”，要得到 303.4 还得加密或直接用公式。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【拓展·开放】班里要给讲台做一个收纳盒，手边是一张 30 cm × 30 cm 的正方形硬纸板，要求盒内能平放一把长 20 cm 的直尺。请给出一个制作方案（剪口大小、盒子尺寸、容积），并说明你的取舍理由。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>示例方案：取 <i>x</i> = 5 cm，四个角各剪去边长 5 cm 的小正方形，做成底面 20 cm × 20 cm、高 5 cm 的盒子，容积 5 × 20<sup>2</sup> = 2000 cm<sup>3</sup>。</p>
+          <p>取舍理由：30 cm 纸板的理论最优剪口是 30/6 = 5 cm，恰好使底面边长 20 cm，直尺正好能平放进去；容积也正好是最大值 2000 cm<sup>3</sup>，两个要求同时满足，是最理想的选择。</p>
+          <p>若希望直尺放进去更宽松，可取 <i>x</i> = 4.5 cm，底面 21 cm × 21 cm、高 4.5 cm，容积 4.5 × 441 = 1984.5 cm<sup>3</sup>，只比最大值少 15.5 cm<sup>3</sup>（约 0.8%），换来 1 cm 的余量，也是合理的方案。</p>
+          <p>若取 <i>x</i> = 6 cm，底面只有 18 cm × 18 cm，直尺平放不下（斜着勉强能塞进去，取用也不方便），方案不可行——这说明“容积最大”之外还有“能不能用”的约束，实际设计时要一起考虑。合理即可，关键是把尺寸、容积和理由写清楚。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展·开放】找一件生活中“用料一定、容积尽量大”的物品（如饮料罐、快递箱、饭盒），量一量它的尺寸，估一估它的容积，并写一段 100 字左右的说明：它是怎样在“省料”和“能装”之间取舍的？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>示例：某品牌矿泉水的瓶子，瓶身近似圆柱，量得直径约 6.5 cm、高约 20 cm，容积约 3.14 × 3.25<sup>2</sup> × 20 ≈ 663 cm<sup>3</sup>，与标签上的 600 mL 大致相当（瓶身上部收窄，实际略小）。</p>
+          <p>说明示例：瓶身做得细高，一是手握方便，二是同样容积下细高的瓶子用料更省；瓶口收窄、瓶底内凹，既省料又增加稳定性。它并没有一味追求“装得最多”，而是在省料、好拿、好摆放之间取了一个折中。这与我们的收纳盒一样：数学给出“最大”的位置，实际方案还要考虑使用的方便。合理即可，数据以自己测量为准。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="keypoint"><strong>要点：</strong>评价的目的是改进，不是排名。对照表 6 找出自己最薄弱的一两项，写一句具体的改进办法（例如“下次先用二分法把区间缩到 0.05 再加密”“表格里补上单位”），比笼统地写“我要更认真”有用得多。</div>
+
+    <div class="note"><strong>拓展：</strong>如果给盒子加一个盖子，用同样一张纸板，容积会怎样变？如果盒子的长宽比被固定为 2 : 1，最优尺寸又在哪里？如果纸板可以拼接，能不能做出容积更大的盒子？这些问题已经超出了本活动的要求，但思路完全一样：设变量、写关系、定范围、估算、逼近、检验。有兴趣的同学可以选一个试一试，把结果写成一份小报告。</div>
+  </section>
+</section>
+
+
+    <footer class="footer">
+      <p><strong>编制说明</strong>　本讲义依据北京师范大学出版社《义务教育教科书·数学·七年级上册》（2024 年秋版）“综合与实践”板块编写，供课堂活动、项目式学习与章末复习使用。</p>
+      <p>活动中的数据、表格与图形均经过逐项复核：容积表达式、列表数值、折线图与逼近过程彼此一致，图形为矢量绘制，可无损放大或打印。</p>
+      <p>建议用法：先按“环节 1—2”把实际问题转化为数学问题，再用“环节 3—5”动手估算与逼近，最后用“环节 6—8”检验结论、拓展推广并完成活动评价。</p>
+    </footer>
+
+  </main>
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  "use strict";
+
+  var topbar = document.querySelector(".topbar");
+  var sidebar = document.getElementById("sidebar");
+  var progress = document.getElementById("progress");
+  var toTop = document.getElementById("toTop");
+  var menuBtn = document.getElementById("menuBtn");
+  var printBtn = document.getElementById("printBtn");
+  var toggleBtn = document.getElementById("toggleAnswers");
+  var answers = Array.prototype.slice.call(document.querySelectorAll("details.answer"));
+
+  /* ---- 阅读进度 + 回到顶部 ---- */
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var y = window.pageYOffset || doc.scrollTop;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+    toTop.classList.toggle("show", y > 600);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---- 移动端目录抽屉 ---- */
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      sidebar.classList.toggle("open");
+    });
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a")) sidebar.classList.remove("open");
+    });
+    document.addEventListener("click", function (e) {
+      if (window.innerWidth > 1100) return;
+      if (!sidebar.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove("open");
+      }
+    });
+  }
+
+  /* ---- 展开 / 收起答案 ---- */
+  var allOpen = false;
+  function setAll(open) {
+    allOpen = open;
+    answers.forEach(function (d) { d.open = open; });
+    if (toggleBtn) toggleBtn.textContent = open ? "收起答案" : "展开答案";
+  }
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () { setAll(!allOpen); });
+  }
+
+  /* ---- 打印：临时展开全部答案，打印后还原 ---- */
+  var saved = null;
+  window.addEventListener("beforeprint", function () {
+    saved = answers.map(function (d) { return d.open; });
+    answers.forEach(function (d) { d.open = true; });
+  });
+  window.addEventListener("afterprint", function () {
+    if (!saved) return;
+    answers.forEach(function (d, i) { d.open = saved[i]; });
+    saved = null;
+  });
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      window.print();
+    });
+  }
+
+  /* ---- 目录高亮（滚动定位） ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".side-nav a"));
+  var targets = links.map(function (a) {
+    return document.getElementById(a.getAttribute("href").slice(1));
+  });
+  function highlight() {
+    var y = (window.pageYOffset || document.documentElement.scrollTop) + 120;
+    var current = 0;
+    targets.forEach(function (el, i) {
+      if (el && el.offsetTop <= y) current = i;
+    });
+    links.forEach(function (a, i) {
+      a.classList.toggle("active", i === current);
+    });
+  }
+  window.addEventListener("scroll", highlight, { passive: true });
+  window.addEventListener("resize", highlight);
+  highlight();
+})();
+</script>
+</body>
+</html>

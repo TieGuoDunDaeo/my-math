@@ -1,0 +1,3299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>概率初步 · 北师大版七年级下册数学第三章 教学讲义</title>
+<meta name="description" content="北师大版七年级下册数学第三章《概率初步》教学讲义：感受可能性、频率的稳定性、等可能事件的概率、回顾与思考、复习题，含知识讲解、例题、练习与参考答案，支持暗色主题。">
+<meta name="color-scheme" content="light dark">
+<style>
+/* ============ 基础变量 ============ */
+:root{
+  --ink:#1f2937;
+  --ink-soft:#3f4b5b;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --line-strong:#cbd5e1;
+  --paper:#ffffff;
+  --bg:#eef2f7;
+  --brand:#1d4ed8;
+  --brand-dark:#1e3a8a;
+  --brand-light:#eff6ff;
+  --accent:#b45309;
+  --accent-light:#fffbeb;
+  --green:#047857;
+  --green-light:#ecfdf5;
+  --orange:#c2410c;
+  --orange-light:#fff7ed;
+  --purple:#6d28d9;
+  --purple-light:#f5f3ff;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.18);
+  --font-sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",SimSun,serif;
+  --topbar-h:56px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h) + 18px);-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-serif);
+  font-size:17px;
+  line-height:1.9;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;}
+a{color:var(--brand);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ============ 阅读进度条 ============ */
+.reading-progress{
+  position:fixed;top:0;left:0;height:3px;width:0;
+  background:linear-gradient(90deg,#1d4ed8,#0ea5e9,#f59e0b);
+  z-index:120;transition:width .12s linear;
+}
+
+/* ============ 顶栏 ============ */
+.topbar{
+  position:sticky;top:0;z-index:100;height:var(--topbar-h);
+  display:flex;align-items:center;gap:16px;
+  padding:0 22px;
+  background:rgba(255,255,255,.9);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-title{
+  font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--brand-dark);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  min-width:0;flex:1 1 auto;
+}
+.topbar-title span{color:var(--muted);font-weight:400;}
+.topbar-spacer{display:none;}
+.topbar-btn{
+  font-family:var(--font-sans);font-size:13px;line-height:1;
+  padding:8px 13px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line-strong);background:#fff;color:var(--ink-soft);
+  transition:.18s;white-space:nowrap;
+}
+.topbar-btn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-light);}
+.topbar-btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;}
+.topbar-btn.primary:hover{background:var(--brand-dark);color:#fff;}
+.only-narrow{display:none;}
+.menu-btn{display:none;}
+
+/* ============ 布局 ============ */
+.layout{
+  display:grid;
+  grid-template-columns:258px minmax(0,1fr);
+  gap:44px;
+  max-width:1260px;
+  margin:0 auto;
+  padding:0 26px 80px;
+}
+.sidebar{
+  position:sticky;top:var(--topbar-h);
+  align-self:start;
+  height:calc(100vh - var(--topbar-h));
+  overflow-y:auto;
+  padding:26px 6px 40px 0;
+  font-family:var(--font-sans);
+  scrollbar-width:thin;
+}
+.sidebar::-webkit-scrollbar{width:6px;}
+.sidebar::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+.side-title{
+  font-size:11px;letter-spacing:.18em;color:var(--muted);
+  text-transform:uppercase;margin:0 0 12px 10px;
+}
+.side-nav{list-style:none;margin:0;padding:0;}
+.side-nav li{margin:1px 0;}
+.side-nav a{
+  display:block;padding:6px 10px;border-radius:8px;
+  font-size:13.5px;color:var(--ink-soft);line-height:1.5;
+  border-left:2px solid transparent;transition:.15s;
+}
+.side-nav a:hover{background:#fff;color:var(--brand);text-decoration:none;}
+.side-nav a.active{background:var(--brand-light);color:var(--brand-dark);border-left-color:var(--brand);font-weight:600;}
+.side-nav .lvl1 > a{font-weight:600;color:var(--ink);font-size:14px;margin-top:8px;}
+.side-nav .lvl2 > a{padding-left:22px;font-size:13px;}
+.side-nav .lvl2 > a::before{content:"·";margin-right:6px;color:var(--line-strong);}
+
+/* ============ 内容区 ============ */
+.content{max-width:900px;min-width:0;padding-top:34px;}
+
+/* ============ 封面 ============ */
+.cover{
+  position:relative;overflow:hidden;
+  border-radius:22px;
+  padding:58px 54px 46px;
+  color:#fff;
+  background:
+    radial-gradient(1200px 420px at 88% -10%,rgba(56,189,248,.35),transparent 60%),
+    radial-gradient(700px 380px at 6% 108%,rgba(245,158,11,.28),transparent 60%),
+    linear-gradient(150deg,#0f2557 0%,#1e3a8a 46%,#1d4ed8 100%);
+  box-shadow:0 24px 60px -28px rgba(15,37,87,.65);
+}
+.cover::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:linear-gradient(160deg,rgba(0,0,0,.9),transparent 72%);
+  -webkit-mask-image:linear-gradient(160deg,rgba(0,0,0,.9),transparent 72%);
+}
+.cover-badge{
+  position:relative;z-index:1;
+  display:inline-block;font-family:var(--font-sans);font-size:12px;letter-spacing:.22em;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+}
+.cover h1{
+  position:relative;z-index:1;
+  font-family:var(--font-sans);
+  font-size:clamp(34px,5.2vw,52px);
+  line-height:1.16;letter-spacing:.04em;
+  margin:22px 0 10px;font-weight:700;
+  text-shadow:0 6px 30px rgba(0,0,0,.25);
+}
+.cover-sub{
+  position:relative;z-index:1;
+  font-family:var(--font-sans);font-size:16px;color:rgba(255,255,255,.86);
+  margin:0 0 30px;letter-spacing:.06em;
+}
+.cover-meta{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px 26px;
+  border-top:1px solid rgba(255,255,255,.2);padding-top:24px;
+  font-family:var(--font-sans);
+}
+.cover-meta div{display:flex;flex-direction:column;gap:3px;}
+.cover-meta span{font-size:11.5px;letter-spacing:.16em;color:rgba(255,255,255,.6);}
+.cover-meta strong{font-size:14px;font-weight:600;color:#fff;}
+
+/* ============ 目录卡 ============ */
+.toc-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 34px 32px;margin:26px 0 40px;box-shadow:var(--shadow);
+}
+.toc-card h2{
+  font-family:var(--font-sans);font-size:19px;margin:0 0 4px;color:var(--brand-dark);
+  display:flex;align-items:center;gap:10px;
+}
+.toc-card h2::before{content:"";width:5px;height:19px;border-radius:3px;background:var(--brand);}
+.toc-note{font-family:var(--font-sans);font-size:13px;color:var(--muted);margin:0 0 18px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;font-family:var(--font-sans);}
+.toc-grid a{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:7px 10px;border-radius:8px;font-size:14px;color:var(--ink-soft);
+  border-bottom:1px dashed var(--line);
+}
+.toc-grid a:hover{background:var(--brand-light);color:var(--brand);text-decoration:none;}
+.toc-grid a em{font-style:normal;color:var(--muted);font-size:12px;white-space:nowrap;}
+.toc-grid .toc-l1{font-weight:600;color:var(--ink);}
+.toc-grid .toc-l2{padding-left:20px;font-size:13.5px;}
+
+/* ============ 节 ============ */
+.part{scroll-margin-top:calc(var(--topbar-h) + 12px);margin:0 0 10px;}
+.part-head{
+  border-left:6px solid var(--brand);
+  padding:6px 0 6px 24px;
+  margin:52px 0 26px;
+}
+.part-kicker{
+  font-family:var(--font-sans);font-size:12px;letter-spacing:.2em;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.part-title{
+  font-family:var(--font-sans);font-size:clamp(26px,3.4vw,34px);
+  line-height:1.25;margin:0 0 12px;color:var(--brand-dark);letter-spacing:.02em;
+}
+.part-intro{
+  margin:0;color:var(--ink-soft);font-size:16px;line-height:1.95;
+  padding:16px 20px;background:#fff;border:1px solid var(--line);
+  border-left:3px solid var(--line-strong);border-radius:0 10px 10px 0;
+}
+
+/* ============ 学习目标 ============ */
+.goal-box{
+  background:linear-gradient(180deg,#fffdf5,#fffbeb);
+  border:1px solid #fde68a;border-radius:var(--radius);
+  padding:22px 26px 20px;margin:0 0 34px;
+}
+.goal-box h3{
+  font-family:var(--font-sans);font-size:16px;margin:0 0 10px;color:#92400e;
+  display:flex;align-items:center;gap:8px;
+}
+.goal-box h3::before{content:"◎";font-size:15px;}
+.goal-box ul{margin:0;padding-left:22px;}
+.goal-box li{margin:5px 0;color:#78350f;font-size:15.5px;line-height:1.85;}
+
+/* ============ 知识卡 ============ */
+.knowledge-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 38px 38px;margin:0 0 34px;box-shadow:var(--shadow);
+  scroll-margin-top:calc(var(--topbar-h) + 16px);
+}
+.card-title{
+  font-family:var(--font-sans);font-size:22px;line-height:1.35;
+  margin:0 0 22px;padding-bottom:16px;border-bottom:1px solid var(--line);
+  color:var(--brand-dark);display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.card-title .num{
+  display:inline-block;font-size:12.5px;font-weight:600;letter-spacing:.1em;
+  padding:5px 12px;border-radius:999px;background:var(--brand);color:#fff;
+  flex:none;
+}
+.subhead{
+  font-family:var(--font-sans);font-size:17.5px;line-height:1.5;
+  margin:32px 0 12px;color:var(--brand-dark);
+  padding-left:12px;border-left:4px solid #93c5fd;
+}
+.knowledge-card > p{margin:12px 0;}
+.knowledge-card ul,.knowledge-card ol{margin:12px 0;padding-left:26px;}
+.knowledge-card li{margin:6px 0;}
+strong{color:#111827;font-weight:700;}
+em{font-style:normal;color:var(--accent);font-weight:600;}
+
+/* ============ 提示块 ============ */
+.keypoint,.tip,.warn,.method,.note{
+  border-radius:12px;padding:16px 20px;margin:20px 0;font-size:15.8px;line-height:1.9;
+}
+.keypoint{background:var(--brand-light);border:1px solid #bfdbfe;border-left:4px solid #3b82f6;}
+.keypoint strong{color:#1e40af;}
+.tip{background:var(--green-light);border:1px solid #a7f3d0;border-left:4px solid #10b981;}
+.tip strong{color:#065f46;}
+.warn{background:var(--orange-light);border:1px solid #fed7aa;border-left:4px solid #f97316;}
+.warn strong{color:#9a3412;}
+.method{background:var(--purple-light);border:1px solid #ddd6fe;border-left:4px solid #8b5cf6;}
+.method strong{color:#5b21b6;}
+.note{background:#f8fafc;border:1px dashed var(--line-strong);border-left:4px solid #94a3b8;}
+.note strong{color:#475569;}
+.keypoint p:first-child,.tip p:first-child,.warn p:first-child,
+.method p:first-child,.note p:first-child{margin-top:0;}
+.keypoint p:last-child,.tip p:last-child,.warn p:last-child,
+.method p:last-child,.note p:last-child{margin-bottom:0;}
+.method ul,.method ol{margin:8px 0 0;padding-left:24px;}
+
+/* ============ 公式 ============ */
+.formula{
+  margin:20px 0;padding:18px 22px;border-radius:12px;
+  background:#f8fafc;border:1px solid var(--line);
+  text-align:center;
+}
+.formula-label{
+  font-family:var(--font-sans);font-size:12.5px;letter-spacing:.12em;
+  color:var(--muted);margin-bottom:8px;
+}
+.formula-body{
+  font-family:"Cambria Math",Cambria,"Times New Roman",var(--font-serif);
+  font-size:20px;color:var(--brand-dark);line-height:1.7;letter-spacing:.02em;
+}
+
+/* ============ 例题 ============ */
+.example{
+  border:1px solid #dbeafe;border-radius:12px;margin:24px 0;
+  overflow:hidden;background:#fff;
+}
+.example-head{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 20px;background:linear-gradient(90deg,#eff6ff,#f8fbff);
+  border-bottom:1px solid #dbeafe;
+}
+.example-no{
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  background:var(--brand);color:#fff;padding:4px 11px;border-radius:999px;
+  letter-spacing:.06em;flex:none;
+}
+.example-title{font-family:var(--font-sans);font-size:15px;color:var(--brand-dark);font-weight:600;}
+.example-body{padding:18px 22px 20px;}
+.example-body > p{margin:8px 0;}
+.solution{
+  margin-top:14px;padding:14px 18px;border-radius:10px;
+  background:#f8fafc;border-left:3px solid var(--brand);
+}
+.solution-label{
+  font-family:var(--font-sans);font-size:12.5px;font-weight:700;color:var(--brand);
+  letter-spacing:.14em;margin-bottom:6px;
+}
+.solution p{margin:6px 0;font-size:15.8px;}
+.variant{
+  margin:16px 0 0;padding:12px 16px;border-radius:10px;
+  background:#fffbeb;border:1px dashed #fcd34d;font-size:15.5px;
+}
+
+/* ============ 练习 ============ */
+.exercise{
+  padding:18px 2px 20px;border-bottom:1px dashed var(--line);
+}
+.exercise:last-of-type{border-bottom:none;}
+.exercise-head{
+  display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:start;
+  font-size:16px;line-height:1.9;
+}
+.exercise-no{
+  grid-column:1;grid-row:1 / span 99;
+  min-width:26px;height:26px;padding:0 9px;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:var(--font-sans);font-size:13px;font-weight:700;
+  background:#e0e7ff;color:#3730a3;margin-top:3px;
+}
+.exercise-head > *:not(.exercise-no){grid-column:2;min-width:0;}
+.exercise-head p{margin:6px 0;}
+.exercise-head p:first-child{margin-top:0;}
+.option{display:inline-block;margin-right:18px;white-space:nowrap;}
+
+/* ============ 答案 ============ */
+details.answer{
+  margin:10px 0 0 38px;border-radius:10px;background:#f8fafc;
+  border:1px solid var(--line);overflow:hidden;
+}
+details.answer summary{
+  cursor:pointer;list-style:none;padding:9px 16px;
+  font-family:var(--font-sans);font-size:13.5px;color:var(--brand);
+  user-select:none;display:flex;align-items:center;gap:8px;
+}
+details.answer summary::-webkit-details-marker{display:none;}
+details.answer summary::before{
+  content:"▸";font-size:11px;transition:transform .18s;display:inline-block;color:var(--brand);
+}
+details.answer[open] summary::before{transform:rotate(90deg);}
+details.answer summary:hover{background:var(--brand-light);}
+.answer-body{padding:4px 18px 16px;font-size:15.3px;line-height:1.9;color:var(--ink-soft);}
+.answer-body p{margin:7px 0;}
+.answer-body strong{color:var(--brand-dark);}
+
+/* ============ 图 ============ */
+.figure{
+  margin:26px 0;padding:14px 14px 10px;
+  background:#fbfdff;border:1px solid var(--line);border-radius:12px;
+  text-align:center;
+}
+.fig-svg{display:block;width:100%;height:auto;max-width:100%;}
+figure.figure figcaption{
+  font-family:var(--font-sans);font-size:13px;color:var(--muted);
+  margin-top:8px;line-height:1.6;
+}
+
+/* ============ 多栏 ============ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:22px 0;align-items:start;}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;align-items:start;}
+.two-col > div,.three-col > div{min-width:0;}
+.two-col .figure,.three-col .figure{margin:0;}
+
+/* ============ 表格 ============ */
+.data-table{
+  width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;
+  font-family:var(--font-sans);background:#fff;
+  border:1px solid var(--line-strong);border-radius:10px;overflow:hidden;
+}
+.data-table caption{
+  caption-side:top;text-align:left;font-size:13.5px;color:var(--muted);
+  padding:0 0 8px;font-family:var(--font-sans);
+}
+.data-table th,.data-table td{
+  border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;
+  line-height:1.7;
+}
+.data-table thead th{background:#f1f5f9;color:var(--brand-dark);font-weight:600;white-space:nowrap;}
+.data-table tbody tr:nth-child(even){background:#fafbfd;}
+.data-table td.c,.data-table th.c{text-align:center;}
+
+/* ============ 章末自评 ============ */
+.self-check{margin:22px 0;}
+
+/* ============ 页脚 ============ */
+.footer{
+  margin-top:56px;padding:26px 0 0;border-top:1px solid var(--line);
+  font-family:var(--font-sans);font-size:13px;color:var(--muted);line-height:1.9;
+}
+.footer p{margin:4px 0;}
+
+/* ============ 回到顶部 ============ */
+.to-top{
+  position:fixed;right:26px;bottom:28px;z-index:90;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);
+  background:#fff;color:var(--brand);cursor:pointer;
+  box-shadow:0 8px 20px -8px rgba(15,23,42,.3);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:.22s;font-size:18px;
+}
+.to-top.show{opacity:1;visibility:visible;}
+.to-top:hover{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+/* ============ 响应式 ============ */
+@media (max-width:1100px){
+  .layout{grid-template-columns:1fr;gap:0;padding:0 18px 60px;}
+  .sidebar{
+    position:fixed;top:var(--topbar-h);left:0;bottom:0;width:280px;height:auto;
+    background:#fff;border-right:1px solid var(--line);z-index:99;
+    padding:20px 14px 40px;transform:translateX(-102%);transition:transform .24s ease;
+    box-shadow:0 10px 40px -20px rgba(15,23,42,.4);
+  }
+  .sidebar.open{transform:none;}
+  .menu-btn{display:inline-block;}
+  .content{padding-top:22px;}
+  .knowledge-card{padding:26px 22px 30px;}
+  .cover{padding:40px 28px 34px;border-radius:16px;}
+  .toc-card{padding:24px 20px 26px;}
+}
+@media (max-width:760px){
+  body{font-size:16px;line-height:1.85;}
+  .topbar{padding:0 10px;gap:6px;}
+  .topbar-title{font-size:13px;max-width:84px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .topbar-title span{display:none;}
+  .topbar-btn{padding:6px 8px;font-size:11.5px;}
+  .only-wide{display:none;}
+  .only-narrow{display:inline;}
+  .layout{padding:0 12px 50px;}
+  .content{padding-top:16px;}
+  .cover{padding:32px 20px 28px;}
+  .cover h1{font-size:30px;}
+  .cover-meta{grid-template-columns:1fr 1fr;gap:12px;}
+  .toc-grid{grid-template-columns:1fr;}
+  .part-head{margin:36px 0 20px;padding-left:16px;border-left-width:4px;}
+  .part-title{font-size:24px;}
+  .part-intro{font-size:15px;padding:14px 16px;}
+  .knowledge-card{padding:22px 16px 26px;border-radius:12px;}
+  .card-title{font-size:19px;}
+  .subhead{font-size:16px;margin-top:26px;}
+  .two-col,.three-col{grid-template-columns:1fr;gap:16px;}
+  .two-col .figure,.three-col .figure{max-width:100%;}
+  details.answer{margin-left:0;}
+  .data-table{font-size:13.5px;}
+  .data-table th,.data-table td{padding:7px 8px;}
+  .to-top{right:14px;bottom:16px;width:38px;height:38px;}
+  .cover-meta{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .cover-meta div{min-width:0;}
+  .cover-meta strong{overflow-wrap:anywhere;}
+  .cover-sub{font-size:14px;letter-spacing:.02em;}
+  .toc-grid a{min-width:0;}
+  .topbar{padding:0 10px;gap:8px;}
+  .topbar-btn{padding:6px 9px;font-size:11.5px;}
+}
+
+/* ============ 暗色主题 ============ */
+html[data-theme="dark"]{
+  --ink:#e2e8f0;
+  --ink-soft:#cbd5e1;
+  --muted:#94a3b8;
+  --line:#243044;
+  --line-strong:#334155;
+  --paper:#111a2b;
+  --bg:#0a1120;
+  --brand:#60a5fa;
+  --brand-dark:#bfdbfe;
+  --brand-light:#16233d;
+  --accent:#fbbf24;
+  --accent-light:#2a1f0a;
+  --green:#34d399;
+  --green-light:#0c2a22;
+  --orange:#fb923c;
+  --orange-light:#2b1708;
+  --purple:#a78bfa;
+  --purple-light:#1e1733;
+  color-scheme:dark;
+}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink);}
+html[data-theme="dark"] .topbar{background:rgba(10,17,32,.88);border-bottom-color:var(--line);}
+html[data-theme="dark"] .topbar-btn{background:#16233d;color:var(--ink-soft);border-color:var(--line-strong);}
+html[data-theme="dark"] .topbar-btn:hover{background:#1c2b47;color:var(--brand);border-color:var(--brand);}
+html[data-theme="dark"] .topbar-btn.primary{background:#1d4ed8;border-color:#1d4ed8;color:#fff;}
+html[data-theme="dark"] .topbar-btn.primary:hover{background:#1e40af;}
+html[data-theme="dark"] .side-nav a{color:var(--ink-soft);}
+html[data-theme="dark"] .side-nav .lvl1 > a{color:var(--ink);}
+html[data-theme="dark"] .side-nav a:hover{background:#16233d;color:var(--brand);}
+html[data-theme="dark"] .side-nav a.active{background:#16233d;color:#bfdbfe;border-left-color:var(--brand);}
+html[data-theme="dark"] .toc-card{background:var(--paper);border-color:var(--line);}
+html[data-theme="dark"] .toc-card h2{color:var(--brand-dark);}
+html[data-theme="dark"] .toc-grid a{color:var(--ink-soft);border-bottom-color:var(--line);}
+html[data-theme="dark"] .toc-grid .toc-l1{color:var(--ink);}
+html[data-theme="dark"] .toc-grid a:hover{background:#16233d;color:var(--brand);}
+html[data-theme="dark"] .toc-grid a em{color:var(--muted);}
+html[data-theme="dark"] .part-intro{background:#0f1a2c;border-color:var(--line);border-left-color:var(--line-strong);color:var(--ink-soft);}
+html[data-theme="dark"] .goal-box{background:linear-gradient(180deg,#1d1a10,#221b0c);border-color:#4a3a12;}
+html[data-theme="dark"] .goal-box h3{color:#fbbf24;}
+html[data-theme="dark"] .goal-box li{color:#e7d9b8;}
+html[data-theme="dark"] .knowledge-card{background:var(--paper);border-color:var(--line);}
+html[data-theme="dark"] .card-title{color:var(--brand-dark);border-bottom-color:var(--line);}
+html[data-theme="dark"] .subhead{color:var(--brand-dark);border-left-color:#3b82f6;}
+html[data-theme="dark"] strong{color:#f1f5f9;}
+html[data-theme="dark"] .keypoint{background:#16233d;border-color:#1e40af;border-left-color:#3b82f6;}
+html[data-theme="dark"] .keypoint strong{color:#93c5fd;}
+html[data-theme="dark"] .tip{background:#0c2a22;border-color:#065f46;border-left-color:#10b981;}
+html[data-theme="dark"] .tip strong{color:#6ee7b7;}
+html[data-theme="dark"] .warn{background:#2b1708;border-color:#7c2d12;border-left-color:#f97316;}
+html[data-theme="dark"] .warn strong{color:#fdba74;}
+html[data-theme="dark"] .method{background:#1e1733;border-color:#4c1d95;border-left-color:#8b5cf6;}
+html[data-theme="dark"] .method strong{color:#c4b5fd;}
+html[data-theme="dark"] .note{background:#0f1a2c;border-color:var(--line-strong);border-left-color:#64748b;}
+html[data-theme="dark"] .note strong{color:#cbd5e1;}
+html[data-theme="dark"] .formula{background:#0f1a2c;border-color:var(--line);}
+html[data-theme="dark"] .formula-body{color:#bfdbfe;}
+html[data-theme="dark"] .example{background:var(--paper);border-color:#1e3a5f;}
+html[data-theme="dark"] .example-head{background:linear-gradient(90deg,#16233d,#111a2b);border-bottom-color:#1e3a5f;}
+html[data-theme="dark"] .example-title{color:#bfdbfe;}
+html[data-theme="dark"] .solution{background:#0f1a2c;border-left-color:#60a5fa;}
+html[data-theme="dark"] .variant{background:#221b0c;border-color:#4a3a12;}
+html[data-theme="dark"] .exercise-no{background:#1e1b4b;color:#c7d2fe;}
+html[data-theme="dark"] details.answer{background:#0f1a2c;border-color:var(--line);}
+html[data-theme="dark"] details.answer summary{color:#93c5fd;}
+html[data-theme="dark"] details.answer summary:hover{background:#16233d;}
+html[data-theme="dark"] .figure{background:#0f1a2c;border-color:var(--line);}
+html[data-theme="dark"] .data-table{background:var(--paper);border-color:var(--line-strong);}
+html[data-theme="dark"] .data-table th,
+html[data-theme="dark"] .data-table td{border-color:var(--line);}
+html[data-theme="dark"] .data-table thead th{background:#16233d;color:#bfdbfe;}
+html[data-theme="dark"] .data-table tbody tr:nth-child(even){background:#0f1a2c;}
+html[data-theme="dark"] .review-grid > div,
+html[data-theme="dark"] .mindmap > div{background:#0f1a2c;border-color:var(--line);}
+html[data-theme="dark"] .to-top{background:#16233d;color:#93c5fd;border-color:var(--line-strong);}
+html[data-theme="dark"] .to-top:hover{background:#1d4ed8;color:#fff;border-color:#1d4ed8;}
+html[data-theme="dark"] .footer{color:var(--muted);border-top-color:var(--line);}
+html[data-theme="dark"] .cover{box-shadow:0 24px 60px -28px rgba(0,0,0,.8);}
+
+/* SVG 图形在暗色下的配色（按呈现属性选择） */
+html[data-theme="dark"] svg [stroke="#334155"]{stroke:#94a3b8;}
+html[data-theme="dark"] svg [fill="#334155"]{fill:#cbd5e1;}
+html[data-theme="dark"] svg text[fill="#334155"]{fill:#cbd5e1;}
+html[data-theme="dark"] svg text[fill="#1e293b"]{fill:#e2e8f0;}
+html[data-theme="dark"] svg text[fill="#475569"]{fill:#cbd5e1;}
+html[data-theme="dark"] svg text[fill="#64748b"]{fill:#94a3b8;}
+html[data-theme="dark"] svg [stroke="#1d4ed8"]{stroke:#60a5fa;}
+html[data-theme="dark"] svg text[fill="#1d4ed8"]{fill:#93c5fd;}
+html[data-theme="dark"] svg [stroke="#94a3b8"]{stroke:#64748b;}
+html[data-theme="dark"] svg [fill="#dbeafe"]{fill:#1e3a5f;}
+html[data-theme="dark"] svg [fill="#fef3c7"]{fill:#4a3a12;}
+html[data-theme="dark"] svg [fill="#dcfce7"]{fill:#0f3a2a;}
+html[data-theme="dark"] svg [fill="#f1f5f9"]{fill:#16233d;}
+html[data-theme="dark"] svg [fill="#f8fafc"]{fill:#0f1a2c;}
+html[data-theme="dark"] svg [fill="#ffffff"]{fill:#111a2b;}
+html[data-theme="dark"] svg [fill="#fff"]{fill:#111a2b;}
+html[data-theme="dark"] svg [fill="#fbfdff"]{fill:#0f1a2c;}
+
+/* ============ 打印 ============ */
+@media print{
+  @page{size:A4;margin:16mm 14mm 16mm;}
+  :root{--topbar-h:0px;}
+  html,body{background:#fff !important;color:#000 !important;}
+  html[data-theme="dark"]{
+    --ink:#000;--ink-soft:#111;--muted:#444;--line:#d7dee8;--line-strong:#b6c2d1;
+    --paper:#fff;--bg:#fff;--brand:#1e3a8a;--brand-dark:#1e3a8a;--brand-light:#eff6ff;
+  }
+  html[data-theme="dark"] .knowledge-card,
+  html[data-theme="dark"] .example,
+  html[data-theme="dark"] .toc-card,
+  html[data-theme="dark"] .figure,
+  html[data-theme="dark"] details.answer,
+  html[data-theme="dark"] .data-table{background:#fff !important;color:#000 !important;border-color:#d7dee8 !important;}
+  html[data-theme="dark"] .example-head{background:#f1f5f9 !important;}
+  html[data-theme="dark"] .solution,
+  html[data-theme="dark"] .formula,
+  html[data-theme="dark"] .note{background:#fafafa !important;}
+  html[data-theme="dark"] .goal-box{background:#fffbeb !important;border-color:#fde68a !important;}
+  html[data-theme="dark"] .keypoint{background:#eff6ff !important;}
+  html[data-theme="dark"] .tip{background:#ecfdf5 !important;}
+  html[data-theme="dark"] .warn{background:#fff7ed !important;}
+  html[data-theme="dark"] .method{background:#f5f3ff !important;}
+  html[data-theme="dark"] .data-table thead th{background:#f1f5f9 !important;color:#1e3a8a !important;}
+  html[data-theme="dark"] .data-table tbody tr:nth-child(even){background:#fafbfd !important;}
+  html[data-theme="dark"] .topbar,
+  html[data-theme="dark"] .sidebar,
+  html[data-theme="dark"] .reading-progress,
+  html[data-theme="dark"] .to-top,
+  html[data-theme="dark"] .menu-btn{display:none !important;}
+  body{font-size:10.8pt;line-height:1.75;color:#000;}
+  .topbar,.sidebar,.reading-progress,.to-top,.menu-btn{display:none !important;}
+  .layout{display:block;max-width:none;margin:0;padding:0;gap:0;}
+  .content{max-width:none;padding:0;}
+  .cover{
+    border-radius:0;box-shadow:none;page-break-after:always;
+    background:#1e3a8a !important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    padding:34mm 18mm;
+    min-height:250mm;
+    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  }
+  .cover-meta{align-self:stretch;}
+  .cover::after{display:none;}
+  .toc-card{box-shadow:none;page-break-after:always;border:none;padding:0;}
+  .toc-grid{grid-template-columns:1fr 1fr;}
+  .part{page-break-before:always;}
+  .part-head{margin-top:0;}
+  .knowledge-card{
+    box-shadow:none;border:1px solid #d7dee8;border-radius:6px;
+    padding:8mm 7mm;page-break-inside:auto;
+  }
+  .card-title{page-break-after:avoid;}
+  .subhead{page-break-after:avoid;}
+  .example,.exercise,.figure,.formula,.keypoint,.tip,.warn,.method,.note,
+  .two-col,.three-col,.data-table{
+    page-break-inside:avoid;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  details.answer{border:1px solid #d7dee8;background:#fafafa;}
+  details.answer summary{display:none;}
+  details.answer .answer-body{display:block !important;padding-top:10px;}
+  details.answer[open] .answer-body{display:block !important;}
+  a{color:#000;text-decoration:none;}
+  .footer{page-break-before:avoid;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+}
+</style>
+<script>
+(function () {
+  try {
+    var q = new URLSearchParams(location.search).get("theme");
+    var t = q || localStorage.getItem("dsh-x3-theme");
+    if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<div class="reading-progress" id="progress"></div>
+
+<header class="topbar">
+  <button class="topbar-btn menu-btn" id="menuBtn" type="button" aria-label="打开目录">☰ 目录</button>
+  <div class="topbar-title">概率初步 <span>· 北师大版七年级下册 第三章</span></div>
+  <div class="topbar-spacer"></div>
+  <button class="topbar-btn" id="themeBtn" type="button" aria-label="切换暗色主题">🌙 暗色</button>
+  <button class="topbar-btn" id="toggleAnswers" type="button">展开答案</button>
+  <button class="topbar-btn primary" id="printBtn" type="button"><span class="only-wide">打印 / 导出 PDF</span><span class="only-narrow">打印</span></button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <p class="side-title">本章目录</p>
+    <ul class="side-nav" id="sideNav">
+      <li class="lvl1"><a href="#part1">第 1 节　感受可能性</a></li>
+      <li class="lvl2"><a href="#a1-1">第 1 课时　事件与可能性</a></li>
+      <li class="lvl1"><a href="#part2">第 2 节　频率的稳定性</a></li>
+      <li class="lvl2"><a href="#a2-1">第 1 课时　频率的稳定性</a></li>
+      <li class="lvl2"><a href="#a2-2">第 2 课时　用频率估计概率</a></li>
+      <li class="lvl1"><a href="#part3">第 3 节　等可能事件的概率</a></li>
+      <li class="lvl2"><a href="#a3-1">第 1 课时　等可能事件的概率</a></li>
+      <li class="lvl2"><a href="#a3-2">第 2 课时　几何概型</a></li>
+      <li class="lvl2"><a href="#a3-3">第 3 课时　设计游戏</a></li>
+      <li class="lvl1"><a href="#review">回顾与思考</a></li>
+      <li class="lvl1"><a href="#rv-exercises-head">复习题</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <section class="cover">
+      <div class="cover-badge">北师大版 · 新课标 · 七年级下册</div>
+      <h1>概率初步</h1>
+      <p class="cover-sub">第三章 教学讲义　·　知识讲解 · 例题精析 · 分层练习 · 参考答案</p>
+      <div class="cover-meta">
+        <div><span>教材</span><strong>北京师范大学出版社（新课标版）</strong></div>
+        <div><span>章节</span><strong>第三章　概率初步</strong></div>
+        <div><span>内容</span><strong>3 节 · 6 课时 · 回顾与复习</strong></div>
+        <div><span>适用</span><strong>七年级下学期 · 同步学习与复习</strong></div>
+      </div>
+    </section>
+
+    <section class="toc-card">
+      <h2>本章目录</h2>
+      <p class="toc-note">点击标题可直接跳转；电脑端可使用左侧目录随页面滚动定位。</p>
+      <div class="toc-grid">
+        <a class="toc-l1" href="#part1">第 1 节　感受可能性<em>1 课时</em></a>
+        <a class="toc-l2" href="#a1-1">第 1 课时　事件与可能性</a>
+        <a class="toc-l1" href="#part2">第 2 节　频率的稳定性<em>2 课时</em></a>
+        <a class="toc-l2" href="#a2-1">第 1 课时　频率的稳定性</a>
+        <a class="toc-l2" href="#a2-2">第 2 课时　用频率估计概率</a>
+        <a class="toc-l1" href="#part3">第 3 节　等可能事件的概率<em>3 课时</em></a>
+        <a class="toc-l2" href="#a3-1">第 1 课时　等可能事件的概率</a>
+        <a class="toc-l2" href="#a3-2">第 2 课时　几何概型</a>
+        <a class="toc-l2" href="#a3-3">第 3 课时　设计游戏</a>
+        <a class="toc-l1" href="#review">回顾与思考<em>1 课时</em></a>
+        <a class="toc-l1" href="#rv-exercises-head">复习题<em>2 课时</em></a>
+      </div>
+    </section>
+
+<section class="part" id="part1">
+  <div class="part-head">
+    <div class="part-kicker">第 1 节 · 建议 1 课时</div>
+    <h2 class="part-title">感受可能性</h2>
+    <p class="part-intro">明天会下雨吗？掷一枚骰子会掷出几点？从袋里摸出的球会是什么颜色？这些都是“结果事先说不准”的事。数学把这类事放在“概率”的框架里研究：先按“一定发生、一定不发生、可能发生也可能不发生”给事件分类，再比较它们发生的可能性大小，最后用这些认识去判断游戏对双方是否公平。本节我们不套公式，只在摸球、转盘、掷骰子这些熟悉的活动中，把“可能性”看明白、说清楚。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>学习目标</h3>
+    <ul>
+      <li>能结合具体情境判断一个事件是必然事件、不可能事件还是随机事件，并说明判断的理由。</li>
+      <li>知道必然事件与不可能事件合称确定性事件，能说清“在一定条件下”这五个字为什么不能省。</li>
+      <li>会通过摸球（看数量）、转盘（看面积）、掷骰子（看结果个数）比较事件发生的可能性大小。</li>
+      <li>能初步判断一个游戏对双方是否公平，并能设计或修改规则，使双方获胜的可能性相同。</li>
+      <li>初步认识“概率”可记作 P(<i>A</i>)，知道必然事件 P(<i>A</i>) = 1、不可能事件 P(<i>A</i>) = 0、随机事件 0 &lt; P(<i>A</i>) &lt; 1。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a1-1">
+    <h3 class="card-title"><span class="num">第 1 课时</span>必然事件、不可能事件与随机事件</h3>
+
+    <h4 class="subhead">一、情境：有的“说不定”，有的“一定”</h4>
+    <p>先看一组生活里的事。气象台预报“明天有雨”，可明天究竟下不下，谁也说不准；掷一枚骰子，落下来是几点，掷之前不知道；袋子里放着红球和白球，随手摸一个，摸到哪种颜色也不确定；转盘转起来，指针最后停在哪块区域，同样说不准；买一张彩票能否中奖，更是“碰运气”。这些事的共同点是：<strong>结果事先无法确定</strong>。</p>
+    <p>再看另一组。“太阳从东方升起”，这件事一定会发生；“太阳从西边升起”，这件事一定不会发生；“掷一枚只有 1 到 6 点的骰子，掷出的点数不超过 6”，也一定会发生；“掷出 7 点”，一定不会发生。这些事虽然没有真正“试”过，但只要把条件说清楚，就能断定它发生还是不发生。</p>
+    <p>还有一类事介于两者之间：“明天会刮风”“打开电视正在播广告”“射击一次中靶”“从装有红白两色球的袋中摸出一个球是红球”。它们可能发生，也可能不发生，事前不能肯定。数学要研究的就是这三类事——先分类，再比较“发生的可能性有多大”。为了说起来方便，我们把“事情发生”叫做<strong>事件</strong>。</p>
+
+    <h4 class="subhead">二、事件的分类</h4>
+    <p>按“在一定条件下会不会发生”，事件可以分成三类，它们的关系如图 1。</p>
+    <ul>
+      <li><strong>必然事件</strong>：在一定条件下，一定会发生的事件。例如“太阳从东方升起”“在标准大气压下，水加热到 100°C 会沸腾”“从只装红球的袋中摸出一个球，摸到红球”。</li>
+      <li><strong>不可能事件</strong>：在一定条件下，一定不会发生的事件。例如“太阳从西边升起”“掷一枚只有 1 到 6 点的骰子，掷出 7 点”“从只装红球的袋中摸出一个黑球”。</li>
+      <li><strong>随机事件</strong>：在一定条件下，可能发生也可能不发生的事件。例如“明天会下雨”“掷一枚骰子，掷出 3 点”“打开电视正在播广告”“射击一次中靶”。</li>
+    </ul>
+    <p>必然事件与不可能事件合起来，叫做<strong>确定性事件</strong>：它们的结果是确定的，要么一定发生，要么一定不发生，不会“看运气”。随机事件的结果则不确定，正是它让“可能性”有了大小的区别。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 340" role="img" aria-label="事件的分类结构图：事件分为确定性事件与随机事件，确定性事件又分为必然事件与不可能事件">
+        <title>事件的分类</title>
+        <rect x="240" y="18" width="160" height="46" rx="8" fill="#dbeafe" stroke="#334155" stroke-width="1.4"/>
+        <text x="320" y="48" font-size="15" text-anchor="middle" fill="#334155">事件</text>
+        <line x1="320" y1="64" x2="320" y2="86" stroke="#334155" stroke-width="1.4"/>
+        <line x1="185" y1="86" x2="455" y2="86" stroke="#334155" stroke-width="1.4"/>
+        <line x1="185" y1="86" x2="185" y2="108" stroke="#334155" stroke-width="1.4"/>
+        <line x1="455" y1="86" x2="455" y2="108" stroke="#334155" stroke-width="1.4"/>
+        <rect x="90" y="108" width="190" height="46" rx="8" fill="#dcfce7" stroke="#334155" stroke-width="1.4"/>
+        <text x="185" y="138" font-size="14" text-anchor="middle" fill="#334155">确定性事件</text>
+        <rect x="360" y="108" width="190" height="46" rx="8" fill="#fef3c7" stroke="#334155" stroke-width="1.4"/>
+        <text x="455" y="138" font-size="14" text-anchor="middle" fill="#334155">随机事件</text>
+        <line x1="185" y1="154" x2="185" y2="178" stroke="#334155" stroke-width="1.4"/>
+        <line x1="110" y1="178" x2="255" y2="178" stroke="#334155" stroke-width="1.4"/>
+        <line x1="110" y1="178" x2="110" y2="200" stroke="#334155" stroke-width="1.4"/>
+        <line x1="255" y1="178" x2="255" y2="200" stroke="#334155" stroke-width="1.4"/>
+        <rect x="40" y="200" width="140" height="46" rx="8" fill="#dcfce7" stroke="#334155" stroke-width="1.4"/>
+        <text x="110" y="230" font-size="14" text-anchor="middle" fill="#334155">必然事件</text>
+        <rect x="180" y="200" width="150" height="46" rx="8" fill="#dcfce7" stroke="#334155" stroke-width="1.4"/>
+        <text x="255" y="230" font-size="14" text-anchor="middle" fill="#334155">不可能事件</text>
+        <text x="110" y="272" font-size="12" text-anchor="middle" fill="#334155">一定发生</text>
+        <text x="255" y="272" font-size="12" text-anchor="middle" fill="#334155">一定不发生</text>
+        <text x="455" y="182" font-size="12" text-anchor="middle" fill="#334155">可能发生，也可能不发生</text>
+        <text x="320" y="310" font-size="12" text-anchor="middle" fill="#1d4ed8">确定性事件：一定发生或一定不发生</text>
+      </svg>
+      <figcaption>图 1　事件的分类：确定性事件与随机事件</figcaption>
+    </figure>
+
+    <p>由图 1 可以整理出表 1。表里最后一行“确定性事件”是必然事件与不可能事件的合称，做题时不要把它当成第四类事件。</p>
+
+    <table class="data-table">
+      <caption>表 1　事件的分类</caption>
+      <thead>
+        <tr><th>类型</th><th>定义</th><th>举例</th><th>概率范围</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>必然事件</td><td>在一定条件下，一定会发生</td><td>太阳从东方升起；标准大气压下 100°C 的水沸腾</td><td>P(<i>A</i>) = 1</td></tr>
+        <tr><td>不可能事件</td><td>在一定条件下，一定不会发生</td><td>太阳从西边升起；掷骰子得到 7 点</td><td>P(<i>A</i>) = 0</td></tr>
+        <tr><td>随机事件</td><td>在一定条件下，可能发生也可能不发生</td><td>明天下雨；掷骰子得到 3 点；射击一次中靶</td><td>0 &lt; P(<i>A</i>) &lt; 1</td></tr>
+        <tr><td>确定性事件</td><td>必然事件与不可能事件的合称</td><td>掷骰子点数不超过 6；掷骰子点数为 0</td><td>P(<i>A</i>) = 1 或 0</td></tr>
+      </tbody>
+    </table>
+
+    <p>表 1 里的 P(<i>A</i>) 读作“事件 <i>A</i> 的概率”，是用来刻画“可能性大小”的记号，本节先初步认识它，到后面的课时再正式学习它的计算。这里先记住一个直觉：<strong>一定会发生的事，可能性最大，记作 1；一定不会发生的事，可能性最小，记作 0；随机事件的可能性在 0 与 1 之间。</strong></p>
+
+    <div class="tip">
+      <strong>提示：</strong>判断事件类型，先在心里补上“在一定条件下”这五个字，再看它“是否一定”。同样是“水加热到 100°C 会沸腾”，在标准大气压下是必然事件；到了海拔四五千米的高原，气压低，水不到 100°C 就开了，这个说法就不再必然。条件变了，事件的类型也可能跟着变，所以判断时一定要把条件说清楚。
+    </div>
+
+    <h4 class="subhead">三、可能性的大小</h4>
+    <p>随机事件都可能发生、也可能不发生，但“可能”的程度不一样。有的很容易发生，有的大概一半对一半，有的几乎不会发生。比较这种“发生的可能性大小”，是本课时的核心任务。下面通过三个活动来看。</p>
+
+    <p><strong>活动一：摸球——看数量。</strong>一个袋子里装有 3 个红球、2 个白球、1 个黑球，共 6 个球，它们除颜色外大小、材质都相同，摸之前把袋子摇匀，然后任意摸出一个球（摸后放回，再摇匀）。因为每个球被摸到的机会都一样，所以哪种颜色的球多，摸到那种颜色的机会就大。红球 3 个、白球 2 个、黑球 1 个，于是摸到红球的可能性最大，摸到黑球的可能性最小。图 2 画出了这个袋子。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 300" role="img" aria-label="袋中装有 3 个红球、2 个白球、1 个黑球，共 6 个球">
+        <title>袋中装有 3 个红球、2 个白球、1 个黑球</title>
+        <path d="M 210 118 Q 186 250 232 276 L 398 276 Q 444 250 420 118 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.6"/>
+        <rect x="228" y="100" width="174" height="20" rx="10" fill="#dbeafe" stroke="#334155" stroke-width="1.4"/>
+        <circle cx="258" cy="178" r="25" fill="#fde2e2" stroke="#334155" stroke-width="1.4"/>
+        <circle cx="316" cy="178" r="25" fill="#fde2e2" stroke="#334155" stroke-width="1.4"/>
+        <circle cx="374" cy="178" r="25" fill="#fde2e2" stroke="#334155" stroke-width="1.4"/>
+        <circle cx="258" cy="238" r="25" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+        <circle cx="316" cy="238" r="25" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+        <circle cx="374" cy="238" r="25" fill="#334155" stroke="#334155" stroke-width="1.4"/>
+        <text x="258" y="183" font-size="13" text-anchor="middle" fill="#334155">红</text>
+        <text x="316" y="183" font-size="13" text-anchor="middle" fill="#334155">红</text>
+        <text x="374" y="183" font-size="13" text-anchor="middle" fill="#334155">红</text>
+        <text x="258" y="243" font-size="13" text-anchor="middle" fill="#334155">白</text>
+        <text x="316" y="243" font-size="13" text-anchor="middle" fill="#334155">白</text>
+        <text x="374" y="243" font-size="13" text-anchor="middle" fill="#ffffff">黑</text>
+        <text x="470" y="66" font-size="13" fill="#1d4ed8">共 6 个球</text>
+        <text x="470" y="86" font-size="12" fill="#94a3b8">除颜色外都相同</text>
+        <circle cx="482" cy="130" r="10" fill="#fde2e2" stroke="#334155" stroke-width="1.2"/>
+        <text x="502" y="135" font-size="13" fill="#334155">红球 3 个</text>
+        <circle cx="482" cy="170" r="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+        <text x="502" y="175" font-size="13" fill="#334155">白球 2 个</text>
+        <circle cx="482" cy="210" r="10" fill="#334155"/>
+        <text x="502" y="215" font-size="13" fill="#334155">黑球 1 个</text>
+        <text x="320" y="296" font-size="12" text-anchor="middle" fill="#94a3b8">摇匀后任意摸出一个球，摸后放回</text>
+      </svg>
+      <figcaption>图 2　袋中装有 3 个红球、2 个白球、1 个黑球</figcaption>
+    </figure>
+
+    <p>还可以用“占几分之几”来说得更清楚。6 个球除颜色外都相同，每个球被摸到的机会相同，可以看成把“摸出一个球”这件事平均分成 6 份，红球占其中 3 份，白球占 2 份，黑球占 1 份。于是摸到红球的可能性占 3/6（也就是 1/2），摸到白球的可能性占 2/6（也就是 1/3），摸到黑球的可能性占 1/6。3/6 &gt; 2/6 &gt; 1/6，这与“红球最多、黑球最少”的直观判断完全一致；而 1/2 + 1/3 + 1/6 = 1，也说明这三个可能性合起来正好是“一定摸到一个球”。</p>
+
+    <p><strong>活动二：转盘——看面积。</strong>图 3 是一个转盘，被分界半径分成三块：红色占整个圆的一半，黄色占三分之一，蓝色占六分之一。指针停在哪个区域，取决于那个区域的面积有多大。红色区域占了整个圆的一半，面积最大，所以指针落在红色区域的可能性最大；蓝色区域最小，可能性也最小。用圆心角看更精确：整个圆是 360°，红色扇形对应 180°，黄色对应 120°，蓝色对应 60°，180° &gt; 120° &gt; 60°，所以可能性从大到小依次是红、黄、蓝。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 340" role="img" aria-label="转盘：红色扇形 180 度、黄色扇形 120 度、蓝色扇形 60 度">
+        <title>红 1/2、黄 1/3、蓝 1/6 的转盘</title>
+        <text x="300" y="24" font-size="13" text-anchor="middle" fill="#1d4ed8">红 1/2　黄 1/3　蓝 1/6</text>
+        <path d="M 300 170 L 300 50 A 120 120 0 0 1 420 170 A 120 120 0 0 1 300 290 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.4"/>
+        <path d="M 300 170 L 300 290 A 120 120 0 0 1 196.08 110 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.4"/>
+        <path d="M 300 170 L 196.08 110 A 120 120 0 0 1 300 50 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.4"/>
+        <circle cx="300" cy="170" r="7" fill="#334155"/>
+        <line x1="300" y1="170" x2="352" y2="118" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+        <text x="356" y="164" font-size="14" text-anchor="middle" fill="#334155">红</text>
+        <text x="356" y="186" font-size="12" text-anchor="middle" fill="#334155">1/2</text>
+        <text x="248" y="200" font-size="14" text-anchor="middle" fill="#334155">黄</text>
+        <text x="248" y="222" font-size="12" text-anchor="middle" fill="#334155">1/3</text>
+        <text x="276" y="112" font-size="14" text-anchor="middle" fill="#334155">蓝</text>
+        <text x="276" y="134" font-size="12" text-anchor="middle" fill="#334155">1/6</text>
+        <text x="450" y="175" font-size="12" text-anchor="middle" fill="#94a3b8">180°</text>
+        <text x="172" y="252" font-size="12" text-anchor="middle" fill="#94a3b8">120°</text>
+        <text x="232" y="42" font-size="12" text-anchor="middle" fill="#94a3b8">60°</text>
+      </svg>
+      <figcaption>图 3　转盘：红占 1/2（180°）、黄占 1/3（120°）、蓝占 1/6（60°）</figcaption>
+    </figure>
+
+    <p>这里有一个常见的错误：把三个扇形“数个数”。图 3 里只有三块扇形，各一块，如果按“个数”比，就会误以为三种颜色的可能性一样大。实际上三块扇形的大小相差很多，红色是蓝色面积的 3 倍。<strong>转盘上比较可能性，要看面积（圆心角），不能数块数。</strong>只有当各个扇形全等时，“数块数”才与“比面积”一致。</p>
+
+    <p><strong>活动三：掷骰子——看结果个数。</strong>掷一枚均匀的骰子，可能出现 1、2、3、4、5、6 点，共 6 种结果，每种结果出现的机会相同。这时比较两个事件的可能性，就看它们各自包含几种结果：</p>
+    <ul>
+      <li>“点数大于 4”，包含 5、6 两种结果；</li>
+      <li>“点数小于 3”，包含 1、2 两种结果；</li>
+      <li>“点数为偶数”，包含 2、4、6 三种结果。</li>
+    </ul>
+    <p>前两个事件都包含 2 种结果，所以它们的可能性相同；第三个事件包含 3 种结果，比前两个都多，所以“点数为偶数”的可能性最大。用“占几分之几”说：前两个各占 2/6（也就是 1/3），第三个占 3/6（也就是 1/2）。</p>
+
+    <p>三种活动的比较方法整理成表 2。可以看出，它们的道理是同一个：<strong>把“所有可能的结果”看成一个整体，看某个事件占了这个整体的几分之几</strong>，占得越多，可能性越大。</p>
+
+    <table class="data-table">
+      <caption>表 2　可能性大小的比较方法</caption>
+      <thead>
+        <tr><th>活动</th><th>看什么</th><th>本课例子</th><th>结论</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>摸球</td><td>看各种颜色的球的数量占总数的几分之几</td><td>3 红、2 白、1 黑，共 6 个</td><td>红（3/6）&gt; 白（2/6）&gt; 黑（1/6）</td></tr>
+        <tr><td>转盘</td><td>看各扇形面积（圆心角）占总面积（360°）的几分之几</td><td>红 180°、黄 120°、蓝 60°</td><td>红（1/2）&gt; 黄（1/3）&gt; 蓝（1/6）</td></tr>
+        <tr><td>掷骰子</td><td>看符合条件的结果个数占所有结果数的几分之几</td><td>偶数 3 个；大于 4 有 2 个</td><td>偶数（1/2）&gt; 大于 4（1/3）</td></tr>
+      </tbody>
+    </table>
+
+    <p>比较的时候有三条要领。第一，<strong>前提要相同</strong>：球要除颜色外都相同并摇匀，骰子要均匀，转盘的指针要能自由转动，否则“机会相同”这个前提不成立，比较就不可靠。第二，<strong>比的是“占整体的几分之几”</strong>：同一个袋子里，球多的颜色机会大；如果换成两个不同的袋子，就要各看各占的几分之几，不能直接比球的个数。第三，<strong>可能性大不等于一定发生</strong>：红球多，摸到红球的机会大，但完全可能一次就摸到黑球；这正是随机事件的特点。</p>
+
+    <div class="keypoint">
+      <strong>要点：</strong>事件按“会不会发生”分三类：必然事件（一定发生）、不可能事件（一定不发生）、随机事件（可能发生也可能不发生）；前两类合称确定性事件。比较随机事件的可能性，就看它包含的“机会”占整体的几分之几——摸球看数量，转盘看面积，掷骰子看结果个数。
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">可能性大小的范围（初步认识）</div>
+      <div class="formula-body">必然事件：P(<i>A</i>) = 1；　不可能事件：P(<i>A</i>) = 0；　随机事件：0 &lt; P(<i>A</i>) &lt; 1</div>
+    </div>
+
+    <h4 class="subhead">四、游戏公平吗</h4>
+    <p>可能性的大小，直接决定一个游戏对双方是否公平。规则很简单：<strong>双方获胜的可能性相同，游戏就公平；不相同，就不公平。</strong></p>
+    <p>例如袋中放 2 个红球、3 个白球，球除颜色外都相同，摇匀后摸出一个（摸后放回）。规定摸到红球甲胜，摸到白球乙胜。共有 5 个球，红球占 2 份，白球占 3 份，所以甲获胜的可能性占 2/5，乙获胜的可能性占 3/5。2/5 &lt; 3/5，乙获胜的机会更大，这个游戏对甲不公平。</p>
+    <p>要让游戏公平，就得让两种颜色的球一样多。有两种改法：一是<strong>放入 1 个红球</strong>，变成 3 红 3 白，双方各占 3/6，也就是各 1/2；二是<strong>取出 1 个白球</strong>，变成 2 红 2 白，双方各占 2/4，也是各 1/2。两种改法不同，效果一样——双方获胜的可能性都变成了 1/2。</p>
+    <p>再看掷骰子的游戏：规定“点数大于 3 甲胜，点数小于或等于 3 乙胜”。大于 3 的有 4、5、6 三种结果，小于或等于 3 的有 1、2、3 三种结果，双方各占 3/6 = 1/2，这个游戏是公平的。若把规则改成“点数大于 4 甲胜，否则乙胜”，甲只有 5、6 两种结果（占 1/3），乙有四种结果（占 2/3），就不公平了。</p>
+    <p>还有两点要分清。第一，<strong>公平不等于“谁都不会输”</strong>：公平的游戏照样有输有赢，只是双方获胜的机会一样大；玩一次谁赢谁输是随机的，不能说“甲赢了就说明游戏不公平”。第二，<strong>公平看的是机会，不是赌注或得分</strong>：双方获胜的可能性不相同，就不能叫公平，哪怕给两边的分一样多；反过来，机会相同了，双方各得 1 分也是公平的。本课时只要求初步判断，具体的计算后面还会学。</p>
+
+    <div class="warn">
+      <strong>易错：</strong>①“明天下雨”是随机事件，“很可能下雨”也不等于必然事件，别把“可能性大”说成“一定发生”；②“太阳从西边升起”“掷骰子得到 7 点”是不可能事件，不要答成“随机事件”；③判断事件类型时要先看清条件：标准大气压下水 100°C 沸腾是必然事件，高原上就不是；④比较转盘上各区域的可能性要看面积（圆心角），不能数扇形块数；⑤比较摸球的可能性要先保证“除颜色外都相同、摇匀”，否则机会不相同，不能按数量比；⑥游戏公平指双方获胜的<strong>可能性相同</strong>，不是指双方得分相同，也不是指玩一次一定打平；⑦概率为 1 表示“一定发生”，概率为 0 表示“一定不发生”；随机事件的可能性可以非常接近 1 或 0，但再大也不等于一定发生，再小也不等于一定不发生。
+    </div>
+
+    <div class="method">
+      <strong>方法归纳：</strong>解决本课时的问题，按“定条件—分类型—比机会—作判断”四步走。定条件：把题目中的“在什么情况下”说清楚（气压、球的组成、骰子是否均匀、是否摇匀）；分类型：看这件事是一定发生、一定不发生，还是可能发生也可能不发生；比机会：把全部可能的结果看成一个整体，算一算各个事件占整体的几分之几（摸球看数量、转盘看面积、掷骰子看结果个数）；作判断：占得多则可能性大，双方各占一半则游戏公平。
+    </div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">判断事件的类型</span>
+      </div>
+      <div class="example-body">
+        <p>指出下列事件中，哪些是必然事件，哪些是不可能事件，哪些是随机事件：</p>
+        <p>（1）掷一枚均匀的骰子，掷出的点数是 7；</p>
+        <p>（2）从只装有红球的袋中摸出一个球，摸到的是红球；</p>
+        <p>（3）太阳从西边升起；</p>
+        <p>（4）打开电视，正在播放广告；</p>
+        <p>（5）水在标准大气压下加热到 100°C 沸腾；</p>
+        <p>（6）射击一次，中靶。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）不可能事件。骰子的六个面上分别标着 1 到 6 点，没有 7 点，所以“掷出 7 点”一定不会发生。</p>
+          <p>（2）必然事件。袋中只有红球，摸出的球只能是红球，这件事一定发生。</p>
+          <p>（3）不可能事件。太阳东升西落是由地球自转方向决定的，太阳不可能从西边升起。</p>
+          <p>（4）随机事件。打开电视时可能正在播广告，也可能在播新闻、电视剧或别的节目，事先不能确定。</p>
+          <p>（5）必然事件。在标准大气压下，水加热到 100°C 就会沸腾，这是确定会发生的事。注意“标准大气压”这个条件不能丢。</p>
+          <p>（6）随机事件。射击可能中靶，也可能脱靶，结果事先不能确定。</p>
+          <p>答：（1）（3）是不可能事件，（2）（5）是必然事件，（4）（6）是随机事件。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>判断下列事件属于哪一类：（1）掷一枚均匀的骰子，掷出的点数不超过 6；（2）从装有红球、白球的袋中摸出一个黑球；（3）明天会刮风。答案：（1）必然事件（1 到 6 点都不超过 6）；（2）不可能事件（袋中没有黑球）；（3）随机事件。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">比较事件发生的可能性大小</span>
+      </div>
+      <div class="example-body">
+        <p>（1）如图 2，袋中装有 3 个红球、2 个白球、1 个黑球，球除颜色外都相同，摇匀后任意摸出一个球。摸到红球、白球、黑球的可能性哪个大？哪个小？</p>
+        <p>（2）如图 3，转盘上红色扇形占 1/2、黄色占 1/3、蓝色占 1/6。转动转盘，指针落在哪个区域的可能性最大？哪个最小？</p>
+        <p>（3）掷一枚均匀的骰子，比较“点数大于 4”与“点数小于 3”的可能性大小；再把它们与“点数为偶数”比较。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）袋中共有 3 + 2 + 1 = 6 个球，除颜色外都相同，每个球被摸到的机会相同。红球有 3 个，摸到红球的可能性占 3/6，即 1/2；白球有 2 个，占 2/6，即 1/3；黑球有 1 个，占 1/6。因为 1/2 &gt; 1/3 &gt; 1/6，所以摸到红球的可能性最大，摸到黑球的可能性最小，从大到小依次是红球、白球、黑球。</p>
+          <p>（2）指针落在哪个区域，取决于区域的面积。红色扇形占整个圆的一半，面积最大，圆心角 180°；黄色占三分之一，圆心角 120°；蓝色占六分之一，圆心角 60°。因为 180° &gt; 120° &gt; 60°，所以指针落在红色区域的可能性最大，落在蓝色区域的可能性最小。这里不能数“各有几块扇形”来判断，要看面积。</p>
+          <p>（3）骰子有 1 到 6 共 6 种等可能的结果。“点数大于 4”包含 5、6 两种结果，占 2/6，即 1/3；“点数小于 3”包含 1、2 两种结果，占 2/6，即 1/3。两者包含的结果个数相同，所以可能性相同。“点数为偶数”包含 2、4、6 三种结果，占 3/6，即 1/2。因为 1/2 &gt; 1/3，所以“点数为偶数”的可能性比前两个都大。</p>
+          <p>答：（1）红球最大，黑球最小；（2）红色区域最大，蓝色区域最小；（3）“点数大于 4”与“点数小于 3”的可能性相同，都比“点数为偶数”小。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>仍掷这枚均匀的骰子，比较“点数是 3 的倍数”与“点数小于 3”的可能性大小。答案：3 的倍数有 3、6 两种结果，小于 3 的有 1、2 两种结果，两者都占 2/6 = 1/3，可能性相同。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">游戏公平吗：判断与修改规则</span>
+      </div>
+      <div class="example-body">
+        <p>袋中装有 2 个红球、3 个白球，球除颜色外都相同。每次摇匀后摸出一个球，摸后放回。规定：摸到红球甲得 1 分，摸到白球乙得 1 分。</p>
+        <p>（1）这个游戏公平吗？为什么？</p>
+        <p>（2）请设计两种修改方案，使游戏对双方公平，并说明修改后双方获胜的可能性各是多少。</p>
+        <p>（3）如果只允许往袋中放球，至少要放几个红球才能使游戏公平？如果只允许从袋中取球呢？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）不公平。袋中共有 2 + 3 = 5 个球，除颜色外都相同，每个球被摸到的机会相同。甲获胜（摸到红球）的可能性占 2/5，乙获胜（摸到白球）的可能性占 3/5。因为 3/5 &gt; 2/5，乙获胜的机会更大，所以游戏对甲不公平。</p>
+          <p>（2）方案一：往袋中放入 1 个红球，袋中变成 3 个红球、3 个白球，共 6 个球。此时甲获胜的可能性占 3/6 = 1/2，乙获胜的可能性占 3/6 = 1/2，双方相同，游戏公平。</p>
+          <p>方案二：从袋中取出 1 个白球，袋中变成 2 个红球、2 个白球，共 4 个球。此时甲、乙获胜的可能性都占 2/4 = 1/2，游戏公平。</p>
+          <p>（3）只放红球时，白球仍是 3 个，红球至少要达到 3 个，双方才各占一半，所以至少要放入 3 − 2 = 1（个）红球。只取球时，红球仍是 2 个，白球要减少到 2 个，所以要取出 3 − 2 = 1（个）白球。</p>
+          <p>答：（1）不公平，乙获胜的可能性大；（2）放入 1 个红球（3 红 3 白），或取出 1 个白球（2 红 2 白），两种改法下双方获胜的可能性都是 1/2；（3）只放球至少要放 1 个红球，只取球至少要取出 1 个白球。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>袋中 3 个红球、3 个白球，摸到红球甲胜、摸到白球乙胜，公平吗？如果再往袋中放入 2 个白球，还公平吗？答案：3 红 3 白时双方各占 3/6 = 1/2，公平；再放入 2 个白球后变成 3 红 5 白，甲占 3/8、乙占 5/8，乙占优，不再公平。</p>
+
+    <h4 class="subhead">练习（第 1 课时）</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】指出下列事件中，哪些是必然事件，哪些是不可能事件，哪些是随机事件：（1）掷一枚均匀的骰子，掷出的点数是 6；（2）掷一枚均匀的骰子，掷出的点数不超过 6；（3）掷一枚均匀的骰子，掷出的点数是 0；（4）从一个装有 5 个白球的袋中摸出一个球，摸到白球；（5）从上述袋中摸出一个球，摸到黑球；（6）明天是晴天。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）随机事件。点数可能是 1 到 6 中的任何一个，可能是 6，也可能不是 6。</p>
+          <p>（2）必然事件。骰子的点数只能是 1、2、3、4、5、6，都不超过 6，所以这件事一定发生。</p>
+          <p>（3）不可能事件。骰子上没有 0 点，所以一定不会发生。</p>
+          <p>（4）必然事件。袋中全是白球，摸出的球一定是白球。</p>
+          <p>（5）不可能事件。袋中没有黑球，摸到黑球一定不会发生。</p>
+          <p>（6）随机事件。明天可能是晴天，也可能是阴天或雨天，事先不能确定。</p>
+          <p>答：（2）（4）是必然事件，（3）（5）是不可能事件，（1）（6）是随机事件。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】填空：（1）“地球绕着太阳转”是　　事件；（2）掷一枚均匀的硬币，正面朝上，是　　事件；（3）在平面内，三角形的内角和为 180°，是　　事件；（4）从去掉大、小王的扑克牌中任抽一张，抽到红桃，是　　事件；（5）“两个正数的和是负数”是　　事件；（6）袋中装有 5 个红球和 1 个白球，球除颜色外都相同，摸出一个球，摸到红球的可能性比摸到白球的可能性　　（填“大”或“小”）。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）必然事件。地球绕太阳公转是确定的事实，一定发生。</p>
+          <p>（2）随机事件。硬币可能正面朝上，也可能反面朝上，事先不能确定。</p>
+          <p>（3）必然事件。在平面内，任意三角形的内角和都是 180°，一定成立。</p>
+          <p>（4）随机事件。抽到的可能是红桃，也可能是黑桃、方块或梅花。</p>
+          <p>（5）不可能事件。两个正数的和一定是正数，不可能是负数，所以一定不会发生。</p>
+          <p>（6）大。袋中共 5 + 1 = 6 个球，红球占 5/6，白球占 1/6，5/6 &gt; 1/6，所以摸到红球的可能性大。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】袋中装有 4 个红球、1 个白球、2 个黑球，球除颜色外都相同，摇匀后任意摸出一个球。（1）摸到哪种颜色的球的可能性最大？哪种最小？（2）把三种颜色按可能性从小到大排列；（3）摸到红球的可能性占几分之几？摸到黑球呢？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>袋中共有 4 + 1 + 2 = 7 个球，除颜色外都相同，每个球被摸到的机会相同，所以比较三种颜色的可能性，就是比较它们的个数。</p>
+          <p>（1）红球 4 个最多，摸到的可能性最大；白球 1 个最少，摸到的可能性最小。</p>
+          <p>（2）按可能性从小到大排列：白球 &lt; 黑球 &lt; 红球。因为 1 &lt; 2 &lt; 4。</p>
+          <p>（3）摸到红球的可能性占 4/7；摸到黑球的可能性占 2/7；摸到白球的可能性占 1/7。检验：4/7 + 2/7 + 1/7 = 7/7 = 1，说明三种情况合起来正好是“一定摸到一个球”。</p>
+          <p>答：（1）红球最大，白球最小；（2）白球 &lt; 黑球 &lt; 红球；（3）摸到红球的可能性占 4/7，摸到黑球的可能性占 2/7。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】一个转盘被分界半径分成红、黄、蓝三块扇形，红色、黄色扇形的圆心角都是 90°，蓝色扇形的圆心角是 180°。（1）指针落在哪种颜色区域的可能性最大？（2）三种可能性各占几分之几？（3）规定“指针落在红色区域甲胜，落在蓝色区域乙胜”，这个游戏公平吗？如果不公平，请你修改规则或修改转盘，使游戏公平。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）蓝色区域的圆心角是 180°，是三者中面积最大的，所以指针落在蓝色区域的可能性最大。</p>
+          <p>（2）整个圆是 360°。红色占 90/360 = 1/4，黄色占 90/360 = 1/4，蓝色占 180/360 = 1/2。检验：1/4 + 1/4 + 1/2 = 1。</p>
+          <p>（3）不公平。甲获胜（落在红色）的可能性是 1/4，乙获胜（落在蓝色）的可能性是 1/2，1/2 &gt; 1/4，乙的机会是甲的 2 倍，所以对甲不公平。</p>
+          <p>修改方案一（改规则）：规定“指针落在红色或黄色区域甲胜，落在蓝色区域乙胜”。此时甲获胜的可能性是 1/4 + 1/4 = 1/2，乙获胜的可能性是 1/2，双方相同，游戏公平。</p>
+          <p>修改方案二（改转盘）：把红色扇形扩大到 180°（例如把黄色那 90° 划给红色），使红色、蓝色各占 180°。此时甲、乙获胜的可能性都是 180/360 = 1/2，游戏公平。</p>
+          <p>答：（1）蓝色区域；（2）红 1/4、黄 1/4、蓝 1/2；（3）不公平，可按上述两种方案之一修改，使双方获胜的可能性都是 1/2。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】甲、乙两人用一枚均匀的骰子做游戏，规定“掷出的点数大于 4 时甲得 1 分，否则乙得 1 分”。（1）这个游戏公平吗？说明理由。（2）请你设计两种修改方案，使游戏公平（可以改规则，也可以改判定条件）。（3）若把规则改为“点数是 3 的倍数时甲胜，否则乙胜”，公平吗？为什么？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）不公平。骰子有 1 到 6 共 6 种等可能的结果。“点数大于 4”包含 5、6 两种结果，甲获胜的可能性占 2/6 = 1/3；“否则”即点数不超过 4，包含 1、2、3、4 四种结果，乙获胜的可能性占 4/6 = 2/3。因为 2/3 &gt; 1/3，乙获胜的机会大，所以游戏不公平。</p>
+          <p>（2）方案一（改判定条件）：改为“点数大于 3 时甲胜，否则乙胜”。大于 3 的有 4、5、6 三种结果，不大于 3 的有 1、2、3 三种结果，双方各占 3/6 = 1/2，游戏公平。</p>
+          <p>方案二（改规则）：改为“点数为奇数时甲胜，点数为偶数时乙胜”。奇数有 1、3、5 三种，偶数有 2、4、6 三种，双方各占 3/6 = 1/2，游戏公平。</p>
+          <p>（3）仍不公平。3 的倍数只有 3、6 两种结果，甲获胜的可能性占 2/6 = 1/3；其余 1、2、4、5 四种结果由乙获胜，占 4/6 = 2/3。乙的机会仍然大，所以不公平。要让游戏公平，应使双方包含的结果个数相同，例如改成“点数是 3 的倍数或 1 时甲胜”（3、6、1 共三种），其余三种归乙。</p>
+          <p>答：（1）不公平，甲 1/3、乙 2/3；（2）可改为“大于 3 甲胜”或“奇数甲胜、偶数乙胜”，双方各 1/2；（3）不公平，甲 1/3、乙 2/3，必须让双方的结果个数相等才公平。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <div class="method">
+    <strong>本节知识网络：</strong>
+    <ul>
+      <li><strong>一条主线：</strong>事件 → 会不会发生 → 发生的可能性有多大 → 游戏是否公平。“可能性”是贯穿全章的关键词。</li>
+      <li><strong>三类事件：</strong>必然事件（一定发生，P(<i>A</i>) = 1）、不可能事件（一定不发生，P(<i>A</i>) = 0）、随机事件（可能发生也可能不发生，0 &lt; P(<i>A</i>) &lt; 1）。前两类合称确定性事件。</li>
+      <li><strong>一个前提：</strong>“在一定条件下”。条件变了，事件的类型可能跟着变；判断事件类型，先补全条件，再看是否一定。</li>
+      <li><strong>三种比较方法：</strong>摸球看数量占总数的几分之几；转盘看面积（圆心角）占 360° 的几分之几，不能数块数；掷骰子看符合条件的结果个数占 6 的几分之几。</li>
+      <li><strong>一条公平标准：</strong>双方获胜的可能性相同（各占 1/2）才公平；不相同就不公平。修改规则时，要么让双方包含的结果个数相等，要么改动球的数量、扇形的大小。</li>
+      <li><strong>两点提醒：</strong>可能性大不等于一定发生；公平不等于谁都不输——公平只是双方机会相同。</li>
+      <li><strong>下一站：</strong>本课时只作定性比较。下一节用试验数据研究“频率的稳定性”，再往后才正式学习用 P(<i>A</i>) = <i>m</i>/<i>n</i> 计算概率——那时我们就能把今天“占几分之几”的说法写成准确的算式。</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="part" id="part2">
+  <div class="part-head">
+    <div class="part-kicker">第 2 节 · 建议 2 课时</div>
+    <h2 class="part-title">频率的稳定性</h2>
+    <p class="part-intro">掷一枚硬币，正面朝上的可能性有多大？直觉说是“一半一半”。可要是连掷 10 次，正面未必正好出现 5 次：有时 6 次，有时 4 次，甚至还可能连出 3 个正面。那么“一半”这个说法到底靠不靠得住？本节我们动手做试验——掷硬币、摸球、看种子发芽，把每一次的结果记下来，算出频率，再从大量数据中找规律。你会发现：试验次数越多，频率越稳；这个稳定下来的数，就成了我们估计概率的依据。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>学习目标</h3>
+    <ul>
+      <li>理解频数与频率的意义，会计算频率，知道频率是 0 与 1 之间的一个数。</li>
+      <li>经历掷硬币、摸球、种子发芽等试验的数据整理过程，体会大量重复试验下频率的稳定性。</li>
+      <li>理解频率与概率的区别与联系：频率是试验值，会波动；概率是理论值，不随试验改变。</li>
+      <li>会用稳定的频率估计概率，并解决鱼塘鱼数、产品合格率、种子发芽率、选种等实际问题。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a2-1">
+    <h3 class="card-title"><span class="num">第 1 课时</span>频率的稳定性</h3>
+
+    <h4 class="subhead">1. 一个说不清的问题：硬币真的“一半一半”吗</h4>
+    <p>足球比赛开始前，裁判要抛硬币决定哪一方先开球。大家都觉得这个办法公平，理由是“硬币只有正、反两面，出现的机会应该一样”。可是如果你真的掷 10 次，很可能得到 6 次正面、4 次反面；再掷 10 次，又可能得到 4 次正面、6 次反面。既然每次的结果都不一样，我们凭什么说“一半一半”？</p>
+    <p>要回答这个问题，光靠“想”是不够的，还得靠“做”。我们把掷硬币叫做一次<strong>试验</strong>，把“正面朝上”叫做一次试验中我们关心的<strong>结果</strong>。每掷一次，就记录一次结果；掷了很多次以后，数一数正面朝上出现了多少次，再和总次数比一比。这个过程叫做<strong>统计</strong>，它是我们研究随机现象最可靠的工具。</p>
+    <p>做试验时有两条要求必须守住。第一条，<strong>条件要相同</strong>：硬币必须是同一枚、质地均匀，每次都用相同的方式抛起、让它自由落在桌面上，不能这一次轻轻一抛、下一次用力一掷。第二条，<strong>每次试验互不影响</strong>：上一次掷出正面，不会让下一次更容易掷出反面。只有在这两条前提下的数据，才有比较的价值。</p>
+
+    <h4 class="subhead">2. 频数、试验总次数与频率</h4>
+    <p>在试验中，某个结果出现的次数叫做<strong>频数</strong>。例如掷硬币 20 次，其中正面朝上 11 次，那么“正面朝上”这个结果的频数就是 11，试验总次数是 20。</p>
+    <p>频数是一个“绝对”的数，它和试验做了多少次有关：掷 20 次可能得到 11 次正面，掷 200 次可能得到 101 次正面，后者数字更大，但这并不说明后一次更容易出正面。为了排除试验次数的影响，我们把频数与试验总次数相除，得到一个“相对”的数，叫做<strong>频率</strong>。</p>
+    <div class="formula">
+      <div class="formula-label">频率的计算</div>
+      <div class="formula-body">频率 = 频数 ÷ 试验总次数（0 ≤ 频率 ≤ 1）</div>
+    </div>
+    <p>拿上面的例子算一算：掷 20 次、11 次正面，频率是 11 ÷ 20 = 0.55；掷 200 次、101 次正面，频率是 101 ÷ 200 = 0.505。两个频率都比 0.5 略大一点，而且第二个更接近 0.5。这个现象值得注意：同样一枚硬币，试验次数不同，算出的频率也不同，但都“围着某个数转”。</p>
+    <p>频率的取值范围为什么在 0 与 1 之间？因为频数最少是 0（这个结果一次也没出现），最多等于试验总次数（每次都出现），所以频数 ÷ 试验总次数的结果一定不小于 0、不大于 1。频率等于 0，说明在这次试验中该结果没有出现过；频率等于 1，说明它每次都出现。要注意，这两种情况都只描述“这几次试验”，并不等于说这个结果永远不可能或永远一定发生。</p>
+    <div class="keypoint"><strong>要点：</strong>频数是“出现了几次”，频率是“占了多少比例”。同一个试验中，频数会随试验次数增大而增大，频率却始终在 0 与 1 之间，而且往往在某个数附近摆动。比较不同试验的结果时，要看频率，不能只看频数。</div>
+
+    <h4 class="subhead">3. 把数据摆出来：掷硬币试验</h4>
+    <p>一位同学用同一枚硬币做了 6 轮试验，每一轮都在上一轮的基础上继续掷下去，累计的次数分别是 10、20、50、100、200、500 次，正面朝上的累计次数依次是 6、11、26、51、101、251 次。把这些数据整理成表 3。</p>
+    <table class="data-table">
+      <caption>表 3　掷硬币试验记录（累计次数）</caption>
+      <thead>
+        <tr><th>试验总次数</th><th>正面朝上的频数</th><th>正面朝上的频率</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>10</td><td>6</td><td>0.6</td></tr>
+        <tr><td>20</td><td>11</td><td>0.55</td></tr>
+        <tr><td>50</td><td>26</td><td>0.52</td></tr>
+        <tr><td>100</td><td>51</td><td>0.51</td></tr>
+        <tr><td>200</td><td>101</td><td>0.505</td></tr>
+        <tr><td>500</td><td>251</td><td>0.502</td></tr>
+      </tbody>
+    </table>
+    <p>表 3 中的每一个频率都是“频数 ÷ 试验总次数”算出来的：6 ÷ 10 = 0.6；11 ÷ 20 = 0.55；26 ÷ 50 = 0.52；51 ÷ 100 = 0.51；101 ÷ 200 = 0.505；251 ÷ 500 = 0.502。请你自己动手把这六个数验算一遍，这一步不能省，因为只有算过，你才会对“0.502 已经很靠近 0.5”这件事有真实的感受。</p>
+    <p>把表 3 中的试验次数作为横坐标、频率作为纵坐标，把 6 个点依次用线段连起来，就得到如图 4 所示的折线图。这张图的纵轴只画出了 0.40 到 0.70 这一段，是为了让 0.5 附近的变化看得更清楚；图中那条虚线表示 0.50，可以把它看成一条“参考线”。</p>
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 380" role="img" aria-label="掷硬币试验中正面朝上的频率随试验次数增加而逐渐稳定在 0.50 附近的折线图">
+        <title>掷硬币频率折线图</title>
+        <line x1="80" y1="40" x2="80" y2="300" stroke="#334155" stroke-width="1.5"/>
+        <line x1="80" y1="300" x2="580" y2="300" stroke="#334155" stroke-width="1.5"/>
+        <line x1="74" y1="40" x2="80" y2="40" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="44" font-size="12" text-anchor="end" fill="#334155">0.70</text>
+        <line x1="74" y1="83" x2="80" y2="83" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="87" font-size="12" text-anchor="end" fill="#334155">0.65</text>
+        <line x1="74" y1="127" x2="80" y2="127" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="131" font-size="12" text-anchor="end" fill="#334155">0.60</text>
+        <line x1="74" y1="170" x2="80" y2="170" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="174" font-size="12" text-anchor="end" fill="#334155">0.55</text>
+        <line x1="74" y1="213" x2="80" y2="213" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="217" font-size="12" text-anchor="end" fill="#334155">0.50</text>
+        <line x1="74" y1="257" x2="80" y2="257" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="261" font-size="12" text-anchor="end" fill="#334155">0.45</text>
+        <line x1="74" y1="300" x2="80" y2="300" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="304" font-size="12" text-anchor="end" fill="#334155">0.40</text>
+        <text transform="rotate(-90 24 170)" x="24" y="170" font-size="13" text-anchor="middle" fill="#334155">频率</text>
+        <line x1="80" y1="213" x2="580" y2="213" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="586" y="217" font-size="12" text-anchor="start" fill="#1d4ed8">0.50</text>
+        <line x1="120" y1="300" x2="120" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="120" y="322" font-size="12" text-anchor="middle" fill="#334155">10</text>
+        <line x1="200" y1="300" x2="200" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="200" y="322" font-size="12" text-anchor="middle" fill="#334155">20</text>
+        <line x1="280" y1="300" x2="280" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="280" y="322" font-size="12" text-anchor="middle" fill="#334155">50</text>
+        <line x1="360" y1="300" x2="360" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="360" y="322" font-size="12" text-anchor="middle" fill="#334155">100</text>
+        <line x1="440" y1="300" x2="440" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="440" y="322" font-size="12" text-anchor="middle" fill="#334155">200</text>
+        <line x1="520" y1="300" x2="520" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="520" y="322" font-size="12" text-anchor="middle" fill="#334155">500</text>
+        <text x="330" y="352" font-size="13" text-anchor="middle" fill="#334155">试验次数（次）</text>
+        <polyline points="120,127 200,170 280,196 360,205 440,209 520,212" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <circle cx="120" cy="127" r="4" fill="#1d4ed8"/>
+        <circle cx="200" cy="170" r="4" fill="#1d4ed8"/>
+        <circle cx="280" cy="196" r="4" fill="#1d4ed8"/>
+        <circle cx="360" cy="205" r="4" fill="#1d4ed8"/>
+        <circle cx="440" cy="209" r="4" fill="#1d4ed8"/>
+        <circle cx="520" cy="212" r="4" fill="#1d4ed8"/>
+        <text x="120" y="115" font-size="11" text-anchor="middle" fill="#334155">0.6</text>
+        <text x="200" y="158" font-size="11" text-anchor="middle" fill="#334155">0.55</text>
+        <text x="280" y="184" font-size="11" text-anchor="middle" fill="#334155">0.52</text>
+        <text x="360" y="196" font-size="11" text-anchor="middle" fill="#334155">0.51</text>
+        <text x="440" y="199" font-size="11" text-anchor="middle" fill="#334155">0.505</text>
+        <text x="520" y="202" font-size="11" text-anchor="middle" fill="#334155">0.502</text>
+      </svg>
+      <figcaption>图 4　掷硬币试验中正面朝上的频率折线图（虚线为 0.50 参考线）</figcaption>
+    </figure>
+    <p>看图 4 能读出三件事。第一，试验 10 次时频率是 0.6，离 0.5 有明显距离，说明次数少的时候“碰巧”的成分很大。第二，随着次数增加，点越来越靠近 0.50 那条虚线：20 次时是 0.55，50 次时是 0.52，100 次时是 0.51，200 次时是 0.505，500 次时是 0.502。第三，最后几个点几乎贴在一起，说明频率不再大起大落，而是稳定下来了。</p>
+    <p>需要说明的是，这组数据里频率恰好一路下降、逐步逼近 0.5；换一枚硬币、换一个人来掷，数据很可能是先升后降、上下起伏的。但不管怎么起伏，只要次数足够多，频率总会围着同一个数转。这种“绕着一个数摆动、摆幅越来越小”的现象，就叫做<strong>频率的稳定性</strong>。</p>
+
+    <h4 class="subhead">4. 频率的稳定性：本节的核心结论</h4>
+    <p>从掷硬币、摸球、种子发芽等大量试验中，人们总结出下面的结论：</p>
+    <div class="formula">
+      <div class="formula-label">频率的稳定性</div>
+      <div class="formula-body">在相同条件下大量重复试验，事件 <i>A</i> 发生的频率会稳定在某个常数 <i>p</i> 附近；这个常数 <i>p</i> 就是事件 <i>A</i> 发生概率的估计值</div>
+    </div>
+    <p>这句话里有三个词要咬住不放，否则很容易说错。</p>
+    <p>第一个词是“<strong>相同条件</strong>”。如果条件变了，稳定值也会变。比如用一枚灌了铅的硬币，正面朝上的频率就不再稳定在 0.5 附近，而可能稳定在 0.7 附近。所以谈频率的稳定性，前提永远是“同样的试验条件”。</p>
+    <p>第二个词是“<strong>大量重复</strong>”。试验 10 次、20 次时，频率可能是 0.6，也可能是 0.3，波动很大；只有次数足够多，频率才会“安定”下来。掷硬币 500 次，频率 0.502，已经离 0.5 很近；如果掷 5000 次、50000 次，通常会更接近。</p>
+    <p>第三个词是“<strong>附近</strong>”。稳定不等于“等于”。掷 500 次得到 251 次正面，频率是 0.502，不是正好 0.500。也就是说，我们得到的是一个<strong>估计值</strong>，而不是精确值。这个估计值随着试验次数的增加通常会越来越可靠。</p>
+    <div class="warn"><strong>易错：</strong>（1）把某一次试验的频率直接当成概率。掷 10 次得到 6 次正面，就说“正面朝上的概率是 0.6”，这是错的——0.6 只是这 10 次试验的频率，次数太少，不能作为估计。（2）认为“试验次数多就一定等于概率”。掷 500 次得到 251 次正面，频率是 0.502，并不等于 0.5。（3）把频率的单位写错。频率是两个次数相除的结果，没有单位，也不带“次”。（4）算频率时用错分母，把“正面朝上的次数”除以“反面朝上的次数”，正确的分母是试验总次数。</div>
+    <div class="tip"><strong>提示：</strong>记录数据时，建议像表 3 那样使用“累计次数”：每增加一批试验，就把新的结果加到原来的频数上，再重新算一次频率。这样得到的频率序列才能反映“次数越来越多时频率怎样变化”，比每一轮各算各的更有说服力。</div>
+    <div class="note"><strong>拓展：</strong>历史上真的有人掷过成千上万次硬币。法国学者布丰掷了 4040 次，其中正面朝上 2048 次，频率是 2048 ÷ 4040 ≈ 0.5069；英国统计学家皮尔逊掷了 24000 次，正面朝上 12012 次，频率是 12012 ÷ 24000 = 0.5005。次数越多，频率离 0.5 越近，这正是频率稳定性的生动例证。</div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">由频率数据估计概率</span>
+      </div>
+      <div class="example-body">
+        <p>一位同学用同一枚硬币做掷硬币试验，累计数据如表 3。（1）分别计算各次试验中正面朝上的频率；（2）画出频率随试验次数变化的折线图，并描述它的变化趋势；（3）估计掷这枚硬币时正面朝上的概率。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）频率 = 正面朝上的频数 ÷ 试验总次数，逐个计算：6 ÷ 10 = 0.6；11 ÷ 20 = 0.55；26 ÷ 50 = 0.52；51 ÷ 100 = 0.51；101 ÷ 200 = 0.505；251 ÷ 500 = 0.502。</p>
+          <p>（2）以试验次数为横坐标、频率为纵坐标描点连线，得到图 4。变化趋势是：试验次数较少时，频率偏离 0.5 较多（10 次时为 0.6）；随着试验次数增加，频率逐步下降并越来越靠近 0.50，500 次时为 0.502，几乎贴在参考线上，摆动的幅度明显变小。</p>
+          <p>（3）由于在 500 次的大量重复试验中，正面朝上的频率稳定在 0.5 附近，所以估计掷这枚硬币时正面朝上的概率约为 0.5。这与“硬币两面质地相同、出现机会均等”的判断是一致的。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果这位同学又接着掷了 500 次（累计 1000 次），此时累计正面朝上 503 次，那么累计频率是多少？与 500 次时的 0.502 相比，有什么变化？<br/>思路：累计频率 = 503 ÷ 1000 = 0.503。它仍稳定在 0.5 附近，但与 0.5 的差由 0.002 变成了 0.003，说明次数增加后频率并没有“锁定”在 0.5，而是继续在 0.5 附近小幅摆动。这正说明频率是试验值，只能用来估计概率，它不一定等于概率。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">用摸球的频率估计球的个数</span>
+      </div>
+      <div class="example-body">
+        <p>一个不透明的袋中装有 20 个球，除颜色外都相同，其中有红球，也有白球。小明每次摸出一个球，记下颜色后放回袋中摇匀，一共摸了 400 次，其中摸到红球 160 次。（1）求摸到红球的频率；（2）估计袋中红球的个数；（3）估计袋中白球的个数，以及摸到白球的频率。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）摸到红球的频率 = 160 ÷ 400 = 0.4。</p>
+          <p>（2）在这 400 次试验中，摸到红球的频率是 0.4，可以认为摸到红球的概率约为 0.4。袋中每个球被摸到的机会相同，所以红球大约占全部球数的 0.4，即 20 × 0.4 = 8（个）。</p>
+          <p>（3）白球约有 20 − 8 = 12（个），摸到白球的频率约为 12 ÷ 20 = 0.6，也等于 1 − 0.4 = 0.6。</p>
+          <p>答：摸到红球的频率是 0.4，估计红球约 8 个，白球约 12 个，摸到白球的频率约为 0.6。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>同样装 20 个球的袋子，摸 500 次，摸到红球 195 次，估计红球的个数。<br/>思路：频率 195 ÷ 500 = 0.39，红球约 20 × 0.39 = 7.8（个）。球的个数必须是整数，所以估计红球约有 8 个。这里要提醒：用频率估计出的数往往是“小数”，要结合实际情况取整数。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">种子发芽率的两类计算</span>
+      </div>
+      <div class="example-body">
+        <p>某农科所对一批小麦种子做发芽试验，随机抽取 1000 粒，在适宜的温度和水分条件下有 950 粒发芽。（1）求这批种子的发芽频率；（2）估计这批种子发芽的概率；（3）如果播下 2000 粒，估计能发芽多少粒？（4）如果希望约有 1900 粒发芽，大约需要播下多少粒？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）发芽频率 = 950 ÷ 1000 = 0.95。</p>
+          <p>（2）1000 粒的样本已经比较大，发芽频率稳定在 0.95 附近，所以估计这批种子发芽的概率约为 0.95。</p>
+          <p>（3）2000 粒中发芽的粒数约为 2000 × 0.95 = 1900（粒）。</p>
+          <p>（4）设需要播 <i>x</i> 粒，则 <i>x</i> × 0.95 = 1900，所以 <i>x</i> = 1900 ÷ 0.95 = 2000（粒）。</p>
+          <p>答：发芽频率是 0.95，估计发芽概率约为 0.95；播 2000 粒约能发芽 1900 粒；要得到约 1900 粒发芽的幼苗，大约需要播 2000 粒。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>另一批种子的发芽频率为 0.9，要想得到约 1800 株幼苗，大约要播多少粒？<br/>思路：1800 ÷ 0.9 = 2000（粒）。注意这里两批种子的发芽频率不同，同样播 2000 粒，第一批约出苗 1900 株，第二批约出苗 1800 株，差别正是发芽频率带来的。</p>
+
+    <div class="method"><strong>方法归纳：</strong>与频率有关的问题，先分清要求的是“正着算”还是“倒着算”。正着算：已知频数和试验总次数，求频率，用除法；或者已知频率和总次数，求频数，用乘法。倒着算：已知频数和频率，求总次数，仍用除法，但要注意除数不能为 0。所有结果都要回到实际情境中检查：球的个数要是整数，种子的粒数要是整数，频率要在 0 与 1 之间。最后别忘了写“答”，并用“估计”二字说明这是近似结果。</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】一个不透明的袋中有若干除颜色外都相同的球，小红做摸球试验，每次摸出一球记下颜色后放回摇匀，累计数据如下：摸 100 次有 22 次摸到红球，摸 200 次累计 43 次摸到红球，摸 500 次累计 103 次，摸 1000 次累计 202 次。（1）分别计算各次试验中摸到红球的频率；（2）估计摸到红球的概率；（3）若袋中一共有 50 个球，估计红球的个数。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）频率 = 摸到红球的频数 ÷ 试验总次数：22 ÷ 100 = 0.22；43 ÷ 200 = 0.215；103 ÷ 500 = 0.206；202 ÷ 1000 = 0.202。</p>
+          <p>（2）随着试验次数增加，频率从 0.22 逐步降到 0.202，最后稳定在 0.2 附近，所以估计摸到红球的概率约为 0.2。</p>
+          <p>（3）红球约占全部球数的 0.2，50 × 0.2 = 10（个）。答：估计红球约有 10 个。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】判断下列说法是否正确，并说明理由。（1）掷一枚均匀硬币 10 次，有 4 次正面朝上，所以正面朝上的概率是 0.4。（2）掷一枚均匀硬币 1000 次，正面朝上一定是 500 次。（3）试验次数越多，频率就一定越接近概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）错误。0.4 只是这 10 次试验的频率，试验次数太少，不能作为概率的估计。大量重复试验时正面朝上的频率会稳定在 0.5 附近，所以正面朝上的概率是 0.5。</p>
+          <p>（2）错误。掷 1000 次时，正面朝上的频率通常很接近 0.5，但“接近”不等于“等于”，正面朝上的次数可能是 498 次、502 次等，不一定是正好 500 次。</p>
+          <p>（3）错误。“通常越接近”与“一定越接近”是两回事。增加试验次数会提高估计的可靠性，但频率仍可能在某些时候比前一次离概率更远，因为试验结果本身带有随机性。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】袋中装有红、白两种球共 20 个，除颜色外都相同。做摸球试验 500 次（每次摸出一球记下颜色后放回摇匀），其中摸到红球 195 次。（1）求摸到红球的频率；（2）估计袋中红球、白球各有多少个；（3）估计摸到白球的频率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）摸到红球的频率 = 195 ÷ 500 = 0.39。</p>
+          <p>（2）红球约占全部球数的 0.39，20 × 0.39 = 7.8，球数必须是整数，所以估计红球约有 8 个；白球约有 20 − 8 = 12 个。</p>
+          <p>（3）白球的频率约为 12 ÷ 20 = 0.6，也可以这样算：1 − 0.39 = 0.61，两种算法的差别来自取整。按“估计出白球 12 个”来算，摸到白球的频率约为 0.6。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】某农科所对一批玉米种子做发芽试验，结果如下：试验 200 粒有 186 粒发芽；试验 400 粒累计 374 粒发芽；试验 600 粒累计 561 粒发芽；试验 800 粒累计 752 粒发芽；试验 1000 粒累计 942 粒发芽。（1）分别计算各次试验的发芽频率；（2）估计这批种子的发芽概率；（3）若播种 5000 粒，估计能发芽多少粒？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）186 ÷ 200 = 0.93；374 ÷ 400 = 0.935；561 ÷ 600 = 0.935；752 ÷ 800 = 0.94；942 ÷ 1000 = 0.942。</p>
+          <p>（2）五个频率都在 0.93 到 0.942 之间，且随着试验粒数增加越来越靠近 0.94，所以估计这批种子的发芽概率约为 0.94（也可以说约 94%）。</p>
+          <p>（3）5000 × 0.94 = 4700（粒）。答：估计能发芽约 4700 粒。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】甲、乙两个厂生产同一种零件。质检员从甲厂抽查 200 件，合格 194 件；从乙厂抽查 500 件，合格 480 件。（1）分别求两厂产品的合格频率；（2）如果只能选一个厂进货，你会选哪个厂？说明理由；（3）要让你对甲厂的判断更有把握，可以怎么做？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）甲厂：194 ÷ 200 = 0.97；乙厂：480 ÷ 500 = 0.96。</p>
+          <p>（2）从频率看，甲厂 0.97 略高于乙厂 0.96，所以倾向于选甲厂。但要说明的是，这两个频率都是估计值，两厂的实际合格率可能都在 0.96 到 0.97 附近，差距很小。</p>
+          <p>（3）可以增加对甲厂的抽查件数，比如抽查 500 件甚至更多。因为试验次数越多，频率越稳定，用它估计合格率就越可靠；只抽查 200 件，偶然性还比较大。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="knowledge-card" id="a2-2">
+    <h3 class="card-title"><span class="num">第 2 课时</span>用频率估计概率</h3>
+
+    <h4 class="subhead">1. 一个必须先说清的问题：频率等于概率吗</h4>
+    <p>上一课时我们反复说“频率稳定在 0.5 附近”，于是有同学问：那频率到底是不是概率？答案很明确：<strong>频率不是概率</strong>。它们是两个不同的概念，只是关系密切。</p>
+    <p>先看一个具体场景。掷一枚质地均匀的硬币，正面朝上的概率是 0.5——这个 0.5 是怎么来的？不是掷出来的，而是“想”出来的：硬币两面大小、形状、质量分布都一样，落地时朝上的是哪一面，机会均等，所以各占一半。这个 0.5 由硬币本身的结构决定，你掷或不掷、掷多少次，它都是 0.5。这样的数，我们叫它<strong>理论值</strong>。</p>
+    <p>再看频率。同样是这枚硬币，掷 10 次可能得到 0.6，掷 20 次可能得到 0.55，掷 500 次得到 0.502。每一次算出来的频率都可能不一样，它随着试验次数的变化而变化，甚至同样掷 500 次，两次试验的结果也不会完全相同。这样的数，我们叫它<strong>试验值</strong>。</p>
+    <p>所以，频率和概率的关系可以这样概括：<strong>概率是“本来是多少”，频率是“这次试验里表现得怎么样”。</strong>频率会波动，像一个人每天的情绪；概率不会波动，像这个人的性格。试验做得足够多以后，情绪会趋于性格。</p>
+    <div class="keypoint"><strong>要点：</strong>概率是事件发生可能性大小的理论值，由事件本身决定，不随试验改变；频率是试验值，随试验次数变化而波动。大量重复试验时，频率稳定在概率附近，所以可以用频率估计概率；但某一次试验的频率不一定等于概率，估计值只是近似值。</div>
+    <p>为了把两者的区别看清，我们把它们逐条对照，如表 4 所示。读这张表时请特别注意“是否稳定”和“获得方式”这两行，这是两个概念最本质的差别。</p>
+    <table class="data-table">
+      <caption>表 4　频率与概率的对比</caption>
+      <thead>
+        <tr><th>比较项</th><th>频率</th><th>概率</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>含义</td><td>试验中某事件发生的次数与试验总次数的比值</td><td>刻画某事件发生可能性大小的理论值</td></tr>
+        <tr><td>获得方式</td><td>做试验，数频数，再相除</td><td>分析事件本身的结构（如硬币两面一样）</td></tr>
+        <tr><td>是否稳定</td><td>随试验次数变化而波动</td><td>由事件本身决定，不随试验改变</td></tr>
+        <tr><td>取值</td><td>0 与 1 之间的数</td><td>0 与 1 之间的数</td></tr>
+        <tr><td>联系</td><td>大量重复试验时，频率稳定在概率附近</td><td>可用稳定的频率作为它的估计值</td></tr>
+        <tr><td>示例</td><td>掷硬币 500 次，251 次正面朝上，频率 0.502</td><td>掷一枚均匀硬币，正面朝上的概率为 0.5</td></tr>
+      </tbody>
+    </table>
+    <p>表 4 里“取值”一行两栏相同，都是 0 与 1 之间的数，这容易让人误以为两者差不多。其实相同只是“范围”相同，内涵完全不同：频率的 0 和 1 只说明这几次试验里没出现或全出现；概率的 0 和 1 说明的是事件在理论上不可能发生或必然发生。</p>
+    <div class="warn"><strong>易错：</strong>（1）说“试验次数越多，频率就等于概率”——应说“越接近”。（2）说“频率就是概率的精确值”——频率只是估计的依据，估计值与真值之间总有偏差。（3）用一次小样本试验的频率下结论：掷 10 次得 6 次正面就断定概率是 0.6，这是把偶然当必然。（4）把“概率 0.5”理解成“掷 10 次必有 5 次正面”，这把可能性误解成了必然性。</div>
+    <div class="tip"><strong>提示：</strong>回答“能不能用频率估计概率”这类说理题时，最好按“三步走”：先指出频率是试验值、会波动；再说大量重复试验下频率稳定在某个常数附近；最后说明这个常数可以作为概率的估计值。三步都写到，理由才完整。</div>
+
+    <h4 class="subhead">2. 用频率估计概率的一般步骤</h4>
+    <p>在实际问题中，很多东西的概率没法“想”出来：一批种子的发芽概率、一个射手命中的概率、一池塘里鱼的总数，都不能靠分析结构得到。这时就要靠试验，用频率去估计。一般按下面四步做。</p>
+    <p>第一步，<strong>明确试验与关注的结果</strong>。比如“射击一次是否命中”“一粒种子是否发芽”。第二步，<strong>在相同条件下大量重复试验</strong>，记录频数。第三步，<strong>计算频率</strong>，观察它是否稳定、稳定在哪个数附近。第四步，<strong>用这个稳定的数作为概率的估计值</strong>，再去解决实际问题（求个数、求次数、做决策）。</p>
+    <div class="formula">
+      <div class="formula-label">由频率估计数量</div>
+      <div class="formula-body">某类个体的总数 ≈ 总数量 × 频率；总数量 ≈ 某类个体的已知数 ÷ 该类个体的频率</div>
+    </div>
+    <p>第二个式子的道理值得说透。以鱼塘为例：塘里有 <i>N</i> 条鱼，我们先捕 100 条做上标记再放回。充分混合后，标记鱼在塘中占的比例是 100/<i>N</i>。再捕 200 条，其中有 8 条带标记，这个样本中标记鱼的比例是 8/200 = 0.04。样本是从塘里“随机抓”的一小部分，它的构成应当和整体差不多，所以 100/<i>N</i> ≈ 0.04，从而 <i>N</i> ≈ 100 ÷ 0.04 = 2500。这就是“标记重捕法”的思路：<strong>用样本中的比例去估计整体中的比例</strong>。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">由命中频率估计命中次数</span>
+      </div>
+      <div class="example-body">
+        <p>一名射击运动员在相同条件下射击 500 次，其中命中 450 次。（1）求他命中的频率；（2）估计他射击一次命中的概率；（3）如果他再射击 200 次，估计能命中多少次？（4）如果他一共射击 800 次，估计脱靶多少次？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）命中频率 = 450 ÷ 500 = 0.9。</p>
+          <p>（2）500 次属于大量重复试验，命中频率稳定在 0.9 附近，所以估计他射击一次命中的概率约为 0.9。</p>
+          <p>（3）200 × 0.9 = 180（次），即估计能命中约 180 次。</p>
+          <p>（4）脱靶的频率约为 1 − 0.9 = 0.1，800 × 0.1 = 80（次），即估计脱靶约 80 次。</p>
+          <p>答：命中频率是 0.9，估计命中概率约为 0.9；再射 200 次约命中 180 次；射 800 次约脱靶 80 次。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>另一名运动员射击 300 次，命中 255 次，谁的命中水平更高？<br/>思路：第二名运动员的命中频率是 255 ÷ 300 = 0.85，小于 0.9，所以第一名运动员的命中水平更高（这里默认两人的试验次数都比较多，频率可以用来比较）。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">用标记重捕法估计鱼塘中鱼的总数</span>
+      </div>
+      <div class="example-body">
+        <p>养鱼专业户想估计一个鱼塘里大约有多少条鱼。他先从塘中捕上 100 条鱼，在每条鱼身上做上不影响生存的标记，然后全部放回塘中。过一段时间，等鱼充分混合后，再从塘中捕上 200 条鱼，发现其中有 8 条带有标记。（1）求第二次捕到的鱼中带标记的鱼所占的比例；（2）估计这个鱼塘里大约有多少条鱼。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）带标记的鱼所占的比例 = 8 ÷ 200 = 0.04。</p>
+          <p>（2）设鱼塘里大约有 <i>N</i> 条鱼。塘中带标记的鱼有 100 条，占全部鱼的比例约为 100/<i>N</i>；第二次捕上来的 200 条是从塘中随机捕到的，其中带标记的鱼占 0.04。样本中的比例应当与塘中的比例大致相同，所以 100/<i>N</i> ≈ 0.04，得 <i>N</i> ≈ 100 ÷ 0.04 = 2500。</p>
+          <p>答：第二次捕到的鱼中带标记的约占 0.04，估计鱼塘里大约有 2500 条鱼。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果第二次捕上 250 条鱼，其中只有 5 条带标记，估计鱼塘里有多少条鱼？<br/>思路：5 ÷ 250 = 0.02，鱼的总数约为 100 ÷ 0.02 = 5000（条）。样本中带标记的比例变小了，说明塘里的鱼更多。</p>
+
+    <h4 class="subhead">3. 用频率做比较与决策</h4>
+    <p>用频率估计概率，不只是为了“算出一个数”，更重要的是拿它来比较和决策。比如两种种子哪种更好、两个厂的零件哪个更可靠、两种药哪种有效率高，都可以用试验得到的频率来判断。</p>
+    <p>比较时要注意两点。第一，<strong>试验条件要相同</strong>：比较两种种子的发芽率，就得让它们在相同的温度、水分、土壤条件下发芽，否则频率的差别可能是条件造成的，而不是种子本身。第二，<strong>试验次数都要足够多</strong>：两边都只试了 20 粒，频率差别再大也说明不了问题；次数太少时，频率的波动可能比真实差距还大。</p>
+    <p>下面这个例子就属于“比较与决策”。某农科所对甲、乙两种玉米种子分别做发芽试验，每次都把累计试验粒数和累计发芽粒数记录下来，算出发芽频率，画成折线图，如图 5 所示。累计试验 100、200、300、400、500 粒时，甲种累计发芽 88、182、270、368、460 粒；乙种累计发芽 97、190、288、380、475 粒。你可以先自己算一算各次试验的发芽频率（如甲种 88 ÷ 100 = 0.88，乙种 97 ÷ 100 = 0.97），再对照图 5 检查点画得对不对。</p>
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 640 380" role="img" aria-label="甲、乙两种种子发芽频率随累计试验粒数变化的折线对比图">
+        <title>两种种子发芽频率的折线对比</title>
+        <line x1="80" y1="40" x2="80" y2="300" stroke="#334155" stroke-width="1.5"/>
+        <line x1="80" y1="300" x2="580" y2="300" stroke="#334155" stroke-width="1.5"/>
+        <line x1="74" y1="40" x2="80" y2="40" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="44" font-size="12" text-anchor="end" fill="#334155">1.00</text>
+        <line x1="74" y1="105" x2="80" y2="105" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="109" font-size="12" text-anchor="end" fill="#334155">0.95</text>
+        <line x1="74" y1="170" x2="80" y2="170" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="174" font-size="12" text-anchor="end" fill="#334155">0.90</text>
+        <line x1="74" y1="235" x2="80" y2="235" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="239" font-size="12" text-anchor="end" fill="#334155">0.85</text>
+        <line x1="74" y1="300" x2="80" y2="300" stroke="#334155" stroke-width="1.5"/>
+        <text x="68" y="304" font-size="12" text-anchor="end" fill="#334155">0.80</text>
+        <text transform="rotate(-90 24 170)" x="24" y="170" font-size="13" text-anchor="middle" fill="#334155">发芽频率</text>
+        <line x1="95" y1="58" x2="125" y2="58" stroke="#334155" stroke-width="2"/>
+        <circle cx="110" cy="58" r="4" fill="#334155"/>
+        <text x="132" y="62" font-size="12" text-anchor="start" fill="#334155">甲种</text>
+        <line x1="200" y1="58" x2="230" y2="58" stroke="#1d4ed8" stroke-width="2"/>
+        <rect x="206" y="54" width="8" height="8" fill="#1d4ed8"/>
+        <text x="238" y="62" font-size="12" text-anchor="start" fill="#1d4ed8">乙种</text>
+        <line x1="130" y1="300" x2="130" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="130" y="322" font-size="12" text-anchor="middle" fill="#334155">100</text>
+        <line x1="225" y1="300" x2="225" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="225" y="322" font-size="12" text-anchor="middle" fill="#334155">200</text>
+        <line x1="320" y1="300" x2="320" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="320" y="322" font-size="12" text-anchor="middle" fill="#334155">300</text>
+        <line x1="415" y1="300" x2="415" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="415" y="322" font-size="12" text-anchor="middle" fill="#334155">400</text>
+        <line x1="510" y1="300" x2="510" y2="306" stroke="#334155" stroke-width="1.5"/>
+        <text x="510" y="322" font-size="12" text-anchor="middle" fill="#334155">500</text>
+        <text x="330" y="352" font-size="13" text-anchor="middle" fill="#334155">累计试验粒数（粒）</text>
+        <polyline points="130,196 225,157 320,170 415,144 510,144" fill="none" stroke="#334155" stroke-width="2"/>
+        <polyline points="130,79 225,105 320,92 415,105 510,105" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+        <circle cx="130" cy="196" r="4" fill="#334155"/>
+        <circle cx="225" cy="157" r="4" fill="#334155"/>
+        <circle cx="320" cy="170" r="4" fill="#334155"/>
+        <circle cx="415" cy="144" r="4" fill="#334155"/>
+        <circle cx="510" cy="144" r="4" fill="#334155"/>
+        <rect x="126" y="75" width="8" height="8" fill="#1d4ed8"/>
+        <rect x="221" y="101" width="8" height="8" fill="#1d4ed8"/>
+        <rect x="316" y="88" width="8" height="8" fill="#1d4ed8"/>
+        <rect x="411" y="101" width="8" height="8" fill="#1d4ed8"/>
+        <rect x="506" y="101" width="8" height="8" fill="#1d4ed8"/>
+        <text x="540" y="148" font-size="12" text-anchor="start" fill="#334155">0.92</text>
+        <text x="540" y="109" font-size="12" text-anchor="start" fill="#1d4ed8">0.95</text>
+      </svg>
+      <figcaption>图 5　甲、乙两种种子的发芽频率折线对比（横轴为累计试验粒数）</figcaption>
+    </figure>
+    <p>图 5 中，甲种的点用圆形标出，乙种的点用方形标出。可以看得很清楚：乙种的折线始终在甲种上方，而且两条线都在各自的高度上趋于平稳——甲种稳定在 0.92 附近，乙种稳定在 0.95 附近。累计 500 粒时，甲种发芽 460 粒，频率 460 ÷ 500 = 0.92；乙种发芽 475 粒，频率 475 ÷ 500 = 0.95。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">根据发芽频率选择种子</span>
+      </div>
+      <div class="example-body">
+        <p>图 5 记录了甲、乙两种玉米种子的发芽试验数据，其中累计试验 500 粒时，甲种发芽 460 粒，乙种发芽 475 粒。（1）分别求两种种子在 500 粒时的发芽频率；（2）如果在相同条件下播种，应选哪种种子？说明理由；（3）如果两种种子各播 1000 粒，估计各能发芽多少粒？相差多少粒？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）甲种的发芽频率 = 460 ÷ 500 = 0.92；乙种的发芽频率 = 475 ÷ 500 = 0.95。</p>
+          <p>（2）应选乙种。因为乙种的发芽频率 0.95 高于甲种的 0.92，而且从图 5 看，两条折线都已趋于平稳，乙种的折线始终在甲种上方，说明在相同条件下乙种更容易发芽。</p>
+          <p>（3）乙种约发芽 1000 × 0.95 = 950（粒）；甲种约发芽 1000 × 0.92 = 920（粒）。两者相差 950 − 920 = 30（粒）。</p>
+          <p>答：甲种发芽频率 0.92，乙种 0.95；应选乙种；各播 1000 粒时，乙种约发芽 950 粒，甲种约发芽 920 粒，相差约 30 粒。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>如果只买得到甲种，要得到约 1380 株幼苗，大约需要播多少粒甲种？<br/>思路：1380 ÷ 0.92 = 1500（粒）。这里用到了“总数量 ≈ 已知数 ÷ 频率”这个关系。</p>
+
+    <div class="method"><strong>方法归纳：</strong>用频率估计概率的题目，先判断“已知什么、要求什么”：已知频数与总次数求频率，用除法；已知频率与总数求频数，用乘法；已知频数与频率求总数，也用除法。凡是涉及“估计有多少个、要准备多少”，都要写清所用的频率，并在最后加一句“约为”。比较两类对象的优劣时，先确认试验条件相同、次数足够多，再比较稳定的频率。凡是估计出来的数量，都要结合实际情况取整数。</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】某射手在同一条件下射击 400 次，命中 340 次。（1）求他命中的频率；（2）估计他命中一次的概率；（3）如果他再射击 300 次，估计能命中多少次？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）命中频率 = 340 ÷ 400 = 0.85。</p>
+          <p>（2）400 次属于大量重复试验，命中频率稳定在 0.85 附近，所以估计他命中一次的概率约为 0.85。</p>
+          <p>（3）300 × 0.85 = 255（次）。答：估计能命中约 255 次。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】下列说法正确的是（　）</span>
+      </div>
+      <p><span class="option">A．频率就是概率，两者没有区别</span>　<span class="option">B．试验次数越多，频率就一定等于概率</span>　<span class="option">C．大量重复试验时，频率稳定在某个常数附近，可用这个常数估计概率</span>　<span class="option">D．掷一枚均匀硬币 10 次，有 6 次正面朝上，说明正面朝上的概率是 0.6</span></p>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>选 C。</p>
+          <p>A 错：频率是试验值，会随试验次数变化；概率是理论值，由事件本身决定，两者不是一回事。</p>
+          <p>B 错：试验次数越多，频率通常越接近概率，但“接近”不等于“等于”，频率仍可能在概率附近波动。</p>
+          <p>C 对：这正是频率稳定性的含义，也是用频率估计概率的依据。</p>
+          <p>D 错：10 次试验次数太少，0.6 只是这一次的频率，不能作为概率的估计；均匀硬币正面朝上的概率是 0.5。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】一个鱼塘中养了若干条鱼。先捕上 80 条做标记后放回，充分混合后再捕上 160 条，其中有 5 条带标记。（1）求第二次捕到的鱼中带标记的鱼所占的比例；（2）估计鱼塘中鱼的总数；（3）若每条鱼平均重 1.2 kg，估计鱼塘中鱼的总质量。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）5 ÷ 160 = 0.03125，即带标记的鱼约占 3.125%。</p>
+          <p>（2）设鱼塘中约有 <i>N</i> 条鱼，则塘中带标记的鱼占 80/<i>N</i>，与样本中的比例大致相同，即 80/<i>N</i> ≈ 0.03125，所以 <i>N</i> ≈ 80 ÷ 0.03125 = 2560（条）。</p>
+          <p>（3）2560 × 1.2 = 3072（kg）。答：估计鱼塘中约有 2560 条鱼，总质量约为 3072 kg。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】某厂对一批产品进行抽检，结果如下：抽检 100 件有 92 件合格；抽检 200 件累计 187 件合格；抽检 300 件累计 279 件合格；抽检 400 件累计 374 件合格；抽检 500 件累计 468 件合格。（1）分别计算各次抽检的合格频率；（2）估计这批产品的合格概率；（3）若这批产品共有 8000 件，估计其中合格品有多少件？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）92 ÷ 100 = 0.92；187 ÷ 200 = 0.935；279 ÷ 300 = 0.93；374 ÷ 400 = 0.935；468 ÷ 500 = 0.936。</p>
+          <p>（2）五个频率都在 0.92 到 0.936 之间，且随抽检件数增加逐渐靠近 0.935 附近，所以估计这批产品的合格概率约为 0.935（也可以说约 93.5%）。</p>
+          <p>（3）8000 × 0.935 = 7480（件）。答：估计合格品约有 7480 件。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】一个不透明的袋中装有红、白两种球共 40 个，除颜色外都相同。做摸球试验 800 次（每次摸出一球记下颜色后放回摇匀），其中摸到红球 320 次。（1）估计袋中红球、白球各有多少个；（2）要使摸到红球与摸到白球的可能性相同，需要往袋中再放入几个红球？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）摸到红球的频率 = 320 ÷ 800 = 0.4，红球约有 40 × 0.4 = 16（个），白球约有 40 − 16 = 24（个）。</p>
+          <p>（2）要使摸到红球与摸到白球的可能性相同，袋中红球与白球的个数应当一样多。白球有 24 个，所以红球也应有 24 个，需要再放入 24 − 16 = 8（个）红球。</p>
+          <p>检验：放入 8 个红球后，袋中共有 48 个球，其中红球 24 个、白球 24 个，两种球个数相同，被摸到的机会也就相同。</p>
+          <p>答：估计红球约 16 个、白球约 24 个；需要再放入 8 个红球。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <div class="method">
+    <strong>本节知识网络：</strong>
+    <ul>
+      <li><strong>频数与频率：</strong>频数是某结果出现的次数；频率 = 频数 ÷ 试验总次数，取值在 0 与 1 之间，没有单位。</li>
+      <li><strong>频率的稳定性：</strong>在相同条件下大量重复试验，频率会稳定在某个常数 <i>p</i> 附近；试验次数越多，摆动幅度通常越小。</li>
+      <li><strong>频率与概率：</strong>频率是试验值，会随试验次数波动；概率是理论值，由事件本身决定；大量重复试验时频率稳定在概率附近，可用频率估计概率。</li>
+      <li><strong>三类计算：</strong>已知频数、总次数求频率（除法）；已知频率、总数求频数（乘法）；已知频数、频率求总数（除法）。</li>
+      <li><strong>典型应用：</strong>摸球估计球的个数、标记重捕估计鱼数、抽检估计合格品数、发芽试验估计出苗数与播种量、比较两种方案的优劣并做决策。</li>
+      <li><strong>两个提醒：</strong>估计出来的数量要按实际取整数并写“约”；比较两类对象时，试验条件要相同、次数要足够多。</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="part" id="part3">
+  <div class="part-head">
+    <div class="part-kicker">第 3 节 · 建议 3 课时</div>
+    <h2 class="part-title">等可能事件的概率</h2>
+    <p class="part-intro">第 2 节我们靠成百上千次试验，才敢说“正面朝上的概率大约是 0.5”。可掷一枚均匀的骰子，谁都知道出现 3 点的可能性是 1/6，根本不必掷几千次。这份底气从哪里来？原来有一类试验，结果个数有限，而且每个结果出现的机会一样大。抓住“等可能”三个字，就能不靠试验直接算出概率。本节三课时：先建立 P(<i>A</i>) = <i>m</i>/<i>n</i>，再把“数个数”推广到“量面积、量长度、量时间”，最后用概率判断游戏是否公平，并亲手设计公平的游戏。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>学习目标</h3>
+    <ul>
+      <li>理解等可能事件的意义，能判断一个试验的结果是否“总数有限且机会相同”。</li>
+      <li>掌握等可能事件的概率公式 P(<i>A</i>) = <i>m</i>/<i>n</i>，会正确数出 <i>n</i> 与 <i>m</i>，并把结果约分。</li>
+      <li>知道 0 ≤ P(<i>A</i>) ≤ 1，会用 P = 1、P = 0 解释必然事件与不可能事件。</li>
+      <li>理解几何概型，会用面积比、长度比、时间比求概率，并说清“均匀”的含义。</li>
+      <li>会用概率判断游戏是否公平，能修改规则或设计公平的游戏，并写出双方获胜的概率。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="a3-1">
+    <h3 class="card-title"><span class="num">第 1 课时</span>等可能事件的概率</h3>
+
+    <h4 class="subhead">1. 从“可能性大”到“可能性是几分之几”</h4>
+    <p>第 1 节里，我们只敢说“摸到红球的可能性比摸到黑球大”；第 2 节里，我们靠成百上千次试验，才敢说“正面朝上的概率大约是 0.5”。这两种说法都还隔着一层窗户纸：一个太粗，只能比大小；一个太费事，要掷到手酸。有没有办法既不掷几千次，又能准确说出“可能性是几分之几”？</p>
+    <p>先看一个再熟悉不过的例子。掷一枚均匀的骰子，朝上的点数可能是 1、2、3、4、5、6，一共 6 种结果。因为这枚骰子质地均匀、六个面的形状大小完全相同，所以没有哪个点数“更受偏爱”，每种结果出现的机会都一样大。正因为这 6 种结果机会均等，我们才敢说：出现 3 点的可能性占全部可能性的 1/6。</p>
+    <p>请注意，这个 1/6 不是掷出来的，而是<strong>算</strong>出来的：把“出现 3 点”这 1 种结果，放到“全部 6 种结果”里去比。这就是本节的核心思路——<strong>用部分与整体的比来刻画可能性的大小</strong>。比出来的结果是一个数，它比“大一些”“小一些”精确得多，也比反复试验省事得多。</p>
+    <p>为什么敢“不算试验就算概率”？因为我们事先已经知道了两件事：结果一共有几种，以及每种结果机会是否相同。这两件事只要成立，试验做不做、做多少次，都不会改变这个比值。这正是理论计算与试验估计的分水岭：频率靠做，概率靠算；频率会晃动，概率不晃动。</p>
+
+    <h4 class="subhead">2. 什么样的试验才叫“等可能”</h4>
+    <p>“等可能”不是随口一说的形容词，它要同时满足两个条件，缺一不可。</p>
+    <p><strong>第一，结果的总数必须是有限的。</strong>掷骰子的结果只有 6 种，摸球的结果就是“摸到某一个球”，都可以一个一个数清楚。反过来，如果结果数不清，比如“在操场上随便站一个位置”，位置有无数个，就没法用“数结果”的办法求概率。本节的公式只管有限个结果的情形。</p>
+    <p><strong>第二，每个结果出现的机会必须相同。</strong>这一条最容易被忽略，也最容易出错。掷一枚图钉，结果只有“钉尖朝上”和“钉尖朝下”两种，个数是有限的，但这两种结果绝不等可能——图钉一头重一头轻，落地时钉尖朝上的机会明显小得多。所以图钉问题绝不能套用“两种结果，各占 1/2”。同样，一个转盘被分成一个大扇形和一个小扇形，指针落在两块区域的机会也不相同，不能按“两块，各 1/2”来算。</p>
+    <p>再看摸球，这里藏着本课时最微妙的一处。袋中 2 个红球、3 个白球，除颜色外都相同，摇匀后摸出一个。“摸到 1 号球”“摸到 2 号球”……每一个<strong>球</strong>被摸到的机会是一样的，这 5 个球才是 5 种等可能的结果。而“摸到红球”和“摸到白球”这两个<strong>事件</strong>并不等可能：红球只占 2 个，白球占 3 个。所以判断是否等可能，要看“结果”是否机会均等，不能看“颜色有几种”。把 3 种颜色当成 3 种等可能结果、得出“摸到红球是 1/3”，是本章最常见的错误之一。</p>
+    <div class="keypoint"><strong>要点：</strong>判断等可能，先问“我把什么算作一个结果”，再把所有结果逐一列出，最后检查它们是否真的机会均等。球要按“个”数，扇形要按“面积（圆心角）”算，骰子要按“面”数——计数单位选错了，公式就用错了。</div>
+
+    <h4 class="subhead">3. 概率公式：P(<i>A</i>) = <i>m</i>/<i>n</i></h4>
+    <p>如果一次试验共有 <i>n</i> 种等可能的结果，事件 <i>A</i> 包含其中的 <i>m</i> 种结果，那么事件 <i>A</i> 发生的概率记作 P(<i>A</i>)，并且 P(<i>A</i>) 等于 <i>m</i> 与 <i>n</i> 的比。</p>
+    <div class="formula">
+      <div class="formula-label">等可能事件的概率公式</div>
+      <div class="formula-body">P(<i>A</i>) = <i>m</i>/<i>n</i>（<i>n</i> 为所有等可能结果的总数，<i>m</i> 为事件 <i>A</i> 包含的结果数，0 ≤ <i>m</i> ≤ <i>n</i>）</div>
+    </div>
+    <p>公式里的 <i>m</i> 和 <i>n</i> 都是“数出来的个数”，不是面积、不是重量，更不是试验次数。因为事件 <i>A</i> 包含的结果最多就是全部 <i>n</i> 种、最少一种也没有，所以 0 ≤ <i>m</i> ≤ <i>n</i>；把这个不等式三边同时除以正数 <i>n</i>，就得到概率的取值范围。</p>
+    <div class="formula">
+      <div class="formula-label">概率的取值范围</div>
+      <div class="formula-body">0 ≤ P(<i>A</i>) ≤ 1；必然事件 P = 1，不可能事件 P = 0</div>
+    </div>
+    <p>P = 1 表示“每次都发生”，P = 0 表示“一次也不会发生”。这两个端点的意义要和事件的分类对上号：必然事件包含全部结果，<i>m</i> = <i>n</i>，所以 P = 1；不可能事件一种结果也不包含，<i>m</i> = 0，所以 P = 0。在“结果有限且等可能”这类试验里，反过来说也成立：算出 P = 1 的事件就是必然事件，算出 P = 0 的事件就是不可能事件。判断一个算出的概率是否合理，先看它落没落在 0 与 1 之间——落在外面，一定算错了。</p>
+    <div class="tip"><strong>提示：</strong>概率是一个比值，不带单位；写成分数时不带符号，写成百分数时要带“%”。同一个问题里前后要统一：前面用分数，后面就不要突然换成小数或百分数，否则读者要来回换算，容易看错。</div>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">掷一枚均匀的骰子，求五个事件的概率</span>
+      </div>
+      <div class="example-body">
+        <p>掷一枚质地均匀的骰子，观察朝上的点数。求下列事件的概率：（1）点数为 3；（2）点数为偶数；（3）点数大于 4；（4）点数不大于 6；（5）点数为 7。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>骰子有 6 个面，点数分别是 1、2、3、4、5、6。因为骰子质地均匀，所以朝上的点数共有 6 种等可能的结果，即 <i>n</i> = 6。下面逐个把事件包含的结果“数”出来。</p>
+          <p>（1）设事件 <i>A</i> 为“点数为 3”。6 种结果中只有“3”这 1 种符合，<i>m</i> = 1，所以 P(<i>A</i>) = 1/6。</p>
+          <p>（2）设事件 <i>B</i> 为“点数为偶数”。偶数的点数是 2、4、6，共 3 种，<i>m</i> = 3，所以 P(<i>B</i>) = 3/6 = 1/2。</p>
+          <p>（3）设事件 <i>C</i> 为“点数大于 4”。大于 4 的点数是 5、6，共 2 种，<i>m</i> = 2，所以 P(<i>C</i>) = 2/6 = 1/3。</p>
+          <p>（4）设事件 <i>D</i> 为“点数不大于 6”。“不大于 6”就是“小于或等于 6”，1 到 6 全部符合，<i>m</i> = 6，所以 P(<i>D</i>) = 6/6 = 1。这是必然事件，与“骰子的点数一定不超过 6”这一事实吻合。</p>
+          <p>（5）设事件 <i>E</i> 为“点数为 7”。骰子上根本没有 7 点，一种结果也不符合，<i>m</i> = 0，所以 P(<i>E</i>) = 0/6 = 0。这是不可能事件。</p>
+          <p>答：P(点数为 3) = 1/6，P(点数为偶数) = 1/2，P(点数大于 4) = 1/3，P(点数不大于 6) = 1，P(点数为 7) = 0。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>仍掷这枚骰子，求“点数是 3 的倍数”与“点数小于 3”的概率，并说明这两个概率相等是否意味着两个事件相同。</p>
+    <p>3 的倍数是 3、6，共 2 种，概率为 2/6 = 1/3；小于 3 的点数是 1、2，共 2 种，概率也是 2/6 = 1/3。两个概率相等，只说明它们包含的结果“个数一样多”，事件本身并不相同：一个包含 3 和 6，一个包含 1 和 2，它们包含的结果完全不一样。概率相等与事件相同是两回事，这一点在判断游戏是否公平时会反复用到。</p>
+    <div class="warn"><strong>易错：</strong>求“点数大于 4”时把 4 也算进去，得 3/6 = 1/2；求“点数不小于 5”时漏掉 5，得 1/6。边界词“大于”“不小于”“至少”“不超过”要逐一翻译成具体的结果，最好把结果写在草稿上再数，不要凭感觉数。</div>
+
+    <h4 class="subhead">4. 三种模型：骰子、摸球、转盘</h4>
+    <p>例 1 是“掷骰子”模型，结果是一个个点数；接下来看“摸球”模型，结果是一个个球；最后看“转盘”模型，结果是一个个扇形。三种模型的共同点是：都能把全部结果数清楚，而且每个结果机会均等；不同点在于“一个结果”指什么。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">袋中摸球：三种颜色与“红或白”</span>
+      </div>
+      <div class="example-body">
+        <p>一个不透明的袋中装有 2 个红球、3 个白球、1 个黑球，共 6 个球，这些球除颜色外都相同。摇匀后任意摸出一个球。求：（1）摸到红球的概率；（2）摸到白球的概率；（3）摸到黑球的概率；（4）摸到红球或白球的概率。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>袋中共有 6 个球，每个球被摸到的机会相同，所以“摸到某一个球”共有 6 种等可能的结果，<i>n</i> = 6。注意这里的“一个结果”指的是“摸到某一个球”，不是“摸到某一种颜色”。</p>
+          <p>（1）红球有 2 个，事件“摸到红球”包含 2 种结果，<i>m</i> = 2，所以 P(摸到红球) = 2/6 = 1/3。</p>
+          <p>（2）白球有 3 个，事件“摸到白球”包含 3 种结果，<i>m</i> = 3，所以 P(摸到白球) = 3/6 = 1/2。</p>
+          <p>（3）黑球有 1 个，事件“摸到黑球”包含 1 种结果，<i>m</i> = 1，所以 P(摸到黑球) = 1/6。</p>
+          <p>（4）事件“摸到红球或白球”包含 2 + 3 = 5 种结果，<i>m</i> = 5，所以 P(摸到红球或白球) = 5/6。</p>
+          <p>第（4）问还可以换个角度算：摸到红球或白球，与“摸到黑球”恰好相反，两者必有一个发生，所以 P(红或白) = 1 − P(黑) = 1 − 1/6 = 5/6。两种算法结果一致，说明计算没有出错。</p>
+          <p>答：P(红) = 1/3，P(白) = 1/2，P(黑) = 1/6，P(红或白) = 5/6。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>仍用上面的袋子，求“摸到的不是白球”的概率；再把袋子改成 4 个红球、2 个白球，求“摸到红球”的概率。</p>
+    <p>“不是白球”与“是白球”相反，所以概率为 1 − 1/2 = 1/2（也可以数：红 2 个加黑 1 个，共 3 种，3/6 = 1/2）。改成 4 红 2 白后共 6 个球，红球 4 个，概率为 4/6 = 2/3。可见球的个数一改，分母、分子都要跟着重数，不能沿用原来的答案。</p>
+    <div class="warn"><strong>易错：</strong>把“3 种颜色”当成 3 种等可能结果，得出 P(红) = 1/3。在本题里，这个错误答案碰巧和正确答案 1/3 一模一样，纯属巧合——分母 3 与分母 6 的差别，刚好被分子 2 与 1 的差别抵消了。把袋子改成 2 红 4 白，正确结果是 2/6 = 1/3，而“颜色法”仍会给出 1/2，错得一眼就能看出。分母永远是“球的个数”，不是“颜色的种数”。</div>
+    <div class="note"><strong>拓展：</strong>如果题目说“摸出一个球后不放回，再摸一个”，那么第二次摸时袋中的球少了 1 个，分母变成 5，两次的结果也不再相互独立。本章的题目若无特别说明，一律按“摸后放回、摇匀再摸”处理；一旦出现“不放回”三个字，就要重新数分母。</div>
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 3</span>
+        <span class="example-title">八等份转盘：从“数个数”到“数扇形”</span>
+      </div>
+      <div class="example-body">
+        <p>一个转盘被平均分成 8 个全等的扇形，其中 3 个涂红色、2 个涂黄色、3 个涂蓝色，其余不涂色，如图 6。指针固定不动，转动转盘，待转盘停下后，看指针落在哪个扇形内（指针恰好停在分界线上时，这次结果不计，重新转动）。求：（1）指针落在红色区域的概率；（2）指针落在黄色区域的概率；（3）指针落在蓝色区域的概率；（4）指针不落在黄色区域的概率。</p>
+        <figure class="figure">
+          <svg class="fig-svg" viewBox="0 0 460 425" role="img" aria-label="平均分成 8 个全等扇形的转盘，红色 3 份、黄色 2 份、蓝色 3 份，指针指向转盘顶部">
+            <title>8 等份转盘（红 3 份、黄 2 份、蓝 3 份）</title>
+            <circle cx="230" cy="200" r="140" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+            <path d="M230,200 L230,60 A140,140 0 0 1 328.99,101.01 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L328.99,101.01 A140,140 0 0 1 370,200 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L370,200 A140,140 0 0 1 328.99,298.99 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L328.99,298.99 A140,140 0 0 1 230,340 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L230,340 A140,140 0 0 1 131.01,298.99 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L131.01,298.99 A140,140 0 0 1 90,200 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L90,200 A140,140 0 0 1 131.01,101.01 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,200 L131.01,101.01 A140,140 0 0 1 230,60 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <text x="266.35" y="117" font-size="16" text-anchor="middle" fill="#334155">红</text>
+            <text x="317.77" y="168" font-size="16" text-anchor="middle" fill="#334155">红</text>
+            <text x="317.77" y="241" font-size="16" text-anchor="middle" fill="#334155">红</text>
+            <text x="266.35" y="292" font-size="16" text-anchor="middle" fill="#334155">黄</text>
+            <text x="193.65" y="292" font-size="16" text-anchor="middle" fill="#334155">黄</text>
+            <text x="142.23" y="241" font-size="16" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="142.23" y="168" font-size="16" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="193.65" y="117" font-size="16" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="379.67" y="143" font-size="13" text-anchor="middle" fill="#475569">135°</text>
+            <text x="230" y="367" font-size="13" text-anchor="middle" fill="#475569">90°</text>
+            <text x="80.33" y="143" font-size="13" text-anchor="middle" fill="#475569">135°</text>
+            <polygon points="230,58 216,26 244,26" fill="#1d4ed8"/>
+            <text x="268" y="42" font-size="13" text-anchor="start" fill="#1d4ed8">指针</text>
+            <circle cx="230" cy="200" r="4" fill="#334155"/>
+            <text x="230" y="405" font-size="13" text-anchor="middle" fill="#475569">8 个扇形全等，每份 45°</text>
+          </svg>
+          <figcaption>图 6　8 等份转盘：红 3 份（135°）、黄 2 份（90°）、蓝 3 份（135°）</figcaption>
+        </figure>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>转盘被平均分成 8 个全等的扇形，每个扇形的圆心角都是 360° ÷ 8 = 45°，面积也都相等。因为转盘转动后停在哪个位置是随机的，指针落在每个扇形内的机会相同，所以“指针落在某一个扇形内”共有 8 种等可能的结果，<i>n</i> = 8。</p>
+          <p>（1）红色扇形有 3 个，<i>m</i> = 3，所以 P(指针落在红色区域) = 3/8。</p>
+          <p>（2）黄色扇形有 2 个，<i>m</i> = 2，所以 P(指针落在黄色区域) = 2/8 = 1/4。</p>
+          <p>（3）蓝色扇形有 3 个，<i>m</i> = 3，所以 P(指针落在蓝色区域) = 3/8。</p>
+          <p>（4）“不落在黄色区域”与“落在黄色区域”正好相反，所以 P(不落在黄色区域) = 1 − P(落在黄色区域) = 1 − 1/4 = 3/4。也可以直接数：不是黄色的扇形有红 3 个加蓝 3 个，共 6 个，6/8 = 3/4。两条路走到同一个结果，说明算对了。</p>
+          <p>这里要特别当心一个“差一点”的答案：5/8。5/8 是“不落在红色区域”的概率，因为红占 3/8，1 − 3/8 = 5/8；而蓝也是 3/8，所以“不落在蓝色区域”同样是 5/8。三个“不是”当中，只有“不是黄”的答案是 3/4。把“不是谁”对应错了，是这类题最常见的失分点。</p>
+          <p>答：P(红) = 3/8，P(黄) = 1/4，P(蓝) = 3/8，P(不是黄) = 3/4。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="variant"><strong>变式：</strong>仍用图 6 的转盘，求指针落在红色或蓝色区域的概率，以及指针不落在红色区域的概率。</p>
+    <p>红 3 份、蓝 3 份，共 6 份，P(红或蓝) = 6/8 = 3/4（也可用 1 − P(黄) = 1 − 1/4 = 3/4 验算）。不落在红色区域，就是落在黄或蓝区域，共 2 + 3 = 5 份，P(不是红) = 5/8。这道变式与例 3 的第（4）问只差一个颜色，答案却不同：3/4 与 5/8。把这两问并排写在一起，就能看清“不是谁”这三个字有多要紧。</p>
+
+    <p>5/8 与 3/4 都落在 0 与 1 之间，看起来都“像对的”，光凭感觉分不出来，只能回到扇形上去数。凡是遇到“不是”“至少”“至多”这类词，最稳妥的办法都是回到结果集合，把符合的扇形（或球）一个一个数出来，再用“1 减反面”验算一遍。两个算法对上了，答案才敢写。</p>
+    <p>例 3 还告诉我们一件事：转盘问题和摸球问题本质上是同一个模型。转盘的“一个结果”是一个扇形，摸球的“一个结果”是一个球，两者都要求“每个结果机会相同”。所以转盘必须“平均分成全等的扇形”，摸球必须“球除颜色外都相同、摇匀”。一旦转盘的扇形大小不一，或者球的质地、大小不同，等可能的前提就被破坏了，P(<i>A</i>) = <i>m</i>/<i>n</i> 也就不能直接用了。</p>
+
+    <p>把本课时的公式、条件和易错点整理成一张表，见表 5。做练习之前先看一遍这张表，做题时再回头对照，比反复看例题更有效。</p>
+    <table class="data-table">
+      <caption>表 5　等可能事件的概率：公式与注意事项</caption>
+      <thead>
+        <tr><th>项目</th><th>具体内容</th><th>提醒</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>使用条件</td><td>结果总数有限；每个结果出现的机会相同</td><td>图钉、大小不一的扇形、质地不同的球都不满足</td></tr>
+        <tr><td>计算公式</td><td>P(<i>A</i>) = <i>m</i>/<i>n</i></td><td><i>n</i> 是等可能结果总数，不是试验次数</td></tr>
+        <tr><td>取值范围</td><td>0 ≤ P(<i>A</i>) ≤ 1</td><td>算出大于 1 或小于 0，一定算错了</td></tr>
+        <tr><td>两个端点</td><td>必然事件 P = 1；不可能事件 P = 0</td><td>判断事件类型要先说清“在一定条件下”</td></tr>
+        <tr><td>解题步骤</td><td>定 <i>n</i> → 数 <i>m</i> → 代入公式 → 约分作答</td><td>四步缺一不可，约分常被漏掉</td></tr>
+        <tr><td>常见易错</td><td>把颜色种数当分母；“不是黄”误用 1 − P(蓝)</td><td>分母永远是等可能结果的总数</td></tr>
+      </tbody>
+    </table>
+    <div class="method"><strong>方法归纳：</strong>求等可能事件的概率，第一步永远是“把结果数清楚”。数的时候可以借助列表、树状图或直接枚举；数完 <i>n</i> 再数 <i>m</i>，两者用的是同一把尺子。若两个事件恰好相反（一个发生则另一个不发生），用 1 减去其中一个的概率往往更快，但“谁的反面是谁”必须对应准确。</div>
+
+    <h4 class="subhead">5. 练习：把公式用熟</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】掷一枚质地均匀的骰子，求下列事件的概率：（1）点数为 5；（2）点数小于 3；（3）点数至少为 2。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>骰子的点数共有 6 种等可能结果，<i>n</i> = 6。</p>
+          <p>（1）点数为 5 只有 1 种结果，<i>m</i> = 1，P(点数为 5) = 1/6。</p>
+          <p>（2）小于 3 的点数是 1、2，共 2 种，<i>m</i> = 2，P(点数小于 3) = 2/6 = 1/3。</p>
+          <p>（3）“至少为 2”即“不小于 2”，点数是 2、3、4、5、6，共 5 种，<i>m</i> = 5，P(点数至少为 2) = 5/6。也可以这样想：它的反面是“点数为 1”，概率 1/6，所以所求为 1 − 1/6 = 5/6。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】一个不透明的袋中装有 4 个红球、5 个白球、1 个黑球，共 10 个球，除颜色外都相同。摇匀后任意摸出一个球，求：（1）摸到红球的概率；（2）摸到白球的概率；（3）摸到的不是黑球的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>袋中共有 10 个球，每个球被摸到的机会相同，<i>n</i> = 10。</p>
+          <p>（1）红球 4 个，P(红) = 4/10 = 2/5。</p>
+          <p>（2）白球 5 个，P(白) = 5/10 = 1/2。</p>
+          <p>（3）黑球 1 个，P(黑) = 1/10，所以 P(不是黑) = 1 − 1/10 = 9/10。直接数也行：红球加白球共 4 + 5 = 9 个，9/10。</p>
+          <p>注意：这里的分母是 10 而不是 3（颜色种数），因为“摸到某一个球”才是等可能的结果。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】一个转盘被平均分成 10 个全等的扇形，其中 4 个红色、1 个黄色、5 个蓝色。求指针落在红色区域、黄色区域的概率，以及指针不落在红色区域的概率；并写出红色区域对应的圆心角度数。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>10 个扇形全等，指针落在每个扇形内的机会相同，<i>n</i> = 10；每个扇形的圆心角为 360° ÷ 10 = 36°。</p>
+          <p>P(红) = 4/10 = 2/5；P(黄) = 1/10；P(不是红) = 1 − 2/5 = 3/5（即蓝色 5 份加黄色 1 份，共 6 份，6/10 = 3/5）。</p>
+          <p>红色区域有 4 个扇形，圆心角为 4 × 36° = 144°。</p>
+          <p>检验：三种颜色所占份数 4 + 1 + 5 = 10，概率之和 2/5 + 1/10 + 1/2 = 1，说明没有漏数或重数。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】下列说法正确的是（　　）<br>A．任意事件 <i>A</i> 都满足 P(<i>A</i>) = <i>m</i>/<i>n</i>　B．掷一枚均匀的骰子，“点数为奇数”与“点数为偶数”是等可能的　C．袋中 3 个红球、2 个白球，摸到红球与摸到白球是等可能的　D．若事件 <i>A</i> 包含 3 种结果，则 P(<i>A</i>) = 3</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>选 B。</p>
+          <p>A 错：P(<i>A</i>) = <i>m</i>/<i>n</i> 只适用于“结果有限且等可能”的试验，掷图钉、转盘扇形大小不一等情形都不能直接套用。</p>
+          <p>B 对：骰子的 6 种结果等可能，奇数有 1、3、5 共 3 种，偶数有 2、4、6 共 3 种，两者都占 3/6 = 1/2，机会相同。</p>
+          <p>C 错：红球 3 个、白球 2 个，共 5 个球，P(红) = 3/5，P(白) = 2/5，不相等。</p>
+          <p>D 错：概率是比值，还要除以结果总数 <i>n</i>，而且概率不可能大于 1。若共有 10 种等可能结果，P(<i>A</i>) 应为 3/10。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】一个不透明的袋中装有 3 个红球和若干个白球，除颜色外都相同。从中任意摸出一个球，摸到红球的概率是 1/3。（1）求白球的个数；（2）要使摸到红球的概率变为 1/2，应再往袋中放入几个红球？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）设白球有 <i>x</i> 个，则袋中共有 3 + <i>x</i> 个球。由 P(红) = 3/(3 + <i>x</i>) = 1/3，得 3 + <i>x</i> = 9，所以 <i>x</i> = 6。即白球有 6 个，袋中共 9 个球。</p>
+          <p>（2）设再放入 <i>y</i> 个红球，此时红球有 3 + <i>y</i> 个，球的总数为 9 + <i>y</i> 个。由 (3 + <i>y</i>)/(9 + <i>y</i>) = 1/2，得 2(3 + <i>y</i>) = 9 + <i>y</i>，即 6 + 2<i>y</i> = 9 + <i>y</i>，解得 <i>y</i> = 3。</p>
+          <p>检验：放入 3 个红球后，红球 6 个、白球 6 个，共 12 个，P(红) = 6/12 = 1/2，符合要求。</p>
+          <p>答：白球有 6 个；应再放入 3 个红球。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+  <section class="knowledge-card" id="a3-2">
+    <h3 class="card-title"><span class="num">第 2 课时</span>几何概型：面积、长度与时间</h3>
+
+    <h4 class="subhead">1. 数不清的“结果”怎么办</h4>
+    <p>第 1 课时里，不管是骰子的 6 个面、袋中的 6 个球，还是转盘的 8 个扇形，我们都能把结果一个一个数清楚。可是换个问法，麻烦就来了：飞镖随机扎在靶面上，扎中红色圆环的可能性有多大？转盘的指针停下的位置有无数多个，根本数不完；公交车每 10 分钟一班，乘客到站的时刻也有无数多个。结果无穷多，<i>m</i> 和 <i>n</i> 都数不出来，P(<i>A</i>) = <i>m</i>/<i>n</i> 岂不是用不上了？</p>
+    <p>办法是有的，而且很自然：<strong>数不清个数，就量大小</strong>。靶面上红色圆环占整个靶面几分之几，扎中的可能性就是几分之几；转盘上红色区域占整个圆面积的几分之几，指针落在红色区域的可能性就是几分之几；乘客等车不超过 3 分钟，占整个 10 分钟间隔的几分之几，概率就是几分之几。把“结果的个数之比”换成“区域的大小之比”，公式就活了下来。</p>
+    <div class="formula">
+      <div class="formula-label">几何概型的概率</div>
+      <div class="formula-body">P = 目标区域的面积（长度、时间）÷ 总面积（总长度、总时间）</div>
+    </div>
+    <p>这个公式成立，靠的仍然是一条“等可能”：点落在区域内任何位置的机会相同，指针停在任何一个角度的机会相同，乘客在任何一个时刻到站的机会相同。这条要求通常用一个词概括——<strong>均匀</strong>。均匀是几何概型的“命门”：如果飞镖选手专往靶心扎，或者乘客专门掐着点赶车，区域大小之比就不再等于概率了。</p>
+    <p>还要注意，几何概型里的“一个结果”不再是某个具体的位置，而是“点落在某个小区域”这件事。区域取得越小，落进去的机会越小；两个形状不同但面积相等的小区域，落进去的机会一样大。正因为如此，几何概型的答案与区域的位置、形状都无关，只与它的大小有关。</p>
+
+    <h4 class="subhead">2. 转盘：按圆心角算，不按“块数”算</h4>
+    <p>转盘是最容易“看走眼”的一类。第 1 课时的转盘被平均分成 8 份，每份一样大，所以数份数就等于量面积。可如果各块大小不同，还按“块数”去数，就会得出荒唐的答案。看下面的例子。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 4</span>
+        <span class="example-title">十二等份转盘：份数与角度互相印证</span>
+      </div>
+      <div class="example-body">
+        <p>一个转盘被平均分成 12 个全等的扇形，其中 4 个涂红色、3 个涂黄色、5 个涂蓝色，如图 7 的（1）。转动转盘，求指针落在红色、黄色、蓝色区域的概率，并求指针落在红色或黄色区域的概率。</p>
+        <figure class="figure">
+          <svg class="fig-svg" viewBox="0 0 900 470" role="img" aria-label="左图是平均分成 12 个扇形的转盘，红色 4 份、黄色 3 份、蓝色 5 份；右图是边长为 4 的正方形，内部有一个边长为 2 的阴影小正方形">
+            <title>12 等份转盘与正方形内的阴影小正方形</title>
+            <text x="230" y="30" font-size="15" text-anchor="middle" fill="#334155">（1）12 等份转盘，每份 30°</text>
+            <text x="700" y="30" font-size="15" text-anchor="middle" fill="#334155">（2）正方形内随机投一点</text>
+            <line x1="470" y1="20" x2="470" y2="445" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <circle cx="230" cy="230" r="140" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+            <path d="M230,230 L230,90 A140,140 0 0 1 300,108.76 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L300,108.76 A140,140 0 0 1 351.24,160 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L351.24,160 A140,140 0 0 1 370,230 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L370,230 A140,140 0 0 1 351.24,300 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L351.24,300 A140,140 0 0 1 300,351.24 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L300,351.24 A140,140 0 0 1 230,370 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L230,370 A140,140 0 0 1 160,351.24 Z" fill="#fef3c7" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L160,351.24 A140,140 0 0 1 108.76,300 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L108.76,300 A140,140 0 0 1 90,230 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L90,230 A140,140 0 0 1 108.76,160 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L108.76,160 A140,140 0 0 1 160,108.76 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,230 L160,108.76 A140,140 0 0 1 230,90 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <text x="254.59" y="143" font-size="14" text-anchor="middle" fill="#334155">红</text>
+            <text x="297.18" y="168" font-size="14" text-anchor="middle" fill="#334155">红</text>
+            <text x="321.76" y="210" font-size="14" text-anchor="middle" fill="#334155">红</text>
+            <text x="321.76" y="260" font-size="14" text-anchor="middle" fill="#334155">红</text>
+            <text x="297.18" y="302" font-size="14" text-anchor="middle" fill="#334155">黄</text>
+            <text x="254.59" y="327" font-size="14" text-anchor="middle" fill="#334155">黄</text>
+            <text x="205.41" y="327" font-size="14" text-anchor="middle" fill="#334155">黄</text>
+            <text x="162.82" y="302" font-size="14" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="138.24" y="260" font-size="14" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="138.24" y="210" font-size="14" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="162.82" y="168" font-size="14" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="205.41" y="143" font-size="14" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="371.16" y="153" font-size="13" text-anchor="middle" fill="#475569">120°</text>
+            <text x="272.19" y="392" font-size="13" text-anchor="middle" fill="#475569">90°</text>
+            <text x="72.55" y="277" font-size="13" text-anchor="middle" fill="#475569">150°</text>
+            <polygon points="230,88 216,54 244,54" fill="#1d4ed8"/>
+            <text x="266" y="68" font-size="13" text-anchor="start" fill="#1d4ed8">指针</text>
+            <circle cx="230" cy="230" r="4" fill="#334155"/>
+            <rect x="600" y="140" width="200" height="200" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+            <rect x="650" y="190" width="100" height="100" fill="#94a3b8" stroke="#334155" stroke-width="1.5"/>
+            <text x="700" y="246" font-size="14" text-anchor="middle" fill="#334155">阴影</text>
+            <text x="700" y="315" font-size="13" text-anchor="middle" fill="#475569">2</text>
+            <text x="764" y="245" font-size="13" text-anchor="middle" fill="#475569">2</text>
+            <text x="700" y="368" font-size="13" text-anchor="middle" fill="#475569">4</text>
+            <text x="818" y="245" font-size="13" text-anchor="middle" fill="#475569">4</text>
+            <text x="700" y="410" font-size="13" text-anchor="middle" fill="#475569">总面积 16，阴影面积 4</text>
+          </svg>
+          <figcaption>图 7　（1）12 等份转盘：红 4 份（120°）、黄 3 份（90°）、蓝 5 份（150°）；（2）边长 4 的正方形内含边长 2 的阴影小正方形</figcaption>
+        </figure>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>12 个扇形全等，每个扇形的圆心角是 360° ÷ 12 = 30°，面积也相等，所以“指针落在某一个扇形内”共有 12 种等可能结果，<i>n</i> = 12。</p>
+          <p>（1）红色 4 份，P(红) = 4/12 = 1/3。用角度验证：红色区域圆心角 4 × 30° = 120°，120°/360° = 1/3，一致。</p>
+          <p>（2）黄色 3 份，P(黄) = 3/12 = 1/4。验证：3 × 30° = 90°，90°/360° = 1/4。</p>
+          <p>（3）蓝色 5 份，P(蓝) = 5/12。验证：5 × 30° = 150°，150°/360° = 5/12。</p>
+          <p>（4）“落在红色或黄色区域”共 4 + 3 = 7 份，P(红或黄) = 7/12；也可用 1 − P(蓝) = 1 − 5/12 = 7/12。</p>
+          <p>答：P(红) = 1/3，P(黄) = 1/4，P(蓝) = 5/12，P(红或黄) = 7/12。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>把上题转盘改为“红 120°、黄 90°、蓝 150°”，但不再平均分份，能否直接求概率？</p>
+    <p>能。此时“落在某一个扇形内”已不是等可能结果（扇形大小不同），但指针停在每个角度的机会仍然相同，所以改用面积（圆心角）之比：P(红) = 120/360 = 1/3，P(黄) = 90/360 = 1/4，P(蓝) = 150/360 = 5/12。答案与按份数算完全一样——这说明“平均分份”只是让角度之比刚好等于份数之比，本质还是面积之比。</p>
+    <div class="warn"><strong>易错：</strong>转盘上有 3 块颜色就写分母 3，得 P(红) = 1/3。这个答案在本题碰巧对，是因为红色恰好占 1/3；换成红 90°、黄 90°、蓝 180°，正确答案是 P(红) = 1/4，而“3 块”的错误算法仍会给 1/3。凡是扇形大小不等，一定要量角度或量面积。</div>
+
+    <h4 class="subhead">3. 面积型：点在图形内均匀分布</h4>
+    <p>把“指针”换成“笔尖”“飞镖”或“随机点”，问题就从转盘变成了平面图形。只要点在图形内部分布均匀，落在某个小区域内的概率就等于那个小区域的面积与整个图形面积之比。看下面的正方形。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 5</span>
+        <span class="example-title">正方形内随机投一点</span>
+      </div>
+      <div class="example-body">
+        <p>如图 7 的（2），一个正方形的边长为 4，在它的内部有一个边长为 2 的阴影小正方形。随机向大正方形内投一点（点落在正方形内任何位置的机会相同），求这一点落在阴影小正方形内的概率。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>大正方形的面积是 4 × 4 = 16；阴影小正方形的面积是 2 × 2 = 4。</p>
+          <p>点落在正方形内任何位置的机会相同，所以所求概率等于两块面积的比：P(落在阴影内) = 4/16 = 1/4。</p>
+          <p>答：这一点落在阴影小正方形内的概率是 1/4。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>若把阴影小正方形的边长改为 3（仍在大正方形内部），概率是多少？若把小正方形移到大正方形的角上，概率会变吗？</p>
+    <p>边长改为 3 时，阴影面积 9，概率为 9/16。把小正方形移到角上，面积仍是 4，概率仍是 4/16 = 1/4——只要“均匀投点”，区域的位置、形状都不影响结果，起作用的只有面积。这也是几何概型与古典概型最不一样的地方：古典概型数“个数”，几何概型量“大小”。</p>
+    <div class="keypoint"><strong>要点：</strong>面积型问题的三步：①分别求出目标区域与整个图形的面积；②确认“均匀”（题目通常用“随机投一点”“任意取一点”表达）；③作比并约分。单位要统一，边长用 cm 面积就是 cm<sup>2</sup>，但比值不带单位。</div>
+
+    <h4 class="subhead">4. 长度型与时间型：把“段”当面积用</h4>
+    <p>如果随机点只能落在一条线段上，那就把“面积”换成“长度”；如果随机时刻只能落在一段时间里，那就把“长度”换成“时间”。三者是同一个思路，只是量的东西不同。</p>
+    <p>先看时间。公交车每隔 10 分钟发一班车，乘客到达车站的时刻是随机的（不掐点、不看时刻表）。如果把刚开走一班车的时刻记为 0，下一班车到站的时刻就是 10，乘客的等车时间 <i>t</i> 可以取 0 到 10 之间的任何一个值，而且取到每个值的可能性相同。等车时间不超过 3 分钟，就是 <i>t</i> 落在 0 到 3 这一段里，长度是 3，总长度是 10，所以概率为 3/10。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 6</span>
+        <span class="example-title">等公交车：用时间长度求概率</span>
+      </div>
+      <div class="example-body">
+        <p>某路公交车每隔 10 分钟发一班车。一位乘客到达车站的时刻是随机的，他到达时上一班车已经开走。求：（1）他等车时间不超过 3 分钟的概率；（2）他等车时间超过 7 分钟的概率；（3）他等车时间在 4 分钟到 6 分钟之间的概率。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>乘客在任意时刻到站的机会相同，所以等车时间 <i>t</i> 在 0 到 10（分钟）之间“均匀”分布，总的“时间长度”是 10。</p>
+          <p>（1）“等车时间不超过 3 分钟”对应 0 ≤ <i>t</i> ≤ 3，时间长度是 3，所以 P = 3/10。</p>
+          <p>（2）“等车时间超过 7 分钟”对应 7 &lt; <i>t</i> &lt; 10，时间长度是 10 − 7 = 3，所以 P = 3/10。</p>
+          <p>（3）“等车时间在 4 分钟到 6 分钟之间”对应 4 ≤ <i>t</i> ≤ 6，时间长度是 6 − 4 = 2，所以 P = 2/10 = 1/5。</p>
+          <p>答：（1）3/10；（2）3/10；（3）1/5。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>若公交车改为每 15 分钟一班，求等车时间不超过 6 分钟的概率；再求等车时间超过 12 分钟的概率。</p>
+    <p>总长度改为 15。不超过 6 分钟：6/15 = 2/5；超过 12 分钟：15 − 12 = 3，3/15 = 1/5。这两个答案可以互相检验：等车超过 12 分钟，必然也超过 6 分钟，所以“超过 12 分钟”的概率 1/5 应当小于“超过 6 分钟”的概率 3/5（15 − 6 = 9，9/15 = 3/5），而 1/5 &lt; 3/5，符合预期。用“反面”检验时，先要认清谁是谁的反面：“不超过 6 分钟”的反面是“超过 6 分钟”，不是“超过 12 分钟”。</p>
+    <div class="warn"><strong>易错：</strong>“每 10 分钟一班”意味着等车时间的总长度是 10 分钟，这一步没错；错在算出 3/10 之后又去乘班次数——几何概型只作一次比，不做“几次试验相乘”。另一处高频错误是求“超过 7 分钟”时直接用 7 作长度，正确做法是用 10 − 7 = 3。</div>
+    <div class="note"><strong>拓展：</strong>几何概型里会出现“概率为 0 却可能发生”的情形。比如指针恰好停在两条分界线的交点上，这个事件的概率是 0（交点没有面积），但它并非不可能；反过来，“指针不停在交点上”的概率是 1，却不能说它一定发生。所以“P = 1 就是必然事件”这句话只在结果有限且等可能的古典概型里成立，到了几何概型要谨慎表述。</div>
+
+    <h4 class="subhead">5. 三类问题对照</h4>
+    <p>面积、长度、时间，说到底都是“量一段、比一比”。把三类问题放在一起对照，见表 6。</p>
+    <table class="data-table">
+      <caption>表 6　几何概型的三种类型</caption>
+      <thead>
+        <tr><th>类型</th><th>概率公式</th><th>典型例子</th><th>易错点</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>面积型</td><td>P = 目标面积 ÷ 总面积</td><td>飞镖扎中圆环、点落在阴影内</td><td>把“块数”当面积；单位不统一</td></tr>
+        <tr><td>长度型</td><td>P = 目标长度 ÷ 总长度</td><td>线段上随机取点落在某一段</td><td>用端点坐标之差时算错长度</td></tr>
+        <tr><td>时间型</td><td>P = 目标时间 ÷ 总时间</td><td>等车时间、约定时间内的到达</td><td>“超过”与“不超过”混淆</td></tr>
+      </tbody>
+    </table>
+    <p>三类问题共同的“隐形前提”是均匀：点均匀落在图形内、时刻均匀落在区间内。题目里“随机”“任意”“机会相同”这些词，就是在替我们作这个保证。若题目说“某人在 7 点到 8 点之间随机到达”，就默认 7 点到 8 点之间每个时刻到的机会相同；若说“他 7 点半准时到”，那等车时间就变成了一个确定的值，谈不上用区间长度求概率了。</p>
+    <div class="method"><strong>方法归纳：</strong>遇到几何概型，先判断“量什么”：二维图形量面积，一维线段量长度，时间区间量时间。再找“目标”与“全体”各是多少，最后作比约分。判断是否属于几何概型，看两点：结果是不是无穷多；题目有没有保证“均匀”。两点都满足，就可以放心用比值。</div>
+
+    <h4 class="subhead">6. 练习：面积、长度、时间各来一遍</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】一个转盘被平均分成 9 个全等的扇形，其中 2 个红色、3 个黄色、4 个蓝色。求指针落在红色、黄色、蓝色区域的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>9 个扇形全等，指针落在每个扇形内的机会相同，<i>n</i> = 9；每个扇形圆心角 360° ÷ 9 = 40°。</p>
+          <p>P(红) = 2/9；P(黄) = 3/9 = 1/3；P(蓝) = 4/9。</p>
+          <p>用角度验证：红 80°，黄 120°，蓝 160°，分别除以 360° 得 2/9、1/3、4/9，与份数算法一致。三者之和 2/9 + 1/3 + 4/9 = 1，说明没有漏算。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】一条长 12 cm 的线段上随机取一点，求这一点落在该线段中某条长 3 cm 的小线段上的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>这是长度型几何概型：点在 12 cm 的线段上均匀分布，总长度 12 cm，目标长度 3 cm。</p>
+          <p>P = 3/12 = 1/4。</p>
+          <p>小线段在这条 12 cm 线段上的位置不影响结果——只要长度是 3 cm，概率就是 1/4。若小线段长 5 cm，概率则为 5/12。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】一个长方形长 10 cm、宽 6 cm，内部有一个边长为 3 cm 的正方形阴影区域。随机向长方形内投一点，求这一点落在阴影区域内的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>长方形面积 = 10 × 6 = 60（cm<sup>2</sup>），阴影正方形面积 = 3 × 3 = 9（cm<sup>2</sup>）。</p>
+          <p>点在长方形内均匀分布，所以 P = 9/60 = 3/20。</p>
+          <p>答：这一点落在阴影区域内的概率是 3/20。注意 9/60 要约分成 3/20，不能停在 9/60；比值不带单位，不要把 cm<sup>2</sup> 写进答案。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】某路公交车每隔 15 分钟发一班车，乘客到达车站的时刻是随机的。求他等车时间在 3 分钟到 9 分钟之间的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>等车时间 <i>t</i> 在 0 到 15 分钟之间均匀分布，总时间长度 15。</p>
+          <p>“在 3 分钟到 9 分钟之间”对应 3 ≤ <i>t</i> ≤ 9，时间长度为 9 − 3 = 6。</p>
+          <p>P = 6/15 = 2/5。</p>
+          <p>答：等车时间在 3 分钟到 9 分钟之间的概率是 2/5。若误把长度写成 9（忘了减去起点 3），就会得到 3/5，这是本题最常见的错误。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】设计一个转盘，使指针落在红色区域的概率为 1/2，落在黄色区域的概率为 1/3，落在蓝色区域的概率为 1/6。（1）求三个扇形圆心角的度数；（2）如果把转盘平均分成 12 份，三种颜色各应占几份？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）整个转盘是 360°。红色：360° × 1/2 = 180°；黄色：360° × 1/3 = 120°；蓝色：360° × 1/6 = 60°。检验：180° + 120° + 60° = 360°，且 1/2 + 1/3 + 1/6 = 1，符合要求。</p>
+          <p>（2）平均分成 12 份时，每份 360° ÷ 12 = 30°。红色 180° ÷ 30° = 6 份；黄色 120° ÷ 30° = 4 份；蓝色 60° ÷ 30° = 2 份。检验：6 + 4 + 2 = 12 份，P(红) = 6/12 = 1/2，P(黄) = 4/12 = 1/3，P(蓝) = 2/12 = 1/6，全部吻合。</p>
+          <p>设计这类转盘的口诀是：先把概率化成分母相同的分数，再按份数分。本题三个概率的分母 2、3、6 的最小公倍数是 6，化成分母 6 的分数是 3/6、2/6、1/6，于是把转盘平均分成 6 份，红 3 份、黄 2 份、蓝 1 份即可。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+  <section class="knowledge-card" id="a3-3">
+    <h3 class="card-title"><span class="num">第 3 课时</span>设计游戏：用概率判断公平</h3>
+
+    <h4 class="subhead">1. 什么叫“公平”</h4>
+    <p>两个人玩游戏，谁都不想吃亏。可“不吃亏”这种感觉靠不住：有人赢了就说运气好，输了就说规则不公。能不能用数学把“公平”说清楚？能。只要把双方获胜的可能性算出来，摆在一起比一比，公平不公平就一目了然。</p>
+    <p>所谓游戏公平，指的是<strong>双方获胜的概率相等</strong>。若甲方获胜的概率大于乙方，规则就偏向甲方，对乙方不公平；反之亦然。第 1 节我们只能凭“可能性大一些”作定性判断，现在有了 P(<i>A</i>) = <i>m</i>/<i>n</i>，判断就变成了算一算、比一比。</p>
+    <div class="formula">
+      <div class="formula-label">游戏公平的判断标准</div>
+      <div class="formula-body">P(甲胜) = P(乙胜) 时游戏公平；P(甲胜) ≠ P(乙胜) 时游戏不公平</div>
+    </div>
+    <p>由于双方必有一方获胜（或规则规定平局重来），所以 P(甲胜) + P(乙胜) = 1。因此“公平”也可以说成：双方获胜的概率都等于 1/2。判断时只要算出其中一方，另一方用 1 减一下就得到了。</p>
+    <div class="tip"><strong>提示：</strong>判断公平要看“概率”，不能只数“赢法的条数”，也不能凭“哪个条件听起来更宽松”下结论。“抽到 3 的倍数”和“抽到偶数”都只有一句话，前者只覆盖 3 个数、后者覆盖 5 个数，概率差得很远。唯一可靠的做法是算出双方概率，再比大小。</div>
+
+    <h4 class="subhead">2. 转盘游戏：扇形大小决定胜负</h4>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 7</span>
+        <span class="example-title">红蓝转盘：1/3 对 2/3 的游戏</span>
+      </div>
+      <div class="example-body">
+        <p>如图 8，一个转盘被分成两个扇形，红色扇形的圆心角是 120°，蓝色扇形的圆心角是 240°。游戏规则：转动转盘，指针落在红色区域则甲获胜，落在蓝色区域则乙获胜（指针停在分界线上时重转）。这个游戏公平吗？如果不公平，怎样修改规则或转盘，才能使游戏公平？</p>
+        <figure class="figure">
+          <svg class="fig-svg" viewBox="0 0 460 430" role="img" aria-label="红蓝两色转盘，红色扇形圆心角 120 度，蓝色扇形圆心角 240 度，指针指向顶部">
+            <title>红 120°、蓝 240° 的游戏转盘</title>
+            <circle cx="230" cy="205" r="140" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+            <path d="M230,205 L230,65 A140,140 0 0 1 351.24,275 Z" fill="#fde2e2" stroke="#334155" stroke-width="1.5"/>
+            <path d="M230,205 L351.24,275 A140,140 0 1 1 230,65 Z" fill="#dbeafe" stroke="#334155" stroke-width="1.5"/>
+            <text x="309.67" y="164" font-size="16" text-anchor="middle" fill="#334155">红</text>
+            <text x="150.33" y="256" font-size="16" text-anchor="middle" fill="#334155">蓝</text>
+            <text x="371.16" y="128" font-size="13" text-anchor="middle" fill="#475569">120°</text>
+            <text x="88.84" y="291" font-size="13" text-anchor="middle" fill="#475569">240°</text>
+            <polygon points="230,63 216,29 244,29" fill="#1d4ed8"/>
+            <text x="262" y="44" font-size="13" text-anchor="start" fill="#1d4ed8">指针</text>
+            <circle cx="230" cy="205" r="4" fill="#334155"/>
+            <text x="230" y="400" font-size="13" text-anchor="middle" fill="#475569">指针停在分界线上时不计，重新转动</text>
+          </svg>
+          <figcaption>图 8　游戏转盘：红色 120°（甲胜），蓝色 240°（乙胜）</figcaption>
+        </figure>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>指针停在每一个角度的机会相同，所以可以按圆心角（也就是扇形面积）来算概率。整个转盘是 360°。</p>
+          <p>甲获胜的概率：红色区域 120°，P(甲) = 120/360 = 1/3。</p>
+          <p>乙获胜的概率：蓝色区域 240°，P(乙) = 240/360 = 2/3。</p>
+          <p>因为 1/3 ≠ 2/3，所以这个游戏不公平，规则偏向乙：乙获胜的机会是甲的两倍。</p>
+          <p>修改方案一（改转盘）：把红色扇形扩大到 180°，蓝色扇形缩小到 180°，此时 P(甲) = 180/360 = 1/2，P(乙) = 180/360 = 1/2，游戏公平。具体做法是把蓝色区域中靠近红色的 60° 划给红色。</p>
+          <p>修改方案二（改规则）：保持转盘不变，规定指针落在红色区域或蓝色区域中靠近红色的 60° 范围内甲胜。这样甲的获胜区域变成 120° + 60° = 180°，双方又各占一半。不过这个方案要在转盘上做出标记，实际操作不如方案一清楚。</p>
+          <p>答：游戏不公平，P(甲) = 1/3，P(乙) = 2/3；把红、蓝两个扇形改为各占 180°（各占 1/2）后，游戏公平。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>若转盘仍是红 120°、蓝 240°，但规定“指针落在红色区域甲得 2 分，落在蓝色区域乙得 1 分”，各转一次，谁更可能得分高？</p>
+    <p>这个问题已经超出“比概率”的范围，因为比较的是得分而不是次数。单看一次转动：甲得 2 分的概率是 1/3，乙得 1 分的概率是 2/3。若各转 3 次，按概率估算，甲大约得 1 次 2 分、乙大约得 2 次 1 分，两人总分接近——这正是很多游戏用“难度不同、分值不同”来调平衡的道理。初中阶段只需说明：改变分值可以影响公平性，但判断的依据仍然是各自获胜（得分）的概率，而不是分值本身。</p>
+    <div class="warn"><strong>易错：</strong>看到“红、蓝两块”就写 P(甲) = P(乙) = 1/2，完全不管两块的大小。本例两块扇形一大一小，必须按角度算。另有一种错误是“红 120° 比蓝 240° 小，所以甲吃亏”，方向对了，但结论要落到具体概率上：甲是 1/3，乙是 2/3，差距是 1/3，不是“差一点”。</div>
+
+    <h4 class="subhead">3. 摸球游戏：球数决定胜负</h4>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 8</span>
+        <span class="example-title">袋中摸球：从 3 红 3 白到 2 红 4 白</span>
+      </div>
+      <div class="example-body">
+        <p>（1）一个不透明的袋中装有 3 个红球和 3 个白球，除颜色外都相同。游戏规则：摇匀后任意摸出一个球，摸到红球甲获胜，摸到白球乙获胜，摸后放回。这个游戏公平吗？</p>
+        <p>（2）若把袋中的球改成 2 个红球和 4 个白球，游戏还公平吗？如果不公平，怎样修改袋中的球，才能使它公平？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）袋中共有 6 个球，每个球被摸到的机会相同，<i>n</i> = 6。红球 3 个，P(甲) = 3/6 = 1/2；白球 3 个，P(乙) = 3/6 = 1/2。双方获胜概率相等，所以游戏公平。</p>
+          <p>（2）袋中共有 6 个球，红球 2 个，P(甲) = 2/6 = 1/3；白球 4 个，P(乙) = 4/6 = 2/3。1/3 ≠ 2/3，游戏不公平，对甲不利。</p>
+          <p>修改方案一：往袋中放入 2 个红球，此时红球 4 个、白球 4 个，共 8 个，P(甲) = 4/8 = 1/2，P(乙) = 4/8 = 1/2，公平。</p>
+          <p>修改方案二：从袋中取出 2 个白球，此时红球 2 个、白球 2 个，共 4 个，P(甲) = 2/4 = 1/2，P(乙) = 2/4 = 1/2，公平。</p>
+          <p>答：（1）公平，双方获胜概率都是 1/2；（2）不公平，P(甲) = 1/3，P(乙) = 2/3；放入 2 个红球（或取出 2 个白球）后公平。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>在 2 红 4 白的袋中，只允许放入 1 个球，能不能使游戏公平？</p>
+    <p>不能。放入 1 个红球后是 3 红 4 白，共 7 个，P(甲) = 3/7；放入 1 个白球后是 2 红 5 白，共 7 个，P(甲) = 2/7。两种改法都得不到 1/2，因为总球数变成 7 是奇数，而“公平”要求红球数恰好等于总球数的一半，7 的一半不是整数。这说明修改方案不是随便加的，要让红球数等于白球数才行。</p>
+    <div class="keypoint"><strong>要点：</strong>摸球游戏公平的条件是“红球数 = 白球数”（只有两种颜色时）。若球的总数是奇数，仅靠加球、减球很难一次调平，可以先凑成偶数个球，再调整两种颜色的个数。修改后一定要重新算一遍双方概率，用 1/2 去验证。</div>
+
+    <h4 class="subhead">4. 抽卡片游戏：数的性质决定胜负</h4>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 9</span>
+        <span class="example-title">十张卡片：偶数与奇数、3 的倍数</span>
+      </div>
+      <div class="example-body">
+        <p>有 10 张大小相同的卡片，上面分别写着 1、2、3、4、5、6、7、8、9、10。把卡片背面朝上洗匀，任意抽出一张。</p>
+        <p>（1）若规定“抽到偶数甲获胜，抽到奇数乙获胜”，游戏公平吗？</p>
+        <p>（2）若规定“抽到 3 的倍数甲获胜，否则乙获胜”，游戏公平吗？如果不公平，请设计两种使游戏公平的规则。</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>10 张卡片被抽到的机会相同，<i>n</i> = 10。</p>
+          <p>（1）偶数有 2、4、6、8、10，共 5 张，P(甲) = 5/10 = 1/2；奇数有 1、3、5、7、9，共 5 张，P(乙) = 5/10 = 1/2。双方概率相等，游戏公平。</p>
+          <p>（2）3 的倍数有 3、6、9，共 3 张，P(甲) = 3/10；其余 7 张（1、2、4、5、7、8、10），P(乙) = 7/10。3/10 ≠ 7/10，游戏不公平，对甲不利。</p>
+          <p>修改方案一：仍用“数的性质”作规则，但把判定标准换成奇偶——抽到偶数甲胜、抽到奇数乙胜，双方各 5/10 = 1/2，公平。</p>
+          <p>修改方案二：按数的大小分——抽到 1 至 5 甲胜、抽到 6 至 10 乙胜，双方各 5 张，概率都是 1/2，公平。</p>
+          <p>修改方案三：把“3 的倍数”扩充为“3 或 4 的倍数”。3 的倍数有 3、6、9，4 的倍数有 4、8，合起来是 3、4、6、8、9，共 5 张，P(甲) = 5/10 = 1/2，P(乙) = 5/10 = 1/2，公平。</p>
+          <p>答：（1）公平，双方都是 1/2；（2）不公平，P(甲) = 3/10，P(乙) = 7/10；改为“偶数对奇数”或“1 至 5 对 6 至 10”（也可用“3 或 4 的倍数”）即可公平。</p>
+        </div>
+      </div>
+    </div>
+    <p class="variant"><strong>变式：</strong>在 1 至 10 这十个数中，若规定“抽到质数甲胜，否则乙胜”，游戏公平吗？怎样只改动一个数的归属，使双方概率相等？</p>
+    <p>1 至 10 中的质数是 2、3、5、7，共 4 个（注意 1 既不是质数也不是合数），所以 P(甲) = 4/10 = 2/5，P(乙) = 6/10 = 3/5，不公平。若把“1”也算作甲获胜的情形（即甲胜的情形为 1、2、3、5、7），则甲、乙各 5 张，概率都是 1/2，游戏公平。这说明修改规则时，“把某个结果划给谁”会直接改变概率，动一个结果就可能改变全局。</p>
+    <div class="warn"><strong>易错：</strong>数“3 的倍数”时漏掉 9，只数出 3 和 6 两个，概率就变成 1/5；数“质数”时把 1 也算进去，会多出一个，概率变成 1/2；还有人把“1 至 10”当成“0 至 9”来数，结果全盘错位。这些都是“数结果”时出的错，而公平性判断完全依赖 <i>m</i> 和 <i>n</i> 的准确性，一错全错。建议把符合条件的结果逐个写在草稿上，再数个数。</div>
+
+    <h4 class="subhead">5. 把判断与设计放在一起看</h4>
+    <p>前面三个例子覆盖了游戏公平问题的两种问法：一是“判断”——算出双方概率，比一比；二是“设计”——先定下公平的标准（各 1/2），再倒推规则或道具。判断靠算，设计靠凑，两者用的是同一个公式。把常见的几种情形整理在一起，见表 7。</p>
+    <table class="data-table">
+      <caption>表 7　游戏公平性判断与设计</caption>
+      <thead>
+        <tr><th>游戏规则</th><th>甲方获胜概率</th><th>乙方获胜概率</th><th>是否公平</th><th>修改方案</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>转盘红 120°、蓝 240°，甲胜红、乙胜蓝</td><td>1/3</td><td>2/3</td><td>不公平</td><td>红、蓝各改为 180°</td></tr>
+        <tr><td>袋中 3 红 3 白，甲摸红、乙摸白</td><td>1/2</td><td>1/2</td><td>公平</td><td>无需修改</td></tr>
+        <tr><td>袋中 2 红 4 白，甲摸红、乙摸白</td><td>1/3</td><td>2/3</td><td>不公平</td><td>放入 2 个红球，或取出 2 个白球</td></tr>
+        <tr><td>卡片 1 至 10，偶数甲胜、奇数乙胜</td><td>1/2</td><td>1/2</td><td>公平</td><td>无需修改</td></tr>
+        <tr><td>卡片 1 至 10，3 的倍数甲胜、否则乙胜</td><td>3/10</td><td>7/10</td><td>不公平</td><td>改为偶数对奇数，或 1 至 5 对 6 至 10</td></tr>
+      </tbody>
+    </table>
+    <p>从表 7 可以看出一个规律：凡是公平的游戏，双方获胜概率都恰好是 1/2；凡是不公平的游戏，两列概率加起来一定是 1，但一大一小。修改方案也有规律可循——要么改变“获胜区域”的大小（转盘划角度、袋中加球减球），要么改变“获胜条件”的范围（把某些数划给另一方）。两条路殊途同归，都是让双方的结果数各占一半。</p>
+    <div class="method"><strong>方法归纳：</strong>判断游戏是否公平，按“定 <i>n</i> → 数双方各自的 <i>m</i> → 算概率 → 比较”四步走。设计公平游戏，反过来做：先要求 P(甲) = P(乙) = 1/2，再倒推需要多少个结果，最后落到具体的球数、扇形角度或数字范围上。设计完必须验算，把双方概率都算出来，确认等于 1/2 才算完成。</div>
+
+    <h4 class="subhead">6. 练习：判断与设计</h4>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【基础】一个不透明的袋中装有 5 个红球和 5 个白球，除颜色外都相同。摇匀后任意摸出一个球，摸到红球甲获胜，摸到白球乙获胜。这个游戏公平吗？说明理由。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>袋中共有 10 个球，每个球被摸到的机会相同，<i>n</i> = 10。</p>
+          <p>红球 5 个，P(甲) = 5/10 = 1/2；白球 5 个，P(乙) = 5/10 = 1/2。</p>
+          <p>双方获胜概率相等，所以游戏公平。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【基础】一个转盘被平均分成 8 个全等的扇形，其中 3 个红色、5 个蓝色。规定指针落在红色区域甲获胜，落在蓝色区域乙获胜。这个游戏公平吗？若不公平，请修改转盘，使游戏公平。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>8 个扇形全等，指针落在每个扇形内的机会相同，<i>n</i> = 8。</p>
+          <p>P(甲) = 3/8，P(乙) = 5/8。3/8 ≠ 5/8，游戏不公平，对甲不利。</p>
+          <p>修改：把 1 个蓝色扇形改涂红色，此时红 4 个、蓝 4 个，P(甲) = 4/8 = 1/2，P(乙) = 4/8 = 1/2，游戏公平。</p>
+          <p>也可以把 2 个蓝色扇形改涂红色得到红 5 蓝 3，但那样反而对甲有利，仍然不公平，所以只能改 1 个。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【提升】有 10 张大小相同的卡片，分别写着 1 至 10。洗匀后任意抽出一张，规定“抽到质数甲获胜，否则乙获胜”。（1）这个游戏公平吗？（2）请设计两种使游戏公平的规则。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）1 至 10 中的质数是 2、3、5、7，共 4 个（1 不是质数，4、6、8、9、10 是合数）。所以 P(甲) = 4/10 = 2/5，P(乙) = 6/10 = 3/5。2/5 ≠ 3/5，游戏不公平，对甲不利。</p>
+          <p>（2）方案一：抽到奇数甲胜、抽到偶数乙胜。奇数、偶数各 5 个，双方概率都是 5/10 = 1/2，公平。</p>
+          <p>方案二：抽到 1 至 5 甲胜、抽到 6 至 10 乙胜。两组各 5 张，双方概率都是 1/2，公平。</p>
+          <p>还可以这样改：把“质数”扩充为“质数或 1”，即甲胜的情形为 1、2、3、5、7 共 5 个，同样公平。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【提升】请你用摸球的方式设计一个对甲、乙双方公平的游戏，要求袋中共有 12 个球，且摸到红球甲胜、摸到白球乙胜。写出你的设计方案，并算出双方获胜的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>设计方案：袋中放 6 个红球、6 个白球，共 12 个球，除颜色外都相同，摇匀后任意摸出一个，摸到红球甲胜，摸到白球乙胜，摸后放回。</p>
+          <p>P(甲) = 6/12 = 1/2，P(乙) = 6/12 = 1/2，双方获胜概率相等，游戏公平。</p>
+          <p>设计思路：公平要求两种颜色的球各占一半，12 个球的一半是 6 个，所以红、白各 6 个。若要求袋中共有 10 个球，则红、白各 5 个；共有 8 个球，则各 4 个。只要总数是偶数，且两种颜色各占一半，游戏就公平。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【拓展】一个不透明的袋中装有 2 个红球和 <i>n</i> 个白球，除颜色外都相同。规定摸到红球甲胜、摸到白球乙胜，摸后放回。（1）若游戏公平，求 <i>n</i> 的值；（2）若 P(甲) = 2/5，求 <i>n</i> 的值，并说明此时游戏是否公平、怎样修改才能公平。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）袋中共有 (2 + <i>n</i>) 个球，P(甲) = 2/(2 + <i>n</i>)。游戏公平要求 P(甲) = 1/2，即 2/(2 + <i>n</i>) = 1/2，得 2 + <i>n</i> = 4，所以 <i>n</i> = 2。此时红、白各 2 个，P(甲) = P(乙) = 1/2。</p>
+          <p>（2）由 2/(2 + <i>n</i>) = 2/5，得 5 × 2 = 2(2 + <i>n</i>)，即 10 = 4 + 2<i>n</i>，解得 <i>n</i> = 3。此时袋中 2 红 3 白，共 5 个球，P(甲) = 2/5，P(乙) = 3/5，2/5 ≠ 3/5，游戏不公平，对甲不利。</p>
+          <p>修改方案一：往袋中放入 1 个红球，变成 3 红 3 白，P(甲) = P(乙) = 1/2，公平。</p>
+          <p>修改方案二：从袋中取出 1 个白球，变成 2 红 2 白，P(甲) = P(乙) = 1/2，公平。</p>
+          <p>答：（1）<i>n</i> = 2；（2）<i>n</i> = 3，此时不公平；放入 1 个红球或取出 1 个白球后公平。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <div class="method">
+    <strong>本节知识网络：</strong>
+    <ul>
+      <li>等可能事件的两个条件：结果总数有限；每个结果出现的机会相同。缺一条，P(<i>A</i>) = <i>m</i>/<i>n</i> 就不能直接用。</li>
+      <li>概率公式：P(<i>A</i>) = <i>m</i>/<i>n</i>，<i>n</i> 是全部等可能结果数，<i>m</i> 是事件 <i>A</i> 包含的结果数；0 ≤ P(<i>A</i>) ≤ 1，必然事件 P = 1，不可能事件 P = 0。</li>
+      <li>三种基本模型：掷骰子按“面”数，摸球按“球”数，转盘按“扇形（圆心角、面积）”算；计数单位选错，公式就用错。</li>
+      <li>几何概型：结果无穷多时，把“数个数”换成“量大小”——P = 目标面积（长度、时间）÷ 总面积（总长度、总时间），前提是“均匀”。</li>
+      <li>转盘的两条算法：平均分成 <i>n</i> 份时 P = <i>k</i>/<i>n</i>；扇形大小不一时按圆心角之比算，不能数块数。</li>
+      <li>游戏公平：双方获胜概率相等才公平；判断靠算概率，设计靠凑结果，修改后必须验算双方概率是否都是 1/2。</li>
+      <li>常用技巧：正难则反，用 1 减去相反事件的概率；“不是谁”“至少”“至多”要回到结果集合逐个核对。</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="part" id="review">
+  <div class="part-head">
+    <div class="part-kicker">章末 · 建议 1 课时</div>
+    <h2 class="part-title">回顾与思考</h2>
+    <p class="part-intro">本章几节课，走完了一条完整的“从试验到判断”的路：先把事件分成必然事件、不可能事件和随机事件；再做大量重复试验，发现频率会稳定在某个常数附近，于是用这个常数作为概率的估计；接着学会用 P(<i>A</i>) = <i>m</i>/<i>n</i> 求等可能事件的概率，用面积、长度、时间之比求几何概型的概率；最后用概率判断游戏是否公平，并动手设计公平的游戏。复习时请把这条链理顺，尤其把“频率不是概率”说清楚。</p>
+  </div>
+
+  <div class="goal-box">
+    <h3>复习目标</h3>
+    <ul>
+      <li>能按“在一定条件下一定发生、一定不发生、可能发生也可能不发生”把事件分为必然事件、不可能事件与随机事件，并说出各自的概率范围。</li>
+      <li>能说出频率的计算方法，理解“频率的稳定性”，能区分频率（试验值，会波动）与概率（理论值，是稳定值），会用频率估计概率。</li>
+      <li>会判断一次试验的结果是否等可能，会用 P(<i>A</i>) = <i>m</i>/<i>n</i> 求概率并把结果约分，会用 0 ≤ P(<i>A</i>) ≤ 1 检验答案。</li>
+      <li>会用“目标区域面积（长度、时间）÷ 总面积（长度、时间）”求几何概型的概率，转盘问题会按扇形所占的份数或圆心角计算。</li>
+      <li>会根据双方获胜概率是否相等判断游戏是否公平，并能修改规则，设计出双方获胜概率相等的公平游戏。</li>
+    </ul>
+  </div>
+
+  <section class="knowledge-card" id="rv-think">
+    <h3 class="card-title"><span class="num">回顾与思考</span>把“可能性”这件事想明白</h3>
+
+    <h4 class="subhead">一、本章知识结构：一条“从事件到判断”的链</h4>
+    <p>本章的骨架是一条链：<strong>事件 → 试验 → 频率 → 概率 → 判断与设计</strong>。这条链的起点是“事件”。在一定条件下，事情的结果无外乎三种：一定发生、一定不发生、可能发生也可能不发生。前两种合起来叫确定性事件，结果事先就能知道，所以它们的概率只有 1 和 0 两个值；第三种叫随机事件，结果事先说不准，正因为说不准，才需要“概率”这个工具去刻画它发生的可能性有多大。</p>
+    <p>既然随机事件不能靠“看”来定，就只能靠“做”。重复做同一个试验，记录频数，算出频率，会发现一个有意思的现象：试验次数少的时候，频率忽高忽低，看不出名堂；试验次数多起来以后，频率会在某个常数附近摆动，越来越“安分”。这个稳定下来的常数，就是概率。它不是一个新造的规定，而是从大量试验数据里“看”出来的客观规律。本章知识结构如图 9。</p>
+
+    <figure class="figure">
+      <svg class="fig-svg" viewBox="0 0 900 620" role="img" aria-label="本章知识结构图：事件分为确定性事件与随机事件，确定性事件含必然事件与不可能事件；随机事件经大量重复试验得到频率，频率稳定后得到概率；概率用于等可能事件的概率、几何概型与游戏公平">
+        <title>概率初步：本章知识结构</title>
+
+        <rect x="350" y="24" width="200" height="68" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+        <text x="450" y="52" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">事件</text>
+        <text x="450" y="74" text-anchor="middle" font-size="12" fill="#334155">一定条件下发生的事情</text>
+
+        <rect x="100" y="126" width="280" height="64" fill="#dcfce7" stroke="#334155" stroke-width="1.6"/>
+        <text x="240" y="152" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">确定性事件</text>
+        <text x="240" y="174" text-anchor="middle" font-size="12" fill="#334155">结果一定知道（发生或不发生）</text>
+
+        <rect x="520" y="126" width="280" height="64" fill="#fef3c7" stroke="#334155" stroke-width="1.6"/>
+        <text x="660" y="152" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">随机事件</text>
+        <text x="660" y="174" text-anchor="middle" font-size="12" fill="#334155">可能发生，也可能不发生</text>
+
+        <rect x="60" y="224" width="190" height="64" fill="none" stroke="#334155" stroke-width="1.3"/>
+        <text x="155" y="250" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">必然事件</text>
+        <text x="155" y="272" text-anchor="middle" font-size="12" fill="#334155">一定发生，概率为 1</text>
+
+        <rect x="270" y="224" width="190" height="64" fill="none" stroke="#334155" stroke-width="1.3"/>
+        <text x="365" y="250" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">不可能事件</text>
+        <text x="365" y="272" text-anchor="middle" font-size="12" fill="#334155">一定不发生，概率为 0</text>
+
+        <rect x="480" y="224" width="380" height="64" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <text x="670" y="250" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">做大量重复试验</text>
+        <text x="670" y="272" text-anchor="middle" font-size="12" fill="#334155">记录频数，算出频率，观察它是否稳定</text>
+
+        <rect x="60" y="322" width="400" height="64" fill="none" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 4"/>
+        <text x="260" y="348" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">概率的范围：0 ≤ P(A) ≤ 1</text>
+        <text x="260" y="370" text-anchor="middle" font-size="12" fill="#334155">必然事件为 1，不可能事件为 0，其他在 0 与 1 之间</text>
+
+        <rect x="480" y="322" width="380" height="64" fill="#dbeafe" stroke="#334155" stroke-width="1.6"/>
+        <text x="670" y="348" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">频率 = 频数 ÷ 试验总次数</text>
+        <text x="670" y="370" text-anchor="middle" font-size="12" fill="#334155">次数越多，频率稳定在某个常数附近</text>
+
+        <rect x="290" y="418" width="320" height="64" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+        <text x="450" y="444" text-anchor="middle" font-size="15" font-weight="bold" fill="#334155">概率 P(A)</text>
+        <text x="450" y="466" text-anchor="middle" font-size="12" fill="#334155">用频率估计，或在等可能时直接计算</text>
+
+        <rect x="40" y="506" width="270" height="66" fill="#dcfce7" stroke="#334155" stroke-width="1.6"/>
+        <text x="175" y="532" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">等可能事件的概率</text>
+        <text x="175" y="556" text-anchor="middle" font-size="12" fill="#334155">P(A) = m/n（结果数之比）</text>
+
+        <rect x="325" y="506" width="270" height="66" fill="#dcfce7" stroke="#334155" stroke-width="1.6"/>
+        <text x="460" y="532" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">几何概型</text>
+        <text x="460" y="556" text-anchor="middle" font-size="12" fill="#334155">面积、长度、时间之比</text>
+
+        <rect x="610" y="506" width="270" height="66" fill="#dcfce7" stroke="#334155" stroke-width="1.6"/>
+        <text x="745" y="532" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">游戏是否公平</text>
+        <text x="745" y="556" text-anchor="middle" font-size="12" fill="#334155">双方获胜的概率是否相等</text>
+
+        <line x1="410" y1="92" x2="320" y2="122" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="315,112 320,122 330,114" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <line x1="490" y1="92" x2="580" y2="122" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="570,114 580,122 585,112" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+        <line x1="200" y1="190" x2="160" y2="220" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="155,210 160,220 170,212" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <line x1="280" y1="190" x2="340" y2="220" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="330,212 340,220 345,210" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <line x1="660" y1="190" x2="660" y2="220" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="655,210 660,220 665,210" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+        <line x1="155" y1="288" x2="155" y2="318" stroke="#94a3b8" stroke-dasharray="5 4"/>
+        <polyline points="150,308 155,318 160,308" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="365" y1="288" x2="365" y2="318" stroke="#94a3b8" stroke-dasharray="5 4"/>
+        <polyline points="360,308 365,318 370,308" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="670" y1="288" x2="670" y2="318" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="665,308 670,318 675,308" fill="none" stroke="#334155" stroke-width="1.5"/>
+
+        <line x1="620" y1="386" x2="540" y2="414" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="543,404 540,414 550,410" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <text x="640" y="404" font-size="12" fill="#1d4ed8">用频率估计概率</text>
+        <line x1="462" y1="354" x2="330" y2="414" stroke="#94a3b8" stroke-dasharray="5 4"/>
+        <polyline points="332,404 330,414 340,409" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+
+        <line x1="330" y1="482" x2="200" y2="502" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="196,492 200,502 210,496" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <line x1="450" y1="482" x2="460" y2="502" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="455,492 460,502 465,492" fill="none" stroke="#334155" stroke-width="1.5"/>
+        <line x1="570" y1="482" x2="730" y2="502" stroke="#334155" stroke-width="1.5"/>
+        <polyline points="726,492 730,502 740,496" fill="none" stroke="#334155" stroke-width="1.5"/>
+      </svg>
+      <figcaption>图 9　本章知识结构：事件 → 试验 → 频率 → 概率 → 判断与设计</figcaption>
+    </figure>
+
+    <p>读图 9 先看上半部分的两条分支。左边一支是确定性事件，结果事先知道，所以概率非 1 即 0，没有再研究的必要；右边一支是随机事件，结果事先不知道。图中特意用两种颜色区分这两支，是要提醒一件事：<strong>本章所有“算概率”的活动，都是针对随机事件的</strong>。判断一个事件是不是随机事件，关键在“一定条件下”：条件变了，事件的类型可能就变了。比如“水加热到 100°C 沸腾”，在标准大气压下是必然事件，在海拔很高的地方就不是；脱离了条件谈事件类型，是没有意义的。</p>
+    <p>再看下半部分。随机事件要研究，就得做试验：重复同样的试验很多次，记录频数、算出频率，观察频率是否稳定。图中“频率 = 频数 ÷ 试验总次数”与“次数越多，频率稳定在某个常数附近”并列，正说明频率有两个身份：它是每一步都能算出来的试验值，又在大量重复之后表现出稳定性。正是这个稳定性，让我们有资格说“用频率估计概率”。</p>
+    <p>最后看最下面的三个方框。它们对应概率的三种用法：结果等可能时，直接数结果算 P(<i>A</i>) = <i>m</i>/<i>n</i>；区域型问题（转盘、投点、等车），算面积、长度或时间之比；判断游戏是否公平，就是把双方获胜的概率算出来比一比。三种用法看起来不同，其实做的事是同一件：把一个“可能发生也可能不发生”的模糊感觉，变成一个可以比较、可以判断的确定的数。</p>
+
+    <div class="keypoint"><strong>要点：</strong>用图 9 给自己做一次“链条自测”：能不能说清每一个方框的含义？能不能从“事件”一路走到“游戏是否公平”，中途每一步都说出依据？能不能用掷硬币的例子，把“频率”与“概率”的区别讲给同桌听？三关都过，本章的骨架就算立起来了。还要记住一句话：概率是从大量重复试验里稳定出来的数，谈“必然”“随机”时，别忘了先补出“在一定条件下”。</div>
+
+    <h4 class="subhead">二、三张对照表：把三组概念摆在一起</h4>
+    <p>本章的概念很容易互相“串门”：确定性事件与随机事件、频率与概率、等可能与非等可能。分开学时觉得都懂，放在一起就容易混。表 8 先把事件的分类与概率范围摆在一起，请特别注意“举例”一列——同一个动作（掷一枚均匀骰子），只要条件不同，就可以举出三种事件的例子。</p>
+
+    <table class="data-table">
+      <caption>表 8　事件的分类与概率范围</caption>
+      <thead>
+        <tr><th>事件类型</th><th>定义（在一定条件下）</th><th>举例</th><th>概率范围</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>确定性事件</td><td>必然事件与不可能事件的统称，结果事先就能确定</td><td>掷一枚均匀骰子，点数不超过 6；掷一枚均匀骰子，点数是 7</td><td>P = 1 或 P = 0</td></tr>
+        <tr><td>必然事件</td><td>在一定条件下，一定会发生的事件</td><td>太阳从东方升起；标准大气压下，水加热到 100°C 沸腾；从只装红球的袋中摸出一球是红球</td><td>P = 1</td></tr>
+        <tr><td>不可能事件</td><td>在一定条件下，一定不会发生的事件</td><td>太阳从西边升起；掷一枚均匀骰子，点数是 7；从只装红球的袋中摸出白球</td><td>P = 0</td></tr>
+        <tr><td>随机事件</td><td>在一定条件下，可能发生也可能不发生的事件</td><td>明天本地会下雨；掷一枚均匀骰子，点数是 3；打开电视，正在播广告</td><td>大于 0 且小于 1</td></tr>
+      </tbody>
+    </table>
+
+    <p>读表 8 要抓住两句话。第一句：“<strong>先看条件，再看结果</strong>。”判断事件类型时，先把“在一定条件下”补出来，再问“在这个条件下，这件事会不会发生、会不会一定发生”。第二句：“<strong>随机事件的概率在 0 与 1 之间，但不取 0 和 1</strong>。”概率为 0 与概率为 1 的情形留给确定性和不可能事件；随机事件恰恰因为“两种结果都可能”，概率才落在中间。表 9 把频率与概率这一对最容易混的概念单独列出。</p>
+
+    <table class="data-table">
+      <caption>表 9　频率与概率的对比</caption>
+      <thead>
+        <tr><th>比较项</th><th>频率</th><th>概率</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>含义</td><td>频数 ÷ 试验总次数，反映“实际发生了多少次”</td><td>事件发生可能性大小的数值，反映“理论上应当有多大的机会”</td></tr>
+        <tr><td>取值</td><td>0 到 1 之间的数，可以等于 0 或 1</td><td>0 到 1 之间的数；必然事件为 1，不可能事件为 0</td></tr>
+        <tr><td>是否稳定</td><td>会波动：换一组试验，频率常常就不一样</td><td>是固定值，由事件本身决定，不随试验改变</td></tr>
+        <tr><td>获得方式</td><td>做试验、数频数、算比值</td><td>分析所有等可能结果，或由大量重复试验的频率去估计</td></tr>
+        <tr><td>示例</td><td>掷一枚均匀硬币 500 次，正面朝上 251 次，这一次试验的频率为 251 ÷ 500 = 0.502</td><td>掷一枚均匀硬币，P(正面朝上) = 1/2，这个数不随试验次数改变</td></tr>
+        <tr><td>联系</td><td>大量重复试验时，频率会在概率附近摆动并逐渐稳定</td><td>是频率的“归宿”，可以用频率估计，但不能认为频率就是概率</td></tr>
+      </tbody>
+    </table>
+
+    <p>表 9 的“是否稳定”一栏是本章的分水岭。频率像“实测身高”，每次量都可能差一点；概率像“设计身高”，是固定的。做 10 次试验得到频率 0.6，不能写“概率是 0.6”；只能写“这 10 次试验的频率是 0.6，随着试验次数增加，频率会稳定在 1/2 附近，所以估计概率为 1/2”。这句话中间的两层意思都不能省。</p>
+
+    <div class="warn"><strong>易错：</strong>“试验次数越多，频率一定越接近概率”——这句话不对。频率只是在概率附近摆动，次数多时通常摆得更紧，但仍可能偶尔偏离得比较远；正确说法是“试验次数越多，频率通常在概率附近波动，估计一般更可靠”，不能说“一定等于”或“一定越来越接近”。</div>
+
+    <p>概率的计算有一套固定的“问法”，问错了就会算错。表 10 把本章最常见的 14 个错误集中起来，按“错例—错因—正解”排列。建议先遮住“正解”一列，自己改一遍，再对照检查。</p>
+
+    <table class="data-table">
+      <caption>表 10　概率计算与易错清单（14 条）</caption>
+      <thead>
+        <tr><th>错误类型</th><th>错例</th><th>错因</th><th>正解</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>判断事件类型时丢了“条件”</td><td>把“掷一枚均匀骰子，点数是 7”当成随机事件</td><td>没有看“在什么条件下”：骰子只有 1 至 6 点，7 点不会出现</td><td>是不可能事件，概率为 0</td></tr>
+        <tr><td>认为随机事件没有规律</td><td>“结果说不准，所以没法研究”</td><td>把“单次结果不确定”与“大量重复后频率稳定”混为一谈</td><td>单次不确定，但大量重复试验中频率会稳定在概率附近，所以可以估计</td></tr>
+        <tr><td>把频率当成概率</td><td>掷硬币 10 次有 6 次正面，就说 P(正面) = 0.6</td><td>把一次试验的频率当成了理论值</td><td>0.6 只是这 10 次的频率，试验次数增多后频率稳定在 1/2 附近，P(正面) = 1/2</td></tr>
+        <tr><td>认为次数多就一定“正好”</td><td>“掷 1000 次，正面一定正好 500 次”</td><td>混淆“频率接近概率”与“频数等于期望”</td><td>正面大约 500 次，实际次数会在 500 附近波动</td></tr>
+        <tr><td>没检查“等可能”就用公式</td><td>袋中 2 红 3 白，答 P(摸到红球) = 1/2</td><td>把“颜色的种数”当成了结果总数</td><td>结果要按球的个数数：5 个球中红球 2 个，P = 2/5</td></tr>
+        <tr><td>分子算少了结果数</td><td>掷骰子，P(点数大于 4) 写成 1/6</td><td>“大于 4”只有 5、6 两种情况，数成了 1 种</td><td>P(点数大于 4) = 2/6 = 1/3</td></tr>
+        <tr><td>转盘只数份数不看大小</td><td>转盘各扇形大小不同，仍用“红占几份”算概率</td><td>转盘的概率由扇形面积（圆心角）决定，不总是由份数决定</td><td>各份全等时可以数份数；否则按圆心角之比计算</td></tr>
+        <tr><td>几何概型用长度代替面积</td><td>正方形内随机投点，用两正方形边长之比算概率</td><td>二维区域应当比较面积</td><td>P = 小正方形面积 ÷ 大正方形面积，如 4 ÷ 16 = 1/4</td></tr>
+        <tr><td>结果没有约分</td><td>答 P = 4/12</td><td>没有把分数化成最简形式</td><td>4/12 = 1/3</td></tr>
+        <tr><td>概率超过 1 也不检验</td><td>算出 P(<i>A</i>) = 7/6 还照写</td><td>忘了 0 ≤ P(<i>A</i>) ≤ 1</td><td>分子不可能大于分母；结果大于 1 一定算错了</td></tr>
+        <tr><td>公平性凭“差不多”判断</td><td>“红 3 个、白 4 个，差不多，算公平”</td><td>公平要看概率是否相等，不能凭感觉</td><td>P(红) = 3/7，P(白) = 4/7，不相等，不公平</td></tr>
+        <tr><td>改了规则不重算概率</td><td>“加 1 个红球就公平了”，却不验证</td><td>加球后总数也变了，概率必须重新计算</td><td>每次修改都用“目标球数 ÷ 总球数”重算，直到两边相等</td></tr>
+        <tr><td>放回与不放回混淆</td><td>题目说不放回，第二次仍按原来的分母计算</td><td>不放回时，第二次的球数与目标球数都可能变化</td><td>看清“摸后放回、摇匀”；不放回时，分母变为剩下的球数</td></tr>
+        <tr><td>分数、小数、百分数混用</td><td>同一道题里先写 0.4，又写 2/5，最后又写 40%</td><td>同一题内没有统一写法</td><td>一道题只保留一种写法，最后写清“答”</td></tr>
+      </tbody>
+    </table>
+
+    <p>这 14 条有一个共同的“病根”：<strong>没有先弄清“一共有多少种等可能结果”就开始算</strong>。所以做题时请固定按三步走：第一步，把一次试验的所有等可能结果数清，得到 <i>n</i>；第二步，数清事件 <i>A</i> 包含的结果数，得到 <i>m</i>；第三步，写出 P(<i>A</i>) = <i>m</i>/<i>n</i> 并约分，再用 0 ≤ P(<i>A</i>) ≤ 1 检验。三步写在纸上，多数错误自然就不会发生。</p>
+
+    <h4 class="subhead">三、本章的五种思想方法</h4>
+    <p>比起记住几个公式，更重要的是本章反复使用的五种思想方法。它们不仅管这一章，也管以后学统计与概率的许多问题。</p>
+
+    <div class="three-col">
+      <div>
+        <p><strong>分类讨论</strong></p>
+        <p>本章处处要分类：事件分必然、不可能、随机；转盘的扇形大小可能不同，要分“全等”与“不全等”两种算法；抽取分“放回”与“不放回”。分类的标准要先定清楚，再逐类计算。例：12 等份的转盘，红 4 份、黄 3 份、蓝 5 份，P(红) = 4/12 = 1/3，P(黄) = 3/12 = 1/4，P(蓝) = 5/12，三类合起来正好是 1。</p>
+      </div>
+      <div>
+        <p><strong>统计思想</strong></p>
+        <p>用试验得到的频率去估计概率，本质上是“用部分推断整体”。例：鱼塘里先捕 100 条鱼做标记再放回，充分混合后捕 200 条，其中有 8 条带标记，带标记的频率是 8/200 = 0.04，于是估计鱼塘中鱼的总数约为 100 ÷ 0.04 = 2500 条。估计值要写“约”，因为它是从样本推出来的。</p>
+      </div>
+      <div>
+        <p><strong>转化</strong></p>
+        <p>几何概型的关键，是把“概率”转化成“面积、长度、时间之比”。例：边长 4 的正方形内有一个边长 2 的阴影正方形，随机投一点落在阴影内的概率 = 4 ÷ 16 = 1/4。判断游戏是否公平，也是转化：把“公平不公平”转化为“两个概率相等不相等”。</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <p><strong>模型思想</strong></p>
+        <p>本章的实际问题几乎都能装进四个模型：摸球、转盘、抽卡片、掷骰子。看到“抽签”“摸奖”“抽题”，就把它翻译成“从若干个等可能结果中取一个”。例：10 张卡片分别写 1 至 10，随机抽一张，抽到 3 的倍数的概率 = 3/10（3、6、9 三张）。翻译准了，式子就写对了。</p>
+      </div>
+      <div>
+        <p><strong>从特殊到一般</strong></p>
+        <p>频率的稳定性就是这样发现的：先做 10 次、20 次试验，频率在 0.6、0.55 之间乱跳；再做 50 次、100 次、200 次、500 次，频率依次为 0.52、0.51、0.505、0.502，越来越靠近 0.5，于是归纳出“大量重复试验时频率稳定于 1/2”。先看特殊、再归纳一般，最后还要用更大的试验去检验。</p>
+      </div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">等可能事件的概率</div>
+      <div class="formula-body">P(<i>A</i>) = <i>m</i>/<i>n</i>（<i>n</i> 为一次试验中所有等可能结果的总数，<i>m</i> 为事件 <i>A</i> 包含的结果数，且 0 ≤ P(<i>A</i>) ≤ 1）</div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">几何概型</div>
+      <div class="formula-body">P(<i>A</i>) = 目标区域的面积（长度、时间）÷ 总面积（长度、时间）</div>
+    </div>
+
+    <div class="method"><strong>方法归纳：</strong>拿到一道概率题，先问四个问题——这是必然、不可能，还是随机事件？一次试验的所有等可能结果有多少种，每一种是不是“一样可能”？要求的概率是“数结果”还是“比面积、长度、时间”？算完有没有检验 0 ≤ P(<i>A</i>) ≤ 1、有没有约分？四问过完再动笔，答案往往比“凭感觉”稳得多。</div>
+
+    <h4 class="subhead">四、回顾与思考：四个问题</h4>
+    <p>课本在章末提出了四个问题，分别指向“事件的分类”“频率与概率”“等可能事件的公式”“游戏公平”。请先合上课本，用自己的话回答，再看参考答案，比较自己漏掉了哪一层意思。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【回顾】必然事件、不可能事件、随机事件有什么区别？各举一例。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><strong>区别在“结果能否事先确定”。</strong>在一定条件下，必然事件一定会发生，不可能事件一定不会发生；这两种事件的结果事先都能确定，合称确定性事件。随机事件则可能发生、也可能不发生，结果事先无法确定，只能说它发生的可能性有多大。</p>
+          <p><strong>举例（都以“掷一枚均匀的骰子”为条件）：</strong>点数不超过 6 是必然事件，因为骰子只有 1 至 6 点，无论掷出什么都不会超过 6；点数是 7 是不可能事件，因为骰子上没有 7 点；点数是 3 是随机事件，因为可能掷出 3，也可能掷出别的点数。再如：太阳从东方升起是必然事件，太阳从西边升起是不可能事件，明天本地会下雨是随机事件。</p>
+          <p><strong>概率范围：</strong>必然事件的概率为 1，不可能事件的概率为 0，随机事件的概率大于 0 且小于 1。在等可能事件的模型中，用 P(<i>A</i>) = <i>m</i>/<i>n</i> 算出的结果自然也落在这个范围内。</p>
+          <p><strong>判断的关键是“在一定条件下”：</strong>必须先补出条件，再问“在这个条件下会不会发生”。比如“水加热到 100°C 沸腾”，在标准大气压下是必然事件；到了海拔较高的地方，水的沸点低于 100°C，这个说法就不再必然。条件变了，事件的类型可能跟着变，脱离条件谈事件类型是没有意义的。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【回顾】频率与概率有什么关系？为什么可以用频率估计概率？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><strong>两者含义不同。</strong>频率是试验值：频率 = 频数 ÷ 试验总次数，换一组试验，频率常常就不一样，它反映的是“这一次试验里实际发生了多少次”。概率是理论值：它由事件本身决定，是一个固定的数，反映的是“理论上应当有多大的机会”。</p>
+          <div class="formula">
+            <div class="formula-label">频率的计算</div>
+            <div class="formula-body">频率 = 频数 ÷ 试验总次数（结果在 0 与 1 之间）</div>
+          </div>
+          <p><strong>两者的联系是“稳定性”。</strong>大量重复试验时，频率会在某个常数附近摆动并逐渐稳定下来，这个常数就是概率。例如掷一枚均匀硬币，试验 10 次时正面频率可能是 0.6，20 次时 0.55，100 次时 0.51，500 次时 0.502，越往后越靠近 0.5，于是我们估计 P(正面朝上) = 1/2。</p>
+          <p><strong>为什么可以用频率估计概率？</strong>因为每一次试验的结果都带有偶然性，试验次数少时，偶然因素占的比重大，频率波动大；试验次数多时，偶然因素相互抵消，比值就显露出事件本身“应有的份量”，也就是概率。这就是“频率的稳定性”，它是用频率估计概率的依据。实际生活中很多概率无法从理论上算出来（如种子发芽、产品合格、射手命中、鱼塘里鱼的总数），就只能靠试验频率去估计。</p>
+          <p><strong>三点提醒：</strong>第一，频率是估计值，结论要写“约为”“估计”，不能写成准确值；第二，次数多只是“通常更接近”，不是“一定等于”，所以不能说“掷 1000 次正面一定正好 500 次”；第三，两个名称不能混用：0.502 是试验 500 次得到的频率，1/2 才是概率，同一道题里既不要把两者说成同一个数，也不要一会儿写小数、一会儿写分数。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【回顾】等可能事件的概率公式是什么？使用它必须满足什么条件？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><strong>公式：</strong>如果一次试验共有 <i>n</i> 种等可能的结果，事件 <i>A</i> 包含其中的 <i>m</i> 种结果，那么 P(<i>A</i>) = <i>m</i>/<i>n</i>。因为 <i>m</i> 不会超过 <i>n</i>，所以 0 ≤ P(<i>A</i>) ≤ 1：必然事件对应 <i>m</i> = <i>n</i>，概率为 1；不可能事件对应 <i>m</i> = 0，概率为 0。</p>
+          <p><strong>两个条件缺一不可：</strong>一是结果的总数是有限的、数得清的；二是每个结果出现的可能性相同，也就是“等可能”。少了第二条，公式就不能用。比如袋中 2 个红球、3 个白球（除颜色外都相同），摸一个球共有 5 种等可能结果，P(摸到红球) = 2/5；但如果这 5 个球大小不同、手感不同，摸到每个球的机会就不再相同，公式失效。</p>
+          <p><strong>三个检查：</strong>第一，结果数得清吗？掷一枚骰子有 6 种结果，掷两枚骰子要按“有序数对”数出 36 种，不能只数 11 种点数和。第二，每个结果一样可能吗？转盘的扇形必须全等才能数份数，大小不同要按圆心角算。第三，<i>m</i> 与 <i>n</i> 的口径一致吗？要么都以“一个球”为一个结果，要么都以“一种颜色”为一个结果，不能混着数。</p>
+          <p><strong>举例：</strong>掷一枚均匀骰子，P(点数为偶数) = 3/6 = 1/2（偶数是 2、4、6）；袋中 3 红 2 白 1 黑共 6 个球，P(摸到红球) = 3/6 = 1/2，P(摸到白球) = 2/6 = 1/3，P(摸到黑球) = 1/6，三个概率之和为 1。算完记得约分，并用 0 ≤ P(<i>A</i>) ≤ 1 检验。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【回顾】怎样判断一个游戏是否公平？如果不公平，怎样修改规则？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p><strong>公平的标准只有一条：双方获胜的概率相等。</strong>判断分三步：第一步，明确“玩一次游戏”一共有多少种等可能的结果；第二步，分别算出甲、乙获胜的概率；第三步，比较这两个概率。若游戏只有甲、乙两种结局且每次必有一方获胜，那么“公平”就等价于双方获胜的概率都是 1/2。</p>
+          <p><strong>举例判断：</strong>袋中 2 个红球、4 个白球（除颜色外都相同），规定摸到红球甲胜、摸到白球乙胜。共 6 个球，P(甲) = 2/6 = 1/3，P(乙) = 4/6 = 2/3，两者不相等，所以游戏不公平，乙占优势。</p>
+          <p><strong>修改规则有三条路：</strong>一是改“名额”，即增减球数或调整转盘扇形，使双方对应的结果数相等，例如往袋中放入 2 个红球，变成 4 红 4 白，双方概率都是 1/2；二是改“规则”，把某些结果重新分配给某一方，例如把“摸到白球乙胜”改成“摸到红球或其中 1 个白球算甲胜，摸到其余 3 个白球算乙胜”，此时甲、乙各对应 3 个球，双方概率都是 3/6 = 1/2；三是改“试验”，换一种抽取方式，例如改为“摸两次，两球同色甲胜、异色乙胜”。</p>
+          <p><strong>改完必须重算。</strong>增减球会同时改变分子与分母，不能凭“加了就公平”下结论。例如上面放入 2 个红球后共 8 个球，P(甲) = 4/8 = 1/2，P(乙) = 4/8 = 1/2，才算真正公平。设计一个公平游戏，最后一定要写出“双方获胜的概率都是 1/2”，这既是对设计的检验，也是给别人看懂的说明书。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">五、综合例题：把知识用起来</h4>
+    <p>下面两道综合例题，一道由概率反求球数，一道要求动手设计公平游戏。读题时先想清楚：一次试验的等可能结果是什么？总数是多少？要求的是哪一个比值？</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 1</span>
+        <span class="example-title">由概率求球数，再求加入后的概率</span>
+      </div>
+      <div class="example-body">
+        <p>一个不透明的袋中装有红球和白球共 10 个，除颜色外都相同，每次摸出一个球，摸后放回并摇匀。已知摸到红球的概率是 0.4。</p>
+        <p>（1）求袋中红球、白球各多少个；（2）再往袋中放入 2 个红球，求此时摸到红球的概率；（3）在（2）的基础上，至少还要再放入多少个红球，才能使摸到红球的概率为 3/4？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）一次试验共有 10 种等可能结果（10 个球除颜色外都相同，摸到每个球的机会相同），所以 <i>n</i> = 10。设红球有 <i>x</i> 个，则 P(摸到红球) = <i>x</i>/10。由题意 <i>x</i>/10 = 0.4，即 <i>x</i>/10 = 2/5，解得 <i>x</i> = 4。所以红球有 4 个，白球有 10 − 4 = 6（个）。<br/>检验：4/10 = 0.4，与题设相符；4 + 6 = 10，个数也对。</p>
+          <p>（2）放入 2 个红球后，红球有 4 + 2 = 6（个），袋中球的总数变为 10 + 2 = 12（个），此时 P(摸到红球) = 6/12 = 1/2。<br/>注意：分子、分母都变了，不能仍用原来的 10 作分母。</p>
+          <p>（3）设再放入 <i>k</i> 个红球（<i>k</i> 为正整数），则红球有 6 + <i>k</i> 个，总数为 12 + <i>k</i> 个，由题意<br/>(6 + <i>k</i>)/(12 + <i>k</i>) = 3/4。<br/>去分母，得 4(6 + <i>k</i>) = 3(12 + <i>k</i>)，即 24 + 4<i>k</i> = 36 + 3<i>k</i>，解得 <i>k</i> = 12。<br/>检验：再放入 12 个红球后，红球有 18 个，总数为 24 个，18/24 = 3/4，符合题意。<br/>答：红球 4 个、白球 6 个；放入 2 个红球后摸到红球的概率为 1/2；还要再放入 12 个红球，才能使摸到红球的概率为 3/4。</p>
+          <p><strong>思路回看：</strong>本题三次用到同一个公式 P = <i>m</i>/<i>n</i>，但 <i>m</i> 与 <i>n</i> 每次都在变。第（1）问是“已知比值反求分子”，第（2）问是“分子分母同时变”，第（3）问是“设未知数解方程”。做题时把每次的 <i>m</i>、<i>n</i> 分别写清楚，就不会把旧的数带进新的情形。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="variant"><strong>变式：</strong>若把（3）改为“至少还要再放入多少个白球，才能使摸到红球的概率为 1/3”，结果是多少？<br/><strong>答：</strong>设再放入 <i>k</i> 个白球，则红球仍是 6 个，总数为 12 + <i>k</i> 个，由 6/(12 + <i>k</i>) = 1/3，得 12 + <i>k</i> = 18，<i>k</i> = 6。检验：6/18 = 1/3，符合题意。可见想“降低”获胜概率就加对方的球，想“提高”就加自己的球。</p>
+
+    <div class="example">
+      <div class="example-head">
+        <span class="example-no">例 2</span>
+        <span class="example-title">设计公平游戏：转盘与摸球</span>
+      </div>
+      <div class="example-body">
+        <p>活动课上，小明和小红要用下面的材料设计游戏：(A) 一个被平均分成 8 份的转盘，每份的圆心角都是 45°；(B) 一个不透明的袋子，里面装有 6 个除颜色外都相同的球（可以涂色）。</p>
+        <p>（1）用材料 A 设计一个对双方公平的游戏，写出规则与双方获胜的概率；（2）用材料 B 设计规则“摸到红球小明胜，摸到白球小红胜”，要使游戏公平，应怎样涂色？说明理由；（3）若用材料 B 设计规则“摸到红球小明胜，摸到其他球小红胜”，并使小明获胜的概率为 1/3，应怎样涂色？这个游戏公平吗？</p>
+        <div class="solution">
+          <div class="solution-label">解</div>
+          <p>（1）规则：转动转盘，指针停止后，若落在红色区域则小明胜，落在蓝色区域则小红胜。设计：把 8 份中的 4 份涂红、4 份涂蓝，8 份全部用上，不会出现“没有结果”的情况。<br/>因为 8 份全等，指针落在每一份的机会相同，所以 P(小明胜) = 4/8 = 1/2，P(小红胜) = 4/8 = 1/2。双方获胜概率相等，游戏公平。</p>
+          <p>（2）要使游戏公平，红球与白球应各占一半。涂法：3 个红球、3 个白球。<br/>理由：摸球时 6 个球除颜色外都相同，摸到每个球的机会相同，共有 6 种等可能结果。P(小明胜) = 3/6 = 1/2，P(小红胜) = 3/6 = 1/2，两者相等，所以公平。注意不能涂成 2 红 4 白，那样 P(小明胜) = 2/6 = 1/3，P(小红胜) = 4/6 = 2/3，小红占优，游戏不公平。</p>
+          <p>（3）设涂 <i>k</i> 个红球，则其余 6 − <i>k</i> 个球为其他颜色。由 P(小明胜) = <i>k</i>/6 = 1/3，得 <i>k</i> = 2，即涂 2 个红球、4 个其他颜色的球。<br/>此时 P(小红胜) = 4/6 = 2/3，而 P(小明胜) = 1/3，两个概率不相等，所以这个游戏不公平，小红获胜的可能性更大。</p>
+          <p><strong>归纳：</strong>设计公平游戏，本质是让双方对应的等可能结果数相等。转盘看扇形面积（全等时看份数），摸球看球数，抽卡片看卡片张数，只要两边的结果数各占一半，双方概率就都是 1/2。设计完成后，一定要把双方的概率都算出来写在规则后面，这既是对公平性的证明，也是让游戏能被执行的前提。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="variant"><strong>变式：</strong>若把材料 B 中的 6 个球改为 9 个球（仍除颜色外都相同），并要求规则“摸到红球小明胜，摸到白球小红胜”下的游戏公平，应怎样涂色？<br/><strong>答：</strong>9 个球要分成相等的两部分，各涂 4.5 个球做不到，所以只涂红、白两色无法使双方概率相等。可以改成规则“摸到红球小明胜，摸到白球小红胜，摸到黄球重摸”：涂 3 个红球、3 个白球、3 个黄球，此时有效结果共 6 种，P(小明胜) = 3/6 = 1/2，P(小红胜) = 3/6 = 1/2，游戏公平。这说明设计公平游戏时，除了调整数量，还可以通过“重来”把无效结果排除掉。</p>
+
+    <div class="method">
+      <strong>本章知识网络：</strong>
+      <ul>
+        <li>一条主线：事件 → 试验 → 频率 → 概率 → 判断与设计。</li>
+        <li>三类事件：必然事件（一定发生，P = 1）、不可能事件（一定不发生，P = 0）、随机事件（可能发生也可能不发生，0 与 1 之间）；判断时先补出“在一定条件下”。</li>
+        <li>两个量要分清：频率 = 频数 ÷ 试验总次数，是试验值，会波动；概率是理论值，固定不变；大量重复试验时频率稳定在概率附近，可用频率估计概率。</li>
+        <li>三套算法：等可能事件用 P(<i>A</i>) = <i>m</i>/<i>n</i>；几何概型用面积（长度、时间）之比；游戏公平用“双方概率是否相等”来判断。</li>
+        <li>四个模型：摸球、转盘、抽卡片、掷骰子，把实际问题翻译成模型再计算。</li>
+        <li>五种思想：分类讨论、统计思想、转化、模型思想、从特殊到一般。</li>
+        <li>三个检查：0 ≤ P(<i>A</i>) ≤ 1、结果要约分、结论要写“答”（估计值要写“约”）。</li>
+        <li>一个习惯：凡是“可能性”“概率”的说法，都追问一句“这是试验得到的，还是算出来的”，答案就清楚了。</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+
+<section class="part" id="review-exercises">
+  <div class="part-head" id="rv-exercises-head">
+    <div class="part-kicker">章末 · 建议 2 课时</div>
+    <h2 class="part-title">复习题</h2>
+    <p class="part-intro">这份复习题共 21 题，按“知识技能—数学理解—问题解决—联系拓广”四组编排，覆盖事件的分类、频率、用频率估计概率、等可能事件的概率、几何概型与游戏公平。建议限时 45 分钟独立完成，先做后看答案：概率题要把分子、分母的来源写清楚，分数一律约分。做错的题回到对应课时重读试验与例题，再重做一遍。</p>
+  </div>
+
+  <section class="knowledge-card" id="rv-exercises">
+    <h3 class="card-title"><span class="num">复习题</span>全章检测与自我评价</h3>
+
+    <div class="tip"><strong>提示：</strong>做题时准备一支铅笔和一张草稿纸。概率题动笔前先问三句话：这次试验一共有多少种等可能的结果？事件 <i>A</i> 包含其中多少种？这两个数是否真的“等可能”？摸球题要看清“摸几个球”“放不放回”，转盘题要看清扇形是不是一样大，几何概型要看清是比面积、比长度还是比时间。答案写成 P(<i>A</i>) = <i>m</i>/<i>n</i> 之后，别忘了约分，并回头检查 0 ≤ P(<i>A</i>) ≤ 1 是否成立。全部做完后，用表 12 逐项自评。</div>
+
+    <div class="keypoint"><strong>要点：</strong>四组题的功能不同。知识技能题考“会不会算”，要求写清分子、分母的来源；数学理解题考“懂不懂”，要求辨明频率与概率、区分必然与随机、说清等可能的前提；问题解决题考“用不用”，要求把摸球、转盘、鱼塘、游戏这些情境翻译成概率模型；联系拓广题考“想不想得到”，要求由概率反求球的个数、设计转盘、处理两步试验、估计未知数量。全章的核心结论都收在表 11 里，做题时可以随时回查。</div>
+
+    <h4 class="subhead">本章核心结论速查</h4>
+    <p>下面四个公式块是全章使用频率最高的结论，表 11 则把定义、条件与易错点并排列出。复习时先默写公式，再对照表 11 检查“条件写没写、分子分母有没有弄反”，最后用题目检验。</p>
+
+    <div class="formula">
+      <div class="formula-label">频率与概率</div>
+      <div class="formula-body">频率 = 频数 ÷ 试验总次数；大量重复试验下频率稳定于概率 <i>P</i>，可用频率估计概率</div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">等可能事件的概率</div>
+      <div class="formula-body">P(<i>A</i>) = <i>m</i>/<i>n</i>（<i>n</i> 为所有等可能结果的总数，<i>m</i> 为事件 <i>A</i> 包含的结果数，0 ≤ <i>m</i> ≤ <i>n</i>）</div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">几何概型</div>
+      <div class="formula-body">P = 目标区域的面积（长度、时间）÷ 总面积（长度、时间）</div>
+    </div>
+
+    <div class="formula">
+      <div class="formula-label">游戏公平</div>
+      <div class="formula-body">双方获胜的概率相等 ⇔ 游戏公平；概率不相等就不公平</div>
+    </div>
+
+    <table class="data-table">
+      <caption>表 11　本章核心结论速查</caption>
+      <thead>
+        <tr><th>内容</th><th>结论或公式</th><th>使用条件</th><th>最容易错的地方</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>必然事件</td><td>在一定条件下一定发生，<i>P</i> = 1</td><td>说清“在一定条件下”</td><td>把“很可能发生”当成必然事件</td></tr>
+        <tr><td>不可能事件</td><td>在一定条件下一定不发生，<i>P</i> = 0</td><td>同上</td><td>把“很少发生”当成不可能事件</td></tr>
+        <tr><td>随机事件</td><td>可能发生也可能不发生，0 &lt; <i>P</i> &lt; 1</td><td>结果不能预先确定</td><td>认为随机事件没有规律</td></tr>
+        <tr><td>频率</td><td>频率 = 频数 ÷ 试验总次数</td><td>由试验数据算得</td><td>把频率当成固定不变的常数</td></tr>
+        <tr><td>用频率估计概率</td><td>大量重复试验下，频率稳定在概率附近</td><td>试验次数足够多、条件相同</td><td>试验次数少就下结论；认为频率一定等于概率</td></tr>
+        <tr><td>等可能事件</td><td>P(<i>A</i>) = <i>m</i>/<i>n</i></td><td>结果有限且每个结果等可能</td><td>把不等可能的结果按个数平摊（如掷图钉）</td></tr>
+        <tr><td>概率的范围</td><td>0 ≤ P(<i>A</i>) ≤ 1</td><td>任何事件</td><td>算出大于 1 的结果不检查</td></tr>
+        <tr><td>几何概型</td><td><i>P</i> = 目标区域 ÷ 总区域</td><td>落点在该区域内处处机会相同</td><td>扇形大小不同却按“个数”算</td></tr>
+        <tr><td>转盘</td><td>扇形面积（圆心角）之比就是概率之比</td><td>指针落在各处的机会相同</td><td>全等扇形时才可数个数，否则按角度算</td></tr>
+        <tr><td>摸球（放回）</td><td>每次摸球时袋中球的个数不变</td><td>题目说明“摸后放回、摇匀”</td><td>不放回时仍按原来的总数算</td></tr>
+        <tr><td>游戏公平</td><td>双方获胜概率相等</td><td>规则明确、机会均等</td><td>只看“得分多少”，不看概率</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warn"><strong>易错：</strong>本章的失分点集中在五处：一是把“很可能”说成“一定”（必然事件）；二是把频率当成概率，试验几十次就下结论；三是分母用错，把“某色球的个数”当成总球数；四是扇形不全等时仍按个数算概率；五是判断游戏公平时只看规则“看起来”是否对称，不去算双方概率。做题时在这五处各停一秒，很多错误就能拦住。</div>
+
+    <h4 class="subhead">一、知识技能（第 1—6 题）</h4>
+    <p>这一组检查基本功：事件的分类、频率的计算、等可能事件的概率、几何概型、游戏公平。要求每一步都写出分子与分母的来源，概率结果要约分；分类题要说出“一定发生”“一定不发生”还是“可能发生也可能不发生”。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">1</span>
+        <span>【知识技能】指出下列事件中，哪些是必然事件，哪些是不可能事件，哪些是随机事件：（1）掷一枚均匀的骰子，向上一面的点数是 7；（2）从只装有 5 个红球的袋中任意摸出一个球，摸到的是红球；（3）太阳从西边升起；（4）打开电视机，正在播放动画片；（5）在标准大气压下，把水加热到 100 °C，水沸腾；（6）射击运动员射击一次，命中 10 环；（7）任意画一个三角形，它的内角和是 180°；（8）掷一枚均匀的硬币，正面朝上。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）不可能事件。骰子上的点数只有 1 到 6，点数 7 一定不会出现。</p>
+          <p>（2）必然事件。袋中只有红球，任意摸出一个一定是红球。</p>
+          <p>（3）不可能事件。太阳一定从东方升起，从西边升起是一定不发生的。</p>
+          <p>（4）随机事件。打开电视时可能正在播放动画片，也可能不是，结果不能预先确定。</p>
+          <p>（5）必然事件。在标准大气压下，水加热到 100 °C 一定会沸腾（这里“标准大气压”就是“一定的条件”）。</p>
+          <p>（6）随机事件。射击一次可能命中 10 环，也可能命中的是别的环数，甚至脱靶。</p>
+          <p>（7）必然事件。三角形的内角和恒为 180°，这是确定的结论。</p>
+          <p>（8）随机事件。掷一枚均匀硬币，正面朝上与反面朝上都有可能，结果不能预先确定。</p>
+          <p>答：必然事件是（2）（5）（7）；不可能事件是（1）（3）；随机事件是（4）（6）（8）。</p>
+          <p>提醒：判断事件类型，先抓住“在一定条件下”这句话。同一个事件换一个条件，类型可能改变：例如“水加热到 100 °C 沸腾”，在标准大气压下是必然事件，但在高山上就变成了可能不发生的事件。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">2</span>
+        <span>【知识技能】某射手在同一条件下进行射击训练，记录如下：射击 50 次，命中 44 次；射击 100 次，命中 89 次；射击 200 次，命中 178 次；射击 400 次，命中 356 次；射击 800 次，命中 712 次。（1）分别计算各次训练中的命中频率（结果保留两位小数）；（2）估计这名射手射击一次命中靶心的概率；（3）若他再射击 500 次，估计命中的次数大约是多少。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）频率 = 命中次数 ÷ 射击次数，逐个计算：44 ÷ 50 = 0.88；89 ÷ 100 = 0.89；178 ÷ 200 = 0.89；356 ÷ 400 = 0.89；712 ÷ 800 = 0.89。</p>
+          <p>（2）随着射击次数的增加，命中频率在 0.89 附近波动，并逐渐稳定下来，所以估计这名射手射击一次命中靶心的概率约为 0.89（即 89%）。注意：0.89 是用频率得到的估计值，不是通过数等可能结果算出来的理论值。</p>
+          <p>（3）射击 500 次，估计命中的次数约为 500 × 0.89 = 445（次）。这是“大约”，不是“一定”，实际命中次数会在 445 次左右波动。</p>
+          <p>答：（1）依次为 0.88，0.89，0.89，0.89，0.89；（2）约 0.89；（3）约 445 次。</p>
+          <p>提醒：第（1）问的第一个频率是 0.88，与后面的 0.89 略有差别，这正是“频率会波动”的体现；不能因为第一次是 0.88 就说概率是 0.88，要看大量试验后频率稳定在哪里。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">3</span>
+        <span>【知识技能】一个不透明的袋中装有 3 个红球、2 个白球和 1 个黑球，这些球除颜色外都相同。摇匀后从中任意摸出一个球。（1）求 P(摸到红球)；（2）求 P(摸到白球)；（3）求 P(摸到黑球)；（4）求 P(摸到红球或白球)；（5）求 P(摸到的不是黑球)。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>袋中共有 3 + 2 + 1 = 6 个球，除颜色外都相同，所以任意摸出一个球时，每个球被摸到的可能性相同，一共有 6 种等可能的结果。</p>
+          <p>（1）红球有 3 个，事件“摸到红球”包含 3 种结果，所以 P(摸到红球) = 3/6 = 1/2。</p>
+          <p>（2）白球有 2 个，所以 P(摸到白球) = 2/6 = 1/3。</p>
+          <p>（3）黑球只有 1 个，所以 P(摸到黑球) = 1/6。</p>
+          <p>（4）“摸到红球或白球”包含 3 + 2 = 5 种结果，所以 P(摸到红球或白球) = 5/6。也可以这样想：摸到的不是黑球，就是摸到红球或白球，所以概率是 1 − 1/6 = 5/6，两种算法结果相同。</p>
+          <p>（5）“摸到的不是黑球”与“摸到黑球”是相互对立的两件事，所以 P(摸到的不是黑球) = 1 − P(摸到黑球) = 1 − 1/6 = 5/6。</p>
+          <p>答：（1）1/2；（2）1/3；（3）1/6；（4）5/6；（5）5/6。</p>
+          <p>提醒：分母 6 是“球的总个数”，不是“颜色的种数”。本题最容易出现的错误是把分母写成 3（三种颜色），那是把不等可能的结果当成等可能了：摸到红球的机会确实比摸到黑球大。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">4</span>
+        <span>【知识技能】掷一枚均匀的骰子，观察向上一面的点数。（1）求 P(点数为 3)；（2）求 P(点数为偶数)；（3）求 P(点数大于 4)；（4）求 P(点数不超过 6)；（5）求 P(点数为 7)；（6）求 P(点数小于 3)。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>骰子有 6 个面，每面出现的可能性相同，所以一共有 6 种等可能的结果：1，2，3，4，5，6。</p>
+          <p>（1）点数为 3 只有 1 种结果，P(点数为 3) = 1/6。</p>
+          <p>（2）偶数点有 2，4，6 共 3 种结果，P(点数为偶数) = 3/6 = 1/2。</p>
+          <p>（3）大于 4 的点有 5，6 共 2 种结果，P(点数大于 4) = 2/6 = 1/3。</p>
+          <p>（4）“点数不超过 6”就是点数在 1 到 6 之间，6 种结果全部符合，P(点数不超过 6) = 6/6 = 1。这是必然事件。</p>
+          <p>（5）骰子上没有 7，事件包含 0 种结果，P(点数为 7) = 0/6 = 0。这是不可能事件。</p>
+          <p>（6）小于 3 的点有 1，2 共 2 种结果，P(点数小于 3) = 2/6 = 1/3。</p>
+          <p>答：（1）1/6；（2）1/2；（3）1/3；（4）1；（5）0；（6）1/3。</p>
+          <p>提醒：第（4）（5）两问正好印证了“必然事件的概率是 1，不可能事件的概率是 0”。另外，第（3）问“大于 4”不包括 4，第（6）问“小于 3”不包括 3，数结果时要把边界看清楚。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">5</span>
+        <span>【知识技能】一块正方形草坪的边长为 8 m，草坪的正中间有一个边长为 4 m 的正方形花坛。一只小鸟随机落在草坪上（落在草坪内任意一点的可能性相同）。（1）求小鸟落在花坛内的概率；（2）求小鸟落在花坛外的概率；（3）若把花坛改成长 5 m、宽 3 m 的长方形，求小鸟落在花坛内的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>小鸟落在草坪内任意一点的可能性相同，所以这是几何概型，概率等于“目标区域的面积 ÷ 总面积”。草坪的面积是 8 × 8 = 64（m<sup>2</sup>）。</p>
+          <p>（1）花坛的面积是 4 × 4 = 16（m<sup>2</sup>），所以 P(落在花坛内) = 16/64 = 1/4。</p>
+          <p>（2）花坛外的面积是 64 − 16 = 48（m<sup>2</sup>），所以 P(落在花坛外) = 48/64 = 3/4。也可以由对立事件得到：1 − 1/4 = 3/4，两种算法一致。</p>
+          <p>（3）长方形花坛的面积是 5 × 3 = 15（m<sup>2</sup>），此时 P(落在花坛内) = 15/64。15 与 64 没有公因数（64 = 2 × 2 × 2 × 2 × 2 × 2，15 = 3 × 5），所以 15/64 已经是最简分数。</p>
+          <p>答：（1）1/4；（2）3/4；（3）15/64。</p>
+          <p>提醒：几何概型不能数“块数”，要算面积之比。第（3）问的面积比第（1）问小一点，所以概率也小一点（15/64 略小于 16/64），这个结果是可以理解的；但两个概率都必须在 0 与 1 之间。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">6</span>
+        <span>【知识技能】甲、乙两人做摸球游戏：一个不透明的袋中装有 4 个红球和 2 个白球，这些球除颜色外都相同。每次摇匀后任意摸出一个球，摸到红球甲得 1 分，摸到白球乙得 1 分，然后放回袋中摇匀。（1）分别求甲、乙每次得分的概率；（2）这个游戏公平吗？为什么？（3）请你设计一种公平的规则。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>袋中共有 4 + 2 = 6 个球，每个球被摸到的可能性相同，共有 6 种等可能的结果。</p>
+          <p>（1）摸到红球的结果有 4 种，所以 P(甲得分) = 4/6 = 2/3；摸到白球的结果有 2 种，所以 P(乙得分) = 2/6 = 1/3。</p>
+          <p>（2）不公平。因为 2/3 ≠ 1/3，甲每次得分的可能性比乙大，长期玩下去甲占优势。判断游戏是否公平，要看双方获胜的概率是否相等，而不是看规则“看起来”是否对称。</p>
+          <p>（3）方案一：再往袋中放入 2 个白球，使袋中变成 4 个红球、4 个白球，此时 P(甲得分) = 4/8 = 1/2，P(乙得分) = 4/8 = 1/2，双方概率相等，游戏公平。方案二：从袋中取出 2 个红球，使袋中变成 2 个红球、2 个白球，此时 P(甲得分) = 2/4 = 1/2，P(乙得分) = 1/2，游戏公平。</p>
+          <p>答：（1）P(甲) = 2/3，P(乙) = 1/3；（2）不公平，双方概率不相等；（3）放入 2 个白球（或取出 2 个红球），使红球与白球个数相等，双方概率都是 1/2。</p>
+          <p>提醒：修改规则后一定要把双方的新概率算出来，说明它们相等，不能只说“改成一样多”就结束。另外，“拿出红球”会让袋中球数变少，概率的分母也要随之改变。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">二、数学理解（第 7—12 题）</h4>
+    <p>这一组题检查“是否真的懂了”：辨析要落到定义与条件上，改错要指出错在哪一步，说理要把“为什么”讲清楚。只写结论不给分。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">7</span>
+        <span>【数学理解】判断下列说法是否正确，正确的画“√”，错误的画“×”，并说明理由。（1）掷一枚均匀的硬币，连续 5 次都是正面朝上，所以第 6 次一定是反面朝上；（2）一个事件发生的概率很大，说明它一定会发生；（3）某种彩票的中奖概率是 1%，所以买 100 张这种彩票一定能中奖；（4）掷一枚图钉，钉尖朝上与钉帽朝上的可能性相同，都是 1/2；（5）必然事件发生的概率是 1；（6）掷一枚均匀的骰子，出现 1 点与出现 6 点的可能性相同；（7）大量重复试验中，事件发生的频率会稳定在它的概率附近；（8）一个事件发生的概率是 0.5，说明它发生与不发生的可能性一样大。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）×。掷硬币每次都是独立的一次试验，前面出现过什么，不会影响下一次的结果。第 6 次正面朝上与反面朝上的概率仍然都是 1/2，说“一定是反面”是把随机事件当成了必然事件。连续出现正面只是“可能性较小”，并不等于“下一次一定相反”。</p>
+          <p>（2）×。概率大只说明发生的可能性大，仍然是随机事件，不一定会发生；概率再大，只要小于 1，就不能说“一定”。</p>
+          <p>（3）×。中奖概率 1% 表示平均每买 100 张约有 1 张中奖，是“大约”，不是“一定”。买 100 张可能一张也不中，也可能中好几张。</p>
+          <p>（4）×。图钉的两面形状不同、重心不同，落地时钉尖朝上与钉帽朝上的可能性并不相同，所以不能认为各有 1/2 的可能。用 P(A) = m/n 的前提是各结果等可能，图钉不满足这个前提。</p>
+          <p>（5）√。必然事件在一定条件下一定发生，概率是 1。</p>
+          <p>（6）√。均匀骰子的 6 个面出现的可能性相同，1 点与 6 点各占 1/6。</p>
+          <p>（7）√。这正是频率的稳定性：试验次数足够多时，频率会在概率附近波动，所以可以用频率估计概率。</p>
+          <p>（8）√。概率 0.5 表示发生的可能性占一半，不发生的可能性也占一半，两者一样大。</p>
+          <p>答：（1）×；（2）×；（3）×；（4）×；（5）√；（6）√；（7）√；（8）√。</p>
+          <p>方法：遇到“一定”“必然”“肯定”这类词要格外小心——随机事件的概率再大也小于 1；遇到“可能性相同”要先检查是否真的等可能（硬币、骰子、除颜色外都相同的球才满足）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">8</span>
+        <span>【数学理解】下面是小明的解答，每题都有一处错误。请指出错在哪里，并写出正确的解答。（1）袋中有 2 个红球、3 个白球，除颜色外都相同，摸出一个球，小明写：P(摸到红球) = 1/2；（2）掷一枚均匀的骰子，小明写：P(点数是 2 的倍数) = 1/6；（3）袋中有 4 个红球、6 个白球，除颜色外都相同，小明写：P(摸到红球) = 4/6 = 2/3；（4）某射手射击 100 次命中 90 次，小明写：再射击 10 次，一定命中 9 次；（5）转盘被分成红、黄、蓝三个扇形，红色扇形的圆心角是 120°，小明写：P(指针落在红色区域) = 1/6。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）错在分母。袋中共有 2 + 3 = 5 个球，等可能的结果有 5 种，红球有 2 个，所以 P(摸到红球) = 2/5。小明把分母写成了 2，可能是把“两种颜色”当成了结果总数。</p>
+          <p>（2）错在数结果。2 的倍数有 2，4，6 共 3 种，不是 1 种，所以 P(点数是 2 的倍数) = 3/6 = 1/2。小明只数了“2”这一个数。</p>
+          <p>（3）错在分母。袋中共有 4 + 6 = 10 个球，所以 P(摸到红球) = 4/10 = 2/5。小明把白球的个数 6 当成了总球数；算完还要约分，2/5 才是最简结果。</p>
+          <p>（4）错在把估计当成必然。90 ÷ 100 = 0.9 只是用频率估计出的命中概率，再射击 10 次，命中的次数大约是 10 × 0.9 = 9 次，但可能多于 9 次，也可能少于 9 次，不能说“一定命中 9 次”。</p>
+          <p>（5）错在分母。转盘一圈是 360°，红色扇形占 120°，所以 P(指针落在红色区域) = 120/360 = 1/3。小明把 360° 记成了 720°（或者把 120° 与某个别的数相比），才得到 1/6。</p>
+          <p>答：（1）2/5；（2）1/2；（3）2/5；（4）约 9 次，不是一定；（5）1/3。</p>
+          <p>提醒：概率题的答案都要“两个来源写清楚”——分子从哪来、分母从哪来。写完再看一眼：结果在 0 与 1 之间吗？约分了吗？分母是“所有等可能结果的总数”吗？</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">9</span>
+        <span>【数学理解】关于频率与概率：（1）频率是怎样得到的？概率是怎样得到的？（2）为什么可以用频率估计概率？（3）掷一枚均匀的硬币 10 次，正面朝上出现了 3 次，频率是 0.3，能否说正面朝上的概率是 0.3？为什么？（4）试验次数足够多时，频率一定等于概率吗？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）频率由试验得到：做 <i>n</i> 次试验，事件 <i>A</i> 发生了 <i>m</i> 次，则频率 = <i>m</i>/<i>n</i>，它是一个具体的、随试验而变化的数。概率是事件本身固有的、反映发生可能性大小的数：在等可能的情形下，用 P(<i>A</i>) = <i>m</i>/<i>n</i> 由分析结果算得，或者由大量重复试验中频率的稳定值来估计。</p>
+          <p>（2）因为大量重复试验表明，随着试验次数的增加，事件发生的频率会在某个常数附近摆动，并逐渐稳定下来，这个常数就是该事件的概率。所以试验次数足够多时，可以用频率作为概率的估计值。</p>
+          <p>（3）不能。掷 10 次的次数太少，频率会在 0 与 1 之间大幅波动，0.3 只是这 10 次的结果，不能代表概率。如果继续掷下去，比如掷 1000 次、10000 次，正面朝上的频率会逐渐稳定在 0.5 附近，所以应当估计正面朝上的概率是 0.5。</p>
+          <p>（4）不一定相等。频率是试验值，会随试验次数变化；概率是理论值，是固定的。试验次数越多，频率通常越接近概率，但“接近”不等于“相等”，也不能保证每一次试验后都更接近。</p>
+          <p>答：（1）频率由试验数据算得，概率由分析结果或频率的稳定值得到；（2）因为频率具有稳定性；（3）不能，次数太少，概率应估计为 0.5；（4）不一定相等，只是接近。</p>
+          <p>方法：把频率想成“某一次考试的成绩”，会有起伏；把概率想成“这个人的真实水平”。考得多，成绩越能反映水平，但成绩不会永远等于水平。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">10</span>
+        <span>【数学理解】关于等可能事件：（1）判断下列试验的结果是否等可能：①掷一枚均匀的骰子；②掷一枚图钉；③从装有 2 个红球、3 个白球的袋中摸出一个球（球除颜色外都相同）；④转盘被分成大小不同的三个扇形，指针落在某个扇形。（2）使用 P(<i>A</i>) = <i>m</i>/<i>n</i> 必须满足哪两个条件？（3）说明为什么掷图钉不能像掷硬币那样认为两种结果各占 1/2。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）①是等可能的：均匀骰子的 6 个面形状、大小相同，每个点数出现的可能性相同，共有 6 种等可能结果。②不是等可能的：图钉两面形状不同、重心不同，钉尖朝上与钉帽朝上的可能性不相同。③是等可能的：球除颜色外都相同，每个球被摸到的可能性相同，共有 5 种等可能结果（2 个红球、3 个白球各算作不同的球）。④不是等可能的：三个扇形大小不同，指针落在各扇形内的可能性与扇形面积（圆心角）有关，面积大的可能性大。</p>
+          <p>（2）必须同时满足两个条件：一是试验的所有可能结果是有限的；二是每个结果出现的可能性相同。两个条件缺一不可，否则不能直接用 P(<i>A</i>) = <i>m</i>/<i>n</i>。</p>
+          <p>（3）硬币是均匀的，正反两面的形状、大小、重量分布都相同，落地时两种结果机会均等，所以各占 1/2。图钉则不同：它的钉尖细、钉帽大，落地时更可能侧倒或钉帽着地，钉尖朝上的机会通常比钉帽朝上的机会小，所以不能把两种结果平摊成各 1/2。要估计图钉的概率，只能做大量重复试验，用频率去估计。</p>
+          <p>答：（1）①③是等可能的，②④不是；（2）结果有限、每个结果等可能；（3）图钉两面的形状与重心不同，不符合“等可能”的前提。</p>
+          <p>提醒：判断是否等可能，看的是“每个结果出现的机会是否相同”，不是看“一共有几种结果”。结果是两种，并不等于各占 1/2。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">11</span>
+        <span>【数学理解】关于几何概型：（1）几何概型求概率的一般方法是什么？（2）一个长 10 m、宽 6 m 的长方形地面，中间有一个边长为 2 m 的正方形水池，一只小鸟随机落在地面上（落在地面内任意一点的可能性相同），求小鸟落在水池内的概率；（3）某路公交车每 15 分钟发一班车，乘客随机到达车站，求他等车时间不超过 5 分钟的概率；（4）说明为什么可以用面积（长度、时间）的比来求概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）先确定“随机点（或随机时刻）落在某个区域内的可能性与该区域的面积（长度、时间）成正比”，再用 P = 目标区域的面积（长度、时间）÷ 总面积（长度、时间）计算。关键是分清“目标区域”和“总区域”，并保证单位统一。</p>
+          <p>（2）地面的面积是 10 × 6 = 60（m<sup>2</sup>），水池的面积是 2 × 2 = 4（m<sup>2</sup>），所以 P(落在水池内) = 4/60 = 1/15。</p>
+          <p>（3）乘客在一个发车周期内的任意时刻到站的可能性相同，一个周期长 15 分钟；等车时间不超过 5 分钟，相当于在“发车前 5 分钟内”到站，这段时间长 5 分钟。所以 P(等车时间不超过 5 分钟) = 5/15 = 1/3。</p>
+          <p>（4）因为落点（或到站时刻）在这个区域内是“均匀”的：区域越大，落进去的机会越多，而且机会与区域的大小成正比。把总区域看作“全部等可能的结果”，把目标区域看作“符合条件的结果”，面积（长度、时间）的比就相当于“符合条件的结果数 ÷ 全部结果数”，所以可以用这个比来求概率。这也是几何概型与等可能事件概率公式在思想上的统一。</p>
+          <p>答：（1）见上；（2）1/15；（3）1/3；（4）见上。</p>
+          <p>提醒：几何概型里“总区域”不能漏掉目标区域之外的空白，也不能重复计算；时间型的题目要注意“不超过 5 分钟”对应的时间段长度是 5 分钟，而不是 15 − 5 = 10 分钟。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">12</span>
+        <span>【数学理解】说说下列概率的含义：（1）“某种子的发芽概率是 0.9”是什么意思？（2）“掷一枚均匀的骰子，出现 3 点的概率是 1/6”，是否意味着掷 6 次一定出现一次 3 点？（3）甲说：“某事件发生的概率是 1/2，所以做 2 次试验一定发生 1 次。”这种说法对吗？为什么？（4）概率与频率有什么联系与区别？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）表示在相同条件下大量播种这种种子时，发芽的种子数大约占总播种数的 90%。例如播 1000 粒，大约有 900 粒发芽。它是“大数次试验中的大致比例”，不是“每一粒种子都有九成把握发芽”的逐粒保证，更不是“一定发芽 90%”。</p>
+          <p>（2）不是。1/6 表示掷的次数很多时，出现 3 点的次数大约占总次数的 1/6。掷 6 次可能一次也没出现 3 点，也可能出现两次、三次。次数少时频率波动很大，不能按“6 次必有 1 次”来理解。</p>
+          <p>（3）不对。概率 1/2 说的是“大量重复试验中发生的次数约占总次数的一半”，做 2 次试验样本太小，可能两次都发生，也可能两次都不发生，还可能恰好发生 1 次。把概率理解成“按次数平摊”是常见的错误。</p>
+          <p>（4）联系：大量重复试验下，频率会稳定在概率附近，所以可以用频率估计概率。区别：频率是试验值，由具体数据算得，会随试验次数变化；概率是理论值（或事件的固有属性），在相同条件下是确定的。试验次数越多，频率通常越接近概率，但不会必然等于概率。</p>
+          <p>答：（1）大量播种时发芽的种子约占 90%；（2）不意味着；（3）不对，次数太少不能平摊；（4）见上。</p>
+          <p>方法：回答“概率的含义”这类题，一定要带上“大量重复试验”“大约”“在相同条件下”这几个关键词；丢掉它们，答案就变成了“一定”，那就错了。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">三、问题解决（第 13—17 题）</h4>
+    <p>这一组把概率用到具体情境中：摸球、转盘、鱼塘估计、游戏设计。要求先写清“所有等可能结果有多少种”，再写“事件包含多少种”，最后写“答”。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">13</span>
+        <span>【问题解决】一个不透明的袋中装有红、白、黑三种颜色的球共 20 个，这些球除颜色外都相同。已知红球有 8 个，白球有 7 个。（1）求 P(摸到黑球)；（2）求 P(摸到红球或白球)；（3）求 P(摸到的不是红球)；（4）若要使 P(摸到红球) = 1/2，需要再往袋中放入多少个红球？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>袋中共有 20 个球，每个球被摸到的可能性相同，共有 20 种等可能结果。黑球的个数是 20 − 8 − 7 = 5（个）。</p>
+          <p>（1）黑球有 5 个，所以 P(摸到黑球) = 5/20 = 1/4。</p>
+          <p>（2）红球与白球共 8 + 7 = 15（个），所以 P(摸到红球或白球) = 15/20 = 3/4。也可以由对立事件得到：摸到的不是黑球，概率为 1 − 1/4 = 3/4。</p>
+          <p>（3）不是红球的球有 20 − 8 = 12（个），所以 P(摸到的不是红球) = 12/20 = 3/5。也可以算 1 − 8/20 = 1 − 2/5 = 3/5。</p>
+          <p>（4）设再放入 <i>x</i> 个红球，则红球变为 (8 + <i>x</i>) 个，球的总数变为 (20 + <i>x</i>) 个。由题意得 (8 + <i>x</i>)/(20 + <i>x</i>) = 1/2，去分母得 2(8 + <i>x</i>) = 20 + <i>x</i>，16 + 2<i>x</i> = 20 + <i>x</i>，解得 <i>x</i> = 4。检验：放入 4 个红球后，红球 12 个、总数 24 个，12/24 = 1/2，符合要求。</p>
+          <p>答：（1）1/4；（2）3/4；（3）3/5；（4）再放入 4 个红球。</p>
+          <p>提醒：第（4）问是“放球”问题，分子与分母都会变，所以不能只改分子。设未知数列方程是这类题的通法，解完一定要检验：把答案代回，看概率是否真的等于 1/2。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">14</span>
+        <span>【问题解决】一个不透明的袋中装有 2 个红球和 1 个白球，这些球除颜色外都相同。每次任意摸出一个球，记下颜色后放回袋中并摇匀，共摸两次。（1）用列举法写出所有等可能的结果；（2）求两次都摸到红球的概率；（3）求两次摸到的球颜色相同的概率；（4）求至少有一次摸到白球的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）把两个红球分别记为“红 1”“红 2”，白球记为“白”。因为每次摸后都放回并摇匀，所以每次摸球时袋中都是 3 个球，两次摸球共有 3 × 3 = 9 种等可能的结果，列举如下：红 1 红 1，红 1 红 2，红 1 白，红 2 红 1，红 2 红 2，红 2 白，白红 1，白红 2，白白。</p>
+          <p>（2）两次都摸到红球的结果有：红 1 红 1、红 1 红 2、红 2 红 1、红 2 红 2，共 4 种，所以 P(两次都摸到红球) = 4/9。</p>
+          <p>（3）两次颜色相同的结果有两类：两次都红（4 种），两次都白（白白，1 种），共 4 + 1 = 5（种），所以 P(两次颜色相同) = 5/9。</p>
+          <p>（4）“至少有一次摸到白球”与“两次都摸到红球”是对立事件，所以 P(至少有一次摸到白球) = 1 − 4/9 = 5/9。也可以直接数：恰好一次白球的结果有 4 种（红 1 白、红 2 白、白红 1、白红 2），两次都白 1 种，共 5 种，同样是 5/9。</p>
+          <p>答：（1）共 9 种，见上；（2）4/9；（3）5/9；（4）5/9。</p>
+          <p>提醒：两个红球虽然颜色相同，但在列举时要把它们看成两个不同的球（红 1、红 2），否则会把 4 种结果数成 1 种，导致概率算错。另外两次摸球是有先后顺序的，“红 1 白”与“白红 1”是两种不同的结果，都要算进去。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">15</span>
+        <span>【问题解决】如图 10，一个转盘被分成三个扇形，其中红色扇形的圆心角是 150°，黄色扇形的圆心角是 120°，蓝色扇形的圆心角是 90°。转动转盘，指针落在各个扇形内的可能性与扇形的圆心角大小有关（指针落在分界线上的情况忽略不计）。（1）求 P(指针落在红色区域)；（2）求 P(指针落在黄色区域)；（3）求 P(指针落在蓝色区域)；（4）求 P(指针落在红色或蓝色区域)；（5）若转动转盘 120 次，估计指针落在红色区域的次数。</span>
+      </div>
+      <figure class="figure">
+        <svg class="fig-svg" viewBox="0 0 640 420" role="img" aria-label="转盘被分成红色 150 度、黄色 120 度、蓝色 90 度三个扇形">
+          <title>转盘：红色 150°、黄色 120°、蓝色 90°</title>
+          <path d="M320 205 L320 55 A150 150 0 0 1 395 334.9 Z" fill="#fecaca" stroke="#334155" stroke-width="2"/>
+          <path d="M320 205 L395 334.9 A150 150 0 0 1 170 205 Z" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
+          <path d="M320 205 L170 205 A150 150 0 0 1 320 55 Z" fill="#dbeafe" stroke="#334155" stroke-width="2"/>
+          <circle cx="320" cy="205" r="150" fill="none" stroke="#334155" stroke-width="2"/>
+          <circle cx="320" cy="205" r="5" fill="#334155"/>
+          <polygon points="320,72 310,44 330,44" fill="#1d4ed8"/>
+          <text x="417" y="184" text-anchor="middle" font-size="16" fill="#334155">红</text>
+          <text x="376" y="196" text-anchor="middle" font-size="13" fill="#1d4ed8">150°</text>
+          <text x="270" y="297" text-anchor="middle" font-size="16" fill="#334155">黄</text>
+          <text x="291" y="259" text-anchor="middle" font-size="13" fill="#1d4ed8">120°</text>
+          <text x="249" y="139" text-anchor="middle" font-size="16" fill="#334155">蓝</text>
+          <text x="279" y="168" text-anchor="middle" font-size="13" fill="#1d4ed8">90°</text>
+        </svg>
+        <figcaption>图 10　转盘：红色 150°、黄色 120°、蓝色 90°</figcaption>
+      </figure>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>转盘一圈是 360°，指针落在各个扇形内的可能性与扇形的圆心角（面积）成正比，所以可以用“扇形的圆心角 ÷ 360°”来求概率。三个扇形的圆心角之和是 150° + 120° + 90° = 360°，正好拼成一圈。</p>
+          <p>（1）P(指针落在红色区域) = 150/360 = 5/12。</p>
+          <p>（2）P(指针落在黄色区域) = 120/360 = 1/3。</p>
+          <p>（3）P(指针落在蓝色区域) = 90/360 = 1/4。</p>
+          <p>（4）红色与蓝色的圆心角之和是 150° + 90° = 240°，所以 P(指针落在红色或蓝色区域) = 240/360 = 2/3。也可以由对立事件得到：1 − P(落在黄色区域) = 1 − 1/3 = 2/3，两种算法一致。</p>
+          <p>（5）转动 120 次，估计指针落在红色区域的次数约为 120 × 5/12 = 50（次）。这是估计值，实际次数会在 50 次左右波动。</p>
+          <p>答：（1）5/12；（2）1/3；（3）1/4；（4）2/3；（5）约 50 次。</p>
+          <p>提醒：本题三个扇形大小不同，所以不能数“有几个扇形”，而要用圆心角（面积）来算。检验的办法是把三个概率相加：5/12 + 1/3 + 1/4 = 5/12 + 4/12 + 3/12 = 12/12 = 1，说明算对了。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">16</span>
+        <span>【问题解决】某鱼塘要估计塘中鱼的总数。第一次捕捞 200 条鱼，给每条鱼做上标记后全部放回鱼塘，充分混合。过一段时间第二次捕捞 300 条鱼，发现其中有 15 条带有标记。（1）估计第二次捕捞时，捞到带标记的鱼的概率；（2）估计鱼塘中鱼的总数；（3）若平均每条鱼重 0.5 kg，鱼的市场价为每千克 12 元，估计鱼塘中鱼的总价值。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）第二次捕捞 300 条，其中 15 条带标记，带标记的鱼的频率是 15/300 = 1/20 = 0.05。由于鱼塘中鱼的数量很多、混合也比较充分，可以用这个频率估计捞到带标记的鱼的概率，约为 0.05（即 5%）。</p>
+          <p>（2）设鱼塘中鱼的总数为 <i>x</i> 条。带标记的鱼有 200 条，它们在塘中均匀分布，所以任意捞一条鱼，捞到带标记的鱼的概率约为 200/<i>x</i>。由（1）得 200/<i>x</i> ≈ 0.05，解得 <i>x</i> ≈ 200 ÷ 0.05 = 4000（条）。所以估计鱼塘中约有 4000 条鱼。</p>
+          <p>（3）鱼的总质量约为 4000 × 0.5 = 2000（kg），总价值约为 2000 × 12 = 24000（元）。</p>
+          <p>答：（1）约 0.05；（2）约 4000 条；（3）约 24000 元。</p>
+          <p>提醒：这类“标记重捕”的估计，前提是“充分混合、每条鱼被捞到的机会相同”。答案要带“约”字，因为它是估计值。另外，第（2）问也可以这样想：带标记的鱼占全部鱼的 1/20，所以全部鱼约为 200 ÷ (1/20) = 4000 条，与列方程的结果一致。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">17</span>
+        <span>【问题解决】小明和小红用转盘做游戏：转盘被分成 4 个全等的扇形，其中 1 个扇形涂红色，另外 3 个涂蓝色。转动转盘，指针停在红色区域时小明得 1 分，停在蓝色区域时小红得 1 分。（1）分别求两人每次得分的概率；（2）这个游戏公平吗？为什么？（3）请你设计两种公平的规则，并算出修改后双方获胜的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>转盘被分成 4 个全等的扇形，指针停在每个扇形上的可能性相同，共有 4 种等可能结果。</p>
+          <p>（1）红色扇形只有 1 个，所以 P(小明得分) = 1/4；蓝色扇形有 3 个，所以 P(小红得分) = 3/4。</p>
+          <p>（2）不公平。因为 1/4 ≠ 3/4，小红得分的可能性是小明的 3 倍，长期玩下去小红占优势。</p>
+          <p>（3）方案一：把转盘的扇形改成 6 个全等的扇形，其中 3 个涂红色、3 个涂蓝色。转动转盘，停在红色区域小明得分，停在蓝色区域小红得分。此时 P(小明得分) = 3/6 = 1/2，P(小红得分) = 3/6 = 1/2，双方概率相等，游戏公平。</p>
+          <p>方案二：仍用原来的转盘（1 红 3 蓝），但修改得分规则：只有指针停在红色区域时小明得分；指针停在指定的那一个蓝色区域时小红得分（另外 2 个蓝色区域两人都不得分）。这样小明得分的概率是 1/4，小红得分的概率也是 1/4，双方概率相等，游戏公平。</p>
+          <p>答：（1）P(小明) = 1/4，P(小红) = 3/4；（2）不公平，双方概率不相等；（3）方案一改成 3 红 3 蓝，双方概率都是 1/2；方案二让小红只在指定的 1 个蓝色区域得分，双方概率都是 1/4。</p>
+          <p>提醒：设计方案时，只要双方获胜的概率相等就符合要求，但要说明“新规则下双方的概率各是多少”，并检验它们确实相等。如果改的是“得分多少”而不是“区域大小”，那属于加权，本章不讨论，考试中按“概率相等”来判断公平即可。</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="subhead">四、联系拓广（第 18—21 题）</h4>
+    <p>这一组要求“反过来想”：由概率反求球的个数、自己设计转盘、处理两步试验、设计试验估计未知数量。做这类题，先写清未知量与等量关系，再列式或列举。</p>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">18</span>
+        <span>【联系拓广】一个不透明的袋中装有红球和白球共 24 个，这些球除颜色外都相同，已知摸到红球的概率是 3/8。（1）求袋中红球、白球各多少个；（2）若再往袋中放入若干个红球，使摸到红球的概率变为 1/2，应放入多少个红球？（3）若不放入红球，而是从袋中取出若干个白球，使摸到红球的概率变为 1/2，应取出多少个白球？</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）设红球有 <i>x</i> 个，则白球有 (24 − <i>x</i>) 个。由 P(摸到红球) = 3/8 得 <i>x</i>/24 = 3/8，解得 <i>x</i> = 24 × 3/8 = 9。所以红球有 9 个，白球有 24 − 9 = 15（个）。检验：9/24 = 3/8，符合题意。</p>
+          <p>（2）设放入 <i>y</i> 个红球，则红球变为 (9 + <i>y</i>) 个，球的总数变为 (24 + <i>y</i>) 个。由题意得 (9 + <i>y</i>)/(24 + <i>y</i>) = 1/2，去分母得 2(9 + <i>y</i>) = 24 + <i>y</i>，18 + 2<i>y</i> = 24 + <i>y</i>，解得 <i>y</i> = 6。检验：放入 6 个红球后，红球 15 个、总数 30 个，15/30 = 1/2，符合要求。</p>
+          <p>（3）设取出 <i>z</i> 个白球，则白球变为 (15 − <i>z</i>) 个，球的总数变为 (24 − <i>z</i>) 个，红球仍是 9 个。由题意得 9/(24 − <i>z</i>) = 1/2，去分母得 18 = 24 − <i>z</i>，解得 <i>z</i> = 6。检验：取出 6 个白球后，红球 9 个、总数 18 个，9/18 = 1/2，符合要求。</p>
+          <p>答：（1）红球 9 个，白球 15 个；（2）放入 6 个红球；（3）取出 6 个白球。</p>
+          <p>方法：第（2）（3）问的结果相同，但道理不同：放红球时分子分母都增加，取白球时分子不变、分母减少。列方程时要看清哪一个量变了、哪一个量没变，这是解这类“含参数”概率题的关键。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">19</span>
+        <span>【联系拓广】请你设计一个转盘，使指针停在红色区域的概率是 1/2，停在黄色区域的概率是 1/3，停在蓝色区域的概率是 1/6。（1）如果要求转盘被分成若干个全等的扇形，最少要分成几个扇形？各颜色各占几个？（2）写出每个扇形及每个颜色区域的圆心角；（3）若不用全等扇形，只要求三个扇形的圆心角分别是 180°、120°、60°，概率是否改变？说明理由。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）要让三个概率都表示成“扇形个数 ÷ 总个数”，分母必须是 2、3、6 的公倍数，最小是 6。所以最少分成 6 个全等的扇形：红色占 1/2，即 6 × 1/2 = 3（个）；黄色占 1/3，即 6 × 1/3 = 2（个）；蓝色占 1/6，即 6 × 1/6 = 1（个）。3 + 2 + 1 = 6，正好分完，所以最少分成 6 个。</p>
+          <p>（2）每个全等扇形的圆心角是 360° ÷ 6 = 60°。红色区域占 3 个扇形，圆心角是 3 × 60° = 180°；黄色区域占 2 个，圆心角是 2 × 60° = 120°；蓝色区域占 1 个，圆心角是 60°。三个圆心角之和为 180° + 120° + 60° = 360°，正好一圈。</p>
+          <p>（3）概率不变。因为指针落在某个区域的可能性与扇形的面积（圆心角）成正比：红色区域占 180/360 = 1/2，黄色区域占 120/360 = 1/3，蓝色区域占 60/360 = 1/6，与（1）（2）的概率完全相同。区别只在于：分成 6 个全等扇形时可以直接数扇形个数，分成 3 个大小不同的扇形时要按圆心角计算。</p>
+          <p>答：（1）最少 6 个全等扇形，红 3 个、黄 2 个、蓝 1 个；（2）每个扇形 60°，红色区域 180°、黄色区域 120°、蓝色区域 60°；（3）概率不变，都是 1/2、1/3、1/6。</p>
+          <p>提醒：设计转盘时，先把概率化成分母相同的分数，再定扇形个数，这是最稳妥的做法。画的时候三个圆心角要从同一个圆心出发、首尾相接，加起来必须是 360°。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">20</span>
+        <span>【联系拓广】同时掷两枚均匀的骰子，观察向上一面的点数。（1）一共有多少种等可能的结果？（2）求两枚骰子点数相同的概率；（3）求两枚骰子点数之和为 7 的概率；（4）求两枚骰子点数都是偶数的概率；（5）求至少有一枚骰子点数为 6 的概率。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）第一枚骰子有 6 种可能，第二枚骰子也有 6 种可能，把两枚骰子的结果按“有序”记录（如“1，2”与“2，1”算两种不同结果），一共有 6 × 6 = 36 种等可能的结果。</p>
+          <p>（2）两枚点数相同的结果有（1，1），（2，2），（3，3），（4，4），（5，5），（6，6），共 6 种，所以 P(点数相同) = 6/36 = 1/6。</p>
+          <p>（3）点数和为 7 的结果有（1，6），（2，5），（3，4），（4，3），（5，2），（6，1），共 6 种，所以 P(点数之和为 7) = 6/36 = 1/6。</p>
+          <p>（4）两枚点数都是偶数，即每枚都取 2，4，6 中的一个，共有 3 × 3 = 9 种结果，所以 P(两枚都是偶数) = 9/36 = 1/4。</p>
+          <p>（5）“至少有一枚点数为 6”的对立事件是“两枚都不是 6”。每枚不是 6 的情况有 5 种（1，2，3，4，5），所以两枚都不是 6 的结果有 5 × 5 = 25 种，至少有一枚是 6 的结果有 36 − 25 = 11 种，P(至少有一枚为 6) = 11/36。</p>
+          <p>答：（1）36 种；（2）1/6；（3）1/6；（4）1/4；（5）11/36。</p>
+          <p>提醒：第（1）问一定要“有序”地数，否则 36 会变成 21（无序组合），后面的分母就全错了。第（5）问用“对立事件”最省力：先算“一枚 6 也没有”的 25 种，再用 36 减，比一个一个数列举更快，也更不容易漏。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="exercise-no">21</span>
+        <span>【联系拓广】一个不透明的袋中装有若干个红球和若干个白球，这些球除颜色外都相同，但不知道红球、白球的具体个数。（1）请你设计一个试验，估计袋中红球所占的比例；（2）若袋中共有 40 个球，通过大量摸球试验，摸到红球的频率稳定在 0.35 附近，估计袋中红球的个数；（3）在第（2）问的条件下，请设计两种不同的方案，使摸到红球的概率变为 1/2，并算出各需要放入或取出多少个球。</span>
+      </div>
+      <details class="answer">
+        <summary>答案与解析</summary>
+        <div class="answer-body">
+          <p>（1）采用“有放回”的摸球试验：每次从袋中任意摸出一个球，记下颜色后放回袋中并摇匀，重复很多次（例如 500 次以上），统计摸到红球的次数，用“摸到红球的次数 ÷ 总摸球次数”得到摸到红球的频率。由于摸球次数很多、每次摸球的条件相同，这个频率会稳定在摸到红球的概率附近，就可以用它来估计袋中红球所占的比例。试验时每次都要放回并摇匀，否则袋中球的组成会改变。</p>
+          <p>（2）袋中共有 40 个球，红球所占的比例约为 0.35，所以红球的个数约为 40 × 0.35 = 14（个），白球约有 40 − 14 = 26（个）。</p>
+          <p>（3）方案一：往袋中放入若干个红球。设放入 <i>x</i> 个红球，则红球变为 (14 + <i>x</i>) 个，总数变为 (40 + <i>x</i>) 个，由 (14 + <i>x</i>)/(40 + <i>x</i>) = 1/2 得 28 + 2<i>x</i> = 40 + <i>x</i>，解得 <i>x</i> = 12。即放入 12 个红球，此时红球 26 个、白球 26 个，摸到红球的概率是 26/52 = 1/2。</p>
+          <p>方案二：从袋中取出若干个白球。设取出 <i>y</i> 个白球，则白球变为 (26 − <i>y</i>) 个，总数变为 (40 − <i>y</i>) 个，红球仍是 14 个，由 14/(40 − <i>y</i>) = 1/2 得 28 = 40 − <i>y</i>，解得 <i>y</i> = 12。即取出 12 个白球，此时红球 14 个、白球 14 个，摸到红球的概率是 14/28 = 1/2。</p>
+          <p>答：（1）做大量有放回的摸球试验，用摸到红球的频率估计红球所占的比例；（2）红球约 14 个；（3）方案一放入 12 个红球；方案二取出 12 个白球。</p>
+          <p>提醒：第（3）问两种方案的结果都是 12，但含义不同：一个让红球变多，一个让白球变少，本质上都是让红球与白球的个数相等。设计试验时，“次数足够多”“每次放回并摇匀”“条件相同”这三个要点都要写出来，否则估计就不可靠。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="method">
+      <strong>方法归纳：</strong>
+      <ul>
+        <li>判断事件类型：先看“在一定条件下”结果是否确定——一定发生是必然事件，一定不发生是不可能事件，可能发生也可能不发生是随机事件。</li>
+        <li>算频率：频率 = 频数 ÷ 试验总次数，结果在 0 与 1 之间；比较几次试验的频率，看它是否在某个常数附近稳定。</li>
+        <li>用频率估计概率：试验次数要足够多、条件要相同，答案要带“约”字；不要说“频率等于概率”。</li>
+        <li>算等可能事件的概率：先数清所有等可能结果的总数 <i>n</i>，再数清事件包含的结果数 <i>m</i>，P(<i>A</i>) = <i>m</i>/<i>n</i>，最后约分并检查是否在 0 与 1 之间。</li>
+        <li>几何概型：分清目标区域与总区域，用面积比、长度比或时间比；转盘按圆心角（面积）算，扇形不全等时不能数个数。</li>
+        <li>游戏公平：算出双方获胜的概率，相等才公平；修改规则后要说明新的概率并验证相等。</li>
+        <li>含参数求球数：设未知数，抓住“分子变了没有、分母变了没有”列方程，解完必须代回检验。</li>
+      </ul>
+    </div>
+
+    <h4 class="subhead">本章自评表</h4>
+    <p>做完 21 道题后，对照表 12 逐项自评。每一项都在“能独立完成”“需提示”“需重学”三档中选一档打“√”：不看书、不问人、步骤完整地做对，才算“能独立完成”；要翻公式或看提示才能做的，选“需提示”；概念说不清、同类题反复错的，选“需重学”。填完后，把“需重学”的行按课时顺序排一排，那就是你下一阶段的复习路线。</p>
+
+    <table class="data-table self-check">
+      <caption>表 12　本章自评表</caption>
+      <thead>
+        <tr><th>学习内容</th><th>能独立完成</th><th>需提示</th><th>需重学</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>事件的分类（第 1 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+        <tr><td>可能性的大小比较（第 1 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+        <tr><td>频率的计算与稳定性（第 2 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+        <tr><td>用频率估计概率（第 3 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+        <tr><td>等可能事件的概率（第 4 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+        <tr><td>几何概型（第 5 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+        <tr><td>游戏的公平与设计（第 6 课时）</td><td>□</td><td>□</td><td>□</td></tr>
+      </tbody>
+    </table>
+
+    <h4 class="subhead">复习建议</h4>
+    <p>第一，把表 11 默写一遍，重点写清“等可能”的两个条件和几何概型的分母是什么，写不出来的地方就是漏洞。第二，把本次做错的题抄在错题本上，只抄题干，三天后重做；第二次仍错在同一处的，说明概念没弄清，要回到对应课时重读试验与例题。第三，每天做 2 道概率题保持手感，题目从本章练习里挑，限时完成，写完立刻检查“分子分母对不对、约分了没有、结果是否在 0 与 1 之间”。第四，遇到“设计游戏”“设计试验”这类开放题，先在草稿上把双方概率算出来，再动笔写方案，方案写完一定要验证概率相等。第五，复习的最后一步是合上讲义，把本章的主线讲给同学听：先给事件分类，再用频率去“摸”出概率，最后用等可能事件的公式把概率算出来——讲得清楚，才算真的学会。</p>
+
+    <div class="note"><strong>拓展：</strong>概率还可以用“模拟试验”的办法来估计。比如要估计“同时掷两枚骰子，点数和为 7”的概率，除了数 36 种结果，还可以真的掷上几百次，看频率稳定在哪里；计算机也能做这种“模拟”。用频率估计概率的思想在生活里用得很多：质检部门抽检产品估计合格率，农业上做发芽试验估计出苗情况，生态调查中用标记重捕法估计鱼的数量。它们的共同点是：用一部分数据去推测整体的情况，并且样本越大，推测越可靠。有兴趣的同学可以设计一个小试验，记录 100 次抛瓶盖“开口朝上”的频率，再与掷硬币的 1/2 比较，体会“等可能”与“不等可能”的差别。</div>
+  </section>
+</section>
+
+
+    <footer class="footer">
+      <p><strong>编制说明</strong>　本讲义依据北京师范大学出版社《义务教育教科书·数学·七年级下册》第三章编写，供课堂同步教学、课后复习与单元整理使用。</p>
+      <p>例题与练习在教材“想一想”“议一议”“随堂练习”的基础上改编、补充，答案与解析供教师讲评和学生自检使用；所有试验数据与概率均逐题复核，图形为矢量绘制，可无损放大或打印。</p>
+      <p>建议用法：课前用“学习目标”明确方向，课中用“试验探究 + 例题”推进，课末用“分层练习”检测，章末用“回顾与思考 + 复习题”整体建构；阅读时可点击右上角切换暗色主题。</p>
+    </footer>
+
+  </main>
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  "use strict";
+
+  var topbar = document.querySelector(".topbar");
+  var sidebar = document.getElementById("sidebar");
+  var progress = document.getElementById("progress");
+  var toTop = document.getElementById("toTop");
+  var menuBtn = document.getElementById("menuBtn");
+  var printBtn = document.getElementById("printBtn");
+  var toggleBtn = document.getElementById("toggleAnswers");
+  var themeBtn = document.getElementById("themeBtn");
+  var answers = Array.prototype.slice.call(document.querySelectorAll("details.answer"));
+
+  /* ---- 暗色 / 亮色主题 ---- */
+  var THEME_KEY = "dsh-x3-theme";
+  var rootEl = document.documentElement;
+  function applyTheme(theme, persist) {
+    rootEl.setAttribute("data-theme", theme);
+    if (themeBtn) themeBtn.textContent = theme === "dark" ? "☀️ 亮色" : "🌙 暗色";
+    if (persist) {
+      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+    }
+  }
+  applyTheme(rootEl.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      applyTheme(rootEl.getAttribute("data-theme") === "dark" ? "light" : "dark", true);
+    });
+  }
+
+  /* ---- 阅读进度 + 回到顶部 ---- */
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var y = window.pageYOffset || doc.scrollTop;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+    toTop.classList.toggle("show", y > 600);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---- 移动端目录抽屉 ---- */
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      sidebar.classList.toggle("open");
+    });
+    sidebar.addEventListener("click", function (e) {
+      if (e.target.closest("a")) sidebar.classList.remove("open");
+    });
+    document.addEventListener("click", function (e) {
+      if (window.innerWidth > 1100) return;
+      if (!sidebar.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove("open");
+      }
+    });
+  }
+
+  /* ---- 展开 / 收起答案 ---- */
+  var allOpen = false;
+  function setAll(open) {
+    allOpen = open;
+    answers.forEach(function (d) { d.open = open; });
+    if (toggleBtn) toggleBtn.textContent = open ? "收起答案" : "展开答案";
+  }
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () { setAll(!allOpen); });
+  }
+
+  /* ---- 打印：临时展开全部答案、切到亮色，打印后还原 ---- */
+  var saved = null;
+  var savedTheme = null;
+  window.addEventListener("beforeprint", function () {
+    saved = answers.map(function (d) { return d.open; });
+    answers.forEach(function (d) { d.open = true; });
+    savedTheme = rootEl.getAttribute("data-theme");
+    if (savedTheme === "dark") {
+      rootEl.setAttribute("data-theme", "light");
+    }
+  });
+  window.addEventListener("afterprint", function () {
+    if (saved) {
+      answers.forEach(function (d, i) { d.open = saved[i]; });
+      saved = null;
+    }
+    if (savedTheme === "dark") {
+      rootEl.setAttribute("data-theme", "dark");
+      savedTheme = null;
+    }
+  });
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      window.print();
+    });
+  }
+
+  /* ---- 目录高亮（滚动定位） ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".side-nav a"));
+  var targets = links.map(function (a) {
+    return document.getElementById(a.getAttribute("href").slice(1));
+  });
+  function highlight() {
+    var y = (window.pageYOffset || document.documentElement.scrollTop) + 120;
+    var current = 0;
+    targets.forEach(function (el, i) {
+      if (el && el.offsetTop <= y) current = i;
+    });
+    links.forEach(function (a, i) {
+      a.classList.toggle("active", i === current);
+    });
+  }
+  window.addEventListener("scroll", highlight, { passive: true });
+  window.addEventListener("resize", highlight);
+  highlight();
+})();
+</script>
+</body>
+</html>
